@@ -15,12 +15,11 @@ INDICE
   * [Parámetros y Argumentos](#parámetros-y-argumentos)
   * [Parámetros por defecto](#parámetros-por-defecto)
   * [Parámetros REST](#parámetros-REST)
-3. [Scope](#scope)
 
 ==========================================================================
 
 FUNCIONES
----------
+=========
 Las funciones son bloques de código reutilizables
 `function nombreFunction(parametro1,parametro2,parametro3){  //código   }
 ```javascript
@@ -250,27 +249,4 @@ Volver al [INDICE](#indice)
 
 ==================================
 
-SCOPE
-=====
-Scope es el ámbito o contexto donde se ejecuta una función y existen sus variable
 
-Variables Globales
-------------------
-```javascript
-let hola;
-function holaMundo(){
-  hola='hola mundo';
-}
-holaMundo();
-console.log(hola);  // Reconoce la variable al ser GLOBAL
-```
-Variables Locales
------------------
-```javascript
-function holaMundo(){
-  let hola;
-  hola='hola mundo';
-}
-holaMundo();
-console.log(hola);  // NO Reconoce la variable al ser LOCAL
-```
