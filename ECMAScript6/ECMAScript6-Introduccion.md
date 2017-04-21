@@ -14,7 +14,7 @@ INDICE
 ```javascript
 let saludo="Bienvenido a Casa";
 ```
-
+----------------------------------
 PROPIEDADES
 -----------
 `.length` -> Muestra la longiud de la cadena
@@ -89,7 +89,7 @@ saludo.endWith('asa');
 saludo.endWith('asa');
 ```
 Volver al [INDICE](#indice)
-
+----------------------------------
 CONDICIONALES&CICLOS
 ====================
 * `If & Else if`
@@ -175,7 +175,7 @@ for (let letras of nombre){
 }
 ```
 Volver al [INDICE](#indice)
-
+----------------------------------
 ARRAYS
 ======
 * Propiedades
@@ -368,7 +368,7 @@ let promedio=numeros.reduce((a,b,i,arr) => {
 console.log(promedio);
 ```
 Volver al [INDICE](#indice)
-
+----------------------------------
 OBJETOS
 -------
 ```javascript
