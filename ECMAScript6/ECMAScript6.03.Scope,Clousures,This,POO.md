@@ -5,7 +5,7 @@ INDICE
 1. [SCOPE](#scope)
   * [Variables Globales](#Variables-globales)
   * [Variables Locales](#Variables-locales)
-2. [Clousures](#clousures)
+2. [Closures](#closures)
 3. [This](#this)
   * [Lexical This](#lexical-this)
 3. [POO](#poo)
