@@ -2,7 +2,7 @@ JAVASCRIPT - FUNCIONES
 ======================
 INDICE
 ------
-1. [FUNCIONES](#FUNCIONES)
+1. [FUNCIONES](#funciones)
   * [Función dentro de un objeto](#función-dentro-de-un-objeto)
   * [Función dentro de una función](#función-dentro-de-una-función)
   * [Función autoinvocada](#función-autoinvocada)
@@ -11,11 +11,11 @@ INDICE
   * [Tipos de Funciones por Definición y Expresión](#tipos-de-Funciones-por-Definición-y-Expresión)
   * [Funciones Nombradas y Funciones Anónimas](#funciones-nombradas-y-funciones-anónimas)
   * [Funciones de flecha (arrow functions)ES6](#funciones-de-flecha-(arrow-functions)ES6)
-2. [Parámetros y Argumentos](#PARÁMETROS-Y-ARGUMENTO)
+2. [Parámetros y Argumentos](#parÁmetros-y-argumentos)
   * [Parámetros y Argumentos](#parámetros-y-argumentos)
   * [Parámetros por defecto](#parámetros-por-defecto)
   * [Parámetros REST](#parámetros-REST)
-3. [Scope](#SCOPE)
+3. [Scope](#scope)
 
 ==========================================================================
 
