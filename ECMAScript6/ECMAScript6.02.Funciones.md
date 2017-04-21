@@ -103,14 +103,14 @@ let peru = new pais ('Perú', 'sol');
 console.log(peru);
 ```
 
-* `.apply()` ->
-* `.call()` -> 
 Volver al [INDICE](#indice)
 
 ----------------------------------
 
 Formas de llamar a una función indirectamente
 ---------------------------------------------
+* `.apply()` ->
+* `.call()` ->
 ```javascript
 function add(a, b, c){
   return a + b + c ;
