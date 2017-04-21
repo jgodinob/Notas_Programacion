@@ -89,6 +89,7 @@ saludo.endWith('asa');
 saludo.endWith('asa');
 ```
 Volver al [INDICE](#indice)
+
 ----------------------------------
 CONDICIONALES&CICLOS
 ====================
@@ -175,6 +176,7 @@ for (let letras of nombre){
 }
 ```
 Volver al [INDICE](#indice)
+
 ----------------------------------
 ARRAYS
 ======
@@ -201,6 +203,7 @@ for(let index=0 ; index < arr.length ; index++){
 ```
 Volver al [INDICE](#indice)
 
+----------------------------------
 Propiedades_ARRAYS
 ------------------
 * `.indexOf()` -> Busca si un elemento existe o no dentro de array, si devuelve -1 NO EXISTE
@@ -256,6 +259,7 @@ console.log(numIndex);
 ```
 Volver al [INDICE](#indice)
 
+----------------------------------
 Iteradores_ARRAYS
 -----------------
 * Son objetos que contienen un método `.next()`
@@ -368,6 +372,7 @@ let promedio=numeros.reduce((a,b,i,arr) => {
 console.log(promedio);
 ```
 Volver al [INDICE](#indice)
+
 ----------------------------------
 OBJETOS
 -------
