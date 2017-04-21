@@ -9,6 +9,8 @@ INDICE
 1. [Arrays](#arrays) -> [Propiedades](#propiedades_arrays) , [Iteradores](#iteradores_arrays) , [Recorrer](#recorrer_arrays)
 1. [Objetos](#objetos)
 
+----------------------------------
+
 ```javascript
 let saludo="Bienvenido a Casa";
 ```
