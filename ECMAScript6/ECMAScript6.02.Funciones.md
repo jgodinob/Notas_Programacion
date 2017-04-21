@@ -37,6 +37,7 @@ console.log(miSuma); // Object {sum: 11, a: 6}
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Función dentro de un objeto
 ---------------------------
 ```javascript
@@ -52,6 +53,7 @@ console.log(miOtraSuma);
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Función dentro de otra función
 ------------------------------
 ```javascript
@@ -68,6 +70,7 @@ console.log(miResta2(3));  //Devuelve 2 que significa resta 5-3
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Funciones autoinvocadas
 -----------------------
 ```javascript
@@ -86,6 +89,7 @@ console.log(miMultiplicacion2);
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Función constructora
 --------------------
 ```javascript
@@ -104,6 +108,7 @@ console.log(peru);
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Formas de llamar a una función indirectamente
 ---------------------------------------------
 ```javascript
@@ -127,6 +132,7 @@ console.log(myAdd3);
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Tipos de Funciones por Definición y Expresión
 ---------------------------------------------
 Funciones por definición y por Expresión
@@ -146,6 +152,7 @@ c('hola Mundo'); //imprime un 'hola Mundo'
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Funciones Nombradas y Funciones Anónimas
 ----------------------------------------
 Un `callback` es una función que es ejecutada por tra luego de un proceso
@@ -155,6 +162,7 @@ el.addEventListener ('click', function()){  /* HACER ALGO */  };
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Funciones de flecha (arrow functions)ES6
 ----------------------------------------
 * Son funciones Anónimas `(param1, param2, param3) => valorDeRetorno`
@@ -187,6 +195,7 @@ let myCustomObj=myObj('hola','mundo'); //{a:'hola',b:'mundo'}
 Volver al [INDICE](#indice)
 
 ==================================
+
 PARÁMETROS Y ARGUMENTOS
 =======================
 ```javascript
@@ -214,6 +223,7 @@ console.log(sumar(...numeros)); // ...numeros son expandidos
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Parámetros por defecto
 ----------------------
 Asigna un valor por defecto a un parámetro.
@@ -226,6 +236,7 @@ console.log(sumar(1)); //toma un valor b=2 por defecto y muestra 3
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Parámetros REST
 ---------------
 Permite meter un una función todos los argumentos que queramos
@@ -238,6 +249,7 @@ console.log(sumarTodos(1,2,3,69)); //suma todos los ...elements e ignora m,n
 Volver al [INDICE](#indice)
 
 ==================================
+
 SCOPE
 =====
 Scope es el ámbito o contexto donde se ejecuta una función y existen sus variable
