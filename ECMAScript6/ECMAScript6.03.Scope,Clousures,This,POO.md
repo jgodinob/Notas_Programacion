@@ -5,7 +5,10 @@ INDICE
 1. [SCOPE](#scope)
   * [Variables Globales](#Variables-globales)
   * [Variables Locales](#Variables-locales)
-2.
+2. [Clousures](#clousures)
+3. [This](#this)
+  * [Lexical This](#lexical-this)
+3. [POO](#poo)
 ==========================================================================
   
   
@@ -123,7 +126,7 @@ POO
 ===
 * Clase -> plantilla a partir de la cual se crean objetos
 * instancia -> cada objeto creado a partir de una clase
-* cosntructor -> función que se ejecuta automáticamente al instanciar una clase
+* constructor -> función que se ejecuta automáticamente al instanciar una clase
 * métodos -> funciones
 ```javascript
 const jon={ nombre:'Jon', apellido:'Mircha', cursos:['Node.js','React.js'], pais:'Mexico' }
