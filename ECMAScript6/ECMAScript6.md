@@ -197,6 +197,8 @@ for(let index=0 ; index < arr.length ; index++){
   sum += arr[index];
 }
 ```
+Volver al [INDICE](#indice)
+
 Propiedades_ARRAYS
 ------------------
 * `.indexOf()` -> Busca si un elemento existe o no dentro de array, si devuelve -1 NO EXISTE
@@ -250,6 +252,7 @@ Ejercicio: devuelve el índice del primer elemento que cumple la condición
 let numIndex=array.findIndex(el => el>3);
 console.log(numIndex);
 ```
+Volver al [INDICE](#indice)
 
 Iteradores_ARRAYS
 -----------------
@@ -276,6 +279,7 @@ let iterador=array.entries();
 console.log(iterador.next());
 //Object{value:0,done: false}
 ```
+Volver al [INDICE](#indice)
 
 Recorrer_ARRAYS
 ---------------
@@ -361,6 +365,7 @@ let promedio=numeros.reduce((a,b,i,arr) => {
 });
 console.log(promedio);
 ```
+Volver al [INDICE](#indice)
 
 OBJETOS
 -------
