@@ -1,15 +1,14 @@
 JAVASCRIPT - FUNCIONES
 ======================
-1. FUNCIONES
-  1. [Función dentro de un objeto](#)
-  - [Función dentro de una función]
-  - [Función autoinvocada]
-  - [Función constructora]
-  - [Formas de llamar a una función indirectamente]
-
-1. [Tipos de Funciones por Definición y Expresión]
-1. [Funciones Nombradas y Funciones Anónimas]
-1. [Funciones de flecha (arrow functions)ES6]
+1. [FUNCIONES](#funciones)
+  * [Función dentro de un objeto](#función-dentro-de-un-objeto)
+  * [Función dentro de una función]
+  * [Función autoinvocada]
+  * [Función constructora]
+  * [Formas de llamar a una función indirectamente]
+  * [Tipos de Funciones por Definición y Expresión]
+  * [Funciones Nombradas y Funciones Anónimas]
+  * [Funciones de flecha (arrow functions)ES6]
 
 PARÁMETROS Y ARGUMENTOS
 -----------------------
