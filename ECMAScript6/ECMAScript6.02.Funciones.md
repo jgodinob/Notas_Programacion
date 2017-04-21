@@ -16,6 +16,7 @@ INDICE
   * [Parámetros por defecto](#parámetros-por-defecto)
   * [Parámetros REST](#parámetros-REST)
 3. [Scope](#Scope)
+
 ==========================================================================
 
 FUNCIONES
@@ -186,8 +187,8 @@ let myCustomObj=myObj('hola','mundo'); //{a:'hola',b:'mundo'}
 Volver al [INDICE](#indice)
 
 ==================================
-JAVASCRIPT - PARÁMETROS Y ARGUMENTOS
-====================================
+PARÁMETROS Y ARGUMENTOS
+=======================
 ```javascript
 functions sumar(a,b){     //a,b,c son parametros
   console.log(arguments); //dentro de la función se usan argumentos
@@ -237,8 +238,8 @@ console.log(sumarTodos(1,2,3,69)); //suma todos los ...elements e ignora m,n
 Volver al [INDICE](#indice)
 
 ==================================
-JAVASCRIPT - SCOPE
-==================
+SCOPE
+=====
 Scope es el ámbito o contexto donde se ejecuta una función y existen sus variable
 
 Variables Globales
