@@ -1,5 +1,5 @@
-JAVASCRIPT
-==========
+JAVASCRIPT - Introducción
+=========================
 INDICE
 ------
 1. [Propiedades & Métodos](#propiedades)
