@@ -1,15 +1,21 @@
+JAVASCRIPT
+==========
+INDICE
+------
+1. [Propiedades & Métodos](#propiedades)
+1. [Métodos sin parámetros](#metodossinparametros)
+
 ```javascript
 let saludo="Bienvenido a Casa";
 ```
 
-JAVASCRIPT - Propiedades & Métodos
-==================================
+PROPIEDADES
+-----------
 `.length` -> Muestra la longiud de la cadena
 ```javascript
 let longCE=saludo.length;
 ```
-
-Métodos sin parámetros
+MetodosSinParametros
 ----------------------
 * `.trim()` -> Quita espacios blanco ppio y final
 * `.toUpperCase()`
