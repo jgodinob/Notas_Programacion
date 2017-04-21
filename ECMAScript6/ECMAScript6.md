@@ -422,7 +422,7 @@ const obj={
   a,b
 }
 ```
-/*
+
 * expresiones en PROPIEDADES
 ```javascript
 let myObj2={
