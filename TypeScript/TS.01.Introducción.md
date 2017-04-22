@@ -56,8 +56,19 @@ Volver al [INDICE](#indice)
 BOOLEAN
 -------
 ```typescript
-let esSuperman:boolean = true;
+let esSuperman:boolean = true;  //Valor de la Variable definido
+let esBatman:boolean; //Valor de la Variable NO definido
+let esAcuaman=true; //No es recomendable
 ```
+*Ejemplo:*
+```typescript
+if(esSuperman){
+  console.log("Estamos salvados!!");
+}else{
+  console.log("Ooops! ooHHH");
+}
+```
+
 
 
 
