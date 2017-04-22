@@ -43,6 +43,7 @@ TIPOS DE DATOS
 * **NUMBER** -> `PI=3.14` , `salario =1500.0`, `entero=1`
 * **BOOLEAN** -> `TRUE` o `FALSE`
 * **NULL / UNDEFINED** -> `numero=null`y `persona=undefined` (tipos especiales de datos)
+
 **TIPOS DE DATOS COMPUESTOS**
 * **OBJETOS LITERALES** -> `var persona = { nombre: "Fernando" , edad: 30 }`
 * **CLASES** -> `class Persona { nombre; edad; }`
