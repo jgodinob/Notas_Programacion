@@ -244,15 +244,13 @@ console.log(arr.slice(2,5));
 `function nombre(){ //hacer algo }`
 `(parametro1, parametro2) => //valor retornado`
 
-Ejercicio: recorre el array y devuelve el primer elemento menor de 3 
---------------------------------------------------------------------
+**Ejercicio:** *recorre el array y devuelve el primer elemento menor de 3*
 ```javascript
 let array=[1, 2, 3, 4];
 let num=array.find(el => el>3);
 console.log(num);
 ```
-Ejercicio: devuelve el índice del primer elemento que cumple la condición 
--------------------------------------------------------------------------
+**Ejercicio:** *devuelve el índice del primer elemento que cumple la condición*
 ```javascript
 let numIndex=array.findIndex(el => el>3);
 console.log(numIndex);
@@ -300,8 +298,7 @@ let alumnos=[
 * `.filter(cb)` -> filtra elementos y los devuelve a un array
 * `.reduce(cb(prev, current[, i, arr])[, initial]);`
 
-Ejercicio: Recorrer Array - Método 1 Antiguo
---------------------------------------------
+**Ejercicio:** *Recorrer Array - Método 1 Antiguo*
 ```javascript
 let alumnosNombres=[];
 for(var i=0 ; i < alumnos.length ; i++){
@@ -310,15 +307,13 @@ for(var i=0 ; i < alumnos.length ; i++){
 console.log(alumnosNombres);
 ```
 
-Ejercicio: Recorrer Array - Método 2 ES6
-----------------------------------------
+**Ejercicio:** *Recorrer Array - Método 2 ES6*
 ```javascript
 let estudiantesNombre=alumnos.map(alumnos=>alumnos.alumno);
 console.log(estudiantesNombre);
 ```
 
-Ejercicio: Recorrer Array Comprobando notas - Método 1 Antiguo
---------------------------------------------------------------
+**Ejercicio:** *Recorrer Array Comprobando notas - Método 1 Antiguo*
 ```javascript
 let alumnosAprobados1=[];
 for(var i=0;i<alumnos.length;i++){
@@ -328,8 +323,7 @@ for(var i=0;i<alumnos.length;i++){
 console.log(alumnosAprobados1);
 ```
 
-Ejercicio: Recorrer Array Comprobando notas - método 2 Antiguo
---------------------------------------------------------------
+**Ejercicio:** *Recorrer Array Comprobando notas - método 2 Antiguo*
 ```javascript
 let alumnosAprobados2=[];
 for(var i=0;i<alumnos.length;i++){
@@ -340,30 +334,26 @@ for(var i=0;i<alumnos.length;i++){
 console.log(alumnosAprobados2);
 ```
 
-Ejercicio: Recorrer Array Comprobando notas - método 3 ES6
-----------------------------------------------------------
+**Ejercicio:** *Recorrer Array Comprobando notas - método 3 ES6*
 ```javascript
 let alumnosAprobados3=alumnos.map(alumnos=>alumnos.nota > 10);
 console.log(alumnosAprobados3);
 ```
 
-Ejercicio: Devuelve la suma
-----------------------------------------------------------
+**Ejercicio:** *Devuelve la suma*
 ```javascript
 let numeros=[2,4,6,8,10];
 let suma=numeros.reduce((a,b) => a+b );
 console.log(suma);
 ```
 
-Ejercicio: Devuelve el valor máximo
------------------------------------
+**Ejercicio:** *Devuelve el valor máximo*
 ```javascript
 let max=numeros.reduce((a,b) => a>b ? a:b );
 console.log(suma);
 ```
 
-Ejercicio: Devuelve el valor promedio
------------------------------------
+**Ejercicio:** *Devuelve el valor promedio*
 ```javascript
 let promedio=numeros.reduce((a,b,i,arr) => {
   b += a;
