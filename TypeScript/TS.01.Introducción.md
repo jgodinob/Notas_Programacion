@@ -71,26 +71,58 @@ if(esSuperman){
 **Ejemplo:**
 ```typescript
 let esSuperman:boolean = true;
-if(esSuperman){
-  console.log("Estamos salvados!!"); //se imprimiría esta opción
-}else{
-  console.log("Ooops! ooHHH");
-}
-esSuperman=convertirClark();
-if(esSuperman){
-  console.log("Estamos salvados!!"); 
-}else{
-  console.log("Ooops! ooHHH"); //se imprimiría esta opción
-}
+esSuperman = true ? console.log("Estamos salvados!!") : console.log("Ooops! ooHHH");
+//se imprimiría "Estamos salvados!!"
 //la siguiente función convierte esSuperman en false
-function convertirClark(){
-  return flase;
-}
+function convertirClark(){ return false; }
+esSuperman=convertirClark();
+esSuperman = true ? console.log("Estamos salvados!!") : console.log("Ooops! ooHHH");
+//se imprimiría "Ooops! ooHHH"
 ```
 NUMBERS
 -------
-
-
+**Ejemplo:**
+```typescript
+let avengers:number = 5 ,
+    villanos:number,
+    otros = 2;
+avengers > villanos ? console.log("Estamos salvados!!") : console.log("Estamos muertos");
+```
+Imprime "Estamos muertos", Ya que al no haberse declarado un valor para villanos, se declara como UNDEFINED
+STRING
+------
+**Ejemplo:**
+```typescript
+let batman:string = "Batman",
+    linternaVerde:string = "Linterna Verde",
+    volcanNegro:string = `Volcán Negro`;
+let concatenar:string = "Los héroes:" + batman +" "+ linternaVerde +" y "+ volcanNegro;
+console.log(concatenar);
+let concat:string = `Los héroes son: ${ batman }, ${linternaVerde} y ${volcanNegro};
+console.log(concat);  
+```
+Ambas opciones escriben lo mismo, pero claramente la segunda opción es más rápida y práctica.
+ANY
+---
+Usar este tipo de dato implica no definir un tipo de dato, es decir la variable puede cambiar su tipo de dato definido sin que de error. Si a una variable no se le declara el tipo de dato, automáticamente [TypeScript](https://www.typescriptlang.org/) lo define como [ANY](#any).
+**Ejemplo:**
+```typescript
+let vengador, existe, derrotas;
+vengador = "Dr. Strange";
+console.log(vengador.charAt(0)); //imprime D
+vengador = 150.555;
+console.log(vengador.toFixed(2)); //imprime 150.56
+vengador = true;
+console.log(vengador);  //imprime true
+```
+ARRAYS
+------
+**Ejemplo:**
+```typescript
+let arreglo=[1,2,3,4,5,6,7];
+arreglo.push("123"); 
+```
+Marcaría error ya que según su contenido [TypeScript](https://www.typescriptlang.org/) lo define como array de números.
 
 
 
