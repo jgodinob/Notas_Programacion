@@ -47,8 +47,8 @@ TIPOS DE DATOS
 * **OBJETOS LITERALES** -> `var persona = { nombre: "Fernando" , edad: 30 }`
 * **CLASES** -> `class Persona { nombre; edad; }`
 * **FUNCIONES** -> `function saludar() { return "Hola!"; }`
-**¿CÓMO CREAR TIPOS NUEVOS?**
-**INTERFACES**
+* **¿CÓMO CREAR TIPOS NUEVOS?**
+* **INTERFACES**
 Volver al [INDICE](#indice)
 
 ----------------------------------
