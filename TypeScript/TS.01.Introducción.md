@@ -60,7 +60,7 @@ let esSuperman:boolean = true;  //Valor de la Variable definido
 let esBatman:boolean; //Valor de la Variable NO definido
 let esAcuaman=true; //No es recomendable
 ```
-*Ejemplo:*
+**Ejemplo:**
 ```typescript
 if(esSuperman){
   console.log("Estamos salvados!!");
@@ -68,7 +68,27 @@ if(esSuperman){
   console.log("Ooops! ooHHH");
 }
 ```
-
+**Ejemplo:**
+```typescript
+let esSuperman:boolean = true;
+if(esSuperman){
+  console.log("Estamos salvados!!"); //se imprimiría esta opción
+}else{
+  console.log("Ooops! ooHHH");
+}
+esSuperman=convertirClark();
+if(esSuperman){
+  console.log("Estamos salvados!!"); 
+}else{
+  console.log("Ooops! ooHHH"); //se imprimiría esta opción
+}
+//la siguiente función convierte esSuperman en false
+function convertirClark(){
+  return flase;
+}
+```
+NUMBERS
+-------
 
 
 
