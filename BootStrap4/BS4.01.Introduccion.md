@@ -1,6 +1,11 @@
 BOOTSTRAP 4
 ===========
 *Referencias*: [hackerThemes.com](https://hackerthemes.com/bootstrap-cheatsheet/)
+Para poder utilizarlo hay que copiar en dentro de `<head>` antes de todos los enlaces a las hojas de estilos CSS el siguiente `<link>`.
+```html5
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+```
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 * **alert-success**
 ```html
 <div class="alert alert-success" role="alert">
