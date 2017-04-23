@@ -89,6 +89,7 @@ let avengers:number = 5 ,
 avengers > villanos ? console.log("Estamos salvados!!") : console.log("Estamos muertos");
 ```
 Imprime "Estamos muertos", Ya que al no haberse declarado un valor para villanos, se declara como UNDEFINED
+
 STRING
 ------
 **Ejemplo:**
@@ -102,6 +103,7 @@ let concat:string = `Los héroes son: ${ batman }, ${linternaVerde} y ${volcanNe
 console.log(concat);  
 ```
 Ambas opciones escriben lo mismo, pero claramente la segunda opción es más rápida y práctica.
+
 ANY
 ---
 Usar este tipo de dato implica no definir un tipo de dato, es decir la variable puede cambiar su tipo de dato definido sin que de error. Si a una variable no se le declara el tipo de dato, automáticamente [TypeScript](https://www.typescriptlang.org/) lo define como [ANY](#any).
@@ -127,6 +129,7 @@ let villanos:string[] = ["Omega Rojo","Dormamu","Duende Verde"];
 console.log(villanos[0].charAt(3));  //devolvería "g"
 ```
 Si usáramos `arreglo.push("123");` marcaría error ya que según su contenido [TypeScript](https://www.typescriptlang.org/) lo define como array de números.
+
 TUPLES
 ------
 Cuando un array es finito, o en su defecto se conoce el número de datos que contendrá, se pueden definir los mismos.
@@ -136,6 +139,7 @@ let heroe:[string,number]=["Dr. Strange", 100];
 ```
 si tratasemos de incluir datos de tipo distinto a los que se han definido `heroe[0]=123;` y `heroe[1]="Iroman;` lanza un error [TypeScript](https://www.typescriptlang.org/). Lo mismo pasaría si no se define uno de los datos, o si se define y no se introduce.
 En cambio si permite añadir elementos al array sin definirlos usando por ejemplo `heroe.push(true);`.
+
 ENUM
 ----
 Permite añadir un valor numerico a cada valor, si no se le añade lo incrementará en 1 unidad con respecto al anterior. Si el primer término no tiene valor imprimirá `0`.
@@ -149,6 +153,7 @@ let audioMax:numer = Volumen.max;
 console.log(audioMax);  //Imprime 10
 ```
 Si usasemos `console.log(Volumen[5]);` imprimiría `medio`.
+
 VOID
 ----
 El tipo `Void`es muy utilizado en JavaCShare, y es el contrario a `any`, es decir, devuelve vacío.
@@ -159,6 +164,7 @@ function llamar_batman():void{
 let mensaje=llamar_batman();
 ```
 Si colocase dentro de la función `retur 1;`me devolvería un error [TypeScript](https://www.typescriptlang.org/), ya que se definió el resultado de la función como vacío.
+
 NEVER
 -----
 El tipo de dato `Never`representa un valor que nunca puede suceder, es decir, implicaría que si se llega a ese punto se debe salir de la función.
