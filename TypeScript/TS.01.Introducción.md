@@ -175,6 +175,7 @@ function error(mensaje):never{
 error("Error crítico... línea 11 alcanzada...");
 ```
 Esta función lanzaría un mensaje de error con el texto definido, se usa para marcar situaciones que no deben ocurrir.
+
 **ASSERSIONES DE TIPO**
 -----------------------
 Permite utilizar propiedades de un tipo de dato en un dato que no tiene definido su tipo, o que se definió como `any`.
