@@ -65,7 +65,7 @@ TIPOS DE DATOS
 Volver al [INDICE](#indice)
 
 ----------------------------------
-BOOLEAN
+Boolean
 -------
 ```typescript
 let esSuperman:boolean = true;  //Valor de la Variable definido
@@ -91,7 +91,7 @@ esSuperman=convertirClark();
 esSuperman = true ? console.log("Estamos salvados!!") : console.log("Ooops! ooHHH");
 //se imprimiría "Ooops! ooHHH"
 ```
-NUMBERS
+Numbers
 -------
 **Ejemplo:**
 ```typescript
@@ -102,7 +102,7 @@ avengers > villanos ? console.log("Estamos salvados!!") : console.log("Estamos m
 ```
 Imprime "Estamos muertos", Ya que al no haberse declarado un valor para villanos, se declara como UNDEFINED
 
-STRING
+String
 ------
 **Ejemplo:**
 ```typescript
@@ -123,7 +123,7 @@ let superman:string = "Clark";
 let existe:boolean= false;
 ```
 
-ANY
+Any
 ---
 Usar este tipo de dato implica no definir un tipo de dato, es decir la variable puede cambiar su tipo de dato definido sin que de error. Si a una variable no se le declara el tipo de dato, automáticamente [TypeScript](https://www.typescriptlang.org/) lo define como [ANY](#any).
 **Ejemplo:**
@@ -136,7 +136,8 @@ console.log(vengador.toFixed(2)); //imprime 150.56
 vengador = true;
 console.log(vengador);  //imprime true
 ```
-ARRAYS
+
+Arrays
 ------
 Los Arryas en [TypeScript](https://www.typescriptlang.org/) son iguales que los arrays en JavaScript a diferencia de que podemos además definir el tipo de dato. 
 **Ejemplo:**
@@ -154,7 +155,7 @@ Si usáramos `arreglo.push("123");` marcaría error ya que según su contenido [
 let aliados:string[] = ["Mujer Maravilla","Acuaman","San", "Flash"];
 ```
 
-TUPLES
+Tuples
 ------
 Cuando un array es finito, o en su defecto se conoce el número de datos que contendrá, se pueden definir los mismos.
 **Ejemplo:**
@@ -170,7 +171,7 @@ let parejaHeroes:string[] = [batman,superman];
 let villano :[string,number,boolean]= ["Lex Lutor",5,true];
 ```
 
-ENUM
+Enum
 ----
 Permite añadir un valor numerico a cada valor, si no se le añade lo incrementará en 1 unidad con respecto al anterior. Si el primer término no tiene valor imprimirá `0`.
 ```typescript
@@ -198,7 +199,7 @@ var fuerzaBatman:number = Fuerza.Batman;      console.log(fuerzaBatman);  //Impr
 var fuerzaAcuaman:number = Fuerza.Acuaman;    console.log(fuerzaAcuaman);  //Imprime 0
 ```
 
-VOID
+Void
 ----
 El tipo `Void`es muy utilizado en JavaCShare, y es el contrario a `any`, es decir, devuelve vacío.
 ```typescript
@@ -209,7 +210,7 @@ let mensaje=llamar_batman();
 ```
 Si colocase dentro de la función `retur 1;`me devolvería un error [TypeScript](https://www.typescriptlang.org/), ya que se definió el resultado de la función como vacío.
 
-NEVER
+Never
 -----
 El tipo de dato `Never`representa un valor que nunca puede suceder, es decir, implicaría que si se llega a ese punto se debe salir de la función.
 ```typescript
@@ -231,7 +232,7 @@ function pedir_ayuda():void{
 }
 ```
 
-NULL & UNDEFINED
+Null & Undefined
 ----------------
 Son dos tipos de datos específicos en [TypeScript](https://www.typescriptlang.org/) que por si sólo no hacen nada.
 Sería imposible asignar un valor diferente a `NULL` o `UNDEFINED` a una variable anteriormente declarada como `NULL` o `ÙNDEFINED`.
