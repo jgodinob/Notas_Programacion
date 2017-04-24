@@ -23,11 +23,32 @@ let activar_batisenal=function(){
 }
 console.log(activar_batisenal());
 ```
-Parámetros
-----------
+
+Parámetros Obligatorios
+-----------------------
 ```typescript
-function nombreCompleto(nombre:string, apellido:string):string{
-  return nombre + ' + apellido;
+function nombreCompleto( nombre:string, apellido:string ) :string {
+  return nombre + ' ' + apellido;
 }
 let nombre=nombreCompleto("clark", "Kent");
 console.log(nombre);
+```
+Parámetros Opcionales
+-----------------------
+```javascript
+function hola ( nombre ) { return "Hola" + nombre};
+hola ("Fernando");
+hola();
+```
+```typescript
+function nombreCompelto ( nombre:stirng, apellido?:string):string { 
+  if ( apellido ) {
+    return nombre + ' ' + apellido;
+  }else{
+    return nombre;  
+}
+let nombre1=nombreCompleto("Barry", "Allen");
+console.log(nombre);
+let nombre2=nombreCompleto("cLark");
+console.log(nombre);
+```
