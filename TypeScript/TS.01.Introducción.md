@@ -104,6 +104,13 @@ console.log(concat);
 ```
 Ambas opciones escriben lo mismo, pero claramente la segunda opción es más rápida y práctica.
 
+**Ejercicio:** *Trabaja con el siguiente código*
+```typescript
+let batman:string = "Bruce";
+let superman:string = "Clark";
+let existe:boolean= false;
+```
+
 ANY
 ---
 Usar este tipo de dato implica no definir un tipo de dato, es decir la variable puede cambiar su tipo de dato definido sin que de error. Si a una variable no se le declara el tipo de dato, automáticamente [TypeScript](https://www.typescriptlang.org/) lo define como [ANY](#any).
@@ -130,6 +137,11 @@ console.log(villanos[0].charAt(3));  //devolvería "g"
 ```
 Si usáramos `arreglo.push("123");` marcaría error ya que según su contenido [TypeScript](https://www.typescriptlang.org/) lo define como array de números.
 
+**Ejercicio:** *Trabaja con el siguiente código*
+```typescript
+let aliados:string[] = ["Mujer Maravilla","Acuaman","San", "Flash"];
+```
+
 TUPLES
 ------
 Cuando un array es finito, o en su defecto se conoce el número de datos que contendrá, se pueden definir los mismos.
@@ -139,6 +151,12 @@ let heroe:[string,number]=["Dr. Strange", 100];
 ```
 si tratasemos de incluir datos de tipo distinto a los que se han definido `heroe[0]=123;` y `heroe[1]="Iroman;` lanza un error [TypeScript](https://www.typescriptlang.org/). Lo mismo pasaría si no se define uno de los datos, o si se define y no se introduce.
 En cambio si permite añadir elementos al array sin definirlos usando por ejemplo `heroe.push(true);`.
+
+**Ejercicio:** *Trabaja con el siguiente código*
+```typescript
+let parejaHeroes:string[] = [batman,superman];
+let villano :[string,number,boolean]= ["Lex Lutor",5,true];
+```
 
 ENUM
 ----
@@ -153,6 +171,20 @@ let audioMax:numer = Volumen.max;
 console.log(audioMax);  //Imprime 10
 ```
 Si usasemos `console.log(Volumen[5]);` imprimiría `medio`.
+
+**Ejercicio:** *Trabaja con el siguiente código*
+```typescript
+enum Fuerza{
+  Acuaman=0,
+  Batman,
+  Flash=5,
+  Superman=100
+} 
+let fuerzaFlash:number = Fuerza.Flash;        console.log(fuerzaFlash);  //Imprime 5
+var fuerzaSuperman:number = Fuerza.Superman;  console.log(fuerzaSuperman);  //Imprime 100
+var fuerzaBatman:number = Fuerza.Batman;      console.log(fuerzaBatman);  //Imprime 1
+var fuerzaAcuaman:number = Fuerza.Acuaman;    console.log(fuerzaAcuaman);  //Imprime 0
+```
 
 VOID
 ----
@@ -176,14 +208,17 @@ error("Error crítico... línea 11 alcanzada...");
 ```
 Esta función lanzaría un mensaje de error con el texto definido, se usa para marcar situaciones que no deben ocurrir.
 
-**ASERCIONES DE TIPO**
------------------------
-Permite utilizar propiedades de un tipo de dato en un dato que no tiene definido su tipo, o que se definió como `any`.
+**Ejercicio:** *Trabaja con el siguiente código*
 ```typescript
-let cualquierValor:any = "Cualquier cosa";
-let largoDelString:number = (<string>cualquierValor).length;
-console.log(largoDelString);
+function activar_batiseñal():string{
+  return "activada";
+}
+
+function pedir_ayuda():void{
+  console.log("Auxilio!!!");
+}
 ```
+
 NULL & UNDEFINED
 ----------------
 Son dos tipos de datos específicos en [TypeScript](https://www.typescriptlang.org/) que por si sólo no hacen nada.
@@ -208,6 +243,25 @@ Es decir:
 }
 ```
 
+**ASERCIONES DE TIPO**
+-----------------------
+Permite utilizar propiedades de un tipo de dato en un dato que no tiene definido su tipo, o que se definió como `any`.
+```typescript
+let cualquierValor:any = "Cualquier cosa";
+let largoDelString:number = (<string>cualquierValor).length;
+console.log(largoDelString);
+```
 
+**Ejercicio:** *Trabaja con el siguiente código*
+```typescript
+let poder1:string = "100";
+let largoDelPoder1:number = poder1.length;
+console.log( largoDelPoder1 );
+```
+```typescript
+let poder2:number = 100;
+let largoDelPoder2:number = poder2.toString().length;
+console.log( largoDelPoder2 );
+```
 
 
