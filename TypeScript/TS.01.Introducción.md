@@ -176,7 +176,7 @@ error("Error crítico... línea 11 alcanzada...");
 ```
 Esta función lanzaría un mensaje de error con el texto definido, se usa para marcar situaciones que no deben ocurrir.
 
-**ASSERSIONES DE TIPO**
+**ASERCIONES DE TIPO**
 -----------------------
 Permite utilizar propiedades de un tipo de dato en un dato que no tiene definido su tipo, o que se definió como `any`.
 ```typescript
@@ -184,6 +184,30 @@ let cualquierValor:any = "Cualquier cosa";
 let largoDelString:number = (<string>cualquierValor).length;
 console.log(largoDelString);
 ```
+NULL & UNDEFINED
+----------------
+Son dos tipos de datos específicos en [TypeScript](https://www.typescriptlang.org/) que por si sólo no hacen nada.
+Sería imposible asignar un valor diferente a `NULL` o `UNDEFINED` a una variable anteriormente declarada como `NULL` o `ÙNDEFINED`.
+```typescript
+let nada:undefined=undefined;
+nada=null; //no podría asignarle un valor distinto de NULL o UNDEFINED
+```
+En cambio si es posible asignar valores NULL o UNDEFINED a variables declaradas como `string` por ejemplo. Esta posibilidad es bastante peligrosa, ya que podría llevar a errores ilocalizables en programas más complejos de tamaño considerable.
+```typescript
+let ironman:string;
+ironman="Tony";
+ironman=undefined;
+```
+Para evitar esta posibilidad, habría previamente que modificar la configuración de [TypeScript](https://www.typescriptlang.org/). Así, para que funciones habría que activar en el `tsconfig.json` la función `"strictNullChecks":true,`dentro de `compilerOptions:{}`.
+Es decir:
+```json
+{
+  "compilerOptions":{
+    "strictiNullChecks":true,
+  }
+}
+```
+
 
 
 
