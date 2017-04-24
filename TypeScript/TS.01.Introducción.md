@@ -3,8 +3,20 @@ TypeScript - Introducción
 INDICE
 ------
 1. [INSTALACIÓN](#instalación)
+* [Iniciar la instalación](#iniciar_la_instalación)
+* [Iniciar el Proyecto](#iniciar_el_proyecto)
 2. [TIPOS DE DATOS](#tipos_de_datos)
-* 
+* Boolean
+* Numbers
+* String
+* Any
+* Arrays
+* Tuples
+* Enum
+* Void
+* Never
+* Null & Undefined
+3. [Aserciones de tipo](#aserciones_de_tipo)
 
 ----------------------------------
 
