@@ -33,13 +33,10 @@ function nombreCompleto( nombre:string, apellido:string ) :string {
 let nombre=nombreCompleto("clark", "Kent");
 console.log(nombre);
 ```
+
 Parámetros Opcionales
------------------------
-```javascript
-function hola ( nombre ) { return "Hola" + nombre};
-hola ("Fernando");
-hola();
-```
+---------------------
+Para definir parámetros opcionales en [TypeScript](https://www.typescriptlang.org/) hay que colocar justo detrás del nombre del parámetro un `?` es decir `apellido?:string`.
 ```typescript
 function nombreCompelto ( nombre:stirng, apellido?:string):string { 
   if ( apellido ) {
@@ -51,4 +48,27 @@ let nombre1=nombreCompleto("Barry", "Allen");
 console.log(nombre);
 let nombre2=nombreCompleto("cLark");
 console.log(nombre);
+```
+
+Parámetros Por Defecto
+----------------------
+Los Parámetros por Defecto es una característica nueva de ECMAScript 6, pero [TypeScript](https://www.typescriptlang.org/) permite usarla aunque los navegadores dónde se use no admita esa característica.
+```typescript
+function nombreCompleto ( nombre:string , apellido?:string , capitalizado:boolean = false):string { 
+    if (apellido) {
+        capitalizado = false ? nombre = capitalizar(nombre) : nombre = nombre;
+        capitalizado = false ? apellido = capitalizar(apellido) : apellido = apellido;
+        return nombre + ' ' + apellido;
+    } else {
+        capitalizado = false ? nombre = capitalizar(nombre) : nombre = nombre;
+        return nombre;
+    }
+}
+function capitalizar (palabra:string):string{
+  return palabra.charAt(0).toUpperCase() + palabra.substr(1).toLowerCase();
+}
+let nombre1=nombreCompleto("Barry", "Allen");
+console.log(nombre1);
+let nombre2=nombreCompleto("cLark");
+console.log(nombre2);
 ```
