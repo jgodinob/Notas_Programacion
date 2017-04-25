@@ -66,3 +66,61 @@ function nombreCompleto(capitalizado: boolean = false, nombre: string, apellido?
     }
 }
 ```
+**Ejercicio:** *Ahora en TypeScript vamos a crear la clase Rombo, la cual debe tener dos propiedades:
+DiagonalVertical y DiagonalHorizontal.
+Le añadiremos un constructor al que le pasaremos los valores anteriores cuando instanciemos el objeto.
+Y también debe de tener un método que calcule el area, que será la multiplicación de DiagonalVertical * DiagonalHorizontal.
+Este método devolverá un número.*
+```typescript
+class Rombo {
+   diagonalVertical:number;
+   diagonalHorizontal:number;
+   calcularArea():number{
+     return this.diagonalHorizontal*this.diagonalVertical;
+   };
+   constructor (diagonalVertical:number, diagonalHorizontal:number){
+     this.diagonalVertical=diagonalVertical;
+     this.diagonalHorizontal=diagonalHorizontal;
+   }
+}
+```
+**Ejercicio:** *Interface que muestra una cajita de texto con un boton, los escenarios son:
+* El campo de texto te debe permitir cualquier tipo de texto, luego, al clickear debe mostrar un alert con el texto ingresado en ese campo de texto.
+* Al Ingresar un texto en el campo de texto, al presionar enter debe mostrar un alert con el texto ingresado en ese campo. *
+*index.html*
+```typescrypt
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Alert message!</title>
+    </head>
+    <body>
+        <h1>Ingresa tu texto aqui:</h1>
+        <input type="text" name="txtMessage" id="txtMessage"/>
+        <input type="submit" value="Get Alert!" id="btnGetAlert" />
+        <script src="./index.js" type="text/javascript"></script>
+    </body>
+</html> 
+```
+*app.ts*
+```typescrypt
+window.onload = ()=>{
+    //parsing
+    var txtMessage:HTMLInputElement = <HTMLInputElement>document.getElementById("txtMessage");
+    var btnGetAlert:HTMLInputElement = <HTMLInputElement>document.getElementById("btnGetAlert");
+    //binding events
+    btnGetAlert.addEventListener("click", (evt)=> {
+        var myMessage:string = txtMessage.value;
+        alert(myMessage);
+        evt.preventDefault();
+    });
+    document.addEventListener("keydown", (evt)=> {
+        var myMessage:string = txtMessage.value;
+        var enterKeyCode:number = evt.keyCode; 
+        if(enterKeyCode == 13){
+            alert(myMessage);
+        }
+    });
+};
+```
