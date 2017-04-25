@@ -54,19 +54,15 @@ Parámetros Por Defecto
 ----------------------
 Los Parámetros por Defecto es una característica nueva de ECMAScript 6, pero [TypeScript](https://www.typescriptlang.org/) permite usarla aunque los navegadores dónde se use no admita esa característica.
 ```typescript
-function nombreCompleto (capitalizado:boolean = false , nombre:string , apellido?:string):string { 
-    if (capitalizado) {
-        return nombre + ((apellido===undefined)?"":(" "+apellido););
-    } else {
-        let Nombre=capitalizado(nombre);
-        return Nombre + ((apellido===undefined)?"":(" "+(capitalizado(apellido))););
-    }
-}
 function capitalizar (palabra:string):string{
   return palabra.charAt(0).toUpperCase() + palabra.substr(1).toLowerCase();
 }
-let nombre1=nombreCompleto("Barry", "Allen");
-console.log(nombre1);
-let nombre2=nombreCompleto("cLark");
-console.log(nombre2);
+function nombreCompleto(capitalizado: boolean = false, nombre: string, apellido?: string): string { 
+    if (capitalizado) {
+        return nombre + ((apellido===undefined)?"":(" "+apellido));
+    } else {
+        let Nombre=capitalizar(nombre);
+        return Nombre + ((apellido===undefined)?"":(" "+(capitalizar(apellido))));
+    }
+}
 ```
