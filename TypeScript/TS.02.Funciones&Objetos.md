@@ -118,7 +118,7 @@ let superman = nombreCompleto (true,"clark", "joseph", "kent"),
 console.log(superman);
 console.log(ironman);
 ```
-**Ejercicio: ** *Parámetros Rest*
+**Ejercicio:** *Parámetros Rest*
 ```typescript
 function unirHeroes(...personas:string[]):string{
   return personas.join(, ");
@@ -164,13 +164,13 @@ let superHeroes:string[]=["Flash","Aroow","Supermna","Linter Verde"];
 contar(SuperHeroes);
 ```
 
-**Ejercicio: ** *Tipo Función*
+**Ejercicio:** *Tipo Función*
 ```typescript
 function noHacerNada(numero:number, texto:string, booleano:boolean, arreglo:any[]){
 }
 ```
 
-**Ejercicio: ** *Crear el tipo de función que acepte no hacer nada*
+**Ejercicio:** *Crear el tipo de función que acepte no hacer nada*
 ```typescript
 let noHacerNadaTampoco:(n:number, t:string, b:boolean, a:any[])=>void;
 noHaceNadaTampoco=noHacenada;
