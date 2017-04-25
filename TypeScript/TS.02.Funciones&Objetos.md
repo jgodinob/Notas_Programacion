@@ -68,6 +68,15 @@ function nombreCompleto(capitalizado: boolean = false, nombre: string, apellido?
     }
 }
 ```
+**Ejercicio:** *Parámetros por defecto*
+```typescript
+function llamarBatman(llamar:boolean=true):void{
+  if(llamar){
+    console.log("Batiseñal activada");
+  }
+}
+llamarBatman();
+```
 
 Parámetros Rest
 ---------------
@@ -109,7 +118,66 @@ let superman = nombreCompleto (true,"clark", "joseph", "kent"),
 console.log(superman);
 console.log(ironman);
 ```
+**Ejercicio: ** *Parámetros Rest*
+```typescript
+function unirHeroes(...personas:string[]):string{
+  return personas.join(, ");
+}
+```
 
+Tipo Función
+------------
+[TypeScript](https://www.typescriptlang.org/) permite crear datos tipo función.
+Dentro de este primer ejemplo se acota las características de la función a dos parámetros de entrada tipo `number` y uno de salida `number`. Así, se podrían usar para nombrar los parámetros valores distintos, en lugar de usar `a` y `b`, usar en este caso `c` y `d`.
+```typescript
+function sumar(a:number,b:number):number{
+  return a+b;
+}
+let miFuncion:(c:number,d:number) => number;
+```
+Lo mismo ocurriría en el siguiente ejemplo, ya que la función necesita de un parámetro de entrada tipo `string` y otro de salida tipo `string`.
+```typescript
+function saludar(nombre:string):string{
+  return "I`m " + nombre;
+}
+let miFuncion:(x:string) => string;
+```
+En el siguiente ejemplo no tendría parámetro de entrada y encambio regresaría un parámetro tip `void`a la salida de la función.
+```typescript
+function salvarMundo():void{
+  return console.log("El mundo esta salvado!");
+}
+let miFuncion:() => void;
+```
+
+**Ejercicio:** *Funciones básicas*
+```typescript
+function sumar(a:number,b:number):number{
+  return a+b;
+}
+```
+```typescript
+let contar=function(heroes:string[]){
+  return heroes.length;
+}
+let superHeroes:string[]=["Flash","Aroow","Supermna","Linter Verde"];
+contar(SuperHeroes);
+```
+
+**Ejercicio: ** *Tipo Función*
+```typescript
+function noHacerNada(numero:number, texto:string, booleano:boolean, arreglo:any[]){
+}
+```
+
+**Ejercicio: ** *Crear el tipo de función que acepte no hacer nada*
+```typescript
+let noHacerNadaTampoco:(n:number, t:string, b:boolean, a:any[])=>void;
+noHaceNadaTampoco=noHacenada;
+```
+
+EJERCICIOS EXTRA
+================
 **Ejercicio:** *Ahora en TypeScript vamos a crear la clase Rombo, la cual debe tener dos propiedades:
 DiagonalVertical y DiagonalHorizontal.
 Le añadiremos un constructor al que le pasaremos los valores anteriores cuando instanciemos el objeto.
