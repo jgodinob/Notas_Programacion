@@ -53,19 +53,63 @@ console.log(nombre);
 Parámetros Por Defecto
 ----------------------
 Los Parámetros por Defecto es una característica nueva de ECMAScript 6, pero [TypeScript](https://www.typescriptlang.org/) permite usarla aunque los navegadores dónde se use no admita esa característica.
+
+**Ejercicio:** *Crear una función que permita decidir si se desea capitalizar un nombre, y que admita `nombre` solo o `nombre + apellido`*
 ```typescript
 function capitalizar (palabra:string):string{
   return palabra.charAt(0).toUpperCase() + palabra.substr(1).toLowerCase();
 }
 function nombreCompleto(capitalizado: boolean = false, nombre: string, apellido?: string): string { 
     if (capitalizado) {
-        return nombre + ((apellido===undefined)?"":(" "+apellido));
-    } else {
         let Nombre=capitalizar(nombre);
         return Nombre + ((apellido===undefined)?"":(" "+(capitalizar(apellido))));
+    } else {
+        return nombre + ((apellido===undefined)?"":(" "+apellido));
     }
 }
 ```
+
+Parámetros Rest
+---------------
+Permite que una función tenga un número de argumentos indefinido, y estos puedan ser tratados como un array.
+**Ejercicio:** *Crear una función que permita unir nombres de distinto número de palabras.*
+```typescript
+function nombreCompleto( nombre:string, ...losDemasParametros:string[] ) :string{
+  return nombre + " " + losDemasParametros.join(" ");
+}
+let superman = nombreCompleto ("Clark", "Joseph", "Kent"),
+    ironman = nombreCompleto("Anthony", "Edward", "Tony", "Stark");
+console.log(superman);
+console.log(ironman);
+```
+**Ejercicio:** *Crear una función que permita decidir si se desea capitalizar un nombre con varias palabras*
+```typescript
+// esta función capitaliza las palabras de entrada
+function capitalizar (palabra:string):string{
+  return palabra.charAt(0).toUpperCase() + palabra.substr(1).toLowerCase();
+}
+// nombreCompleto permite decidir si se capitalizará el nombre indiferentemente del número de plabras que contenga
+function nombreCompleto(capitalizado:boolean=false , nombre: string, ...losDemasParametros: string[]): string{
+    let losDemasParametrosN: string[]=[],
+        x: number;
+//Se crea una nueva array con los argumentos capitalizados        
+    for (x in losDemasParametros) {
+        losDemasParametrosN.push(capitalizar(losDemasParametros[x]));
+    }
+//Se decide si capitalizar según la entrada
+    if (capitalizado) {
+        let Nombre=capitalizar(nombre);
+        return Nombre + " " + losDemasParametrosN.join(" ");
+    } else {
+        return nombre + " " + losDemasParametros.join(" ");
+    }
+}
+let superman = nombreCompleto (true,"clark", "joseph", "kent"),
+    ironman = nombreCompleto(false,"anthony", "edward", "tony", "stark");
+console.log(superman);
+console.log(ironman);
+```
+
 **Ejercicio:** *Ahora en TypeScript vamos a crear la clase Rombo, la cual debe tener dos propiedades:
 DiagonalVertical y DiagonalHorizontal.
 Le añadiremos un constructor al que le pasaremos los valores anteriores cuando instanciemos el objeto.
@@ -87,6 +131,7 @@ class Rombo {
 **Ejercicio:** *Interface que muestra una cajita de texto con un boton, los escenarios son:
 * El campo de texto te debe permitir cualquier tipo de texto, luego, al clickear debe mostrar un alert con el texto ingresado en ese campo de texto.
 * Al Ingresar un texto en el campo de texto, al presionar enter debe mostrar un alert con el texto ingresado en ese campo. *
+
 *index.html*
 ```typescrypt
 <!doctype html>
