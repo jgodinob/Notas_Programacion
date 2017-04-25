@@ -201,7 +201,7 @@ class Rombo {
 * Al Ingresar un texto en el campo de texto, al presionar enter debe mostrar un alert con el texto ingresado en ese campo. *
 
 *index.html*
-```typescrypt
+```html
 <!doctype html>
 <html>
     <head>
@@ -217,7 +217,7 @@ class Rombo {
 </html> 
 ```
 *app.ts*
-```typescrypt
+```typescript
 window.onload = ()=>{
     //parsing
     var txtMessage:HTMLInputElement = <HTMLInputElement>document.getElementById("txtMessage");
