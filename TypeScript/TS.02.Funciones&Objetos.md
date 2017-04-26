@@ -112,18 +112,16 @@ function capitalizar (palabra:string):string{
   return palabra.charAt(0).toUpperCase() + palabra.substr(1).toLowerCase();
 }
 // nombreCompleto permite decidir si se capitalizará el nombre indiferentemente del número de plabras que contenga
-function nombreCompleto(capitalizado:boolean=false , nombre: string, ...losDemasParametros: string[]): string{
-    let losDemasParametrosN: string[]=[];
-//Se crea una nueva array con los argumentos capitalizados        
-    for (let x in losDemasParametros) {
-        losDemasParametrosN.push(capitalizar(losDemasParametros[x]));
-    }
+function nombreCompleto(capitalizado:boolean=false , ...losDemasParametros: string[]): string{
 //Se decide si capitalizar según la entrada
     if (capitalizado) {
-        let Nombre=capitalizar(nombre);
-        return Nombre + " " + losDemasParametrosN.join(" ");
+        //Se crea una nueva array con los argumentos capitalizados        
+        for (let x in losDemasParametros) {
+            losDemasParametros[x] = capitalizar(losDemasParametros[x]);        
+        }
+        return losDemasParametros.join(" ");
     } else {
-        return nombre + " " + losDemasParametros.join(" ");
+        return losDemasParametros.join(" ");
     }
 }
 let superman = nombreCompleto (true,"clark", "joseph", "kent"),
