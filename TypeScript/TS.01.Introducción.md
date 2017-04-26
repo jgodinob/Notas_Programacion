@@ -45,6 +45,7 @@ Resumen de Comandos para uso de la Terminal son:
 * `tsc -v`-> devuelve la versión instalada de TypeScript
 * `node -v`-> devuelve la versión instalada de NodeJs
 * Para cancelar proyectos en la Temrinal usaremos `Ctrl + C`
+
 Volver al [INDICE](#indice)
 
 ----------------------------------
@@ -62,6 +63,7 @@ TIPOS DE DATOS
 * **FUNCIONES** -> `function saludar() { return "Hola!"; }`
 * **¿CÓMO CREAR TIPOS NUEVOS?**
 * **INTERFACES**
+
 Volver al [INDICE](#indice)
 
 ----------------------------------
