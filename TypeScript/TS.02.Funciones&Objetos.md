@@ -3,8 +3,14 @@ TypeScript - Funciones & Objetos
 INDICE
 ------
 1. [FUNCIONES](#funciones)
-* [Parámetros](#parametros)
-
+* [Parámetros Obligatorios](#parámetros-obligatorios)
+* [Parámetros Opcionales](#parámetros-opcionales)
+* [Parámetros Por Defecto](#parámetros-por-defecto)
+* [Parámetros Rest](#parámetros-rest)
+* [Tipo Función](#tipo-función)
+2. [OBJETOS](#objetos)
+* [Tipo Personalizado de Objetos](#tipo-personalizado-de-objetos)
+3. [EJERCICIOS EXTRA](#ejercicios-extra)
 ----------------------------------
 
 FUNCIONES
@@ -188,7 +194,7 @@ noHaceNadaTampoco=noHacenada;
 
 Volver al [INDICE](#indice)
 
-===========================================================================================
+--------
 
 OBJETOS
 =======
@@ -228,7 +234,7 @@ let flash: {nombre:string, edad:number, poderes:string[], getNombre:()=>string} 
 
 Volver al [INDICE](#indice)
 
-TIPO PERSONALIZADO DE OBJETOS
+Tipo Personalizado de Objetos
 =============================
 Para poder definir la definición de un tipo hay que seguir las siguiente estrcutura.
 ```typescript
