@@ -10,7 +10,8 @@ INDICE
 TSCONFIG.JSON
 =============
 El archivo tsconfig.json permite configurar el sistema de transpilado de [TypeScript](https://www.typescriptlang.org/).
-Por ejemplo con la configuración estándar permite modificar el tipo de salida de la transpilación, es decir decidir si queremos que se transpile a una versión u otra de `Javascript`. Un ejemplo sería modificando `"target":"es5"`, cuya salida sería en ECMAS5, por `"target":"es6"` cuya salida sería ECMAS6.
+
+Por ejemplo con la configuración estándar permite modificar el tipo de salida de la transpilación, es decir decidir si queremos que se transpile a una versión u otra de `Javascript`. Un ejemplo sería modificando `"target":"es5"`, cuya salida sería en ECMAS5, por `"target":"es6"` cuya salida sería ECMAS6. Otra opción es usar el comando para la consola `tsc app.ts --target es6`.
 
 **¿Cómo eliminar los comentarios al transpilar [TypeScript](https://www.typescriptlang.org/)?**
 Para ello debemos introducir dentro de `"compilerOptions":{...}` la opcion de `"removeComments":true"`, asi no se mostrarán los comentarios realizados en el archivo [TypeScript](https://www.typescriptlang.org/).
