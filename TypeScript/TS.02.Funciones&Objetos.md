@@ -113,10 +113,9 @@ function capitalizar (palabra:string):string{
 }
 // nombreCompleto permite decidir si se capitalizará el nombre indiferentemente del número de plabras que contenga
 function nombreCompleto(capitalizado:boolean=false , nombre: string, ...losDemasParametros: string[]): string{
-    let losDemasParametrosN: string[]=[],
-        x: number;
+    let losDemasParametrosN: string[]=[];
 //Se crea una nueva array con los argumentos capitalizados        
-    for (x in losDemasParametros) {
+    for (let x in losDemasParametros) {
         losDemasParametrosN.push(capitalizar(losDemasParametros[x]));
     }
 //Se decide si capitalizar según la entrada
