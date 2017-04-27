@@ -94,6 +94,23 @@ let capitan_america = {
 };
 capitan_america.darOrden_Hulk();
 ```
+Ciclo For of
+------------
+```typescript
+let thor    = {nombre:"Thor",    arma:"Mjolnir" }
+let ironman = {nombre:"Ironman", arma:"Armorsuit" }
+let capitan = {nombre:"capitan", arma:"Escudo" }
+let avengers = [ thor, ironman, capitan ];
+for (let i in avengers ) { 
+/* crearía un ciclo que recoge cada objeto del array */ 
+  console.log(avengers[i]);
+}
+for (let avenger of avengers) { 
+/* crearía un ciclo que recoge cada objeto del array */ 
+  console.log(avenger.nombre, avenger.arma);
+}
+```
+
 DESTRUCTURACIÓN
 ===============
 Destructuración de Objetos
