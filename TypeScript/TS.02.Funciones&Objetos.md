@@ -191,7 +191,7 @@ noHaceNadaTampoco=noHacenada;
 
 Volver al [INDICE](#indice)
 
---------
+----------------------------------
 
 OBJETOS
 =======
@@ -351,6 +351,8 @@ mystique = apocalipsis;
 
 Volver al [INDICE](#indice)
 
+----------------------------------
+
 EJERCICIOS EXTRA
 ================
 **Ejercicio:** *Ahora en TypeScript vamos a crear la clase Rombo, la cual debe tener dos propiedades:
@@ -416,4 +418,4 @@ window.onload = ()=>{
 
 Volver al [INDICE](#indice)
 
-
+----------------------------------
