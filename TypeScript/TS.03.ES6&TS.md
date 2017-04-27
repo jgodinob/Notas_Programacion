@@ -44,15 +44,53 @@ console.log(OPCIONES);
 ```
 Templates Literales
 -------------------
-Una posibilidad es la de concatenar variables y respetar líneas sin tener que abrir y cerrar `" "`. Mediante el uso de `` \``
+Una posibilidad es la de concatenar variables y respetar líneas sin tener que abrir y cerrar `" "`. Mediante el uso de backtick (`` ``). Para ello introduciremos dentro saltos de línea normales, en el caso de querer respetarlos, o variables dentro de `${...}`, como en el siguiente ejemplo `${variable1}`. También existe la posibilidad de introducir de manera directa resultados de funciones o operaciones matemáticas.
 ```typescript
 let nombre1:string = "Bruce";
 let nombre2:string = 'Ricardo';
-
-let mensaje:string = `1
+function getNombres():string {
+  return `${nombre1} ${nombre2}`
+}
+let mensaje:string = `1. Esto es una línea normal
 2. Hola ${nombre1}
 3. Robin es: ${nombre2}
+4. Los nombre son: ${ getNombres() }
+5. {5 + 7 }
 `;
 ```
-
-
+Funciones de Flecha
+-------------------
+Las funciones de flecha pueden sustituir a las funciones normales. Lo bueno de este tipo de funciones es que estas se escriben de una forma más intuitiva y breve.
+```typescript
+function sumar(a,b){   return a+b;    }
+let sumar)(a,b)=>a+b; //sustituiría a la función estandar
+console.log( sumar(2,2) );
+```
+Para escribir funciones con más complejas en las que para definir su operatividad es necesario usar varias líneas usaremos `{...}`. Un ejemplo de ello es la siguiente función.
+```typescript
+let sumar = (a,b)=>{
+  a=a;
+  b=b;
+  return a+b;
+}
+console.log( sumar(2,2) );
+```
+```typescript
+function darOrden_Hulk( orden ) {
+  return `Hulk ${orden}`;
+}
+let darOrden_Hulk = ( orden ) => `Hulk ${orden}`;  //sustituiría a la función estandar
+console.log( darOrden_hulk("smash!!!") );
+```
+Las funciones de flecha no cambian el objeto this.
+```typescript
+let capitan_america = {
+  nombre:"Hulk",
+  darOrden_Hulk: function () {
+      setTimeout(() => {
+          console.log(this.nombre + "smash!!!")
+      }, 1000);
+  }
+};
+capitan_america.darOrden_Hulk();
+```
