@@ -94,3 +94,27 @@ let capitan_america = {
 };
 capitan_america.darOrden_Hulk();
 ```
+DESTRUCTURACIÓN
+===============
+Destructuración de Objetos
+--------------------------
+Permite realizar lo siguiente:
+```typescript
+let avengers={
+  nick: "Samuel Jackson",
+  ironman: "Robert Downey Jr",
+  vision: "Paul Bettany"
+};
+let {nick, ironman:warmachine, vision, thor="Paulino Callejas" } = avengers;
+console.log(nick);
+console.log(warmachine);
+console.log(thor);
+```
+Destructuración de Arrays
+--------------------------
+Permite reali
+```typescript
+let avengers = [ "Samuel Jackson","Robert Downey Jr", "Paul Bettany" ];
+let [ , avenger2] = avengers;
+console.log(avenger2);
+```
