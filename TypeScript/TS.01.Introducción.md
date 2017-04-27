@@ -3,12 +3,12 @@ TypeScript - Introducción
 INDICE
 ------
 1. [INSTALACIÓN](#instalación)
-* [Iniciar la instalación](#iniciar_la_instalación)
-* [Iniciar el Proyecto](#iniciar_el_proyecto)
+* [Iniciar la instalación](#iniciar-la-instalación)
+* [Iniciar el Proyecto](#iniciar-el-proyecto)
 2. [TSCONFIG.JSON](tsconfig.json)
-3. [TIPOS DE DATOS](#tipos_de_datos)
-* [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null__undefined)
-4. [Aserciones de tipo](#aserciones_de_tipo)
+3. [TIPOS DE DATOS](#tipos-de-datos)
+* [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null--undefined)
+4. [Aserciones de tipo](#aserciones-de-tipo)
 
 ----------------------------------
 
