@@ -35,6 +35,7 @@ Después escribirémos en la terminal `tsc *.ts -w`, esto convertirá todos los 
 Resumen de Comandos para uso de la Terminal son:
 * `npm install -g typescript`, en caso de usar MAC se usará `sudo npm install -g typescript`.
 * `tsc -v`-> devuelve la versión instalada de TypeScript
+* `tsc -w`-> chequea continuamente los cambios realizados en los archivos [TypeScript](https://www.typescriptlang.org/) designados en `tsconfig.json`.
 * `node -v`-> devuelve la versión instalada de NodeJs
 * Para cancelar proyectos en la Temrinal usaremos `Ctrl + C`
 
