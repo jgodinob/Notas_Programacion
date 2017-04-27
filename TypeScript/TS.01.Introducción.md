@@ -6,8 +6,7 @@ INDICE
 * [Iniciar la instalación](#iniciar-la-instalación)
 * [Iniciar el Proyecto](#iniciar-el-proyecto)
 2. [TSCONFIG.JSON](tsconfig.json)
-3. [TIPOS DE DATOS](#tipos-de-datos)
-* [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null--undefined)
+3. [TIPOS DE DATOS](#tipos-de-datos) -> [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null--undefined)
 4. [Aserciones de tipo](#aserciones-de-tipo)
 
 ----------------------------------
@@ -49,7 +48,8 @@ El archivo tsconfig.json permite configurar el sistema de transpilado de [TypeSc
 
 Por ejemplo con la configuración estándar permite modificar el tipo de salida de la transpilación, es decir decidir si queremos que se transpile a una versión u otra de `Javascript`. Un ejemplo sería modificando `"target":"es5"`, cuya salida sería en ECMAS5, por `"target":"es6"` cuya salida sería ECMAS6. Otra opción es usar el comando para la consola `tsc app.ts --target es6`.
 
-**¿Cómo eliminar los comentarios al transpilar [TypeScript](https://www.typescriptlang.org/)?**
+¿Cómo eliminar los comentarios al transpilar [TypeScript](https://www.typescriptlang.org/)?
+-------------------------------------------------------------------------------------------
 Para ello debemos introducir dentro de `"compilerOptions":{...}` la opcion de `"removeComments":true"`, asi no se mostrarán los comentarios realizados en el archivo [TypeScript](https://www.typescriptlang.org/).
 ```typescript
 {
@@ -67,7 +67,9 @@ Para evitar que con esta configuración se elimine un comentario en especial se 
 ```typescript
 /*! Ejemplo de comentario no ignorado*/
 ```
-**¿Cómo incluir o excluir archivos y carpetas al transpilar [TypeScript](https://www.typescriptlang.org/)?**
+
+¿Cómo incluir o excluir archivos y carpetas al transpilar [TypeScript](https://www.typescriptlang.org/)?
+--------------------------------------------------------------------------------------------------------
 Para ello es necesario añadir una nueva regla dentro de `tsconfig.json`.
 ```typescript
 {
@@ -83,7 +85,9 @@ Para ello es necesario añadir una nueva regla dentro de `tsconfig.json`.
     ]
 }
 ```
-**¿Cómo unir todos los archivos transpilados en [TypeScript](https://www.typescriptlang.org/) en uno único?**
+
+¿Cómo unir todos los archivos transpilados en [TypeScript](https://www.typescriptlang.org/) en uno único?
+---------------------------------------------------------------------------------------------------------
 Para ello es necesario añadir una nueva regla dentro de `tsconfig.json`.
 ```typescript
 {
