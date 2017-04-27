@@ -120,6 +120,7 @@ TIPOS DE DATOS
 Volver al [INDICE](#indice)
 
 ----------------------------------
+
 Boolean
 -------
 ```typescript
@@ -146,6 +147,11 @@ esSuperman=convertirClark();
 esSuperman = true ? console.log("Estamos salvados!!") : console.log("Ooops! ooHHH");
 //se imprimiría "Ooops! ooHHH"
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 Numbers
 -------
 **Ejemplo:**
@@ -156,6 +162,10 @@ let avengers:number = 5 ,
 avengers > villanos ? console.log("Estamos salvados!!") : console.log("Estamos muertos");
 ```
 Imprime "Estamos muertos", Ya que al no haberse declarado un valor para villanos, se declara como UNDEFINED
+
+Volver al [INDICE](#indice)
+
+----------------------------------
 
 String
 ------
@@ -178,6 +188,10 @@ let superman:string = "Clark";
 let existe:boolean= false;
 ```
 
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 Any
 ---
 Usar este tipo de dato implica no definir un tipo de dato, es decir la variable puede cambiar su tipo de dato definido sin que de error. Si a una variable no se le declara el tipo de dato, automáticamente [TypeScript](https://www.typescriptlang.org/) lo define como [ANY](#any).
@@ -191,6 +205,10 @@ console.log(vengador.toFixed(2)); //imprime 150.56
 vengador = true;
 console.log(vengador);  //imprime true
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
 
 Arrays
 ------
@@ -210,6 +228,10 @@ Si usáramos `arreglo.push("123");` marcaría error ya que según su contenido [
 let aliados:string[] = ["Mujer Maravilla","Acuaman","San", "Flash"];
 ```
 
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 Tuples
 ------
 Cuando un array es finito, o en su defecto se conoce el número de datos que contendrá, se pueden definir los mismos.
@@ -225,6 +247,10 @@ En cambio si permite añadir elementos al array sin definirlos usando por ejempl
 let parejaHeroes:string[] = [batman,superman];
 let villano :[string,number,boolean]= ["Lex Lutor",5,true];
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
 
 Enum
 ----
@@ -254,6 +280,10 @@ var fuerzaBatman:number = Fuerza.Batman;      console.log(fuerzaBatman);  //Impr
 var fuerzaAcuaman:number = Fuerza.Acuaman;    console.log(fuerzaAcuaman);  //Imprime 0
 ```
 
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 Void
 ----
 El tipo `Void`es muy utilizado en JavaCShare, y es el contrario a `any`, es decir, devuelve vacío.
@@ -264,6 +294,10 @@ function llamar_batman():void{
 let mensaje=llamar_batman();
 ```
 Si colocase dentro de la función `retur 1;`me devolvería un error [TypeScript](https://www.typescriptlang.org/), ya que se definió el resultado de la función como vacío.
+
+Volver al [INDICE](#indice)
+
+----------------------------------
 
 Never
 -----
@@ -286,6 +320,10 @@ function pedir_ayuda():void{
   console.log("Auxilio!!!");
 }
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
 
 Null & Undefined
 ----------------
@@ -311,8 +349,12 @@ Es decir:
 }
 ```
 
-**ASERCIONES DE TIPO**
------------------------
+Volver al [INDICE](#indice)
+
+----------------------------------
+
+ASERCIONES DE TIPO
+==================
 Permite utilizar propiedades de un tipo de dato en un dato que no tiene definido su tipo, o que se definió como `any`.
 ```typescript
 let cualquierValor:any = "Cualquier cosa";
@@ -331,5 +373,10 @@ let poder2:number = 100;
 let largoDelPoder2:number = poder2.toString().length;
 console.log( largoDelPoder2 );
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 
 
