@@ -7,8 +7,8 @@ INDICE
 * [Iniciar el Proyecto](#iniciar-el-proyecto)
 2. [TSCONFIG.JSON](tsconfig.json)
 * [¿Cómo eliminar los comentarios al transpilar?](#cómo-eliminar-los-comentarios-al-transpilar-typescript)
-* [¿Cómo incluir o excluir archivos y carpetas al transpilar TypeScript?](#Cómo-incluir-o-excluir-archivos-y-carpetas-al-transpilar-TypeScript)
-* [¿Cómo unir todos los archivos transpilados en TypeScript en uno único?](#Cómo-unir-todos-los-archivos-transpilados-en-TypeScript-en-uno-único)
+* [¿Cómo incluir o excluir archivos y carpetas al transpilar TypeScript?](#cómo-incluir-o-excluir-archivos-y-carpetas-al-transpilar-TypeScript)
+* [¿Cómo unir todos los archivos transpilados en TypeScript en uno único?](#cómo-unir-todos-los-archivos-transpilados-en-TypeScript-en-uno-único)
 3. [TIPOS DE DATOS](#tipos-de-datos) -> [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null--undefined)
 4. [Aserciones de tipo](#aserciones-de-tipo)
 
