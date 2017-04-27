@@ -7,7 +7,7 @@ INDICE
 * [Iniciar el Proyecto](#iniciar_el_proyecto)
 2. [TSCONFIG.JSON](tsconfig.json)
 3. [TIPOS DE DATOS](#tipos_de_datos)
-* [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null_&_undefined)
+* [Boolean](#boolean), [Numbers](#numbers), [String](#string), [Any](#any), [Arrays](#arrays), [Tuples](#tuples), [Enum](#enum), [Void](#void), [Never](#never) y [Null & Undefined](#null__undefined)
 4. [Aserciones de tipo](#aserciones_de_tipo)
 
 ----------------------------------
