@@ -138,8 +138,10 @@ for ( let version of versiones ){
 ```
 **DESTRUCTURACIÓN**
 -------------------
+
 La destructuración permite extraer valores y asignarlos directamente a variables, es decir permite renombrar elementos de un objeto o array, sin tener que generar una función que los renombre.
 Destructuración de Objetos
+
 --------------------------
 La destructuración de objetos permite extraer las propiedades directamente de un objeto, es decir, permite renombrar elementos de un objeto para su uso sin tener que programar una función o código que lo renombre. Así evitaríamos generar un bucle for que recorra la objeto y la renombre como se haría en `ES5`.
 ```typescript
