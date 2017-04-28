@@ -294,3 +294,22 @@ console.log(antman.cambiarEquipoPublico("cap")); //regresaría un `false`
 * Método público -> `public` puede ser cambiada desde cualquier parte del programa
 * Método protegido -> `protected` puede ser cambiada sólo dentro de la clase original o sus herencias
 * Método privado -> `private` sólo pueden ser cambiado dentro de la propia clase
+```typescript
+class Avenger {
+  constructor (public nombre:string,public nombreReal:string){
+  
+  }
+  public 
+}
+let ciclope:Avenger = new Avenger("Cíclope", "Scott");
+console.log(ciclope);
+class Xmen extends Avenger{
+  cosntructor( nombreN:string, nombreRealN:string){
+    super( nombreN, nombreRealN);
+  }
+}
+let ciclopeN:Xmen = new Xmen("Cíclope", "Scott");
+console.log(ciclopeN);
+```
+
+
