@@ -136,8 +136,8 @@ for ( let version of versiones ){
   console.log(version);
 }
 ```
-DESTRUCTURACIÓN
-===============
+**DESTRUCTURACIÓN**
+-------------------
 La destructuración permite extraer valores y asignarlos directamente a variables, es decir permite renombrar elementos de un objeto o array, sin tener que generar una función que los renombre.
 Destructuración de Objetos
 --------------------------
@@ -175,8 +175,8 @@ El siguiente código permite destructurar el array simplemente usando javascript
 let versiones = ["Spider-Man 2099","Spider-Girl","Ultimate Spider-Man"];
 let [spiderman2099 , spidergirl , ultimate] = versiones;
 ```
-PROGRAMACIÓN ORIENTADA A OBJETOS
-================================
+**PROGRAMACIÓN ORIENTADA A OBJETOS**
+------------------------------------
 Clases -> Conceptos que se pueden abstraer
 Métodos -> Son funciones que pueden realizar las clases
 Propiedades -> Describen las clases
@@ -205,4 +205,90 @@ console.log(ironman);
 let falcon = new AvengerVolador("Falcon","Volar!");
 console.log(falcon);
 ```
-
+CLASES EN TYPESCRIPT
+====================
+Para crear una nueva clase en [TypeScript](https://www.typescriptlang.org/) primero es necesario definir sus propiedades, con sus tipos y valores por defecto.
+```typescript
+class Avenger {
+//Define las propiedades que contendrá la clase, con su tipo y valor por defecto si lo tuviera
+  nombre:string = "Sin nombre"; //Define un valor por defecto "sin nombre"
+  equipo:string;   //Define su clase
+  nombreReal:string;
+  puedePelear:boolean;
+  peleasGanadas: number;
+}
+let antman:Avenger = new Avenger();
+console.log(antman);
+```
+Al introducir en la consola el anterior códgio transpilado de [TypeScript](https://www.typescriptlang.org/) a `ES5`, tendríamos el siguiente resultado: 
+```javascript
+Avenger
+nombre:"Sin nombre"
+__proto__:Object` 
+```
+Lo que implica que sólo tendría en cuenta las variables con un valor asignado.
+Para poder mandar parámetros con valores que reemplacen los existentes al generar una nueva variable que use esa clase necesitamos definir un contructor dentro de la clase. Así un constructor es una simple función que es ejecutada cuando se crea un objeto, para poderlo definir necesitamos del uso de la palabra reservada `constructor`. 
+```typescript
+class Avenger {
+//Define las propiedades que contendrá la clase, con su tipo y valor por defecto si lo tuviera
+  nombre:string = "Sin nombre";
+  equipo:string = undefined;
+  nombreReal:string  = undefined;
+  puedePelear:boolean = false;
+  peleasGanadas:number = 0;
+//el constructor permitirá modificar las propiedades asignándolas  
+  constructor( const_nombre:string , const_equipo:string , const_nombreReal:string ){
+    console.log("se ejecutó el constructor");
+    this.nombre = const_nombre;
+    this.equipo = const_equipo;
+    this.nombreReal = const_nombreReal;
+  }
+}
+//para usar la clase definimos una variable con ese tipo nuevo generado
+let antman:Avenger = new Avenger( "Antman" , "cap" , "Scott Lang" );
+//Estos valores definidos por el constructor sustituiran los valores por defecto de la clase.
+console.log(antman);
+```
+El siguiente paso lógico en una clase es definirlas con propiedades de tipo *públicas*, *privadas* o *protegidas*. este tipo de definición controla el lugar dónde podrán ser utilizadas dichas propiedades. Hay que tener en cuenta que en javascript todas las propiedades y métodos son públicos pero que con [TypeScript](https://www.typescriptlang.org/) en cambio si se permite dicha definición.
+* Propiedad pública -> `public` puede ser cambiada desde cualquier parte del programa
+* Propiedad protegida -> `protected` puede ser cambiada sólo dentro de la clase original o sus herencias
+* Propiedad privada -> `private` sólo pueden ser cambiado dentro de la propia clase
+```typescript
+class Avenger {
+  public nombre:string = "Sin nombre";
+  protected equipo:string = undefined;
+  private nombreReal:string  = undefined;
+  private puedePelear:boolean = false;
+  private peleasGanadas:number = 0;
+  constructor( const_nombre:string , const_equipo:string , const_nombreReal:string ){
+    this.nombre = const_nombre;
+    this.equipo = const_equipo;         
+    //aunque es protected, permite ser cambiada al estar dentro de la propia clase
+    this.nombreReal = const_nombreReal; 
+    //aunque es private, permite ser cambiada al estar dentro de la propia clase
+  }
+  public bio():void{
+    let mensaje:string = `${this.nombre} ${this.nombreReal} ${this.equipo}`;
+    console.log(mensaje);
+  }
+  public cambiarEquipoPublico(nuevoEquipo:string):boolean{
+    //es necesario añadir `this.` para que reconozca la función privada `cambiarEquipo`
+    return this.cambiarEquipo(nuevoEquipo);
+  }
+  private cambiarEquipo(nuevoEquipo:string):boolean{
+    if( nuevoEquipo === this.equipo ){
+      return false;
+    }else{
+      return true;
+    }
+  }
+}
+let antman:Avenger = new Avenger( "Antman" , "cap" , "Scott Lang" );
+antman.nombre = "Nik Fury"; //al ser una propiedad pública typescript permite cambiarla
+antman.equipo = "Ironman";  //al ser una propiedad protegida typescript devuelve error
+antman.bio();   //imprimiría "Antman Scott Lang cap"
+console.log(antman.cambiarEquipoPublico("cap")); //regresaría un `false`
+```
+* Método público -> `public` puede ser cambiada desde cualquier parte del programa
+* Método protegido -> `protected` puede ser cambiada sólo dentro de la clase original o sus herencias
+* Método privado -> `private` sólo pueden ser cambiado dentro de la propia clase
