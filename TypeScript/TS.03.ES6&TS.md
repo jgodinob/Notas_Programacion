@@ -7,6 +7,8 @@ INDICE
 
 ----------------------------------
 
+Repaso de ECMAScript6
+=====================
 Variables Let
 -------------
 Permite crear variables con valor sólo dentro de ese mismo `scope`. Un ejemplo sería el siguiente código en el que aunque dentro del condicional se redeclara la variable `nombre`, esta sigue manteniendo el valor `nombre="Tony"`al ser impresa por `console.log(nombre);` ya que su scope es el mismo. De haber usado para declararla `var`en cambio imprimiría `"Bruce"`.
@@ -17,6 +19,10 @@ if (true){
   let nombre="Bruce";
 }
 console.log(nombre);
+```
+```javascript
+let spiderman = "Peter Parker",
+    venom = "Eddie Brock";
 ```
 Constantes
 ----------
@@ -41,6 +47,9 @@ const OPCIONES={
 OPCIONES.estado=false;    //cambia el valor de la propiedad de la constante tipo objeto
 OPCIONES.audio=1;         //cambia el valor de la propiedad de la constante tipo objeto
 console.log(OPCIONES);
+```
+```javascript
+const HEROE = "Spiderman";
 ```
 Templates Literales
 -------------------
@@ -82,7 +91,7 @@ function darOrden_Hulk( orden ) {
 let darOrden_Hulk = ( orden ) => `Hulk ${orden}`;  //sustituiría a la función estandar
 console.log( darOrden_hulk("smash!!!") );
 ```
-Las funciones de flecha no cambian el objeto this.
+Las funciones de flecha no cambian el objeto `this`.
 ```typescript
 let capitan_america = {
   nombre:"Hulk",
@@ -96,6 +105,7 @@ capitan_america.darOrden_Hulk();
 ```
 Ciclo For of
 ------------
+El bucle `for in` nos permite recorrer un array de forma directa, sin tener que generar un bucle `for` simple que la recorra. En cambio, el bucle o ciclo `for of` nos permite recorrer array renombrando sus elementos, para ello es necesario declarar la variable que lo recorrerá mediante el uso de la palabra reservada `let`.
 ```typescript
 let thor    = {nombre:"Thor",    arma:"Mjolnir" }
 let ironman = {nombre:"Ironman", arma:"Armorsuit" }
@@ -105,17 +115,33 @@ for (let i in avengers ) {
 /* crearía un ciclo que recoge cada objeto del array */ 
   console.log(avengers[i]);
 }
+//avenger será el elemento del array , mientras que avengers el array
 for (let avenger of avengers) { 
 /* crearía un ciclo que recoge cada objeto del array */ 
   console.log(avenger.nombre, avenger.arma);
 }
 ```
-
+A continuación se ve un ejemplo en `ES5` para despues verlo en `ES6`.
+```javascript
+//ES5
+for(var i=0; i<= versiones.length - 1; i++){
+  var spider = versiones[i];
+  console.log(spider);
+}
+```
+Mismo ejemplo anterior en `ES6`. 
+```javascript
+//ES6
+for ( let version of versiones ){
+  console.log(version);
+}
+```
 DESTRUCTURACIÓN
 ===============
+La destructuración permite extraer valores y asignarlos directamente a variables, es decir permite renombrar elementos de un objeto o array, sin tener que generar una función que los renombre.
 Destructuración de Objetos
 --------------------------
-Permite realizar lo siguiente:
+La destructuración de objetos permite extraer las propiedades directamente de un objeto, es decir, permite renombrar elementos de un objeto para su uso sin tener que programar una función o código que lo renombre. Así evitaríamos generar un bucle for que recorra la objeto y la renombre como se haría en `ES5`.
 ```typescript
 let avengers={
   nick: "Samuel Jackson",
@@ -127,11 +153,56 @@ console.log(nick);
 console.log(warmachine);
 console.log(thor);
 ```
+```javascript
+var villanos = {
+  venom: "Eddie Brock",
+  carnage: "Cletus Kasady",
+  sandman: "William Baker"
+};
+let { venom , carnage , sandman } = villanos;
+```
 Destructuración de Arrays
 --------------------------
-Permite reali
+Permite renombrar elementos de un array para su uso sin tener que programar una función o código que lo renombre. Así evitaríamos generar un bucle for que recorra la array y la renombre como se haría en `ES5`.
 ```typescript
 let avengers = [ "Samuel Jackson","Robert Downey Jr", "Paul Bettany" ];
 let [ , avenger2] = avengers;
 console.log(avenger2);
 ```
+En el caso anterior se ve como se puede renombrar un elemento del array sin tener que renombrarlos todos, así se evita en este caso renombrar el elemento `[1]` dejando el hueco en blanco, o el elemento `[3]` sin ni siquiera tenerlo en cuenta.
+El siguiente código permite destructurar el array simplemente usando javascript o `ES6`.
+```javascript
+let versiones = ["Spider-Man 2099","Spider-Girl","Ultimate Spider-Man"];
+let [spiderman2099 , spidergirl , ultimate] = versiones;
+```
+PROGRAMACIÓN ORIENTADA A OBJETOS
+================================
+Clases -> Conceptos que se pueden abstraer
+Métodos -> Son funciones que pueden realizar las clases
+Propiedades -> Describen las clases
+Herencia -> Es la manera de que los hijos reciban propiedades del padre.
+
+Clases
+------
+Las clases por si sólos ya son objetos.
+```typescript
+class Avenger{
+  constructor (nombre, poder){
+    this.nombre=nombre;
+    this.poder=poder;
+  }
+}
+class AvengerVolador extends Avenger{
+  constructor (nombre, poder){
+    super ( nombre , poder );
+    this.vuela = true;
+  }
+}
+let hulk = new Avenger ("Hulk", "SuperFuerza");
+console.log(hulk);
+let ironman = new AvengerVolador;
+console.log(ironman);
+let falcon = new AvengerVolador("Falcon","Volar!");
+console.log(falcon);
+```
+
