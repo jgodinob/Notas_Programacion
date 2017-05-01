@@ -136,6 +136,7 @@ for ( let version of versiones ){
   console.log(version);
 }
 ```
+
 **DESTRUCTURACIÓN**
 -------------------
 
@@ -177,8 +178,13 @@ El siguiente código permite destructurar el array simplemente usando javascript
 let versiones = ["Spider-Man 2099","Spider-Girl","Ultimate Spider-Man"];
 let [spiderman2099 , spidergirl , ultimate] = versiones;
 ```
-**PROGRAMACIÓN ORIENTADA A OBJETOS**
-------------------------------------
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
+PROGRAMACIÓN ORIENTADA A OBJETOS
+================================
 Clases -> Conceptos que se pueden abstraer
 Métodos -> Son funciones que pueden realizar las clases
 Propiedades -> Describen las clases
@@ -207,6 +213,11 @@ console.log(ironman);
 let falcon = new AvengerVolador("Falcon","Volar!");
 console.log(falcon);
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 CLASES EN TYPESCRIPT
 ====================
 Para crear una nueva clase en [TypeScript](https://www.typescriptlang.org/) primero es necesario definir sus propiedades, con sus tipos y valores por defecto.
@@ -322,7 +333,11 @@ console.log( ciclopeN.getNombre() );    //devuelve error al encontrarse protegid
 console.log( ciclopeN.getNombreN() );   //esta es publica
 ```
 
-Get y Sets
+Volver al [INDICE](#indice)
+
+----------------------------------
+
+GET Y SETS
 ----------
 En [TypeScript](https://www.typescriptlang.org/) se pueden definir métodos `get` y `set` para interceptar el acceso a atributos de una clase, se puede decir que los `gets` y `sets` son unas funciones especiales para el control de acceso a la información.
 Todos los get y set deberían ser públicos. Get debe refresar algo,por lo que voidno esta permitido.
@@ -368,7 +383,7 @@ console.log(ciclope.nombre);
 let ironman:Avenger = new Avenger();
 console.log(ironman.nombre);
 ```
-Métodos y Propiedades Estáticos
+MÉTODOS Y PROPIEDADES ESTÁTICAS
 -------------------------------
 Las propiedadesy métodos estáticos se pueden llamar sin declarar la clase.
 ```typescritp
@@ -383,9 +398,9 @@ class Xmen {
 let wolverine2 = Xmen.crearXmen();
 console.log( wolverine2 );
 ```
-Clases abstractas
+CLASES ABSTRACTAS
 -----------------
-Las clases abstractas no permiten ser instanciadas, es decir no posibilitan el crear objetos definidos por ellas directamente. Su utilida expresa es la de servir para generar otras clases que las contengan que si posibilitan su instanciamiento. Básicamente actúan de moldes para clases.
+Las **clases abstractas** no permiten ser instanciadas, es decir no posibilitan el crear objetos definidos por ellas directamente. Su utilida expresa es la de servir para generar otras clases que las contengan que si posibilitan su instanciamiento. Básicamente actúan de moldes para clases.
 ```typescript
 abstract class Mutantes {
   constructor  ( Public nombre:string, public nombreReal:string ){
@@ -402,9 +417,9 @@ abstract class Mutantes {
 class Xmen extends Mutantes{ }
 let wolverine = new Smen ("Wolverine", "Logam");
 ```
-Constructores Privados 
+CONSTRUCTORES PRIVADOS 
 ----------------------
-Los constructores privado solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
+Los **constructores privado** solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
 ```typescript
 class Apocalipsis {
   static instancia:Apocalipsis;
@@ -428,6 +443,11 @@ class Apocalipsis {
 let real = Apocalipsisis.llamarApocalipsis();
 
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
 INTERFACES
 ==========
 Las interfaces son un contrato (para el código). Se trata de requerir un nombre y parámetros a objetos, e incluso componer objetos nombrados ya existentes en otros nuevos. Al declarar una nueva clase respecto a una interfaz, ésta actúa como validadora de la clase de que todo se hace conforme a lo esperado (según la interfaz). 
