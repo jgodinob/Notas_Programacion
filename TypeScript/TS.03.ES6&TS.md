@@ -370,3 +370,77 @@ console.log(ironman.nombre);
 ```
 Métodos y Propiedades Estáticos
 -------------------------------
+Las propiedadesy métodos estáticos se pueden llamar sin declarar la clase.
+```typescritp
+class Xmen {
+  public nombre:string="wolverine";
+  constructor() {   }
+  static crearXmen(){
+    console.log("Se creó usando un método estático");
+    return new Xmen();
+  }
+}
+let wolverine2 = Xmen.crearXmen();
+console.log( wolverine2 );
+```
+Clases abstractas
+-----------------
+Las clases abstractas no permiten ser instanciadas, es decir no posibilitan el crear objetos definidos por ellas directamente. Su utilida expresa es la de servir para generar otras clases que las contengan que si posibilitan su instanciamiento. Básicamente actúan de moldes para clases.
+```typescript
+abstract class Mutantes {
+  constructor  ( Public nombre:string, public nombreReal:string ){
+  }
+}
+let wolverine = new Mutantes ("Wolverine", "Logam");
+```
+Al intentar crear *wolverine* da error [TypeScript](https://www.typescriptlang.org/), para poder crear una instancia que contenga a las propiedades de *Mutantes* necesitaría hacer lo siguiente.
+```typescript
+abstract class Mutantes {
+  constructor  ( Public nombre:string, public nombreReal:string ){
+  }
+}
+class Xmen extends Mutantes{ }
+let wolverine = new Smen ("Wolverine", "Logam");
+```
+Cosntructores Privados 
+----------------------
+Los constructores privado solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
+```typescript
+class Apocalipsis {
+  static instancia:Apocalipsis;
+  private constructor (public nombre:string{   }
+}
+let apocalipsisFalso = new Apocalipsis ("Soy Apocalipsisis!!! (Falso)");
+```
+*apocalipsisFalso* lanza un error al estar instanciado fuera de la clase, para poderlo declarar sería necesario realizarlo a traves de una función interna de la clase que si podría trabajar con el constructor. Veáse el siguiente ejemplo.
+```typescript
+class Apocalipsis {
+  static instancia:Apocalipsis;
+  private constructor (public nombre:string{
+  }
+  static llamarApocalipsis(){
+    if (!Apocalipsis.instancia) {
+      Apocalipsis.intsancia = new Apocalipsis (Soy Apocalipsis ... el ÚNICO!");
+    }
+    return Apocalipsis.instancia ;
+  }
+}
+let real = Apocalipsisis.llamarApocalipsis();
+
+```
+INTERFACES
+==========
+Las interfaces se declaran usando *CamelCase*.
+```typescript
+interface Xmen {
+  nombre: string,
+  poder: string
+}
+function enviarMision ( xmen : Xmen ) {
+  console.log("enviando a: "+ xmen.nombre );
+}
+let wolverine: Xmen = {
+  nombre: "Wolverine",
+  poder: "Regeneración"
+}
+```
