@@ -402,7 +402,7 @@ abstract class Mutantes {
 class Xmen extends Mutantes{ }
 let wolverine = new Smen ("Wolverine", "Logam");
 ```
-Cosntructores Privados 
+Constructores Privados 
 ----------------------
 Los constructores privado solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
 ```typescript
@@ -430,7 +430,9 @@ let real = Apocalipsisis.llamarApocalipsis();
 ```
 INTERFACES
 ==========
-Las interfaces se declaran usando *CamelCase*.
+Las interfaces son un contrato (para el código). Se trata de requerir un nombre y parámetros a objetos, e incluso componer objetos nombrados ya existentes en otros nuevos. Al declarar una nueva clase respecto a una interfaz, ésta actúa como validadora de la clase de que todo se hace conforme a lo esperado (según la interfaz). 
+*Importante:* Las interfaces sirven para se declaran usando *CamelCase*.
+*Importante:* Las interfaces no existen en javascript directamente.
 ```typescript
 interface Xmen {
   nombre: string,
@@ -452,4 +454,38 @@ function enviarMision ( xmen : Xmen ) {
   xmen.regenerar("Logan");
 }
 enviarMision(wolverine);
+```
+Usando `poder?: string` dentro de la definición de `interface Xmen {}` indicamos queel parámetro será opcional mediante el uso de `?`. Lo mismo ocurre con la función `regenerar?(nombreReal: string): void;`, la cual además de ser opcional necesitará de un parámetro tipo `string`de entrada y devolverá `void` o vacío.
+Interfaces en las Clases
+------------------------
+Las clases pueden usar interfaces para ser definidas mediante la palabra reservada `implements`, como es el ejemplo de `class Mutante implements Xmen {}`, en la cual la nueva clase `Mutante` es implementada a través del `ìnterface Xmen{}` 
+```typescript
+interface Xmen {
+  nombre: string,
+  poder?: string
+  regenerar?(nombreReal: string): void;
+}
+class Mutante implements Xmen {
+  nombre:string;
+  poder:string;
+  esBueno:boolean;
+  regenerar?(nombreReal: string): void;
+}
+let wolverine = new Mutante();
+```
+Interfaces en los Métodos
+-------------------------
+Los métodos pueden usar interfaces para ser definidas, indicando los parámetros de entrada y su tipología, además del tipo de salida que obtendrá. Para definirla se usa la siguiente sintaxis: `interface DosNumerosFunc{(num1:number, num2:number):number}`.
+```typescript
+interface DosNumerosFunc {
+  (num1:number, num2:number) : number
+}
+let sumar:DosNumerosFunc;
+sumar=function (a:number,b:number){
+  return a+b;
+}
+let restar:DosNumerosFunc;
+restar = function (numero1:number, numero2:number){
+  return numero1 - numero2;
+}
 ```
