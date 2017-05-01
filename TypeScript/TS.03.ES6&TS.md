@@ -297,19 +297,76 @@ console.log(antman.cambiarEquipoPublico("cap")); //regresaría un `false`
 ```typescript
 class Avenger {
   constructor (public nombre:string,public nombreReal:string){
-  
+    console.log("Constructor Avenger llamado");
   }
-  public 
+  protected getNombre():string{      
+    console.log("get nombre xmen(protegido)");
+    return this.nombre;
+  }
 }
 let ciclope:Avenger = new Avenger("Cíclope", "Scott");
 console.log(ciclope);
 class Xmen extends Avenger{
   cosntructor( nombreN:string, nombreRealN:string){
+    console.log("Constructor Xmen llamado");
     super( nombreN, nombreRealN);
+  }
+  public getNombreN():string{
+    console.log("get nombre xmen(publico)");
+    return super.getNombre(); //hace referencia a getNombre() del padre "class Avenger"
   }
 }
 let ciclopeN:Xmen = new Xmen("Cíclope", "Scott");
 console.log(ciclopeN);
+console.log( ciclopeN.getNombre() );    //devuelve error al encontrarse protegida, para usarla habría que llamar a getNombreN()
+console.log( ciclopeN.getNombreN() );   //esta es publica
 ```
 
-
+Get y Sets
+----------
+En [TypeScript](https://www.typescriptlang.org/) se pueden definir métodos `get` y `set` para interceptar el acceso a atributos de una clase, se puede decir que los `gets` y `sets` son unas funciones especiales para el control de acceso a la información.
+Todos los get y set deberían ser públicos. Get debe refresar algo,por lo que voidno esta permitido.
+```typescript
+class Avenger{
+  constructor (private _nombre?:string){
+    this._nombre=nombre;
+  }
+  //get obliga a que la función tenga un retorno, son válidos todos menos void (vacío)
+  get nombre():string{
+  console.log( "Pasó por el get nombre()" );
+    if(this._nombre){
+      return this._nombre;
+    }else{
+      return "No existe el nombre";    
+    }
+  }
+}
+let ciclope:Avenger = new Avenger("Cíclope");
+console.log(ciclope.nombre);
+let ironman:Avenger = new Avenger();
+console.log(ironman.nombre);
+```
+Los `set` por defecto no devuelven nada, simplemente agarran un parámetro y se lo establecen a una propiedad.
+```typescript
+class Avenger{
+  constructor (private _nombre?:string){
+    this._nombre=nombre;
+  }
+  //get obliga a que la función tenga un retorno, son válidos todos menos void (vacío)
+  set nombre( nombre:string ){ 
+    console.log("Se llamó el set del nombre");
+    if ( nombre.length <= 3 ){
+      console.error("El nombre debe tener al menos 3 caraceres");
+      throw new Error ("Auxilio!!! Esto no debe pasar...");
+      return;
+    }
+    this._nombre = nombre;
+  }
+}
+let ciclope:Avenger = new Avenger("Cíclope");
+console.log(ciclope.nombre);
+let ironman:Avenger = new Avenger();
+console.log(ironman.nombre);
+```
+Métodos y Propiedades Estáticos
+-------------------------------
