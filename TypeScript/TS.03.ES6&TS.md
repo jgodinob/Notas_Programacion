@@ -456,6 +456,7 @@ function enviarMision ( xmen : Xmen ) {
 enviarMision(wolverine);
 ```
 Usando `poder?: string` dentro de la definición de `interface Xmen {}` indicamos queel parámetro será opcional mediante el uso de `?`. Lo mismo ocurre con la función `regenerar?(nombreReal: string): void;`, la cual además de ser opcional necesitará de un parámetro tipo `string`de entrada y devolverá `void` o vacío.
+
 Interfaces en las Clases
 ------------------------
 Las clases pueden usar interfaces para ser definidas mediante la palabra reservada `implements`, como es el ejemplo de `class Mutante implements Xmen {}`, en la cual la nueva clase `Mutante` es implementada a través del `ìnterface Xmen{}` 
