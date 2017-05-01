@@ -11,6 +11,24 @@ INDICE
 2. [OBJETOS](#objetos)
 * [Tipo Personalizado de Objetos](#tipo-personalizado-de-objetos)
 3. [EJERCICIOS EXTRA](#ejercicios-extra)
+4. [REPASO ECMASCRIPT6](#repaso-de-ecmascript6)
+* [Variables Let](#variables-let)
+* [Constantes](#constantes)
+* [Templates Literales](#templates-literales)
+* [Funciones Flecha](#funciones-flecha)
+* [Ciclo For Of](#ciclo-for-of)
+5. [DESTRCUTURACIÓN](#destructuraciÓn)
+* [Destructuración de Arrays](#destructuración-de-arrays)
+6. [PROGRAMACIÓN ORIENTADA A OBJETOS](#programaciÓn-orientada-a-objetos)
+* [Clases](#clases)
+7. [CLASES EN TYPESCRIPT](#clases-en-typescript)
+8. [GET Y SETS](#get-y-sets)
+9. [MÉTODOS Y PROPIEDADES ESTÁTICAS](#mÉtodos-y-propiedades-estÁticas)
+10. [CLASES ABSTRACTAS](#clases-abstractas)
+11. [CONSTRUCTORES PRIVADOS](#constructores-privados)
+12. [INTERFACES](#interfaces)
+* [Interfaces en los Clases](#interfaces-en-las-clases)
+* [Interfaces en los Métodos](#interfaces-en-los-métodos)
 ----------------------------------
 
 FUNCIONES
@@ -927,3 +945,8 @@ restar = function (numero1:number, numero2:number){
   return numero1 - numero2;
 }
 ```
+
+Volver al [INDICE](#indice)
+
+----------------------------------
+
