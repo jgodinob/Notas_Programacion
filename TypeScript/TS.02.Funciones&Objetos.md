@@ -22,11 +22,11 @@ INDICE
 6. [PROGRAMACIÓN ORIENTADA A OBJETOS](#programaciÓn-orientada-a-objetos)
 * [Clases](#clases)
 7. [CLASES EN TYPESCRIPT](#clases-en-typescript)
-8. [GET Y SETS](#get-y-sets)
-9. [MÉTODOS Y PROPIEDADES ESTÁTICAS](#mÉtodos-y-propiedades-estÁticas)
-10. [CLASES ABSTRACTAS](#clases-abstractas)
-11. [CONSTRUCTORES PRIVADOS](#constructores-privados)
-12. [INTERFACES](#interfaces)
+* [GET Y SETS](#get-y-sets)
+* [Métodos y Propiedades Estáticas](#mÉtodos-y-propiedades-estÁticas)
+* [Clases Abstractas](#clases-abstractas)
+* [Constructores Privados](#constructores-privados)
+8. [INTERFACES](#interfaces)
 * [Interfaces en los Clases](#interfaces-en-las-clases)
 * [Interfaces en los Métodos](#interfaces-en-los-métodos)
 ----------------------------------
@@ -772,8 +772,8 @@ Volver al [INDICE](#indice)
 
 ----------------------------------
 
-GET Y SETS
-==========
+Get y Sets
+----------
 En [TypeScript](https://www.typescriptlang.org/) se pueden definir métodos `get` y `set` para interceptar el acceso a atributos de una clase, se puede decir que los `gets` y `sets` son unas funciones especiales para el control de acceso a la información.
 Todos los get y set deberían ser públicos. Get debe refresar algo,por lo que voidno esta permitido.
 ```typescript
@@ -818,8 +818,8 @@ console.log(ciclope.nombre);
 let ironman:Avenger = new Avenger();
 console.log(ironman.nombre);
 ```
-MÉTODOS Y PROPIEDADES ESTÁTICAS
-===============================
+Métodos y Propiedades Estáticas
+-------------------------------
 Las propiedadesy métodos estáticos se pueden llamar sin declarar la clase.
 ```typescritp
 class Xmen {
@@ -833,8 +833,8 @@ class Xmen {
 let wolverine2 = Xmen.crearXmen();
 console.log( wolverine2 );
 ```
-CLASES ABSTRACTAS
-=================
+Clases Abstractas
+-----------------
 Las **clases abstractas** no permiten ser instanciadas, es decir no posibilitan el crear objetos definidos por ellas directamente. Su utilida expresa es la de servir para generar otras clases que las contengan que si posibilitan su instanciamiento. Básicamente actúan de moldes para clases.
 ```typescript
 abstract class Mutantes {
@@ -852,8 +852,8 @@ abstract class Mutantes {
 class Xmen extends Mutantes{ }
 let wolverine = new Smen ("Wolverine", "Logam");
 ```
-CONSTRUCTORES PRIVADOS 
-======================
+Constructores Privados
+----------------------
 Los **constructores privado** solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
 ```typescript
 class Apocalipsis {
