@@ -434,13 +434,22 @@ Las interfaces se declaran usando *CamelCase*.
 ```typescript
 interface Xmen {
   nombre: string,
-  poder: string
-}
-function enviarMision ( xmen : Xmen ) {
-  console.log("enviando a: "+ xmen.nombre );
+  poder?: string
+  regenerar?(nombreReal: string): void;
 }
 let wolverine: Xmen = {
   nombre: "Wolverine",
-  poder: "Regeneración"
+  poder: "Regeneración",
+  regenerar(x: string) {
+    console.log("Se ha regenerado " + x);
+  }
 }
+let ciclope: Xmen = {
+  nombre: "Wolverine",
+}
+function enviarMision ( xmen : Xmen ) {
+  console.log("enviando a: " + xmen.nombre);
+  xmen.regenerar("Logan");
+}
+enviarMision(wolverine);
 ```
