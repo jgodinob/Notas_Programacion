@@ -10,7 +10,7 @@ INDICE
 * [Tipo Función](#tipo-función)
 2. [OBJETOS](#objetos)
 * [Tipo Personalizado de Objetos](#tipo-personalizado-de-objetos)
-3. [EJERCICIOS EXTRA](#ejercicios-extra)
+3. [EJERCICIOS EXTRA 1](#ejercicios-extra-1)
 4. [REPASO ECMASCRIPT6](#repaso-de-ecmascript6)
 * [Variables Let](#variables-let)
 * [Constantes](#constantes)
@@ -29,6 +29,7 @@ INDICE
 8. [INTERFACES](#interfaces)
 * [Interfaces en los Clases](#interfaces-en-las-clases)
 * [Interfaces en los Métodos](#interfaces-en-los-métodos)
+9. [EJERCICIOS EXTRA 2](#ejercicios-extra-2)
 ----------------------------------
 
 FUNCIONES
@@ -371,8 +372,8 @@ Volver al [INDICE](#indice)
 
 ----------------------------------
 
-EJERCICIOS EXTRA
-================
+EJERCICIOS EXTRA 1
+==================
 **Ejercicio:** *Ahora en TypeScript vamos a crear la clase Rombo, la cual debe tener dos propiedades:
 DiagonalVertical y DiagonalHorizontal.
 Le añadiremos un constructor al que le pasaremos los valores anteriores cuando instanciemos el objeto.
@@ -950,8 +951,8 @@ Volver al [INDICE](#indice)
 
 ----------------------------------
 
-EJERCICIOS EXTRA
-================
+EJERCICIOS EXTRA 2
+==================
 **Ejercicio:** *Cree una interfaz para validar el auto (el valor enviado por parámetro)*
 ```typescript
 interface Auto {
