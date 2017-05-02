@@ -3,8 +3,8 @@ TypeScript - Introducción
 INDICE
 ------
 1. [INSTALACIÓN](#instalación)
-* [Iniciar la instalación](#iniciar-la-instalación)
-* [Iniciar el Proyecto](#iniciar-el-proyecto)
+	1. [Iniciar la instalación](#iniciar-la-instalación)
+	1. [Iniciar el Proyecto](#iniciar-el-proyecto)
 2. [TSCONFIG.JSON](tsconfig.json)
 * [¿Cómo eliminar los comentarios al transpilar?](#c%C3%B3mo-eliminar-los-comentarios-al-transpilar-typescript)
 * [¿Cómo incluir o excluir archivos y carpetas al transpilar TypeScript?](#cómo-incluir-o-excluir-archivos-y-carpetas-al-transpilar-typescript)
