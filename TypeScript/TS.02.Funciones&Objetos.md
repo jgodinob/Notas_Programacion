@@ -1037,4 +1037,58 @@ class PersonaClass implements Persona{
   }
 }
 ```
+
 **[Regresar al índice](#indice)**
+
+----------------------------------
+
+NAMESPACE
+=========
+TypeScript, es un lenguaje de programación web, que nos permite crear objetos que nos servirán a lo largo de nuestro programa. Los namespaces, existen para ayudarnos en la re utilización de nuestras variables, constantes y métodos.
+1. Explicación del ¿por qué son necesarios los namespaces?
+1. Crear namespaces
+1. Multiples namespaces en un mismo proyecto
+1. Importar namespaces
+1. Problemática que se puede presentar utilizando un namespace.
+Explicación del ¿por qué son necesarios los namespaces?
+-------------------------------------------------------
+El namespace consiste en agarrar toda la lógica y dividirla en diferentes partes, modularizándola de manera que se pueda trabajar con dentro del proyecto en los diferentes módulos de manera simultánea. Así dividirá el ódicgo en Interfaces, clases, lógica y funciones.
+```typescript
+namespace Validaciones{
+	export function validarTexto(texto:string):boolean{
+		if (texto.length>3){ return true; }else{ return false; }
+	}
+	export function validarFecha (fecha:Date):boolean{
+		if( isNaN ( fecha.valueOf() ) ){ return false; }else{ return true; }
+	}
+}
+console.log( Validaciones.validarTexto("Barry") );
+console.log( Validaciones.validarTexto("Ale") );
+let hoy = new Date();
+console.log( Validaciones.validarFecha(hoy) );
+```
+Para poder usar las funciones del `namespace` desde fuera del mismo es necesario añadir a la función la palabra reservada`export`.
+
+Multiples namespaces en un mismo proyecto
+-----------------------------------------
+Puede ser que se quiera fragmentar el código en diferentes archivos ordenados. Para ello basta con distribuir el código en distintas ubicaciones dentro de la carpeta dónde se encuentra el archivo `tsconfig.json`. [TypeScript](https://www.typescriptlang.org/), encontrará dichos archivos y los fusionará. 
+En cambio para optimizár el uso hay que referenciar los archivos dentro del código html (mediante script con sus diferentes url), lo que implicaría que si fueran demasiados archivos habría que apuntarlos todos. Para evitar ese inconveniente es mejor unificar la transpilación tal y como se vió en un apartado anterior.
+```typescript
+/* apps.ts */
+if (console.log( Validaciones.validarTexto("Barry") ) ) {
+	console.log("El texto es suficientemente largo");
+}else{
+	console.log("El texto NO es suficientemente largo");
+}
+/* validaciones/fechas.ts */
+namespace Validaciones{
+	export function validarFecha (fecha:Date):boolean{
+		if( isNaN ( fecha.valueOf() ) ){ return false; }else{ return true; }
+	}
+}
+/* validaciones/textos.ts */
+namespace Validaciones{
+	export function validarTexto(texto:string):boolean{
+		if (texto.length>3){ return true; }else{ return false; }
+	}
+}
