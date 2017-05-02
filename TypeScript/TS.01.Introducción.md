@@ -1436,7 +1436,7 @@ class PersonaClass implements Persona{
 
 NAMESPACE
 =========
-TypeScript, es un lenguaje de programación web, que nos permite crear objetos que nos servirán a lo largo de nuestro programa. Los namespaces, existen para ayudarnos en la re utilización de nuestras variables, constantes y métodos.
+TypeScript, es un lenguaje de programación web, que nos permite crear objetos que nos servirán a lo largo de nuestro programa. Los namespaces, existen para ayudarnos en la re utilización de nuestras variables, constantes y métodos. Son interesantes de usar cuando los proyectos tienen una embergadura pequeña o mediana, para proyectos mayores es mejor utilizar módulos.
 1. Explicación del ¿por qué son necesarios los namespaces?
 1. Crear namespaces
 1. Multiples namespaces en un mismo proyecto
@@ -1460,6 +1460,8 @@ let hoy = new Date();
 console.log( Validaciones.validarFecha(hoy) );
 ```
 Para poder usar las funciones del `namespace` desde fuera del mismo es necesario añadir a la función la palabra reservada`export`.
+
+**[Regresar al índice](#indice)**
 
 Multiples namespaces en un mismo proyecto
 -----------------------------------------
@@ -1488,6 +1490,34 @@ namespace Validaciones{
 
 **[Regresar al índice](#indice)**
 
-----------------------------------
+Importar namespaces
+-------------------
+El método anterior podría ser problemático al tener que especificar en el comando de consola todos los archvivos necesarios a transpilar. Para ello una buena solución es la importación de archivos en el [TypeScript](https://www.typescriptlang.org/), central. Para entenderlo mejor se puede ver el siguiente ejemplo y compararlo con el anterior. 
+```typescript
+/* apps.ts */
+/// <reference path="validaciones/fechas.ts" />
+/// <reference path="validaciones/textos.ts" />
+if (console.log( Validaciones.validarTexto("Barry") ) ) {
+	console.log("El texto es suficientemente largo");
+}else{
+	console.log("El texto NO es suficientemente largo");
+}
+/* validaciones/fechas.ts */
+namespace Validaciones{
+	export function validarFecha (fecha:Date):boolean{
+		if( isNaN ( fecha.valueOf() ) ){ return false; }else{ return true; }
+	}
+}
+/* validaciones/textos.ts */
+namespace Validaciones{
+	export function validarTexto(texto:string):boolean{
+		if (texto.length>3){ return true; }else{ return false; }
+	}
+}
+```
+Usando dentro de `app.ts`la siguiente línea `/// <reference path="validaciones/textos.ts" />`, indicamos que al transpilar usando el código siguiente deberá buscar ese archivo y unirlo. Para que funcione correctamente esa instrucción hay que indicrlo en la línea de comando de la consola, así `tsc --outFile public/app.js app` .
 
+**[Regresar al índice](#indice)**
+
+----------------------------------
 
