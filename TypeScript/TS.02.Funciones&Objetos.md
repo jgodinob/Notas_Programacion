@@ -208,7 +208,7 @@ let noHacerNadaTampoco:(n:number, t:string, b:boolean, a:any[])=>void;
 noHaceNadaTampoco=noHacenada;
 ```
 
-Volver al [INDICE](#indice)
+**[⬆ regresar al índice](#Índice)**
 
 ----------------------------------
 
