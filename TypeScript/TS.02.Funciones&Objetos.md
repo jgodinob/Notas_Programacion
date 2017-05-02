@@ -49,7 +49,7 @@ let activar_batisenal=function(){
 console.log(activar_batisenal());
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Parámetros Obligatorios
 -----------------------
@@ -61,7 +61,7 @@ let nombre=nombreCompleto("clark", "Kent");
 console.log(nombre);
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Parámetros Opcionales
 ---------------------
@@ -79,7 +79,7 @@ let nombre2=nombreCompleto("cLark");
 console.log(nombre);
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Parámetros Por Defecto
 ----------------------
@@ -109,7 +109,7 @@ function llamarBatman(llamar:boolean=true):void{
 llamarBatman();
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Parámetros Rest
 ---------------
@@ -155,7 +155,7 @@ function unirHeroes(...personas:string[]):string{
 }
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Tipo Función
 ------------
@@ -208,7 +208,7 @@ let noHacerNadaTampoco:(n:number, t:string, b:boolean, a:any[])=>void;
 noHaceNadaTampoco=noHacenada;
 ```
 
-**[Regresar al índice](#Índice)**
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -248,7 +248,7 @@ let flash: {nombre:string, edad:number, poderes:string[], getNombre:()=>string} 
 };
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 Tipo Personalizado de Objetos
 =============================
@@ -295,6 +295,7 @@ let bumblebee:Auto = {
     }
 };
 ```
+
 **¿Cómo permitir distintos tipos de datos en una variable?** Para unir distintos tipos de datos habría que separar las distintas posibilidades de tipo de dato con el caracter `| `.
 ```typescript
 type Heroe = { 
@@ -308,6 +309,7 @@ loquesea={
   edad:56
 };
 ```
+
 **¿Cómo saber que tipo de dato es una variable?** Para ello utilizaremos la instrucción de JavaScript `typeof`.
 ```typescript
 let cosa:any=123;
@@ -368,7 +370,7 @@ mystique = charles;
 mystique = apocalipsis;
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -435,7 +437,7 @@ window.onload = ()=>{
 };
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -456,6 +458,7 @@ console.log(nombre);
 let spiderman = "Peter Parker",
     venom = "Eddie Brock";
 ```
+
 Constantes
 ----------
 Las cosntantes son un tipo de dato que no puede mutar una vez ya definido. Para declarar constantes usaremos la palabra reservada `const` y para nombrar la variable sólo mayúsculas, como por ejemplo `OPCIONES`.
@@ -468,6 +471,7 @@ for (const i of [1,2,3,4,5,6] ){
   console.log(i);
 }
 ```
+
 La constantes en realidad es redefinida al estar ambas en distinto `Scope`.
 Todo cambia cuando las constantes se definen como objetos, ya que permite realizar cambios en las propiedades del objeto, aunque no modificar dichas propiedades.
 ```typescript
@@ -483,6 +487,7 @@ console.log(OPCIONES);
 ```javascript
 const HEROE = "Spiderman";
 ```
+
 Templates Literales
 -------------------
 Una posibilidad es la de concatenar variables y respetar líneas sin tener que abrir y cerrar `" "`. Mediante el uso de backtick (`` ``). Para ello introduciremos dentro saltos de línea normales, en el caso de querer respetarlos, o variables dentro de `${...}`, como en el siguiente ejemplo `${variable1}`. También existe la posibilidad de introducir de manera directa resultados de funciones o operaciones matemáticas.
@@ -499,6 +504,7 @@ let mensaje:string = `1. Esto es una línea normal
 5. {5 + 7 }
 `;
 ```
+
 Funciones de Flecha
 -------------------
 Las funciones de flecha pueden sustituir a las funciones normales. Lo bueno de este tipo de funciones es que estas se escriben de una forma más intuitiva y breve.
@@ -507,6 +513,7 @@ function sumar(a,b){   return a+b;    }
 let sumar)(a,b)=>a+b; //sustituiría a la función estandar
 console.log( sumar(2,2) );
 ```
+
 Para escribir funciones con más complejas en las que para definir su operatividad es necesario usar varias líneas usaremos `{...}`. Un ejemplo de ello es la siguiente función.
 ```typescript
 let sumar = (a,b)=>{
@@ -523,6 +530,7 @@ function darOrden_Hulk( orden ) {
 let darOrden_Hulk = ( orden ) => `Hulk ${orden}`;  //sustituiría a la función estandar
 console.log( darOrden_hulk("smash!!!") );
 ```
+
 Las funciones de flecha no cambian el objeto `this`.
 ```typescript
 let capitan_america = {
@@ -535,6 +543,7 @@ let capitan_america = {
 };
 capitan_america.darOrden_Hulk();
 ```
+
 Ciclo For of
 ------------
 El bucle `for in` nos permite recorrer un array de forma directa, sin tener que generar un bucle `for` simple que la recorra. En cambio, el bucle o ciclo `for of` nos permite recorrer array renombrando sus elementos, para ello es necesario declarar la variable que lo recorrerá mediante el uso de la palabra reservada `let`.
@@ -569,7 +578,7 @@ for ( let version of versiones ){
 }
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -600,6 +609,7 @@ var villanos = {
 };
 let { venom , carnage , sandman } = villanos;
 ```
+
 Destructuración de Arrays
 =========================
 Permite renombrar elementos de un array para su uso sin tener que programar una función o código que lo renombre. Así evitaríamos generar un bucle for que recorra la array y la renombre como se haría en `ES5`.
@@ -615,7 +625,7 @@ let versiones = ["Spider-Man 2099","Spider-Girl","Ultimate Spider-Man"];
 let [spiderman2099 , spidergirl , ultimate] = versiones;
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -650,7 +660,7 @@ let falcon = new AvengerVolador("Falcon","Volar!");
 console.log(falcon);
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -769,7 +779,7 @@ console.log( ciclopeN.getNombre() );    //devuelve error al encontrarse protegid
 console.log( ciclopeN.getNombreN() );   //esta es publica
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -819,6 +829,7 @@ console.log(ciclope.nombre);
 let ironman:Avenger = new Avenger();
 console.log(ironman.nombre);
 ```
+
 Métodos y Propiedades Estáticas
 -------------------------------
 Las propiedadesy métodos estáticos se pueden llamar sin declarar la clase.
@@ -834,6 +845,7 @@ class Xmen {
 let wolverine2 = Xmen.crearXmen();
 console.log( wolverine2 );
 ```
+
 Clases Abstractas
 -----------------
 Las **clases abstractas** no permiten ser instanciadas, es decir no posibilitan el crear objetos definidos por ellas directamente. Su utilida expresa es la de servir para generar otras clases que las contengan que si posibilitan su instanciamiento. Básicamente actúan de moldes para clases.
@@ -844,6 +856,7 @@ abstract class Mutantes {
 }
 let wolverine = new Mutantes ("Wolverine", "Logam");
 ```
+
 Al intentar crear *wolverine* da error [TypeScript](https://www.typescriptlang.org/), para poder crear una instancia que contenga a las propiedades de *Mutantes* necesitaría hacer lo siguiente.
 ```typescript
 abstract class Mutantes {
@@ -853,6 +866,7 @@ abstract class Mutantes {
 class Xmen extends Mutantes{ }
 let wolverine = new Smen ("Wolverine", "Logam");
 ```
+
 Constructores Privados
 ----------------------
 Los **constructores privado** solo pueden ser llamados desde dentro de la misma clase, y nunca desde fuera de ella. 
@@ -863,6 +877,7 @@ class Apocalipsis {
 }
 let apocalipsisFalso = new Apocalipsis ("Soy Apocalipsisis!!! (Falso)");
 ```
+
 *apocalipsisFalso* lanza un error al estar instanciado fuera de la clase, para poderlo declarar sería necesario realizarlo a traves de una función interna de la clase que si podría trabajar con el constructor. Veáse el siguiente ejemplo.
 ```typescript
 class Apocalipsis {
@@ -880,7 +895,7 @@ let real = Apocalipsisis.llamarApocalipsis();
 
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -930,6 +945,7 @@ class Mutante implements Xmen {
 }
 let wolverine = new Mutante();
 ```
+
 Interfaces en los Métodos
 =========================
 Los métodos pueden usar interfaces para ser definidas, indicando los parámetros de entrada y su tipología, además del tipo de salida que obtendrá. Para definirla se usa la siguiente sintaxis: `interface DosNumerosFunc{(num1:number, num2:number):number}`.
@@ -947,7 +963,7 @@ restar = function (numero1:number, numero2:number){
 }
 ```
 
-Volver al [INDICE](#indice)
+**[Regresar al índice](#indice)**
 
 ----------------------------------
 
@@ -1021,3 +1037,4 @@ class PersonaClass implements Persona{
   }
 }
 ```
+**[Regresar al índice](#indice)**
