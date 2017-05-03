@@ -1521,3 +1521,49 @@ Usando dentro de `app.ts`la siguiente línea `/// <reference path="validaciones/
 
 ----------------------------------
 
+MÓDULOS
+=======
+```typescript
+/* apps.ts */
+import { PI } from "./validaciones/numeros"
+console.log (PI);
+/* validaciones/numeros.ts */
+export const PI = 3.1416:
+export function restar(num1:number , num2:number):number{ return num1 - num2; }
+/* validaciones/textos.ts */
+export const MENSAJES:string[]=[ "El texto es muy corto", "El texto es muy largo"]
+export function obtenerError(numError:number):string{ 	return MENSAJES[numError]; }
+```
+Configurar [SystemJS](https://github.com/systemjs/systemjs)
+-----------------------------------------------------------
+Escribimos en la raiz de la consola `npm init`, el cual nos generará el archivo *package.json* dentro del proyecto. A continuación instalaremos [lite-server](https://github.com/johnpapa/lite-server) mediante el comando en consola `npm install lite-server --save-dev`, lo cual generará una carpeta llamada *node-modules*, la cual incluirá la instalación de *node*. *Todo ello debe ejecutarse dentro del directorio raíz del proyecto*.
+Así dentro del archivo *package.json* hay que introducir el siguiente texto :
+```typescript
+{
+"name":"myapp",
+...
+"scripts":{
+	"test":"echo \"Error: no test specified\" && exit 1ª,
+	"dev": "lite-server"
+},
+"author":"",
+...
+}
+```
+Justo después ejecutaremos dentro de la consola `npm run dev`, este comando iniciará un servidor cuya dirección es : **localhost:3000** 
+Finalmente para importar **systemJS** abrimos otra instancia de la consola, para que mientras siga corriendo el servidor, en la cual ejecutaremos el comando `npm install systemjs`. Esto instalará dentro de la carpeta *node_modules/systemjs/* los paquetes necesarios para ejecutar la aplicación, la cual deberá ser referenciada dentro del *index.html* de la siguiente manera.
+```html
+...
+<script src="node_modules/systemjs/dist/system.js"></script>
+<script src="app.js"></script>
+...
+```
+Posteriormente añadiremos a 
+```html
+<script src="node_modules/systemjs/dist/system.js"></script>
+<script>
+  SystemJS.import('/js/main.js');
+</script>
+```
+
+
