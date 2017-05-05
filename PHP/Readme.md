@@ -68,31 +68,57 @@ for($i = 0; $i < count($meses); $i++ ){
 ?>
 ```
 **Ejercicio 7.** Igual que el anterior pero utilizando el foreach.
+
 **Ejercicio 8.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
+
 **Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
+
 **Ejercicio 10.** Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100.
+
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
+
 **Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
 1. Recorrerlo y mostrarlo.
 2. Ordenarlo y mostrarlo.
 3. Mostrará su longitud.
 4. Buscar en el vector.
-**Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
-**Ejercicio 14.** Escribe un programa que añada valores a un array mientras que su longitud sea menor a 100 y después que se muestre la información del array por pantalla.
-**Ejercicio 16.** Escribe un programa que compruebe si una variable esta vacía y si está vacía, rellenarla con texto en minúsculas y mostrarlo convertido a mayúsculas en negrita.
-**Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea 
-**Ejercicio 18.** Crea un array con el contenido de la siguiente tabla:
 
+**Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
+
+**Ejercicio 14.** Escribe un programa que añada valores a un array mientras que su longitud sea menor a 100 y después que se muestre la información del array por pantalla.
+
+**Ejercicio 16.** Escribe un programa que compruebe si una variable esta vacía y si está vacía, rellenarla con texto en minúsculas y mostrarlo convertido a mayúsculas en negrita.
+
+**Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea.
+
+**Ejercicio 18.** Crea un array con el contenido de la siguiente tabla:
+|----------------|----------------|----------------|
+|**Frutas**|**Deportes**|**Idiomas**|
+
+|----------------|----------------|----------------|
+|Manzana|Futbol|Español|
+|Naranja|Tenis|Inglés|
+|Sandia|Baloncesto|Francés|
+|Fesa|Beisbol|Italiano|
+|----------------|----------------|----------------|
 Recórrelo y muestra la tabla en HTML con el contenido del array.
+
 **Ejercicio 19.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
+
 **Ejercicio 20.** Utiliza una función de PHP para mostrar la fecha actual por pantalla.
+
 **Ejercicio 21.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
+
 **Ejercicio 22.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
+
 **Ejercicio 23.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
+
 **Ejercicio 24.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
+
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
+
 **Ejercicio 26.** Crea un formulario HTML con los siguientes campos:
 - Nombre
 - Apellidos
@@ -100,7 +126,9 @@ Aprovechando este patrón puede crear una función que realice la factorial del 
 - Email
 - Contraseña
 - Imagen
+
 **Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
+
 **Ejercicio 28.** Valida el formulario con las siguientes reglas:
 - Nombre: Solo puede estar formado por letras y tener una longitud máxima de 20 caracteres.
 - Apellidos: Solo puede estar formado por letras.
@@ -108,11 +136,19 @@ Aprovechando este patrón puede crear una función que realice la factorial del 
 - Email: tiene que ser un email válido.
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
+
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
+
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
+
 **Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
+
 **Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
+
 **Ejercicio 33.** Crea una página de edición del usuario.
+
 **Ejercicio 34.** Haz que cuando creamos o editamos un usuario se puedan subir imágenes y guardarlas en el directorio uploads del servidor.
+
 **Ejercicio 35.** Crea un login de usuarios.
+
 **Ejercicio 36.** Crea una paginación para el listado de usuarios.
