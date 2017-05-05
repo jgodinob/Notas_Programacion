@@ -94,14 +94,12 @@ Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 1
 
 **Ejercicio 18.** Crea un array con el contenido de la siguiente tabla:
 
-|----------------|----------------|----------------|
-|**Frutas**|**Deportes**|**Idiomas**|
-|----------------|----------------|----------------|
-|Manzana|Futbol|Español|
-|Naranja|Tenis|Inglés|
-|Sandia|Baloncesto|Francés|
-|Fesa|Beisbol|Italiano|
-|----------------|----------------|----------------|
+| Frutas   | Deportes   | Idiomas   |
+|----------|------------|-----------|
+| Manzana  |Futbol      |Español    |
+| Naranja  |Tenis       |Inglés     |
+| Sandia   |Baloncesto  |Francés    |
+| Fesa     |Beisbol     |Italiano   |
 
 Recórrelo y muestra la tabla en HTML con el contenido del array.
 
