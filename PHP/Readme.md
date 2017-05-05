@@ -1,5 +1,5 @@
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
-```php
+```javascript
 $uno = "Contenido de la variable 1"; // String
 $dos = 245; // Integer
 echo "UNO: ".$uno."<br/>";
@@ -8,7 +8,7 @@ echo "DOS: ".$dos."<hr/>";
 ```
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
-```php
+```javascript
 <?php
 for($i = 1; $i <= 30; $i++){
 	echo "El cuadrado de ".$i." es ".($i*$i)."<br/>";
@@ -16,7 +16,7 @@ for($i = 1; $i <= 30; $i++){
 ?>
 ```
 **Ejercicio 3.** Modifica el ejercicio anterior para que muestre al lado de cada cuadrado si es un número par o impar.
-```php
+```javascript
 for($i = 1; $i <= 30; $i++){
 	$cuadrado = $i*$i;
 	echo "El cuadrado de ".$i." es ".$cuadrado;
@@ -30,7 +30,7 @@ for($i = 1; $i <= 30; $i++){
 ?>
 ```
 **Ejercicio 4.** Escribe un programa que multiplique los 20 primeros números naturales. Utiliza el bucle While.
-```php
+```javascript
 <meta charset="utf-8" />
 <?php
 $numero = 1;
@@ -62,7 +62,7 @@ El método GET envía la información codificada del usuario en el header del HT
 * No se pueden enviar datos binarios (archivos, imágenes...).
 * En PHP los datos se administran con el array asociativo $_GET.
 *Ejemplo sencillo de formulario html con el método GET:*
-```php 
+```javascript 
 <html>
 <body>
 <form action="formget.php" method="get">
@@ -86,7 +86,7 @@ Con el método HTTP POST también se codifica la información, pero ésta se env
 * La información proporcionada no es visible, por lo que se puede enviar información sensible.
 * Se puede usar para enviar texto normal así como datos binarios (archivos, imágenes...).
 * PHP proporciona el array asociativo $_POST para acceder a la información enviada.
-```php 
+```javascript
 <html>
 <body>
 <form action="formpost.php" method="post">
@@ -105,7 +105,7 @@ Se puede comprobar que la información no se muestra en la url.
 
 **Ejercicio 5.** Imprimir por pantalla la tabla de multiplicar del número pasado en un parámetro GET por la URL.
 *Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que 
-```php
+```javascript
 <?php
 if(isset($_GET["numero"]) && is_numeric($_GET["numero"])){
 	$numero = $_GET["numero"];
@@ -120,7 +120,7 @@ for($i = 1; $i <= 10; $i++){
 ?>
 ```
 **Ejercicio 6.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOR para mostrar por pantalla los doce nombres.
-```php
+```javascript
 <?php
 $meses = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
 for($i = 0; $i < count($meses); $i++ ){
@@ -129,7 +129,7 @@ for($i = 0; $i < count($meses); $i++ ){
 ?>
 ```
 **Ejercicio 7.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOREACH para mostrar por pantalla los doce nombres.
-```php
+```javascript
 <?php
 $meses = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
 foreach ($meses as $mes) {
@@ -139,7 +139,7 @@ foreach ($meses as $mes) {
 ```
 **Ejercicio 8.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
-```php
+```javascript
 $factorial = 1;
 $numero = $_GET["numero"];
 for($cont = 1; $cont <= $numero; $cont++){
@@ -150,7 +150,7 @@ echo "El factorial de ".$numero." es ".$factorial;
 ?>
 ```
 **Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
-```php
+```javascript
 <?php
 for($i = 1; $i <= 100; $i++){
 	if($i%2 == 0){
@@ -160,7 +160,7 @@ for($i = 1; $i <= 100; $i++){
 ?>
 ```
 **Ejercicio 10.** Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100.
-```php
+```javascript
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -184,7 +184,7 @@ for($i = 1; $i <= 100; $i++){
 </html>
 ```
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
-```php
+```javascript
 ```
 
 **Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
@@ -192,7 +192,7 @@ for($i = 1; $i <= 100; $i++){
 2. Ordenarlo y mostrarlo.
 3. Mostrará su longitud.
 4. Buscar en el vector.
-```php
+```javascript
 <meta charset="utf-8" />
 <?php
 $numeros = array(30,20,40,50,10,5);
