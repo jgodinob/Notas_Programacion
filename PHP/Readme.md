@@ -147,9 +147,9 @@ $nDividers=0;	//Numbers dividers
 $dividers=[1];	//Dividers
 for( $i = 1; $i < $number; $i++ ){
 	if ( ($number % $i) == 0 ){
-   $dividers[$nDividers]=$i;
-   $nDividers++;
-   echo $i." is a divider of ".$number."</br>";
+		$dividers[$nDividers]=$i;
+		$nDividers++;
+		echo $i." is a divider of ".$number."</br>";
 	} 
 }
 ?>
@@ -157,9 +157,66 @@ for( $i = 1; $i < $number; $i++ ){
 **Ejercicio 8.2.** Elabora una función que devuelva un array separado por comas (*,*), menos el último elemento separado por *y*.
 ```javascript
 <?php
-$numbers=[2, 3, 4, 7, 8, 9];	
+$numbers=[1, 3, 4, 7, 8, 9];	
+function return_list_elements ($array){
+	if(!isset($array) || !is_array($array)){
+		echo "Error return_list_elements: no se ha introducido un array.</br>";
+	}
+	$array_elements_number=count($array);
+	echo "El array contiene ".$array_elements_number." elementos, que son: ";
+	foreach ($array as $i=>$numbers){
+		if($i ==($array_elements_number-2)){
+			$next=" y ";
+		}elseif($i ==($array_elements_number-1)){
+			$next=".";
+		}else{
+			$next=", ";
+		}
+		echo $numbers.$next;
+	}
+}
+return_list_elements($number);
 ?>
 ```
+**Ejercicio 8.3.** Elabora una función que devuelva un array usando las funciones creadas en el ejercicio 8.1. y 8.2..
+```javascript
+<?php
+if(isset($_GET["number"]) && is_numeric($_GET["number"])){
+	$number = $_GET["number"];
+}
+function dividers_in_array ($number){
+	$nDividers=0;	//Numbers dividers
+	$array_dividers=[1];	//Dividers
+	for( $i = 1; $i < $number; $i++ ){
+		if ( ($number % $i) == 0 ){
+			$array_dividers[$nDividers]=$i;
+			$nDividers++;
+		} 
+	}
+	return $array_dividers;
+}
+function return_list_elements ($array){
+    if(!isset($array) || !is_array($array)){
+          echo "Error return_list_elements: no se ha introducido un array.</br>";
+    }
+    $array_elements_number=count($array);
+    echo "El array contiene ".$array_elements_number." elementos, que son: ";
+    foreach ($array as $i=>$numbers){
+      if($i ==($array_elements_number-2)){
+              $next=" y ";
+      }elseif($i ==($array_elements_number-1)){
+              $next=".";
+      }else{
+              $next=", ";
+      }
+      echo $numbers.$next;
+    }
+}
+$array_dividers=dividers_in_array ($number);
+return_list_elements($array_dividers);
+?>
+```
+
 **Ejercicio 8.5.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
 ```javascript
