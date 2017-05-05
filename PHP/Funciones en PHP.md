@@ -1,3 +1,5 @@
+FUNCIONES EN PHP
+================
 Las **funciones** son paquetes de código con instrucciones para ejecutar una acción. En las instrucciones puede incluirse cualquier código válido, incluyendo clases y otras funciones.
 
 ```
