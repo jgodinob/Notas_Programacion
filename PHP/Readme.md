@@ -73,29 +73,9 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-   width: 50px; 
-   border: 1px solid #000;
-   border-collapse: collapse;
-}
-th, td {
-   width: 25%;
-   text-align: center;
-   vertical-align: top;
-   border: 1px solid #000;
-   caption-side: bottom;
-   padding: 0.3em;
-}
-caption {
-   padding: 0.3em;
-   color: #fff;
-   background: #000;
-}
-th {
-   background: #eee;
-}
-</style>
+  <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
 </head>
 <body>
 <?php
@@ -108,20 +88,21 @@ if(isset($_GET["num"]) && is_numeric($_GET["num"])){
 	$number = $_GET["num"];
 }else{
 	$number = 5; //defecto
-	echo "<p>Default number</p>";
+	echo '<p>Default number</p>';
 }
-echo "<table>
-	<caption>".$number." Multiplication table</caption>";
+echo
+'<div style="width:120px;">
+  <p style="text-align:center;margin:0px;">'.$number.' Multiplication table</p>
+  <table class="table" >';
 for($i = 1; $i <= 10; $i++){
-	echo "<tr>";
+	echo '<tr>';
 	$result=multiply($i,$number);
-	echo "<th>".$number." x ".$i."</th>";
-	echo "<th>".$result."</th>";
-	echo "</tr>";
+	echo '<th>'.$number.' x '.$i.'</th>';
+	echo '<th>'.$result.'</th>';
+	echo '</tr>';
 }
-echo "</table>";
+echo '</table></div>';
 ?>
-
 </body>
 </html>
 ```
