@@ -1,3 +1,74 @@
+VARIABLES 
+=========
+Las variables en PHP se representan mediante el símbolo de **dolar $**, y son sensibles a mayúsculas y minúsculas.
+**Reglas para nombres de variables:**
+* Tienen que empezar con una **letra** o **barra baja _**, seguido de cualquier número, letra o barra baja.
+* **$this** es una variable especial que no puede ser asignada.
+Las variables por defecto se asignan por **valor**, por lo que cuando se asigna una **expresión** a una **variable**, el valor de la expresión se copia en la variable. Una expresión es cualquier cosa que tenga un valor:
+```php
+$x = 3; //  3 es una expresión
+function numero(){
+    return 3;
+}
+// Las funciones son expresiones con el valor de sus valores devueltos
+$x = prueba(); // La expresión prueba() es 3
+```
+Si se asigna el valor de una variable a otra, los cambios que se hagan en una de las dos no afectarán a la otra:
+```php
+$x = 3;
+$y = $x;
+echo $y; // Devuelve 3
+$y = 4;
+echo $y; // Devuelve 4, y $x sigue valiendo 3
+```
+No ocurre lo mismo si se asignan valores por referencia, donde los cambios que afecten a una variable afectarán a la otra. Para ello se antepone el signo ampersand & al comienzo de la variable cuyo valor se quiere asignar.
+```php
+<?php
+$uno = 'Coche';
+$dos = &$uno;
+
+$uno = 'Moto';
+
+echo $uno; // Devuelve Moto
+echo $dos; // Devuelve Moto
+```
+Cuando se intentan emplear variables no definidas, PHP crea notices o warnings, aunque devuelve un valor dependiendo del tipo que se está solicitando:
+```php
+<?php
+//--- Uso de variable no definida y no referenciada
+var_dump($variable_indefinida); // Devuelve null
+// Notice: Undefined variable
+
+//--- Uso booleano
+echo($booleano_indefinido ? "true\n" : "false\n"); // Devuelve false
+// Notice: Undefined variable
+
+//--- Uso de una cadena
+$cadena_indefinida .= 'abc';
+var_dump($cadena_indefinida); // Devuelve 'string(3)' "abc"
+// Notice: Undefined variable
+
+//--- Uso de un entero
+$int_indefinido += 25; // 0 + 25 => 25
+var_dump($int_indefinido); // Devuelve 'int(25)'
+// Notice: Undefined variable
+
+//--- Uso de float
+$flotante_indefinido += 1.25;
+var_dump($flotante_indefinido); // Devuelve 'float(1.25)'
+// Notice: Undefined variable
+
+//--- Uso de array
+$array_indefinida[3] = "def";
+var_dump($array_indefinida); // Devuelve array(1) {  [3]=>  string(3) "def" }
+// No genera ningún mensaje de error
+
+//--- Uso de objetos; crea un nuevo objeto stdClass
+$objeto_indefinido->foo = 'bar';
+var_dump($objeto_indefinido); // Devuelve object(stdClass)#1 (1) {  ["foo"]=>  string(3) "bar" }
+//  Warning: Creating default object from empty value
+?>
+```
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
 ```php
 $uno = "Contenido de la variable 1"; // String
@@ -43,7 +114,67 @@ while($contador <= 20){
 echo "El resultado de multiplicar los 20 primeros números es: ".$numero;
 ?>
 ```
+MÉTODO GET
+==========
+Existen dos métodos con los que el navegador puede enviar información al servidor:
+* Método HTTP GET. Información se envía de forma visible
+* Método HTTP POST. Información se envía de forma no visible
+Antes de que el navegador envíe la información proporcionada, la codifica mediante URL encoding, dando como resultado un Query String. Esta codificación es un esquema de keys y values separados por un ampersand &:
+`key1=value1&key2=value2&key3=value3...`
+Los espacios y otros caracteres no alfanuméricos se sustituyen. Una vez que la información es codificada, se envía al servidor.
+
+Método HTTP GET
+---------------
+El método GET envía la información codificada del usuario en el header del HTTP request, directamente en la URL. La página web y la información codificada se separan por un interrogante ?:
+`www.ejemplo.com/index.htm?key1=value1&key2=value2&key3=value3...`
+* El método GET envía la información en la propia URL, estando limitada a 2000 caracteres.
+* La información es visible por lo que con este método nunca se envía información sensible.
+* No se pueden enviar datos binarios (archivos, imágenes...).
+* En PHP los datos se administran con el array asociativo $_GET.
+*Ejemplo sencillo de formulario html con el método GET:*
+```php 
+<html>
+<body>
+<form action="formget.php" method="get">
+    Nombre: <input type="text" name="nombre"><br>
+    Email: <input type="text" name="email"><br>
+    <input type="submit" value="Enviar">
+</form>
+Hola <?php isset($_GET["nombre"]) ? print $_GET["nombre"] : ""; ?><br>
+Tu email es: <?php isset($_GET["email"]) ? print $_GET["email"] : ""; ?>
+</body>
+</html>
+```
+La url que resulta de hacer click en submit es de la forma:
+`formget.php?nombre=peter&email=peter%40ejemplo.com`
+En este caso @ es un carácter especial y se codifica.
+
+Método HTTP POST
+----------------
+Con el método HTTP POST también se codifica la información, pero ésta se envía a través del body del HTTP Request, por lo que no aparece en la URL.
+* El método POST no tiene límite de cantidad de información a enviar.
+* La información proporcionada no es visible, por lo que se puede enviar información sensible.
+* Se puede usar para enviar texto normal así como datos binarios (archivos, imágenes...).
+* PHP proporciona el array asociativo $_POST para acceder a la información enviada.
+```php 
+<html>
+<body>
+<form action="formpost.php" method="post">
+    Nombre: <input type="text" name="nombre"><br>
+    Email: <input type="text" name="email"><br>
+    <input type="submit" value="Enviar">
+</form>
+Hola <?php isset($_POST["nombre"]) ? print $_POST["nombre"] : ""; ?><br>
+Tu email es: <?php isset($_POST["email"]) ? print $_POST["email"] : ""; ?>
+</body>
+</html>
+```
+Se puede comprobar que la información no se muestra en la url.
+
+-----------------------------------------------------
+
 **Ejercicio 5.** Imprimir por pantalla la tabla de multiplicar del número pasado en un parámetro GET por la URL.
+*Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que 
 ```php
 <?php
 if(isset($_GET["numero"]) && is_numeric($_GET["numero"])){
