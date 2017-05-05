@@ -101,10 +101,9 @@ if(isset($_GET["num"]) && is_numeric($_GET["num"])){
 	$number = 5; //defecto
 	echo '<p>Default number</p>';
 };
-echo
-'<div style="width:120px;">
-  <p style="text-align:center;margin:0px;">'.$number.' Multiplication table</p>
-  <table class="table" >';
+echo '<div style="width:120px;">';
+echo '	<p style="text-align:center;margin:0px;">'.$number.' Multiplication table</p>';
+echo '	<table class="table" >';
 for($i = 1; $i <= 10; $i++){
 	echo '<tr>';
 	$result=multiply($i,$number);
@@ -112,9 +111,8 @@ for($i = 1; $i <= 10; $i++){
 	echo '<th>'.$result.'</th>';
 	echo '</tr>';
 }
-echo
-  '</table>
-</div>';
+echo '	</table>';
+echo '</div>';
 ?>
 ```
 
