@@ -68,8 +68,10 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 ```
 
 **Ejercicio 5.** Imprimir por pantalla la tabla de multiplicar del número pasado en un parámetro GET por la URL.
-*Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que el comienzo de variables se inicia conel caracter cierre de interrogación `?`, y continua introduciendo la variable igualada a su valor separando las variables mediante `&`
-```javascript
+*Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que el comienzo de variables se inicia conel caracter cierre de interrogación `?`, y continua introduciendo la variable igualada a su valor separando las variables mediante `&`.
+|**index.html**|
+|--------------|
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +80,13 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
   </head>
 </head>
 <body>
+<?php include 'Ej5.php';?>
+</body>
+</html>
+```
+|**Ej5.php**   |
+|--------------|
+```javascript
 <?php
 function multiply($num1, $num2)
 {
@@ -89,7 +98,7 @@ if(isset($_GET["num"]) && is_numeric($_GET["num"])){
 }else{
 	$number = 5; //defecto
 	echo '<p>Default number</p>';
-}
+};
 echo
 '<div style="width:120px;">
   <p style="text-align:center;margin:0px;">'.$number.' Multiplication table</p>
@@ -101,10 +110,10 @@ for($i = 1; $i <= 10; $i++){
 	echo '<th>'.$result.'</th>';
 	echo '</tr>';
 }
-echo '</table></div>';
+echo
+  '</table>
+</div>';
 ?>
-</body>
-</html>
 ```
 
 **Ejercicio 6.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOR para mostrar por pantalla los doce nombres.
