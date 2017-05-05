@@ -319,8 +319,8 @@ for ($i = 1; $i <= 1000; $i++){
 	$dividers_list=dividers_in_array ($i);
 	$add=add_numbers_array($dividers_list);
 	if(is_good($i)){
-   echo $i." es un número bueno, porque la suma de sus divisores ( ";
-	 echo return_elements_list($dividers_list)." ) es: ".$add.".</br>";
+		echo $i." es un número bueno, porque la suma de sus divisores ( ";
+		echo return_elements_list($dividers_list)." ) es: ".$add.".</br>";
 	}
 }
 ?>
