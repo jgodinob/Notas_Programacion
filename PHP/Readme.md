@@ -67,15 +67,61 @@ for($i = 0; $i < count($meses); $i++ ){
 }
 ?>
 ```
-**Ejercicio 7.** Igual que el anterior pero utilizando el foreach.
-
+**Ejercicio 7.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOREACH para mostrar por pantalla los doce nombres.
+```php
+<?php
+$meses = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
+foreach ($meses as $mes) {
+	echo $mes."<br/>";
+}
+?>
+```
 **Ejercicio 8.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
-
+```php
+$factorial = 1;
+$numero = $_GET["numero"];
+for($cont = 1; $cont <= $numero; $cont++){
+	// $factorial = $factorial * $cont;
+	$factorial *= $cont;
+}
+echo "El factorial de ".$numero." es ".$factorial;
+?>
+```
 **Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
-
+```php
+<?php
+for($i = 1; $i <= 100; $i++){
+	if($i%2 == 0){
+		echo $i." es par <br/>";
+	}
+}
+?>
+```
 **Ejercicio 10.** Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100.
-
+```php
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Numeros multiplos</title>
+	</head>
+	<body>
+		<?php if (isset($_GET["numero"]) && is_numeric($_GET["numero"])) { ?>
+			<h1>Números multiplos de <?= $_GET["numero"]; ?></h1>
+			<?php
+/* Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100. */
+			for ($i = 1; $i <= 100; $i++) {
+				if (isset($_GET["numero"]) && $i % $_GET["numero"] == 0) {
+					echo $i . " es multiplo de " . $_GET["numero"] . "<br/>";
+				}
+			}
+		} else {
+			?>
+			<p>Introduce un número correcto por la url</p>
+		<?php } ?>
+	</body>
+</html>
+```
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
 
 **Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
