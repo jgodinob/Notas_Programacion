@@ -121,32 +121,55 @@ echo
 **Ejercicio 6.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOR para mostrar por pantalla los doce nombres.
 ```javascript
 <?php
-$meses = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
-for($i = 0; $i < count($meses); $i++ ){
-	echo $meses[$i]."<br/>";
+$months = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
+for($i = 0; $i < count($months); $i++ ){
+	echo $months[$i]."<br/>";
 }
 ?>
 ```
 **Ejercicio 7.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOREACH para mostrar por pantalla los doce nombres.
 ```javascript
 <?php
-$meses = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
-foreach ($meses as $mes) {
-	echo $mes."<br/>";
+$months = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
+foreach ($months as $month) {
+	echo $month."<br/>";
 }
 ?>
 ```
 
-**Ejercicio 8.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
+**Ejercicio 8.1.** Devuelve los divisores de un número introducido mediante la url.
+```javascript
+<?php
+if(isset($_GET["number"]) && is_numeric($_GET["number"])){
+	$number = $_GET["number"];
+}
+$nDividers=0;	//Numbers dividers
+$dividers=[1];	//Dividers
+for( $i = 1; $i < $number; $i++ ){
+	if ( ($number % $i) == 0 ){
+   $dividers[$nDividers]=$i;
+   $nDividers++;
+   echo $i." is a divider of ".$number."</br>";
+	} 
+}
+?>
+```
+**Ejercicio 8.2.** Elabora una función que devuelva un array separado por comas (*,*), menos el último elemento separado por *y*.
+```javascript
+<?php
+$numbers=[2, 3, 4, 7, 8, 9];	
+?>
+```
+**Ejercicio 8.5.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
 ```javascript
 $factorial = 1;
-$numero = $_GET["numero"];
-for($cont = 1; $cont <= $numero; $cont++){
-	// $factorial = $factorial * $cont;
-	$factorial *= $cont;
+$number = $_GET["number"];
+for($counter = 1; $counter <= $number; $counter++){
+	// $factorial = $factorial * $counter;
+	$factorial *= $counter;
 }
-echo "El factorial de ".$numero." es ".$factorial;
+echo "The factorial of ".$number." is ".$factorial;
 ?>
 ```
 
@@ -155,7 +178,7 @@ echo "El factorial de ".$numero." es ".$factorial;
 <?php
 for($i = 1; $i <= 100; $i++){
 	if($i%2 == 0){
-		echo $i." es par <br/>";
+		echo $i." is even<br/>";
 	}
 }
 ?>
