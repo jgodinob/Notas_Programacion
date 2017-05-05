@@ -1,9 +1,9 @@
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
 ```javascript
-$uno = "Contenido de la variable 1"; // String
-$dos = 245; // Integer
-echo "UNO: ".$uno."<br/>";
-echo "DOS: ".$dos."<hr/>";
+$frist = "Variable's content 1"; // String
+$second = 245; // Integer
+echo "FRIST VARIABLE: ".$frist."<br/>";
+echo "SECOND VARIABLE: ".$second."<hr/>";
 ?>
 ```
 
@@ -11,7 +11,7 @@ echo "DOS: ".$dos."<hr/>";
 ```javascript
 <?php
 for($i = 1; $i <= 30; $i++){
-	echo "El cuadrado de ".$i." es ".($i*$i)."<br/>";
+	echo "The square of ".$i." is ".($i*$i)."<br/>";
 }
 ?>
 ```
@@ -19,11 +19,11 @@ for($i = 1; $i <= 30; $i++){
 ```javascript
 for($i = 1; $i <= 30; $i++){
 	$cuadrado = $i*$i;
-	echo "El cuadrado de ".$i." es ".$cuadrado;
+	echo "The square of ".$i." is ".$cuadrado;
 	if($cuadrado%2 == 0){
-		echo " y es par";
+		echo " and is even";
 	}else{
-		echo " y ES IMPAR";
+		echo " and is odd";
 	}
 	echo "<br/>";
 }
@@ -44,78 +44,26 @@ while($contador <= 20){
 echo "El resultado de multiplicar los 20 primeros números es: ".$numero;
 ?>
 ```
-MÉTODO GET
-==========
-Existen dos métodos con los que el navegador puede enviar información al servidor:
-* Método HTTP GET. Información se envía de forma visible
-* Método HTTP POST. Información se envía de forma no visible
-Antes de que el navegador envíe la información proporcionada, la codifica mediante URL encoding, dando como resultado un Query String. Esta codificación es un esquema de keys y values separados por un ampersand &:
-`key1=value1&key2=value2&key3=value3...`
-Los espacios y otros caracteres no alfanuméricos se sustituyen. Una vez que la información es codificada, se envía al servidor.
-
-Método HTTP GET
----------------
-El método GET envía la información codificada del usuario en el header del HTTP request, directamente en la URL. La página web y la información codificada se separan por un interrogante ?:
-`www.ejemplo.com/index.htm?key1=value1&key2=value2&key3=value3...`
-* El método GET envía la información en la propia URL, estando limitada a 2000 caracteres.
-* La información es visible por lo que con este método nunca se envía información sensible.
-* No se pueden enviar datos binarios (archivos, imágenes...).
-* En PHP los datos se administran con el array asociativo $_GET.
-*Ejemplo sencillo de formulario html con el método GET:*
-```javascript 
-<html>
-<body>
-<form action="formget.php" method="get">
-    Nombre: <input type="text" name="nombre"><br>
-    Email: <input type="text" name="email"><br>
-    <input type="submit" value="Enviar">
-</form>
-Hola <?php isset($_GET["nombre"]) ? print $_GET["nombre"] : ""; ?><br>
-Tu email es: <?php isset($_GET["email"]) ? print $_GET["email"] : ""; ?>
-</body>
-</html>
-```
-La url que resulta de hacer click en submit es de la forma:
-`formget.php?nombre=peter&email=peter%40ejemplo.com`
-En este caso @ es un carácter especial y se codifica.
-
-Método HTTP POST
-----------------
-Con el método HTTP POST también se codifica la información, pero ésta se envía a través del body del HTTP Request, por lo que no aparece en la URL.
-* El método POST no tiene límite de cantidad de información a enviar.
-* La información proporcionada no es visible, por lo que se puede enviar información sensible.
-* Se puede usar para enviar texto normal así como datos binarios (archivos, imágenes...).
-* PHP proporciona el array asociativo $_POST para acceder a la información enviada.
-```javascript
-<html>
-<body>
-<form action="formpost.php" method="post">
-    Nombre: <input type="text" name="nombre"><br>
-    Email: <input type="text" name="email"><br>
-    <input type="submit" value="Enviar">
-</form>
-Hola <?php isset($_POST["nombre"]) ? print $_POST["nombre"] : ""; ?><br>
-Tu email es: <?php isset($_POST["email"]) ? print $_POST["email"] : ""; ?>
-</body>
-</html>
-```
-Se puede comprobar que la información no se muestra en la url.
-
------------------------------------------------------
 
 **Ejercicio 5.** Imprimir por pantalla la tabla de multiplicar del número pasado en un parámetro GET por la URL.
-*Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que 
+*Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que el comienzo de variables se inicia conel caracter cierre de interrogación `?`, y continua introduciendo la variable igualada a su valor separando las variables mediante `&`
 ```javascript
 <?php
-if(isset($_GET["numero"]) && is_numeric($_GET["numero"])){
-	$numero = $_GET["numero"];
+function multiply($num1, $num2)
+{
+    $result = $num1 + $num2;
+    return $result;
+}
+if(isset($_GET["num"]) && is_numeric($_GET["num"])){
+	$number = $_GET["num"];
 }else{
-	$numero = 5; //defecto
+	$number = 5; //defecto
 	echo "<p>Numero por defecto</p>";
 }
-echo "<h2>Tabla de multiplicar de ".$numero."</h2>";
+echo "<h2>Tabla de multiplicar de ".$number."</h2>";
 for($i = 1; $i <= 10; $i++){
-	echo $i." x ".$numero." = ".($i*$numero)."<br/>";
+	$result=multiply($i,$number);
+	echo $number." x ".$i." = ".$result."<br/>";
 }
 ?>
 ```
