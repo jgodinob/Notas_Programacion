@@ -264,6 +264,66 @@ for($i = 1; $i <= 100; $i++){
 ```
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
 ```javascript
+<?php
+if(isset($_GET["number"]) && is_numeric($_GET["number"])){
+	$number = $_GET["number"];
+}
+// Función devuelve los divisores de un array de números
+function dividers_in_array ($number){
+	$nDividers=0;	//Numbers dividers
+	$array_dividers=[1];	//Dividers
+	for( $i = 1; $i < $number; $i++ ){
+		if ( ($number % $i) == 0 ){
+			$array_dividers[$nDividers]=$i;
+			$nDividers++;
+		}
+	}
+	return $array_dividers;
+}
+// Función devuelve el listado de elementos de un array
+function return_elements_list($array){
+    if(!isset($array) || !is_array($array)){
+          echo "Error return_list_elements: no se ha introducido un array.</br>";
+    }
+    foreach ($array as $i=>$numbers){
+      if($i ==(count($array)-2)){
+              $next=" y ";
+      }elseif($i ==(count($array)-1)){
+              $next="";
+      }else{
+              $next=", ";
+      }
+      echo $numbers.$next;
+    }
+}
+// Función devuelve la suma de números de un array
+function add_numbers_array($numbers_array){
+		$result=0;
+		foreach($numbers_array as $i=>$numbers){
+			$result+=$numbers;
+		}
+		return $result;
+}
+// Función devuelve true o false si es bueno el número
+function is_good($number){
+	$dividers_array = dividers_in_array($number);
+	$add_dividers = add_numbers_array($dividers_array);
+	if($add_dividers==$number){
+		return true;
+	}else{
+		return false;
+ }
+}
+// Bucle for que recorre el listado buscando números buenos
+for ($i = 1; $i <= 1000; $i++){
+	$dividers_list=dividers_in_array ($i);
+	$add=add_numbers_array($dividers_list);
+	if(is_good($i)){
+   echo $i." es un número bueno, porque la suma de sus divisores ( ";
+	 echo return_elements_list($dividers_list)." ) es: ".$add.".</br>";
+	}
+}
+?>
 ```
 
 **Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
