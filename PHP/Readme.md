@@ -15,6 +15,7 @@ for($i = 1; $i <= 30; $i++){
 }
 ?>
 ```
+
 **Ejercicio 3.** Modifica el ejercicio anterior para que muestre al lado de cada cuadrado si es un número par o impar.
 ```javascript
 for($i = 1; $i <= 30; $i++){
@@ -29,44 +30,102 @@ for($i = 1; $i <= 30; $i++){
 }
 ?>
 ```
-**Ejercicio 4.** Escribe un programa que multiplique los 20 primeros números naturales. Utiliza el bucle While.
+
+**Ejercicio 4.1.** Escribe un programa que multiplique los 20 primeros números naturales. Utiliza el bucle While.
 ```javascript
 <meta charset="utf-8" />
 <?php
-$numero = 1;
-$contador = 2;
-while($contador <= 20){
-	// $numero = $numero * $contador;
-	$numero *= $contador;
-	echo $numero."<br/>";
-	$contador++;
+$number = 1;
+$counter = 1;
+$limit=4;
+while($counter <= $limit){
+	// $number = $number * $counter;
+	$number *= $counter;
+	echo $number."<br/>";
+	$counter++;
 }
-echo "El resultado de multiplicar los 20 primeros números es: ".$numero;
+echo "The result of multiplying the first ".$limit." numbers is: ".$number;
+?>
+```
+
+**Ejercicio 4.2.** Escribe un programa que recoja un número pasado en un parámetro GET por la URL, y lo multiplique por todos los números naturales anteriores a él. Utiliza el bucle While.
+```javascript
+<meta charset="utf-8" />
+<?php
+if(isset($_GET["limit"]) && is_numeric($_GET["limit"])){
+	$limit = $_GET["limit"];
+}
+$number = 1
+$counter = 1;
+while($counter <= $limit){
+	// $number = $number * $counter;
+	$number *= $counter;
+	echo $number."<br/>";
+	$counter++;
+}
+echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 ?>
 ```
 
 **Ejercicio 5.** Imprimir por pantalla la tabla de multiplicar del número pasado en un parámetro GET por la URL.
 *Nota:* Las variables tipo `GET`se pueden pasar mediante url como en el siguiente ejemplo: `ejercicio5.php?variable=Hola&numero=5`. Se puede apreciar que el comienzo de variables se inicia conel caracter cierre de interrogación `?`, y continua introduciendo la variable igualada a su valor separando las variables mediante `&`
 ```javascript
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+   width: 50px; 
+   border: 1px solid #000;
+   border-collapse: collapse;
+}
+th, td {
+   width: 25%;
+   text-align: center;
+   vertical-align: top;
+   border: 1px solid #000;
+   caption-side: bottom;
+   padding: 0.3em;
+}
+caption {
+   padding: 0.3em;
+   color: #fff;
+   background: #000;
+}
+th {
+   background: #eee;
+}
+</style>
+</head>
+<body>
 <?php
 function multiply($num1, $num2)
 {
-    $result = $num1 + $num2;
+    $result = $num1 * $num2;
     return $result;
 }
 if(isset($_GET["num"]) && is_numeric($_GET["num"])){
 	$number = $_GET["num"];
 }else{
 	$number = 5; //defecto
-	echo "<p>Numero por defecto</p>";
+	echo "<p>Default number</p>";
 }
-echo "<h2>Tabla de multiplicar de ".$number."</h2>";
+echo "<table>
+	<caption>".$number." Multiplication table</caption>";
 for($i = 1; $i <= 10; $i++){
+	echo "<tr>";
 	$result=multiply($i,$number);
-	echo $number." x ".$i." = ".$result."<br/>";
+	echo "<th>".$number." x ".$i."</th>";
+	echo "<th>".$result."</th>";
+	echo "</tr>";
 }
+echo "</table>";
 ?>
+
+</body>
+</html>
 ```
+
 **Ejercicio 6.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOR para mostrar por pantalla los doce nombres.
 ```javascript
 <?php
@@ -85,6 +144,7 @@ foreach ($meses as $mes) {
 }
 ?>
 ```
+
 **Ejercicio 8.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
 ```javascript
@@ -97,6 +157,7 @@ for($cont = 1; $cont <= $numero; $cont++){
 echo "El factorial de ".$numero." es ".$factorial;
 ?>
 ```
+
 **Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
 ```javascript
 <?php
