@@ -93,15 +93,16 @@ Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 1
 **Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea.
 
 **Ejercicio 18.** Crea un array con el contenido de la siguiente tabla:
+
 |----------------|----------------|----------------|
 |**Frutas**|**Deportes**|**Idiomas**|
-
 |----------------|----------------|----------------|
 |Manzana|Futbol|Español|
 |Naranja|Tenis|Inglés|
 |Sandia|Baloncesto|Francés|
 |Fesa|Beisbol|Italiano|
 |----------------|----------------|----------------|
+
 Recórrelo y muestra la tabla en HTML con el contenido del array.
 
 **Ejercicio 19.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
