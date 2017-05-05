@@ -123,12 +123,37 @@ for($i = 1; $i <= 100; $i++){
 </html>
 ```
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
+```php
+```
 
 **Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
 1. Recorrerlo y mostrarlo.
 2. Ordenarlo y mostrarlo.
 3. Mostrará su longitud.
 4. Buscar en el vector.
+```php
+<meta charset="utf-8" />
+<?php
+$numeros = array(30,20,40,50,10,5);
+echo "<h2>Recorrer y mostrar:</h2>";
+foreach ($numeros as $numero) {
+	echo $numero."<br/>";
+}
+echo "<h2>Ordenar y mostrar</h2>";
+//ordenar
+sort($numeros);
+foreach ($numeros as $numero) {
+	echo $numero."<br/>";
+}
+echo "<h2>Longitud del array o número de elementos: ".sizeof($numeros)."</h2>";
+echo "<h2>Buscar en el array:</h2>";
+if(!array_search(11, $numeros)){
+	echo "<p>El número no existe en el array</p>";
+}else{
+	echo "<p>El número SI EXISTE en el array</p>";
+}
+?>
+```
 
 **Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
 
