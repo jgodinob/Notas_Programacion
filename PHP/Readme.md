@@ -1,5 +1,5 @@
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
-```javascript
+```js
 $frist = "Variable's content 1"; // String
 $second = 245; // Integer
 echo "FRIST VARIABLE: ".$frist."<br/>";
@@ -8,7 +8,7 @@ echo "SECOND VARIABLE: ".$second."<hr/>";
 ```
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
-```javascript
+```js
 <?php
 for($i = 1; $i <= 30; $i++){
 	echo "The square of ".$i." is ".($i*$i)."<br/>";
@@ -88,7 +88,7 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 
 |**Ej5.php**   |
 |--------------|
-```javascript
+```js
 <?php
 function multiply($num1, $num2)
 {
