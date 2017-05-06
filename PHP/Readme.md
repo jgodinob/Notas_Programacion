@@ -449,6 +449,27 @@ data_type ($data);
 | Fesa     |Beisbol     |Italiano   |
 
 Recórrelo y muestra la tabla en HTML con el contenido del array.
+```js
+<?php
+$table= array(
+ "Fruits"=>array("Apple","Orange","Watermelon","Strawberry"),
+ "Sports"=>array("Futbol","Tennis","Basket","Beisbol"),
+ "Languages"=>array("Spanish","English","French","Italian")
+);
+
+$column_number=count($table);
+
+function file_column_max($array_multi){
+	$i=0;
+	foreach ($array_multi as $key => $content){
+		$Key_array[$i]=$key;
+		$i++;
+	}
+	
+}
+file_column_max($table);
+?>
+```
 
 **Ejercicio 19.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
