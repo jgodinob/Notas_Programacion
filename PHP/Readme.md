@@ -452,22 +452,42 @@ Recórrelo y muestra la tabla en HTML con el contenido del array.
 ```js
 <?php
 $table= array(
- "Fruits"=>array("Apple","Orange","Watermelon","Strawberry"),
- "Sports"=>array("Futbol","Tennis","Basket","Beisbol"),
- "Languages"=>array("Spanish","English","French","Italian")
+    "Fruits"=>array("Apple","Orange","Watermelon","Strawberry"),
+    "Sports"=>array("Futbol","Tennis","Basket","Beisbol"),
+    "Languages"=>array("Spanish","English","French","Italian")
 );
-
-$column_number=count($table);
-
 function file_column_max($array_multi){
-	$i=0;
-	foreach ($array_multi as $key => $content){
-		$Key_array[$i]=$key;
-		$i++;
-	}
-	
+    $i=0;
+    foreach ($array_multi as $key => $category){
+        $file_colum_max[$i]=count($array_multi);   
+        $i++;
+    }
+    return $file_colum_max;
 }
-file_column_max($table);
+function column_name($array_multi){
+    $i=0;
+    foreach ($array_multi as $key => $category){
+        $column_name[$i]=$key;
+        $i++;
+    }
+    return $column_name;
+}
+$max_column=max(file_column_max($table));
+echo "<table><tr>";
+$column_name=column_name($table);
+//Imprime los títulos
+foreach($column_name as $key=>$content){
+    echo "<th>{$content}</th>";
+}
+echo "</tr>";
+for ($i=0;$i<=$max_column-1;$i++){
+    echo "<tr>";
+    foreach($column_name as $key=>$content){
+        echo "<th>".$table[$content][$i]."</th>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
 ?>
 ```
 
@@ -475,13 +495,68 @@ file_column_max($table);
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
 
 **Ejercicio 20.** Utiliza una función de PHP para mostrar la fecha actual por pantalla.
-
+```js
+echo "<p>Fecha actual: </p>";
+echo date("d-m-Y");
+```
 **Ejercicio 21.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
+
+|**index.php**   |
+|----------------|
+```js
+<?php
+include 'includes/redirect.php';
+?>
+<p>Texto del Body en el index </p>
+<?php
+include 'includes/footer.php';
+?>
+```
+|**includes/header.php**   |
+|--------------------------|
+```html
+<!DOCTYPE HTML>
+<html>
+<head lang="es">
+	<meta charset="utf-8" />
+	<title>Web con PHP</title>
+</head>
+<body>
+```
+|**includes/footer.php**   |
+|--------------------------|
+```html
+	<hr/>
+	<footer>
+		&copy; Víctor Robles <?php echo date("Y"); ?> <?php echo $variable; ?>
+	</footer>
+</div>
+</body>
+</html>
+```
+
 
 **Ejercicio 22.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
 
 **Ejercicio 23.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
+```js
+function tabla($numero){
+	$tabla = "";
+	for($i = 1; $i <= 10; $i++){
+		$cuenta = $i*$numero;
+		$tabla .= "{$i} x {$numero} = {$cuenta} <br/>";
+	}
+	
+	return $tabla;
+}
 
+echo "<h1>Tablas de multiplicar</h1>";
+
+for($i = 1; $i <= 10; $i++){
+	echo "<h3>Tabla del {$i}</h3>";
+	echo tabla($i);
+}
+```
 **Ejercicio 24.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
 
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
@@ -503,7 +578,24 @@ Aprovechando este patrón puede crear una función que realice la factorial del 
 - Email: tiene que ser un email válido.
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
+```js
+function validateEmail($email){
+	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+		$status = "VALIDO";
+	}else{
+		$status = "NO VALIDO";
+	}
+	
+	return $status;
+}
 
+$email = "";
+if(isset($_GET["email"])){
+	$email = $_GET["email"];
+}
+
+echo validateEmail($email);
+```
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
