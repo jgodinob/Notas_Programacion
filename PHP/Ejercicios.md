@@ -536,8 +536,36 @@ include 'includes/footer.php';
 ```
 
 
-**Ejercicio 22.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
-
+**Ejercicio 22.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
+````js
+function validateEmail($email){
+	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+		$status="VALIDO";
+	}else{
+		$status="MO VALIDO";
+	}
+	return $status;
+}
+if(isset ($_GET["email"])){
+	$email=$_GET["email"];	
+}
+echo validateEmail($email);
+```
+**Ejercicio 22.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
+````js
+function validateURL($url){
+	if(!empty($url) && filter_var($url, FILTER_VALIDATE_URL)){
+		$status="VALIDO";
+	}else{
+		$status="MO VALIDO";
+	}
+	return $status;
+}
+if(isset ($_GET["url"])){
+	$url=$_GET["url"];	
+}
+echo validateURL($url);
+```
 **Ejercicio 23.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
 ```js
 function tabla($numero){
