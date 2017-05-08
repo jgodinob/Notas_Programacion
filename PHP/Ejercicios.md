@@ -685,7 +685,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 ```php
 <?php require_once 'includes/header.php'; ?>
 <h2>Crear usuarios</h2>
-<form action="welcome.php" method="post" enctype="multipart/form-data">
+<form action="recibir.php" method="POST" enctype="multipart/form-data">
 	<label for="name">Nombre:	
 		<input type="text" name="name" class="form-control"><br/>
 	</label>
@@ -711,12 +711,18 @@ echo "Sesión número: ".$_SESSION["numero"];
 		</select>
 	</label>
 	<br/>
-	<input type="submit" value="Enviar" class="btn btn-sucess"/>
+	<input type="submit" value="Enviar" name="submit" class="btn btn-sucess"/>
 </form>
 <?php require_once 'includes/footer.php'; ?>
 ```
 **Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
-
+| recibir.php  |
+|--------------|
+```js
+if(isset($_POST)){
+var_dump($_POST);
+}
+```
 **Ejercicio 28.** Valida el formulario con las siguientes reglas:
 - Nombre: Solo puede estar formado por letras y tener una longitud máxima de 20 caracteres.
 - Apellidos: Solo puede estar formado por letras.
