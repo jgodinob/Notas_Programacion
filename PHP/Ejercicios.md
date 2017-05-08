@@ -515,6 +515,7 @@ include 'includes/footer.php';
 |**includes/header.php**   |
 |--------------------------|
 ```html
+<?php
 <!DOCTYPE HTML>
 <html>
 <head lang="es">
@@ -522,10 +523,12 @@ include 'includes/footer.php';
 	<title>Web con PHP</title>
 </head>
 <body>
+?>
 ```
 |**includes/footer.php**   |
 |--------------------------|
 ```html
+<?php
 	<hr/>
 	<footer>
 		&copy; Víctor Robles <?php echo date("Y"); ?> <?php echo $variable; ?>
@@ -533,11 +536,13 @@ include 'includes/footer.php';
 </div>
 </body>
 </html>
+?>
 ```
 
 
 **Ejercicio 22.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
 ````js
+<?php
 function validateEmail($email){
 	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
 		$status="VALIDO";
@@ -550,9 +555,11 @@ if(isset ($_GET["email"])){
 	$email=$_GET["email"];	
 }
 echo validateEmail($email);
+?>
 ```
 **Ejercicio 22.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
 ````js
+<?php
 function validateURL($url){
 	if(!empty($url) && filter_var($url, FILTER_VALIDATE_URL)){
 		$status="VALIDO";
@@ -565,9 +572,11 @@ if(isset ($_GET["url"])){
 	$url=$_GET["url"];	
 }
 echo validateURL($url);
+?>
 ```
-**Ejercicio 23.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
+**Ejercicio 23.1.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
 ```js
+<?php
 function tabla($numero){
 	$tabla = "";
 	for($i = 1; $i <= 10; $i++){
@@ -584,11 +593,48 @@ for($i = 1; $i <= 10; $i++){
 	echo "<h3>Tabla del {$i}</h3>";
 	echo tabla($i);
 }
+?>
 ```
-**Ejercicio 24.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
+**Ejercicio 23.2.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
+```js
+<?php
+function tabla($numero, $html=null){
+	$tabla = "";
+	if($html!=null){
+		$tabla.="<h3>Tabla del {$numero}</h3>";
+	}
+	for($i = 1; $i <= 10; $i++){
+		$cuenta = $i*$numero;
 
+		$tabla .= "{$i} x {$numero} = {$cuenta} <br/>";
+	}
+	if($html!=null){
+		echo $tabla;
+	}	
+	return $tabla;
+}
+echo "<h1>Tablas de multiplicar</h1>";
+for($i = 1; $i <= 10; $i++){
+	tabla($i,true);
+}
+?>
+```
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
-
+```js
+<?php
+session_start();
+if(!isset($_SESSION["numero"])){
+	$_SESSION["numero"]=0;
+}
+$_SESSION["numero"]=0;
+if(isset($_GET("counter") && $_GET["counter"]==1){
+	$_SESSION["numero"]++;
+}elseif(isset($_GET("counter") && $_GET["counter"]==0){
+	$_SESSION["numero"]--;
+}
+echo "Sesión número: ".$_SESSION["numero"];
+?>
+```
 **Ejercicio 26.** Crea un formulario HTML con los siguientes campos:
 - Nombre
 - Apellidos
@@ -596,7 +642,66 @@ for($i = 1; $i <= 10; $i++){
 - Email
 - Contraseña
 - Imagen
-
+|**includes/header.php**   |
+|--------------------------|
+```html
+<?php
+<!DOCTYPE HTML>
+<html>
+<head lang="es">
+	<meta charset="utf-8" />
+	<title>Web con PHP</title>
+</head>
+<body>
+?>
+```
+|**includes/footer.php**   |
+|--------------------------|
+```html
+<?php
+	<hr/>
+	<footer>
+		&copy; Víctor Robles <?php echo date("Y"); ?> <?php echo $variable; ?>
+	</footer>
+</div>
+</body>
+</html>
+?>
+```
+|**crear.php**  |
+|---------------|
+```php
+<?php require_once 'includes/header.php'; ?>
+<h2>Crear usuarios</h2>
+<form action="welcome.php" method="post" enctype="multipart/form-data">
+	<label for="name">Nombre:	
+		<input type="text" name="name"><br/>
+	</label>
+	<label for="firstname">Apellidos:
+		<input type="text" name="surname"><br/>
+	</label>
+	<label for="bio">Biografia
+		<textarea name="bio">
+	</label>
+		<label for="email">Email:	
+		<input type="text" name="email"><br/>
+	</label>
+	<label for="image">Foto:
+		<input type="file" name="image"><br/>
+	</label>
+	<label for="password">Password
+		<input type="password" name="password">
+	</label>
+	<label for="select">select
+		<select name="role">
+		    <option value="0">Normal</option>
+		    <option value="1">Administrador</option>
+		</select>
+	</label>
+	<br/>
+</form>
+<?php require_once 'includes/footer.php'; ?>
+```
 **Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
 
 **Ejercicio 28.** Valida el formulario con las siguientes reglas:
