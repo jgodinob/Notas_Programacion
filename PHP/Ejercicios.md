@@ -541,7 +541,7 @@ include 'includes/footer.php';
 
 
 **Ejercicio 22.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
-````js
+```js
 <?php
 function validateEmail($email){
 	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -557,8 +557,9 @@ if(isset ($_GET["email"])){
 echo validateEmail($email);
 ?>
 ```
+
 **Ejercicio 22.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
-````js
+```js
 <?php
 function validateURL($url){
 	if(!empty($url) && filter_var($url, FILTER_VALIDATE_URL)){
@@ -574,6 +575,7 @@ if(isset ($_GET["url"])){
 echo validateURL($url);
 ?>
 ```
+
 **Ejercicio 23.1.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
 ```js
 <?php
@@ -619,6 +621,7 @@ for($i = 1; $i <= 10; $i++){
 }
 ?>
 ```
+
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
 ```js
 <?php
@@ -642,6 +645,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 - Email
 - Contraseña
 - Imagen
+
 |**includes/header.php**   |
 |--------------------------|
 ```html
@@ -651,8 +655,16 @@ echo "Sesión número: ".$_SESSION["numero"];
 <head lang="es">
 	<meta charset="utf-8" />
 	<title>Web con PHP</title>
+	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+	<script type="text/javascript" src="../assets/components/bootstrap/dist/js/bootstrap.min.js"/>
+	<script type="text/javascript" src="../assets/components/jquery/jquery.min.js"/>
 </head>
 <body>
+	<div class="container">
+	<h1>Web con php</h1>
+	<hr>
+	<?php $variable="Contenido";?>
 ?>
 ```
 |**includes/footer.php**   |
@@ -675,30 +687,31 @@ echo "Sesión número: ".$_SESSION["numero"];
 <h2>Crear usuarios</h2>
 <form action="welcome.php" method="post" enctype="multipart/form-data">
 	<label for="name">Nombre:	
-		<input type="text" name="name"><br/>
+		<input type="text" name="name" class="form-control"><br/>
 	</label>
 	<label for="firstname">Apellidos:
-		<input type="text" name="surname"><br/>
+		<input type="text" name="surname" class="form-control"><br/>
 	</label>
 	<label for="bio">Biografia
-		<textarea name="bio">
+		<textarea name="bio" class="form-control">
 	</label>
 		<label for="email">Email:	
-		<input type="text" name="email"><br/>
+		<input type="text" name="email" class="form-control"><br/>
 	</label>
 	<label for="image">Foto:
-		<input type="file" name="image"><br/>
+		<input type="file" name="image" class="form-control"><br/>
 	</label>
 	<label for="password">Password
-		<input type="password" name="password">
+		<input type="password" name="password" class="form-control">
 	</label>
 	<label for="select">select
-		<select name="role">
+		<select name="role" class="form-control">
 		    <option value="0">Normal</option>
 		    <option value="1">Administrador</option>
 		</select>
 	</label>
 	<br/>
+	<input type="submit" value="Enviar" class="btn btn-sucess"/>
 </form>
 <?php require_once 'includes/footer.php'; ?>
 ```
