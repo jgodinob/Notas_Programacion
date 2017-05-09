@@ -667,6 +667,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 	<?php $variable="Contenido";?>
 ?>
 ```
+
 |**includes/footer.php**   |
 |--------------------------|
 ```html
@@ -680,6 +681,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 </html>
 ?>
 ```
+
 |**crear.php**  |
 |---------------|
 ```php
@@ -716,8 +718,9 @@ echo "Sesión número: ".$_SESSION["numero"];
 <?php require_once 'includes/footer.php'; ?>
 ```
 **Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
-| recibir.php  |
-|--------------|
+
+| **recibir.php**  |
+|------------------|
 ```js
 <?php 
 //Recibiendo el campo submit sabemos que el formulario se envió
@@ -747,8 +750,9 @@ if(isset($_POST["submit"])){
 - Email: tiene que ser un email válido.
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
-| recibir.php  |
-|--------------|
+
+| **recibir.php**  |
+|------------------|
 ```js
 <?php
 if(!empty($_POST["name"]) && strlen($_POST["name"])<=20 && !is_numeric($_POST["name"] && !preg_math("/[0-9]/",_POST["name"])){
@@ -777,22 +781,62 @@ if(isser($_FILES["image"]) && !empty($_FILES["image"])){
 ?>
 ```
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
-*Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando '''<?php require_once 'connect.php' '''*
-| connect.php  |
-|--------------|
+El archivo `install.php` crearía una tabla llamada `users` con los elementos descritos si esta no existiera previamente.
+| **install.php**  |
+|------------------|
 ```js
-<?php
-$host="localhost";
-$user="root";
-$password="";
-$database="cursophp";
+<?php require_once 'includes/connect.php'; 
+$sql ="CREATE TABLE IF NOT EXISTS users(
+		usuario_id int(255) auto_increment not null,
+		name varchar(50),
+		surname varchar(255),
+		bio text,
+		email varchar(255),
+		password varchar(255),
+		role varchar(20),
+		image varchar(255),
+		CONSTRAINT pk_users PRIMARY KEY(user_id)
+	);";
 
-$db = new mysqli( $host , $user , $password , $database );
-//para codificar caracteres latinos usamos la siguiente línea
-msqli_query($db, "SET NAMES 'utf8'");
+$create_usuarios_table=mysqli_query($db, $sql);
 
+if($create_usuarios_table){
+	echo "La tabla users se ha creado correctamente!!";
+}
 ?>
 ```
+Para conectar con la base de datos creamos el sigueinte archivo en sus dos distintas versiones, `mysqli` y `PDO`.
+
+| **includes/connect.php**  |
+|---------------------------|
+```js
+<?php
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="cursophp";
+
+$db = new mysqli( $servername , $username , $password , $dbname );
+//para codificar caracteres latinos usamos la siguiente línea
+msqli_query($db, "SET NAMES 'utf8'");
+?>
+```
+**Nota:** Para conectar con la base de datos PDO usaríamos: 
+| **includes/connect.php**  |
+|---------------------------|
+```js
+try {
+    $db = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    // set the PDO error mode to exception
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+```
+*Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
 
