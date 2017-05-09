@@ -785,7 +785,7 @@ El archivo `install.php` crearía una tabla llamada `users` con los elementos de
 
 | **install.php**  |
 |------------------|
-```js
+```php
 <?php require_once 'includes/connect.php'; 
 $sql ="CREATE TABLE IF NOT EXISTS users(
 	usuario_id int(255) auto_increment not null,
@@ -810,7 +810,7 @@ Para conectar con la base de datos creamos el sigueinte archivo en sus dos disti
 
 | **includes/connect.php**  |
 |---------------------------|
-```js
+```php
 <?php
 $servername="localhost";
 $username="root";
@@ -827,7 +827,7 @@ msqli_query($db, "SET NAMES 'utf8'");
 
 | **includes/connect.php**  |
 |---------------------------|
-```js
+```php
 try {
     $db = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
     // set the PDO error mode to exception
@@ -845,7 +845,7 @@ catch(PDOException $e)
 
 | **install.php**  |
 |------------------|
-```js
+```php
 <?php require_once 'includes/connect.php'; 
 $sql ="CREATE TABLE IF NOT EXISTS users(
 	usuario_id int(255) auto_increment not null,
@@ -887,7 +887,7 @@ Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de
 
 | **index.php**  |
 |----------------|
-```js
+```php
 <?php
 include 'includes/header.php';
 $users=mysqli_query($db, "SELECT*FROM users");
@@ -903,17 +903,20 @@ $users=mysqli_query($db, "SELECT*FROM users");
 include 'includes/footer.php';
 ?>
 ```
+
 *Nota incluyendo el siguiente código podríamos ver el contenido de cada uno de los registros.*
-```js
+
+```php
 <?php 
 //así podríamos ver los registros dentro de user con sus datos
 while ($user=mysqli_fetch_assoc($users)){
 	var_dump($user);
 };?>
 ```
+
 | **index.php**  |
 |----------------|
-```js
+```php
 <?php
 include 'includes/header.php';
 $users=mysqli_query($db, "SELECT*FROM users");
@@ -940,9 +943,10 @@ include 'includes/footer.php';
 ?>
 ```
 **Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
+
 | **index.php**  |
 |----------------|
-```js
+```php
 <?php
 include 'includes/header.php';
 $users=mysqli_query($db, "SELECT*FROM users");
@@ -968,9 +972,10 @@ $users=mysqli_query($db, "SELECT*FROM users");
 include 'includes/footer.php';
 ?>
 ```
+
 | **ver.php**  |
 |----------------|
-```js
+```php
 <?php require_once 'includes/header.php'; ?>
 <?php 
 if(isset($_GET["id"] || !empty("_GET["id"]) || is_numeric($_GET["id"])){
