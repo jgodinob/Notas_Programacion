@@ -719,9 +719,26 @@ echo "Sesión número: ".$_SESSION["numero"];
 | recibir.php  |
 |--------------|
 ```js
-if(isset($_POST)){
-var_dump($_POST);
+<?php 
+//Recibiendo el campo submit sabemos que el formulario se envió
+if(isset($_POST["submit"])){
+	var_dump($_POST);
+	//vemos si llegan o no vacios cada entrada del formulario
+	if(!empty($_POST["name"])){ 	
+		echo $_POST["name"]."<br/>"; 	}	
+	if(!empty($_POST["surname"])){ 	
+		echo $_POST["surname"]."<br/>"; }
+	if(!empty($_POST["bio"])){ 	
+		echo $_POST["bio"]."<br/>"; 	}
+	if(!empty($_POST["email"])){ 	
+		echo $_POST["email"]."<br/>"; 	}
+	if(!empty($_POST["password"])){ 
+	//ciframos la contraseña mediante sha1
+		echo sha1($_POST["password"])."<br/>";}
+	if(!empty($_POST["role"])){ 
+		echo $_POST["role"]."<br/>";}
 }
+?>
 ```
 **Ejercicio 28.** Valida el formulario con las siguientes reglas:
 - Nombre: Solo puede estar formado por letras y tener una longitud máxima de 20 caracteres.
@@ -730,25 +747,52 @@ var_dump($_POST);
 - Email: tiene que ser un email válido.
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
+| recibir.php  |
+|--------------|
 ```js
-function validateEmail($email){
-	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
-		$status = "VALIDO";
-	}else{
-		$status = "NO VALIDO";
-	}
-	
-	return $status;
+<?php
+if(!empty($_POST["name"]) && strlen($_POST["name"])<=20 && !is_numeric($_POST["name"] && !preg_math("/[0-9]/",_POST["name"])){
+	echo $_POST["name"]."<br/>";
 }
-
-$email = "";
-if(isset($_GET["email"])){
-	$email = $_GET["email"];
+if(!empty($_POST["surname"]) && !is_numeric($_POST["surname"] && !preg_math("/[0-9]/",_POST["surname"])){
+	echo $_POST["surname"]."<br/>";
 }
-
-echo validateEmail($email);
+if(!empty($_POST["bio"])){ 	
+	echo $_POST["bio"]."<br/>"; 	
+}
+if(!empty($_POST["email"]) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+	echo $_POST["email"]."<br/>"; 	
+}
+if(!empty($_POST["password"]) && && strlen($_POST["password"])<=6){ 
+//ciframos la contraseña mediante sha1
+	echo sha1($_POST["password"])."<br/>";
+}
+if(!empty($_POST["role"])){ 
+	echo $_POST["role"]."<br/>";
+}
+var_dump($_FILES["image"]);
+if(isser($_FILES["image"]) && !empty($_FILES["image"])){
+	echo "La imagen nos ha llegado";
+}
+?>
 ```
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
+*Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando '''<?php require_once 'connect.php' '''*
+| connect.php  |
+|--------------|
+```js
+<?php
+$host="localhost";
+$user="root";
+$password="";
+$database="cursophp";
+
+$db = new mysqli( $host , $user , $password , $database );
+//para codificar caracteres latinos usamos la siguiente línea
+msqli_query($db, "SET NAMES 'utf8'");
+
+?>
+```
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
 
