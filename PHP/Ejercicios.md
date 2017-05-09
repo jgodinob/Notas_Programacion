@@ -1,5 +1,5 @@
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
-```js
+```php
 $frist = "Variable's content 1"; // String
 $second = 245; // Integer
 echo "FRIST VARIABLE: ".$frist."<br/>";
@@ -8,7 +8,7 @@ echo "SECOND VARIABLE: ".$second."<hr/>";
 ```
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
-```js
+```php
 <?php
 for($i = 1; $i <= 30; $i++){
 	echo "The square of ".$i." is ".($i*$i)."<br/>";
@@ -17,7 +17,7 @@ for($i = 1; $i <= 30; $i++){
 ```
 
 **Ejercicio 3.** Modifica el ejercicio anterior para que muestre al lado de cada cuadrado si es un número par o impar.
-```js
+```php
 for($i = 1; $i <= 30; $i++){
 	$cuadrado = $i*$i;
 	echo "The square of ".$i." is ".$cuadrado;
@@ -32,7 +32,7 @@ for($i = 1; $i <= 30; $i++){
 ```
 
 **Ejercicio 4.1.** Escribe un programa que multiplique los 20 primeros números naturales. Utiliza el bucle While.
-```js
+```php
 <meta charset="utf-8" />
 <?php
 $number = 1;
@@ -49,7 +49,7 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 ```
 
 **Ejercicio 4.2.** Escribe un programa que recoja un número pasado en un parámetro GET por la URL, y lo multiplique por todos los números naturales anteriores a él. Utiliza el bucle While.
-```js
+```php
 <meta charset="utf-8" />
 <?php
 if(isset($_GET["limit"]) && is_numeric($_GET["limit"])){
@@ -72,7 +72,7 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 
 |**index.html**  |
 |----------------|
-```html
+```php
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +88,7 @@ echo "The result of multiplying the first ".$limit." numbers is: ".$number;
 
 |**Ej5.php**   |
 |--------------|
-```js
+```php
 <?php
 function multiply($num1, $num2)
 {
@@ -117,7 +117,7 @@ echo '</div>';
 ```
 
 **Ejercicio 6.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOR para mostrar por pantalla los doce nombres.
-```js
+```php
 <?php
 $months = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
 for($i = 0; $i < count($months); $i++ ){
@@ -126,7 +126,7 @@ for($i = 0; $i < count($months); $i++ ){
 ?>
 ```
 **Ejercicio 7.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOREACH para mostrar por pantalla los doce nombres.
-```js
+```php
 <?php
 $months = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
 foreach ($months as $month) {
@@ -136,7 +136,7 @@ foreach ($months as $month) {
 ```
 
 **Ejercicio 8.1.** Devuelve los divisores de un número introducido mediante la url.
-```js
+```php
 <?php
 if(isset($_GET["number"]) && is_numeric($_GET["number"])){
 	$number = $_GET["number"];
@@ -153,7 +153,7 @@ for( $i = 1; $i < $number; $i++ ){
 ?>
 ```
 **Ejercicio 8.2.** Elabora una función que devuelva un array separado por comas (*,*), menos el último elemento separado por *y*.
-```js
+```php
 <?php
 $numbers=[1, 3, 4, 7, 8, 9];	
 function return_list_elements ($array){
@@ -177,7 +177,7 @@ return_list_elements($number);
 ?>
 ```
 **Ejercicio 8.3.** Elabora una función que devuelva un array usando las funciones creadas en el ejercicio 8.1. y 8.2..
-```js
+```php
 <?php
 if(isset($_GET["number"]) && is_numeric($_GET["number"])){
 	$number = $_GET["number"];
@@ -217,7 +217,7 @@ return_list_elements($array_dividers);
 
 **Ejercicio 8.5.** Escribir un programa que calcule el factorial de 5. El factorial de un número entero N es una operación matemática que consiste en multiplicar todos los factores N x (N-1) x (N-2) x ... x 1.
 Así, el factorial de 5 (escrito como 5!) es igual a: 5! = 5 x 4 x 3 x 2 x 1 = 120
-```js
+```php
 $factorial = 1;
 $number = $_GET["number"];
 for($counter = 1; $counter <= $number; $counter++){
@@ -229,7 +229,7 @@ echo "The factorial of ".$number." is ".$factorial;
 ```
 
 **Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
-```js
+```php
 <?php
 for($i = 1; $i <= 100; $i++){
 	if($i%2 == 0){
@@ -239,7 +239,7 @@ for($i = 1; $i <= 100; $i++){
 ?>
 ```
 **Ejercicio 10.** Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100.
-```js
+```php
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -263,7 +263,7 @@ for($i = 1; $i <= 100; $i++){
 </html>
 ```
 **Ejercicio 11.** Un número es bueno si y solo si la suma de sus divisores sin contarse el mismo da ese número. Programa que calcule si un número es bueno o no.
-```js
+```php
 <?php
 if(isset($_GET["number"]) && is_numeric($_GET["number"])){
 	$number = $_GET["number"];
@@ -331,7 +331,7 @@ for ($i = 1; $i <= 1000; $i++){
 2. Ordenarlo y mostrarlo.
 3. Mostrará su longitud.
 4. Buscar en el vector.
-```js
+```php
 <meta charset="utf-8" />
 <?php
 $numeros = array(30,20,40,50,10,5);
@@ -356,7 +356,7 @@ if(!array_search(11, $numeros)){
 ```
 
 **Ejercicio 13.** Recibe una cadena de texto y conviertela en los distintos formatos de salida (UpperCase, LowerCase, CamelCase, TitleCase)
-```js
+```php
 <?php
 $string= '¿cómo están ustedes?';
 echo mb_strtolower($string)."</br>"; //¿cómo están ustedes?
@@ -368,7 +368,7 @@ echo ucwords($string)."</br>";       //¿cómo Están Ustedes?
 ?>
 ```
 **Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
-```js
+```php
 <?php
 $ip = $_SERVER["REMOTE_ADDR"];
 $browser = $_SERVER["HTTP_USER_AGENT"];
@@ -380,7 +380,7 @@ if(strstr($browser, "Firefox") == true){
 }
 ```
 **Ejercicio 14.** Escribe un programa que añada valores a un array mientras que su longitud sea menor a 100 y después que se muestre la información del array por pantalla.
-```js
+```php
 <?php
 $array=[1,3,"hola",4];
 echo "El array incluye inicialmente: ".var_dump($array)."</br>";
@@ -397,7 +397,7 @@ var_dump($array);
 ?>
 ```
 **Ejercicio 16.** Escribe un programa que compruebe si una variable esta vacía y si está vacía, rellenarla con texto en minúsculas y mostrarlo convertido a mayúsculas en negrita.
-```js
+```php
 <?php
 $string="";
 if ( empty($string)){
@@ -409,7 +409,7 @@ if ( empty($string)){
 ?>
 ```
 **Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea.
-```js
+```php
 <?php
 $data="Hola";
 function data_type($data){
@@ -449,7 +449,7 @@ data_type ($data);
 | Fesa     |Beisbol     |Italiano   |
 
 Recórrelo y muestra la tabla en HTML con el contenido del array.
-```js
+```php
 <?php
 $table= array(
     "Fruits"=>array("Apple","Orange","Watermelon","Strawberry"),
@@ -495,7 +495,7 @@ echo "</table>";
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
 
 **Ejercicio 20.** Utiliza una función de PHP para mostrar la fecha actual por pantalla.
-```js
+```php
 echo "<p>Fecha actual: </p>";
 echo date("d-m-Y");
 ```
@@ -503,7 +503,7 @@ echo date("d-m-Y");
 
 |**index.php**   |
 |----------------|
-```js
+```php
 <?php
 include 'includes/header.php';
 ?>
@@ -514,7 +514,7 @@ include 'includes/footer.php';
 ```
 |**includes/header.php**   |
 |--------------------------|
-```html
+```php
 <?php
 <!DOCTYPE HTML>
 <html>
@@ -527,7 +527,7 @@ include 'includes/footer.php';
 ```
 |**includes/footer.php**   |
 |--------------------------|
-```html
+```php
 <?php
 	<hr/>
 	<footer>
@@ -541,7 +541,7 @@ include 'includes/footer.php';
 
 
 **Ejercicio 22.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
-```js
+```php
 <?php
 function validateEmail($email){
 	if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -559,7 +559,7 @@ echo validateEmail($email);
 ```
 
 **Ejercicio 22.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
-```js
+```php
 <?php
 function validateURL($url){
 	if(!empty($url) && filter_var($url, FILTER_VALIDATE_URL)){
@@ -577,7 +577,7 @@ echo validateURL($url);
 ```
 
 **Ejercicio 23.1.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
-```js
+```php
 <?php
 function tabla($numero){
 	$tabla = "";
@@ -598,7 +598,7 @@ for($i = 1; $i <= 10; $i++){
 ?>
 ```
 **Ejercicio 23.2.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
-```js
+```php
 <?php
 function tabla($numero, $html=null){
 	$tabla = "";
@@ -623,7 +623,7 @@ for($i = 1; $i <= 10; $i++){
 ```
 
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
-```js
+```php
 <?php
 session_start();
 if(!isset($_SESSION["numero"])){
@@ -648,7 +648,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 
 |**includes/header.php**   |
 |--------------------------|
-```html
+```php
 <?php
 <!DOCTYPE HTML>
 <html>
@@ -670,7 +670,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 
 |**includes/footer.php**   |
 |--------------------------|
-```html
+```php
 <?php
 	<hr/>
 	<footer>
