@@ -842,9 +842,72 @@ catch(PDOException $e)
 *Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
+| **install.php**  |
+|------------------|
+```js
+<?php require_once 'includes/connect.php'; 
+$sql ="CREATE TABLE IF NOT EXISTS users(
+	usuario_id int(255) auto_increment not null,
+	name varchar(50),
+	surname varchar(255),
+	bio text,
+	email varchar(255),
+	password varchar(255),
+	role varchar(20),
+	image varchar(255),
+	CONSTRAINT pk_users PRIMARY KEY(user_id)
+);";
+
+$create_usuarios_table=mysqli_query($db, $sql);
+
+$sql="INSERT INTO users VALUES(NULL,'Victor','Robles','Web Developer 1', 'victor@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user1=mysqli_query($db,$sql);
+
+$sql="INSERT INTO users VALUES(NULL,'Antonio','Robles','Web Developer 2', 'antonio@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user2=mysqli_query($db,$sql);
+
+$sql="INSERT INTO users VALUES(NULL,'Manuel','Robles','Web Developer 3', 'Manuel@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user3=mysqli_query($db,$sql);
+
+$sql="INSERT INTO users VALUES(NULL,'David','Robles','Web Developer 4', 'David@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user4=mysqli_query($db,$sql);
+
+if($create_usuarios_table){
+	echo "La tabla users se ha creado correctamente!!";
+}
+?>
+```
+*Nota 1:Puede dar fallo a la hora de incluir el nuevo registro, para ello buscaríamos los datos insertados mediante `var_dump` de la siguiente manera: `$insert_user=mysqli_query($db,$sql);` seguido de `var_dump=($insert_user);`. O imprimiendo `mysqli_error($db)` el cual mediante `echo mysqli_error($db)` mostrará información sobre los errores de sintaxis.*
+
+*Nota 2: Usando `DELETE FROM users WHERE user_id=5;`eliminará el registro con id número 5. En cambio si no indicamos condición eliminará todos los registros. Usando `SELECT * FROM users;` veremos que el registro 5 ya no está disponible.
+Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de la tabla.
 
 **Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
-
+| **index.php**  |
+|----------------|
+```js
+<?php
+include 'includes/redirect.php';
+$users=mysqli_query($db, "SELECT*FROM users");
+?>
+<table class="table">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Email</th>
+		<th>Ver/editar</th>
+<!--
+		<?php 
+		//así podríamos ver los registros dentro de user con sus datos
+		while ($row=mysqli_fetch_assoc($users)){
+			var_dump($row);
+		};?>
+-->
+	</tr>
+<?php
+include 'includes/footer.php';
+?>
+```
 **Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
 
 **Ejercicio 33.** Crea una página de edición del usuario.
