@@ -782,21 +782,22 @@ if(isser($_FILES["image"]) && !empty($_FILES["image"])){
 ```
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
 El archivo `install.php` crearía una tabla llamada `users` con los elementos descritos si esta no existiera previamente.
+
 | **install.php**  |
 |------------------|
 ```js
 <?php require_once 'includes/connect.php'; 
 $sql ="CREATE TABLE IF NOT EXISTS users(
-		usuario_id int(255) auto_increment not null,
-		name varchar(50),
-		surname varchar(255),
-		bio text,
-		email varchar(255),
-		password varchar(255),
-		role varchar(20),
-		image varchar(255),
-		CONSTRAINT pk_users PRIMARY KEY(user_id)
-	);";
+	usuario_id int(255) auto_increment not null,
+	name varchar(50),
+	surname varchar(255),
+	bio text,
+	email varchar(255),
+	password varchar(255),
+	role varchar(20),
+	image varchar(255),
+	CONSTRAINT pk_users PRIMARY KEY(user_id)
+);";
 
 $create_usuarios_table=mysqli_query($db, $sql);
 
@@ -821,7 +822,9 @@ $db = new mysqli( $servername , $username , $password , $dbname );
 msqli_query($db, "SET NAMES 'utf8'");
 ?>
 ```
+
 **Nota:** Para conectar con la base de datos PDO usaríamos: 
+
 | **includes/connect.php**  |
 |---------------------------|
 ```js
