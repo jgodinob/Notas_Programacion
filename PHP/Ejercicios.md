@@ -505,7 +505,7 @@ echo date("d-m-Y");
 |----------------|
 ```js
 <?php
-include 'includes/redirect.php';
+include 'includes/header.php';
 ?>
 <p>Texto del Body en el index </p>
 <?php
@@ -842,6 +842,7 @@ catch(PDOException $e)
 *Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
+
 | **install.php**  |
 |------------------|
 ```js
@@ -883,11 +884,12 @@ if($create_usuarios_table){
 Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de la tabla.
 
 **Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
+
 | **index.php**  |
 |----------------|
 ```js
 <?php
-include 'includes/redirect.php';
+include 'includes/header.php';
 $users=mysqli_query($db, "SELECT*FROM users");
 ?>
 <table class="table">
@@ -896,20 +898,106 @@ $users=mysqli_query($db, "SELECT*FROM users");
 		<th>Apellidos</th>
 		<th>Email</th>
 		<th>Ver/editar</th>
-<!--
-		<?php 
-		//así podríamos ver los registros dentro de user con sus datos
-		while ($row=mysqli_fetch_assoc($users)){
-			var_dump($row);
-		};?>
--->
 	</tr>
 <?php
 include 'includes/footer.php';
 ?>
 ```
+*Nota incluyendo el siguiente código podríamos ver el contenido de cada uno de los registros.*
+```js
+<?php 
+//así podríamos ver los registros dentro de user con sus datos
+while ($user=mysqli_fetch_assoc($users)){
+	var_dump($user);
+};?>
+```
+| **index.php**  |
+|----------------|
+```js
+<?php
+include 'includes/header.php';
+$users=mysqli_query($db, "SELECT*FROM users");
+?>
+<table class="table">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Email</th>
+		<th>Ver/editar</th>
+	</tr>
+	<?php while ($user=mysqli_fetch_assoc($users)){ ?>
+	<tr>
+		<td> <?php $user["name"]; ?> </td>
+		<td> <?php $user["surname"]; ?> </td>
+		<td> <?php $user["email"]; ?> </td>
+		<td>
+			<a href="Ver.php" class="btn btn-success">Ver</a>
+		</td>
+	</tr>
+	<?php	}; ?>
+<?php
+include 'includes/footer.php';
+?>
+```
 **Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
+| **index.php**  |
+|----------------|
+```js
+<?php
+include 'includes/header.php';
+$users=mysqli_query($db, "SELECT*FROM users");
+?>
+<table class="table">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Email</th>
+		<th>Ver/editar</th>
+	</tr>
+	<?php while ($user=mysqli_fetch_assoc($users)){ ?>
+	<tr>
+		<td> <?php $user["name"]; ?> </td>
+		<td> <?php $user["surname"]; ?> </td>
+		<td> <?php $user["email"]; ?> </td>
+		<td>
+			<a href="Ver.php?id=<?php $user["user_id"]?>" class="btn btn-success">Ver</a>
+		</td>
+	</tr>
+	<?php	}; ?>
+<?php
+include 'includes/footer.php';
+?>
+```
+| **ver.php**  |
+|----------------|
+```js
+<?php require_once 'includes/header.php'; ?>
+<?php 
+if(isset($_GET["id"] || !empty("_GET["id"]) || is_numeric($_GET["id"])){
+	header("Location:index.php");
+}
 
+//echo $_GET["id"];
+$id=$_GET["id"];
+$user_query=mysqli_query ($db,"SELECT * FROM users WHERE user_id={$id}");
+//var_dump ($users);
+//var_dump (mysqli_fethc_assoc($user)); //muestra los datos del usuario sin necesidad de recorrer toda la tabla.
+$user=mysqli_fetch_assoc($user_query);
+if(!isset($user["user_id"])|| empty ($user["user_id"])){
+	header("Location:index.php");
+}
+?>
+
+<h3>Usuario:<strong><?php echo $user["name"]." ".$user["surname"];</strong></h3>
+<p><strong>Datos:</strong></p>
+<p> Email: <?php echo $user["emial"];?>	</p>
+<p> Biografía: <?php echo $user["bio"];?> </p>
+<a href="index.php" class="btn btn-success">Volver al listado</a>
+</p> 
+
+<?php require_once 'includes/footer.php'; ?>
+?>
+```
 **Ejercicio 33.** Crea una página de edición del usuario.
 
 **Ejercicio 34.** Haz que cuando creamos o editamos un usuario se puedan subir imágenes y guardarlas en el directorio uploads del servidor.
