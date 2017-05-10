@@ -1010,3 +1010,9 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 **Ejercicio 35.** Crea un login de usuarios.
 
 **Ejercicio 36.** Crea una paginación para el listado de usuarios.
+
+**Ejercicio 37.** Crea una función PHP que realice una búsqueda en la BBDD.
+[webreunidos.es](https://www.webreunidos.es/blog/crear-buscador-php-web-sencillo/)
+
+**Ejercicio 38.** Crear una función que imprima en pdf.
+[FPDF.ORG](http://www.fpdf.org/)
