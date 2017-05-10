@@ -697,7 +697,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 	<label for="bio">Biografia
 		<textarea name="bio" class="form-control">
 	</label>
-		<label for="email">Email:	
+	<label for="email">Email:	
 		<input type="text" name="email" class="form-control"><br/>
 	</label>
 	<label for="image">Foto:
@@ -1004,9 +1004,289 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 ?>
 ```
 **Ejercicio 33.** Crea una página de edición del usuario.
+*Nota: Deberemos recoger los datos que llegan al formulario y hacer `insert` en la base de datos.*
+* El archivo `validate_form.php`comprobará y advertirá cuando los datos introducidos dentro del formulario son incorrectos. Mediante la función `showError` la cual recibirá el nombre del parámetro introducido en el formulario mostraremos el erro adaptado.
+* Para mejorar la aplicación mediante la función `setValueField` mantendremos el valor introducido en el `input`.
+* Posteriormente al usar `require_once 'includes/validate_form.php';` dentro de `crear.php`podremos mostrar en la plantilla creada dichas advertencias de errores. 
 
+|**includes/validate_form.php**  |
+|--------------------------------|
+```php
+<?php 
+//función que mostrará los errores producidos al introducir los datos en el formulario
+function showError($errors, $field){
+	if(isset($errors[$field]) && !empty($errors[$field])){
+		$alert='<div class="alert alert-danger" style="margin-top:5px;">'.$errors[$field].'</div>';
+	}else{
+		$alert='';
+	}
+	return $alert;
+}
+//función guardará el dato introducido en el formulario cuando este no sea valido
+function setValueField($errors, $field, $textarea=false){
+	if (isset($errors) && count($errors) >= 1 && isset($_POST[$field])){
+		if($textarea !=false){
+			echo $_POST[$field];
+		}else{
+			echo "value='{$_POST[$field]}'";
+		}
+	} 
+}
+//VALIDAR FORMULARIO
+$errors=array();
+if(isset($_POST["submit"])){
+	if(!empty($_POST["name"]) && strlen($_POST["name"])<=20 && !is_numeric($_POST["name"] && !preg_math("/[0-9]/",_POST["name"])){
+		$name_Validate=true;
+	}else{
+		$errors["name"] = "El nombre no es válido.";
+		$name_Validate = false ;
+	}
+	if(!empty($_POST["surname"]) && !is_numeric($_POST["surname"] && !preg_math("/[0-9]/",_POST["surname"])){
+		$surname_Validate=true;
+	}else{
+		$errors["surname"] = "El apellido no es válido.";
+		$surname_Validate = false ;
+	}
+	if(!empty($_POST["bio"])){ 	
+		$bio_Validate=true;
+	}else{
+		$errors["bio"] = "La biografía no puede estar vacía.";
+		$bio_Validate = false ;
+	}
+	if(!empty($_POST["email"]) && filter_var($email, FILTER_VALIDATE_EMAIL)){
+		$email_Validate=true;
+	}else{
+		$errors["email"] = "El email no es válido.";
+		$email_Validate = false ;
+	}
+	if(!empty($_POST["password"]) && && strlen($_POST["password"])<=6){ 
+	//ciframos la contraseña mediante sha1
+		$password_Validate=true;
+	}else{
+		$errors["password"] = "El password no es válido.";
+		$password_Validate = false ;
+	}
+	if(isset($_POST["role"] && is_numeric($_POST["role"])){ 
+		$role_Validate=true;
+	}else{
+		$errors["role"] = "El role no es válido.";
+		$role_Validate = false ;
+	}
+	var_dump($_FILES["image"]);
+	if(isser($_FILES["image"]) && !empty($_FILES["image"])){
+		$role_Validate=true;
+	}
+	// Insertar usuario en la BD, la variable $db viene heredada de connect.php que se encuentra en header.php
+	if(count ($errors)==0){
+		$sql="INSERT INTO users VALUES (
+			NULL,
+			'{$_POST["surname"]}',
+			'{$_POST["bio"]}',
+			'{$_POST["email"]}',
+			'".sha1($_POST["password"])."',
+			'{$_POST["role"]}',
+			NULL
+			);";
+		$insert_user=mysqli_query($db, $sql);
+	}else{
+		$insert_user=false;
+	}
+}
+//var_dump($errors);	
+?>
+```
+Requerimos mediante `require_once 'includes/validate_form.php';` el archivo que validará los datos introducidos en el formulario mediante la función `showError`.
+
+|**crear.php**  |
+|---------------|
+```php
+<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/validate_form.php'; ?>
+
+<h2>Crear usuarios</h2>
+
+<?php //mediante este condicional infomaremos del que el usuario se introdujo correctamente.
+	if(isset($_POST["submit"] && count ($errors)==0  && $insert_user != false){ ?>
+		<div class="alert alert-success">El usuario se ha enviado correctamente</div>
+<?php	} ?>
+<form action="crear.php" method="POST" enctype="multipart/form-data">
+	<label for="name">Nombre:	
+		<input type="text" name="name" class="form-control" <?php setValueField($errors, "name")/><br/>
+		<?php echo showError($errors, "name"); ?>
+	</label>
+	<label for="firstname">Apellidos:
+		<input type="text" name="surname" class="form-control"<?php setValueField($errors, "surname")/><br/>
+		<?php echo showError($errors, "surname"); ?>
+	</label>
+	<label for="bio">Biografia
+		<textarea name="bio" class="form-control"<?php setValueField($errors, "bio", true)/><br/>
+		<?php echo showError($errors, "bio"); ?>
+	</label>
+	<label for="email">Email:	
+		<input type="text" name="email" class="form-control"<?php setValueField($errors, "email")/><br/>
+		<?php echo showError($errors, "email"); ?>
+	</label>
+	<label for="image">Foto:
+		<input type="file" name="image" class="form-control"><br/>
+	</label>
+	<label for="password">Password
+		<input type="password" name="password" class="form-control"/><br/>
+		<?php echo showError($errors, "password"); ?>
+	</label>
+	<label for="select">select
+		<select name="role" class="form-control">
+		    <option value="0">Normal</option>
+		    <option value="1">Administrador</option>
+		</select>
+	</label>
+	<br/>
+	<input type="submit" value="Enviar" name="submit" class="btn btn-sucess"/>
+</form>
+<?php require_once 'includes/footer.php'; ?>
+```
+En el header creamos un botón que nos lleve directamente hacia `crear.php`. 
+
+|**includes/header.php**   |
+|--------------------------|
+```php
+<?php
+<!DOCTYPE HTML>
+<html>
+<head lang="es">
+	<meta charset="utf-8" />
+	<title>Web con PHP</title>
+	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+	<script type="text/javascript" src="../assets/components/bootstrap/dist/js/bootstrap.min.js"/>
+	<script type="text/javascript" src="../assets/components/jquery/jquery.min.js"/>
+</head>
+<body>
+	<div class="container">
+	<h1>Web con php</h1>
+	<hr/>
+	</a href="crear.php" class="btn btn-primary">Crear nuevo usuario</a>
+	<hr/>
+	<?php $variable="Contenido";?>
+?>
+```
 **Ejercicio 34.** Haz que cuando creamos o editamos un usuario se puedan subir imágenes y guardarlas en el directorio uploads del servidor.
 
+| **index.php**  |
+|----------------|
+```php
+<?php
+include 'includes/header.php';
+$users=mysqli_query($db, "SELECT*FROM users");
+?>
+<table class="table">
+	<tr>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Email</th>
+		<th>Ver/editar</th>
+	</tr>
+	<?php while ($user=mysqli_fetch_assoc($users)){ ?>
+	<tr>
+		<td> <?php $user["name"]; ?> </td>
+		<td> <?php $user["surname"]; ?> </td>
+		<td> <?php $user["email"]; ?> </td>
+		<td>
+			<a href="Ver.php?id= <?php $user["user_id"]?>" class="btn btn-success">Ver</a>
+			<a href="editar.php?id= <?php $user["user_id"]?>" class="btn btn-warning">Editar</a>			
+		</td>
+	</tr>
+	<?php	}; ?>
+<?php
+include 'includes/footer.php';
+?>
+```
+
+|**editar.php**  |
+|----------------|
+```php
+<?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/validate_form.php'; ?>
+<?php require_once 'includes/ver_bd.php'; ?>
+
+<h2>Crear usuarios</h2>
+
+<?php //mediante este condicional infomaremos del que el usuario se introdujo correctamente.
+	if(isset($_POST["submit"] && count ($errors)==0  && $insert_user != false){ ?>
+		<div class="alert alert-success">El usuario se ha enviado correctamente</div>
+<?php	} ?>
+<form action="crear.php" method="POST" enctype="multipart/form-data">
+	<label for="name">Nombre:	
+		<input type="text" name="name" class="form-control" <?php setValueField($errors, "name")/><br/>
+		<?php echo showError($errors, "name"); ?>
+	</label>
+	<label for="firstname">Apellidos:
+		<input type="text" name="surname" class="form-control"<?php setValueField($errors, "surname")/><br/>
+		<?php echo showError($errors, "surname"); ?>
+	</label>
+	<label for="bio">Biografia
+		<textarea name="bio" class="form-control"<?php setValueField($errors, "bio", true)/><br/>
+		<?php echo showError($errors, "bio"); ?>
+	</label>
+	<label for="email">Email:	
+		<input type="text" name="email" class="form-control"<?php setValueField($errors, "email")/><br/>
+		<?php echo showError($errors, "email"); ?>
+	</label>
+	<label for="image">Foto:
+		<input type="file" name="image" class="form-control"><br/>
+	</label>
+	<label for="password">Password
+		<input type="password" name="password" class="form-control"/><br/>
+		<?php echo showError($errors, "password"); ?>
+	</label>
+	<label for="select">select
+		<select name="role" class="form-control">
+		    <option value="0">Normal</option>
+		    <option value="1">Administrador</option>
+		</select>
+	</label>
+	<br/>
+	<input type="submit" value="Enviar" name="submit" class="btn btn-sucess"/>
+</form>
+<?php require_once 'includes/footer.php'; ?>
+```
+
+| **includes/ver_bd.php**  |
+|----------------|
+```php
+<?php require_once 'includes/header.php'; ?>
+<?php 
+//CONSEGUIR USUARIO
+if(isset($_GET["id"] || !empty("_GET["id"]) || is_numeric($_GET["id"])){
+	header("Location:index.php");
+}
+
+//echo $_GET["id"];
+$id=$_GET["id"];
+$user_query=mysqli_query ($db,"SELECT * FROM users WHERE user_id={$id}");
+//var_dump ($users);
+//var_dump (mysqli_fethc_assoc($user)); //muestra los datos del usuario sin necesidad de recorrer toda la tabla.
+$user=mysqli_fetch_assoc($user_query);
+
+if(!isset($user["user_id"])|| empty ($user["user_id"])){
+	header("Location:index.php");
+}
+?>
+```
+
+| **ver.php**  |
+|--------------|
+```php
+<?php require_once 'includes/ver_bd.php'; ?>
+<h3>Usuario:<strong><?php echo $user["name"]." ".$user["surname"];</strong></h3>
+<p><strong>Datos:</strong></p>
+<p> Email: <?php echo $user["emial"];?>	</p>
+<p> Biografía: <?php echo $user["bio"];?> </p>
+<a href="index.php" class="btn btn-success">Volver al listado</a>
+</p> 
+
+<?php require_once 'includes/footer.php'; ?>
+?>
+```
 **Ejercicio 35.** Crea un login de usuarios.
 
 **Ejercicio 36.** Crea una paginación para el listado de usuarios.
