@@ -2114,6 +2114,42 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 
 **Ejercicio 36.** Crea una paginación para el listado de usuarios.
 
+BASES DE DATOS: MySQLi y PHP
+============================
+
+Trabajando con Varias Tablas
+----------------------------
+Es habitual que queramos acceder a datos que se encuentran en más de una tabla y mostrar información mezclada de todas ellas como resultado de una consulta.
+Vamos a partir de un ejemplo práctico: Tenemos una base de datos con dos tablas Una, llamada Clientes, recopila información personal de mis clientes....
+La otra, llamada pedidos, recopila los pedidos efectuados por cada uno de esos clientes. 
+Hay un campo que relaciona ambas tablas. El campo Id de la Tabla Clientes tiene un homólogo en la tabla Pedidos, IdCliente, que nos permite identificar quien ha hecho los pedidos. 
+El campo que relaciona ambas tablas debe contener la misma clase de datos, las dos de tipo texto, de tipo fecha etc... Los campos numéricos deben ser de tipos similares.
+Podemos realizar consultas que realicen combinaciones de campos de tablas diferentes.
+Imaginemos que deseamos ver en una consulta los nombres de nuestros clientes (guardados en la tabla clientes) y los conceptos y precios de los productos que han adquirido (guardados en la tabla Pedidos)
+* Tras el `SELECT`, indicando los campos que vamos a usar en nuestra consulta.
+* Si el nombre de algún campo está presente en las dos tablas, hay que concretar a cual pertenece el que vamos a usar
+* Después especificaremos Las tablas relacionadas en la cláusula `FROM`,
+* Finalmente, tendremos que hacer coincidir los valores que relacionan las columnas de las tablas en la claúsula `WHERE`
+Veamos el ejemplo en código:
+```php
+SELECT concepto, precio, nombre, clientes.idcliente
+FROM pedidos, clientes
+WHERE clientes.idcliente = pedidos.idcliente
+```
+Por supuesto, podemos agregar a este `WHERE` todos los filtros que nos apetezca, como hemos visto en temas anteriores
+Podemos abreviar un poco este código. Podemos otorgar un alias a cada tabla para no tener que escribir su nombre completo cada vez que necesitamos usarlas. Veamos como:
+```php
+SELECT concepto, precio, nombre, C.idcliente
+FROM pedidos P, clientes C
+WHERE C.idcliente = P.idcliente
+```
+Una forma más eficiente de cara a la programación es realizar estas consultas empleando la instrucción `INNER JOIN`.
+```php
+SELECT concepto, precio, nombre, clientes.idcliente
+FROM pedidos INNER JOIN clientes
+WHERE pedidos.idcliente = clientes.idcliente
+```
+
 **Ejercicio 37.** Crea una función PHP que realice una búsqueda en la BBDD.
 [webreunidos.es](https://www.webreunidos.es/blog/crear-buscador-php-web-sencillo/)
 
