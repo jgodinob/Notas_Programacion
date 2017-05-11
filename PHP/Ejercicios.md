@@ -1,8 +1,8 @@
 1.Estructura y Características
 ==============================
 
-PHP y HTML
-----------
+1.1.PHP y HTML
+---------------
 PHP es un lenguaje cuya función básica es la de **producir HTML**, que no deja de ser el lenguaje en el que realiza las páginas web. Sin embargo, como PHP es un lenguaje de programación, gracias a él tenemos la capacidad de analizar las diferentes situaciones (entrada del usuario, datos contenidos en una base de datos) y decidir producir código HTML condicional sobre los resultados del procesado.
 El código PHP que incluimos en nuestra página debe estar **entre etiqueta de apertura y de cierre** adecuado, que son los siguientes:
 ```php
@@ -51,8 +51,8 @@ Este es el código que resuelve el ejercicio:
 </html>
 ```
 
-LOS CARACTERES DDE ESCAPE
--------------------------
+1.2.Los Caractéres de Escape
+-----------------------------
 Los datos se envía al navegador que sigue al comando echo se pueden encerrar entre paréntesis. y la cadena puede usar comillas simples (`''` ) o dobles (`""` ). Hay que tener en cuenta también que el comando `<br />` de HTML no generará un salto de línea en el código PHP (aunque si en el navegador, de la forma clásica). Aquí podemos utilizar el carácter de escape `/n`. Veamos un ejemplo práctico:
 ```php
 <?php
@@ -95,8 +95,8 @@ También es posible hacerloo con la etiqueta `<script language = "php"> ... </sc
 </html>
 ```
 
-Comentarios en PHP
-------------------
+1.3.Comentarios en PHP
+----------------------
 
 En PHP, como en otros lenguajes de programación, es posible **insertar comentarios** en el código. Los comentarios desempeñan un papel importante en esta fase de mantenimiento del código, ya que pueden facilitar en gran medida la comprensión de los pasajes aparentemente oscuros. Aunque hay varias formas de hacerlos, la notación más frecuente para los comentarios de una sola línea son aquellos que van precedidos por dos barras:
 ```php
@@ -146,7 +146,7 @@ Si deseamos recurrir a los comentarios de varias líneas, la notcación sería l
 2.VARIABLES
 ============
 
-Concepto de Variables
+2.1.Concepto de Variables
 ---------------------
 Las variables son componentes fundamentales de cualquier lenguaje de programación, ya que nos permite tratar los datos de nuestro programa sin conocer a priori cuál será su valor. Podemos imaginar una variable como una especie de **contenedor en el que se almacena el valor que nos interesa**, y que puede cambiar cuando sea necesario.
 En PHP podemos elegir el nombre de las variables utilizando **letras, números y el carácter de subrayado o el guión bajo ( _ )**. El primer carácter del nombre debe, sin embargo, ser una letra o un guión bajo (no un número).
@@ -179,8 +179,8 @@ echo "SECOND VARIABLE: ".$second."<hr/>";
 ?>
 ```
 
-Variables Dinámicas
--------------------
+2.2.Variables Dinámicas
+-----------------------
 A veces es conveniente tener nombres de **variables dinámicas**. Dicho de otro modo, son nombres de variables que se pueden establecer y usar de forma variable. Una variable normal se establece con una sentencia como:
 ```php
 <?php
@@ -228,6 +228,247 @@ produce el mismo resultado que:
 
 3.TIPOS DE DATOS
 =================
+
+3.1.Introducción a los tipos de datos
+-------------------------------------
+
+Una variable puede contener diferentes tipos de valores, cada uno de los cuales tiene un comportamiento diferente y utilidad. Vamos a verlo en el siguiente tema. 
+
+Boleanos
+--------
+Los tipos de datos booleanos se utilizan para indicar los valores `true` o `false` (verdadero o falso) en expresiones lógicas. El tipo Boolean se asocia a variables que contienen el resultado de una expresión booleana o los valores verdaderos y falsos. Veamos un ejemplo rápido:
+```php
+<?php
+	$verdadero = true;
+	$falso = false;
+?>
+```
+**Ejemplo**
+```php
+html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$alta = true;
+			$pagado = false;
+		?>
+	</body>
+</html>
+```
+
+Entero
+------
+Otro tipo de datos es el número entero, positivo o negativo, cuyo valor del máximo (absoluto) puede variar dependiendo del sistema operativo que se ejecuta en PHP, pero que por lo general es, aproximadamente 2 mil millones (2 a la potencia 31a). Veamos ejemplos de algunas variables que definen números enteros:
+```php
+<?php
+	$int1 = 129;
+	$int2 = -715;
+	$int3 = 5 * 8; // $int3 vale 40
+?>
+```
+
+**Ejemplo** 
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$ent1 = 129;
+			$ent2 = -129;
+			$ent3 = 8*5;
+
+			$dec = 4.153;
+
+			$num1 = 332e5; // 3.2 * 10^5 -> 320.000
+			$num2 = 4E-8;  // 4*10^8 -> 4/100.000.000 = 0.00000004
+		?>
+	</body>
+</html>
+```
+
+**Ejercicio 2.1.** Define una variable de los siguientes tipos: integer, double, string y boolean. 
+A continuación, imprímelas en la página, una por línea
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 		// Definimos las variables
+ 			$edad = 30;
+ 			$peso = 75.50;
+ 			$nombre = "Juan";
+ 			$socio = true;
+ 		// Las imprimimos en pantalla
+ 			echo "Variable integer:";
+ 			echo $edad;
+ 			echo "<br>";
+ 			echo "Variable double:";
+ 			echo $peso;
+ 			echo "<br>";
+ 			echo "Variable string:";
+ 			echo $nombre;
+ 			echo "<br>";
+ 			echo "Variable boolean:";
+ 			echo $socio;
+ 		?>
+ 	</body>
+</html>
+```
+
+Coma Flotante
+-------------
+Este tipo de datos es un número decimal (a veces nos referiremos a él como *"doble"* o *"real"*). Para separar los decimales no usaremos la coma, si no el punto. Esta es la sintaxis que usaremos:
+```php
+<?php
+	$numero1 = 4.153; // 4,153
+	$numero2 = 3.2e5; // 3,2 * 10^5, es decir, 320.000
+	$numero3 = 4E-8; // 4 * 10^-8, es decir, 4/100.000.000 = 0,00000004
+?>
+```
+
+**Ejercicio 2.2.**En primer lugar definiremos tres variables con números enteros. A continuación, crearemos una cadena en la que incorporaremos estas tres variables, por ejemplo, ("Las notas del examen han sido...").
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 		// Variables
+ 			$nota1 = 10;
+ 			$nota2 = 7;
+ 			$nota3 = 8;
+ 		// Cadena a la que incorporamos las variables
+ 			echo "Las notas del examen han sido $nota1, $nota2 y $nota3";
+ 		?>
+ 	</body>
+</html>
+```
+
+Cadena
+------
+Una cadena es **cualquier conjunto de caracteres**, sin limitación normalmente, contenida dentro de un par de comillas dobles o simples. Las cadenas delimitadas por comillas simples son la forma más simple. Este es un ejemplo: 
+```php
+<?php
+	$frase = 'Ana dijo: "Hola, pero nadie respondió"';
+	echo $frase;
+?>
+```
+Las comillas dobles nos permiten usar cadenas de una manera más sofisticada, de manera que si en la cadena delimitada por comillas dobles, PHP reconoce un nombre de variable, lo reemplaza por el valor de la variable. Veamos algunos ejemplos:
+```php
+<?php
+	$nome = 'Ana';
+	echo "$nome es simpatica... a veces";
+	// imprime: Ana es simpatica... a veces
+	echo '$nome es simpatica... a veces';
+	// imprime: $nome es simpatica... a veces
+	echo "{$nome} es simpatica... a veces";
+	// sintaxis alternativa, con el mismo efecto que la primera
+?>
+```
+Debes tener en cuenta un par de reglas muy importantes cuando se utilizan cadenas delimitadas por **comillas simples o dobles**: Debido a que puede ocurrir que una cadena debe contener en su interior un apóstrofe o un par de comillas, necesitamos un sistema para que sea claro para PHP delimitar que carácter es parte de la cadena y cual su delimitador. En este caso utilizamos el llamado "carácter de escape", es decir, la barra invertida. He aquí algunos ejemplos en italiano, donde usaremos apóstrofes:
+```php
+<?php
+	echo "Torniamo un'altra volta"; // imprime: Torniamo un'altra volta
+	echo 'Torniamo un'altra volta'; // Provoca un error
+	echo 'Pedro dijo "Adios" y se marchó';
+	// imprime: Pedro dijo "Adios" y se marchó
+	echo "Pedro dijo "Adios" y se marchó"; // Provoca un error
+?>
+```
+A partir de estos ejemplos podemos ver que la barra invertida debe ser utilizado como un carácter de escape en la cadena cuando queremos incluir el mismo tipo de carácter que delimita.
+
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$dia = 15;
+			$hoy = "Hoy es el día $dia <br/>";
+			$hoy2 = 'Hoy es el día $dia <br/>';
+
+			echo $hoy;
+			echo $hoy2;
+		?>
+	</body>
+</html>
+```
+
+**Ejercicio 3.1.** Vamos a definir dos variables, una con un nombre y otra con una edad y los insertaremos en la frase "Mi nombre es ____ y tengo ____ años"
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			$nombre = "Juan";
+ 			$edad = "25";
+ 			echo 'Mi nombre es '.$nombre.' y tengo '.$edad.' años.';
+ 		?>
+ 	</body>
+</html>
+```
+
+Matrices
+--------
+Podemos considerar una matriz como una variable compleja, que **contiene una serie de valores**, cada uno de los cuales se caracteriza por una clave, o índice que lo identifica de manera única. Veamos un primer ejemplo, que muestra la definición de un conjunto compuesto por cinco valores:
+```php
+$color = array('blanco', 'negro', 'azul', 'verde', 'rojo');
+```
+Cada uno de los cinco colores se caracteriza por un **número de índice**, que PHP asigna automáticamente a partir de 0 para recuperar un valor particular de la variable que contiene la matriz. Así haríamos referencia a ellos:
+```php
+echo $color[1]; // imprime 'negro'
+echo $color[4]; // imprime 'rojo'
+```
+Por supuesto, veremos las matrices (o **arrays**) en profundidad en un futuro tema.
+
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$color = array ('blanco','rojo','azul','verde','amarillo');
+
+			echo $color[1];
+			echo '<br/>';
+			echo $color[3];
+		?>
+	</body>
+</html>
+```
+
+-----------------------------------------------------------
+
+4.HACIENDO CÁLCULOS EN PHP: EXPRESIONES ARITMÉTICAS Y OPERADORES
+================================================================
+
+4.1.Introducción a los operadores
+-------------------------------------
+
+U
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
 ```php
