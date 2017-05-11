@@ -2,12 +2,30 @@ TypeScript - Introducción
 =========================
 INDICE
 ------
-1. [Estructura y Características](#1estructura-y-características)
-	1. [PHP y HTML](#1.1.PHP-y-HTML)
+1. [ESTRUCTURA Y CARACTERÍSTICAS](#1estructura-y-características)
+	1. [PHP y HTML](#11php-y-html)
+	2. [Los Caractéres de Escape](#12los-caractéres-de-escape)
+	3. [Comentarios en PHP](#13comentarios-en-php)
+2. [VARIABLES](#2variables)
+	1. [Concepto de Variables](#21concepto-de-variables)
+	2. [Variables Dinámicas](#22variables-dinámicas)
+3. [Tipos de Datos](#3tipos-de-datos)
+	1. [Introducción a los tipos de datos](#31introducción-a-los-tipos-de-datos)
+	2. [Boleanos](#boleanos)
+	3. [Entero](#entero)
+	4. [Coma Flotante](#coma-flotante)
+	5. [Cadena](#cadena)
+	6. [Matrices](#matrices)
+4. [HACIENDO CÁLCULOS EN PHP: EXPRESIONES ARITMÉTICAS Y OPERADORES](#4haciendo-cÁlculos-en-php-expresiones-aritmÉticas-y-operadores)
+	1. [Introducción a los operadores](#41introducción-a-los-operadores)
+	2. [Operadores de asignación](#42operadores-de-asignación)
+	3. [Operadores para concatenar cadenas](#43operadores-para-concatenar-cadenas)
+	4. [Operadores aritméticos](#44operadores-aritméticos)
+	5. [#45incremento-y-decremento](Incremento y decremento)
 	
 ----------------------------------
 
-1.Estructura y Características
+1.ESTRUCTURA Y CARACTERÍSTICAS
 ==============================
 
 1.1.PHP y HTML
