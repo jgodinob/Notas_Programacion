@@ -1,0 +1,330 @@
+PHP - Introducción
+=========================
+INDICE
+------
+4. [HACIENDO CÁLCULOS EN PHP: EXPRESIONES ARITMÉTICAS Y OPERADORES](#4haciendo-cÁlculos-en-php-expresiones-aritmÉticas-y-operadores)
+	1. [Introducción a los operadores](#41introducción-a-los-operadores)
+	2. [Operadores de asignación](#42operadores-de-asignación)
+	3. [Operadores para concatenar cadenas](#43operadores-para-concatenar-cadenas)
+	4. [Operadores aritméticos](#44operadores-aritméticos)
+	5. [Incremento y decremento](#45incremento-y-decremento)
+	
+----------------------------------
+
+4.HACIENDO CÁLCULOS EN PHP: EXPRESIONES ARITMÉTICAS Y OPERADORES
+================================================================
+
+4.1.Introducción a los operadores
+---------------------------------
+Los operadores son otro de los elementos básicos de cualquier lenguaje de programación, ya que nos permiten no sólo para realizar las operaciones aritméticas tradicionales, sino además, **manipular los contenidos de nuestras variables**. El operador más clásico y conocido es el de **asignación**.
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.2.Operadores de asignación
+----------------------------
+Un ejemplo de operador de asignación lo tendríamos en la expresión `$nombre = "Juan";` 
+El símbolo `=` se utiliza para asignar a la variable `$nombre` el valor `'Juan'`. En general, podemos decir que con el operador de asignación tomamos lo que está a la derecha del signo del signo de igual y le asignarmos el valor que lo sigue. No solo trabajamos con valores. También es posible asignar a una variable otra variable:
+```php
+$a = 5;
+$b = $a;
+```
+Con la primera declaración asignamos a `a$` el valor `5`, y con el segundo asignamos a `$b` el mismo valor que tenga `$a`.
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 4;
+			$b = $a + 5;
+			$b = ($a = 4);
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 3;
+			$b += 5;
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 3;
+			$b -= 7;
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$b = "Pedro ";
+			$b .= "Pérez";  // "Pedro Pérez"
+		?>
+	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.3.Operadores para concatenar cadenas
+--------------------------------------
+Dentro de los operadores que se emplean para trabajar con cadenas de caracteres, uno de los más comunes es elpunto, que se emplea para concatenar, unir cadenas.
+```php
+$nombre = "Juan";
+$cadena = "Hola ".$nombre; // $cadena equivale a 'Hola Juan'
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.4.Operadores aritméticos
+--------------------------
+Otros operadores muy fáciles de entender son los que permiten realizar operaciones aritméticas con los datos: **suma, resta, división, multiplicación o módulo**.
+```php
+	$a = 3 + 7; // suma
+	$b = 5 - 2; // resta
+	$c = 9 * 6; // multiplicación
+	$d = 8 / 2; // divisioón
+	$e = 7 % 4; // modulo (el módulo es el resto de la división entera, en este caso 3)
+```
+Con el operador de asignación también puede usar una variable para hacer un cálculo cuyo resultado debe ser asignado a la variable. Por ejemplo, supongamos que tenemos una variable a la que queremos aumentar el valor:
+```php
+	$a = $a + 10; // el valor de $a aumenta en 10
+```
+Con esta instrucción, se realiza el cálculo, que está a la derecha del signo `=` y el resultado se almacena en la variable que se muestra a la izquierda.
+Resultados como los que hemos visto también se puede lograr con los operadores de asignación combinados, que nos permiten hacer el código más compacto:
+```php
+	$x += 4; // incrementa $x en 4 (equivale a $x = $x + 4)
+	$x -= 3; // decrementa $x en 3 (equivale a $x = $x - 3)
+	$x .= $a;
+// el valor de la cadena $a se concatena a $x (equivale a $x = $x . $a)
+	$x /= 5; // equivale a $x = $x / 5
+	$x *= 4; // equivale a $x = $x * 4
+	$x %= 2; // equivale a $x = $x % 2
+```
+De esta manera, le decimos a PHP que queremos asignar a la variable especificada a la izquierda el resultado de la operación que está delante del signo igual y el valor especificado a la derecha.
+
+**Ejemplo - Operadores aritméticos**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 5;
+			$b = 9;
+
+			echo "Suma: ";
+			echo $a + $b;
+
+			echo "<br/>Resta: ";
+			echo $a - $b;
+
+			echo "<br/>Multiplicación: ";
+			echo $a * $b;
+
+			echo "<br/>División: ";
+			echo $a / $b;
+
+			echo "<br/>Módulo: ";
+			echo $a % $b;
+			
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores aritméticos**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 4;
+			$b = 5;
+			$c = 3;
+
+			echo $a-$b*$c;
+			echo '<br/>';
+			echo ($a-$b)*$c;
+
+		?>
+	</body>
+</html>
+```
+**Ejercicio 4.1.** Vamos a crear una función que calcule el 25% de 325 y lo muestre en pantalla.
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			$porcentaje = (25 * 325) / 100;
+ 			echo 'El porcentaje 25% de 325 es: '.$porcentaje;
+ 		?>
+ 	</body>
+</html>
+```
+
+**Ejercicio 4.2.** Calcularemos el IVA del 21%de un producto que vale 43.90 y lo mostraremos por pantalla
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			$iva = (21 * 43.90) / 100;
+ 			echo 'El IVA del producto de 43,90 es: '.$iva;
+ 		?>
+ 	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.5.Incremento y decremento
+---------------------------
+Si necesitas aumentar y disminuir una variable en una unidad, una buena solución es usar los operadores de incremento y decremento:
+```php
+	$a++; // incrementa en 1
+	++$a; // incrementa en 1
+	$a--; // decrementa en 1
+	--$a; // decrementa en 1
+```
+La diferencia entre el prefijo y posponer el incremento o decremento es crucial cuando se utilizan estos operadores en expresiones, como ya veremos.
+
+**Ejemplo - Incremento y decremento**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 15;
+			$b = 15;
+
+			echo --$a;
+			echo '<br/>';
+			echo $b--;
+			echo '<br/>';
+			echo $b;
+		?>
+	</body>
+</html>
+```
+**Ejemplo - Incremento y decremento**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 15;
+			$b = 15;
+
+			echo ++$a;
+			echo '<br/>';
+			echo $b++;
+			echo '<br/>';
+			echo $b;
+		?>
+	</body>
+</html>
+```
+
+**Ejercicio 5.** Vamos a definir dos variables numéricas enteras, $a y $b. Asígnales el valor que quieras. Realiza los cálculos y muestra en pantalla su suma, su resta, su multiplicación y su división. A continuación, incrementa las dos variables en una unidad y muestra en pantalla el resultado.
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+	<body>
+ 		<?php
+ 		// Definimos las variables
+ 			$a = 8;
+ 			$b = 3;
+ 		// Suma, resta, multiplicación y división
+ 			echo $a + $b, "<br>";
+ 			echo $a - $b, "<br>";
+ 			echo $a * $b, "<br>";
+ 			echo $a / $b, "<br>";
+ 		// Incrementamos y mostramos las variables
+ 			$a++ ;
+ 			echo $a,"<br>";
+ 			$b++;
+ 			echo $b,"<br>";
+ 		?>
+ 	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
