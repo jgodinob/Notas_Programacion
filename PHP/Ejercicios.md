@@ -51,6 +51,10 @@ Este es el código que resuelve el ejercicio:
 </html>
 ```
 
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
 1.2.Los Caractéres de Escape
 -----------------------------
 Los datos se envía al navegador que sigue al comando echo se pueden encerrar entre paréntesis. y la cadena puede usar comillas simples (`''` ) o dobles (`""` ). Hay que tener en cuenta también que el comando `<br />` de HTML no generará un salto de línea en el código PHP (aunque si en el navegador, de la forma clásica). Aquí podemos utilizar el carácter de escape `/n`. Veamos un ejemplo práctico:
@@ -73,7 +77,8 @@ tercera linea
 ```
 Hay que tener en cuenta también que al final de cada declaración PHP ponemos un punto y coma (;): Se espera que que el punto y coma cierre cada afirmación de forma obligatoria en casi todas las ocasiones. No hacerlo provocará un error.
 Hemos visto que los bloques de código en PHP se marcan con las etiquetas `<?php ... ?>`.
-También es posible hacerloo con la etiqueta `<script language = "php"> ... </script>` o incluso simplificando la primera que hemos visto: `<? ... ?>`, siempre y cuando en el servidor no se hayan desactivado las etiquetas cortas. El archivo php.ini de nuestro servidor guarda esta configuración. Debido a esta causa, es una buena práctica usar siempre la primera de las estructuras que te hemos mencionado
+También es posible hacerloo con la etiqueta `<script language = "php"> ... </script>` o incluso simplificando la primera que hemos visto: `<? ... ?>`, siempre y cuando en el servidor no se hayan desactivado las etiquetas cortas. El archivo php.ini de nuestro servidor guarda esta configuración. Debido a esta causa, es una buena práctica usar siempre la primera de las estructuras que te hemos mencionado.
+
 **Ejemplo**
 ```php
 <html lang="es">
@@ -95,6 +100,10 @@ También es posible hacerloo con la etiqueta `<script language = "php"> ... </sc
 </html>
 ```
 
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
 1.3.Comentarios en PHP
 ----------------------
 
@@ -115,6 +124,7 @@ Si deseamos recurrir a los comentarios de varias líneas, la notcación sería l
  	* /
 ?>
 ```
+
 **Ejemplo**
 ```php
 <html lang="es">
@@ -141,7 +151,10 @@ Si deseamos recurrir a los comentarios de varias líneas, la notcación sería l
 	</body>
 </html>
 ```
------------------------------------------------------------
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
 
 2.VARIABLES
 ============
@@ -179,6 +192,10 @@ echo "SECOND VARIABLE: ".$second."<hr/>";
 ?>
 ```
 
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
 2.2.Variables Dinámicas
 -----------------------
 A veces es conveniente tener nombres de **variables dinámicas**. Dicho de otro modo, son nombres de variables que se pueden establecer y usar de forma variable. Una variable normal se establece con una sentencia como:
@@ -205,6 +222,7 @@ produce el mismo resultado que:
 	echo "$a $hola";
 ?>
 ```
+
 **Ejemplo**
 ```php
 <html lang="es">
@@ -224,7 +242,10 @@ produce el mismo resultado que:
 	</body>
 </html>
 ```
------------------------------------------------------------
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
 
 3.TIPOS DE DATOS
 =================
@@ -410,7 +431,7 @@ A partir de estos ejemplos podemos ver que la barra invertida debe ser utilizado
 </html>
 ```
 
-**Ejercicio 3.1.** Vamos a definir dos variables, una con un nombre y otra con una edad y los insertaremos en la frase "Mi nombre es ____ y tengo ____ años"
+**Ejercicio 3.** Vamos a definir dos variables, una con un nombre y otra con una edad y los insertaremos en la frase "Mi nombre es ____ y tengo ____ años"
 ```php
 <!DOCTYPE html>
 <html>
@@ -460,15 +481,327 @@ Por supuesto, veremos las matrices (o **arrays**) en profundidad en un futuro te
 </html>
 ```
 
------------------------------------------------------------
+**[Regresar al índice](#indice)**
+
+----------------------------------
 
 4.HACIENDO CÁLCULOS EN PHP: EXPRESIONES ARITMÉTICAS Y OPERADORES
 ================================================================
 
 4.1.Introducción a los operadores
--------------------------------------
+---------------------------------
+Los operadores son otro de los elementos básicos de cualquier lenguaje de programación, ya que nos permiten no sólo para realizar las operaciones aritméticas tradicionales, sino además, **manipular los contenidos de nuestras variables**. El operador más clásico y conocido es el de **asignación**.
 
-U
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.2.Operadores de asignación
+----------------------------
+Un ejemplo de operador de asignación lo tendríamos en la expresión `$nombre = "Juan";` 
+El símbolo `=` se utiliza para asignar a la variable `$nombre` el valor `'Juan'`. En general, podemos decir que con el operador de asignación tomamos lo que está a la derecha del signo del signo de igual y le asignarmos el valor que lo sigue. No solo trabajamos con valores. También es posible asignar a una variable otra variable:
+```php
+$a = 5;
+$b = $a;
+```
+Con la primera declaración asignamos a `a$` el valor `5`, y con el segundo asignamos a `$b` el mismo valor que tenga `$a`.
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 4;
+			$b = $a + 5;
+			$b = ($a = 4);
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 3;
+			$b += 5;
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$a = 3;
+			$b -= 7;
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores de asignación**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+			$b = "Pedro ";
+			$b .= "Pérez";  // "Pedro Pérez"
+		?>
+	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.3.Operadores para concatenar cadenas
+--------------------------------------
+Dentro de los operadores que se emplean para trabajar con cadenas de caracteres, uno de los más comunes es elpunto, que se emplea para concatenar, unir cadenas.
+```php
+$nombre = "Juan";
+$cadena = "Hola ".$nombre; // $cadena equivale a 'Hola Juan'
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.4.Operadores aritméticos
+--------------------------
+Otros operadores muy fáciles de entender son los que permiten realizar operaciones aritméticas con los datos: **suma, resta, división, multiplicación o módulo**.
+```php
+	$a = 3 + 7; // suma
+	$b = 5 - 2; // resta
+	$c = 9 * 6; // multiplicación
+	$d = 8 / 2; // divisioón
+	$e = 7 % 4; // modulo (el módulo es el resto de la división entera, en este caso 3)
+```
+Con el operador de asignación también puede usar una variable para hacer un cálculo cuyo resultado debe ser asignado a la variable. Por ejemplo, supongamos que tenemos una variable a la que queremos aumentar el valor:
+```php
+	$a = $a + 10; // el valor de $a aumenta en 10
+```
+Con esta instrucción, se realiza el cálculo, que está a la derecha del signo `=` y el resultado se almacena en la variable que se muestra a la izquierda.
+Resultados como los que hemos visto también se puede lograr con los operadores de asignación combinados, que nos permiten hacer el código más compacto:
+```php
+	$x += 4; // incrementa $x en 4 (equivale a $x = $x + 4)
+	$x -= 3; // decrementa $x en 3 (equivale a $x = $x - 3)
+	$x .= $a;
+// el valor de la cadena $a se concatena a $x (equivale a $x = $x . $a)
+	$x /= 5; // equivale a $x = $x / 5
+	$x *= 4; // equivale a $x = $x * 4
+	$x %= 2; // equivale a $x = $x % 2
+```
+De esta manera, le decimos a PHP que queremos asignar a la variable especificada a la izquierda el resultado de la operación que está delante del signo igual y el valor especificado a la derecha.
+
+**Ejemplo - Operadores aritméticos**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 5;
+			$b = 9;
+
+			echo "Suma: ";
+			echo $a + $b;
+
+			echo "<br/>Resta: ";
+			echo $a - $b;
+
+			echo "<br/>Multiplicación: ";
+			echo $a * $b;
+
+			echo "<br/>División: ";
+			echo $a / $b;
+
+			echo "<br/>Módulo: ";
+			echo $a % $b;
+			
+		?>
+	</body>
+</html>
+```
+
+**Ejemplo - Operadores aritméticos**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 4;
+			$b = 5;
+			$c = 3;
+
+			echo $a-$b*$c;
+			echo '<br/>';
+			echo ($a-$b)*$c;
+
+		?>
+	</body>
+</html>
+```
+**Ejercicio 4.1.** Vamos a crear una función que calcule el 25% de 325 y lo muestre en pantalla.
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			$porcentaje = (25 * 325) / 100;
+ 			echo 'El porcentaje 25% de 325 es: '.$porcentaje;
+ 		?>
+ 	</body>
+</html>
+```
+
+**Ejercicio 4.2.** Calcularemos el IVA del 21%de un producto que vale 43.90 y lo mostraremos por pantalla
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			$iva = (21 * 43.90) / 100;
+ 			echo 'El IVA del producto de 43,90 es: '.$iva;
+ 		?>
+ 	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+4.5.Incremento y decremento
+---------------------------
+Si necesitas aumentar y disminuir una variable en una unidad, una buena solución es usar los operadores de incremento y decremento:
+```php
+	$a++; // incrementa en 1
+	++$a; // incrementa en 1
+	$a--; // decrementa en 1
+	--$a; // decrementa en 1
+```
+La diferencia entre el prefijo y posponer el incremento o decremento es crucial cuando se utilizan estos operadores en expresiones, como ya veremos.
+
+**Ejemplo - Incremento y decremento**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 15;
+			$b = 15;
+
+			echo --$a;
+			echo '<br/>';
+			echo $b--;
+			echo '<br/>';
+			echo $b;
+		?>
+	</body>
+</html>
+```
+**Ejemplo - Incremento y decremento**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+		<link rel="styleshett" href="style.css">
+	</head>
+	<body>
+		<?php
+
+			$a = 15;
+			$b = 15;
+
+			echo ++$a;
+			echo '<br/>';
+			echo $b++;
+			echo '<br/>';
+			echo $b;
+		?>
+	</body>
+</html>
+```
+
+**Ejercicio 5.** Vamos a definir dos variables numéricas enteras, $a y $b. Asígnales el valor que quieras. Realiza los cálculos y muestra en pantalla su suma, su resta, su multiplicación y su división. A continuación, incrementa las dos variables en una unidad y muestra en pantalla el resultado.
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+	<body>
+ 		<?php
+ 		// Definimos las variables
+ 			$a = 8;
+ 			$b = 3;
+ 		// Suma, resta, multiplicación y división
+ 			echo $a + $b, "<br>";
+ 			echo $a - $b, "<br>";
+ 			echo $a * $b, "<br>";
+ 			echo $a / $b, "<br>";
+ 		// Incrementamos y mostramos las variables
+ 			$a++ ;
+ 			echo $a,"<br>";
+ 			$b++;
+ 			echo $b,"<br>";
+ 		?>
+ 	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
 ```php
