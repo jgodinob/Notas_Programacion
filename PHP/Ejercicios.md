@@ -1,3 +1,12 @@
+TypeScript - Introducción
+=========================
+INDICE
+------
+1. [Estructura y Características](#Estructura-y-Características)
+	1. [PHP y HTML](#PHP-y-HTML)
+	
+----------------------------------
+
 1.Estructura y Características
 ==============================
 
