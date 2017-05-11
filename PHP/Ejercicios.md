@@ -1,5 +1,6 @@
 1. Estructura y Características
 ===============================
+
 PHP y HTML
 ----------
 PHP es un lenguaje cuya función básica es la de **producir HTML**, que no deja de ser el lenguaje en el que realiza las páginas web. Sin embargo, como PHP es un lenguaje de programación, gracias a él tenemos la capacidad de analizar las diferentes situaciones (entrada del usuario, datos contenidos en una base de datos) y decidir producir código HTML condicional sobre los resultados del procesado.
@@ -93,8 +94,10 @@ También es posible hacerloo con la etiqueta `<script language = "php"> ... </sc
 	</body>
 </html>
 ```
+
 Comentarios en PHP
 ------------------
+
 En PHP, como en otros lenguajes de programación, es posible **insertar comentarios** en el código. Los comentarios desempeñan un papel importante en esta fase de mantenimiento del código, ya que pueden facilitar en gran medida la comprensión de los pasajes aparentemente oscuros. Aunque hay varias formas de hacerlos, la notación más frecuente para los comentarios de una sola línea son aquellos que van precedidos por dos barras:
 ```php
 <?php
@@ -138,9 +141,11 @@ Si deseamos recurrir a los comentarios de varias líneas, la notcación sería l
 	</body>
 </html>
 ```
-=======================
+-----------------------------------------------------------
+
 2. VARIABLES
 ============
+
 Concepto de Variables
 ---------------------
 Las variables son componentes fundamentales de cualquier lenguaje de programación, ya que nos permite tratar los datos de nuestro programa sin conocer a priori cuál será su valor. Podemos imaginar una variable como una especie de **contenedor en el que se almacena el valor que nos interesa**, y que puede cambiar cuando sea necesario.
@@ -219,7 +224,8 @@ produce el mismo resultado que:
 	</body>
 </html>
 ```
-==========================================
+-----------------------------------------------------------
+
 3. TIPOS DE DATOS
 =================
 
