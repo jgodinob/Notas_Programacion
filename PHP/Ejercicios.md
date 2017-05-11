@@ -1,5 +1,5 @@
-1. Estructura y Características
-===============================
+1.Estructura y Características
+==============================
 
 PHP y HTML
 ----------
@@ -143,7 +143,7 @@ Si deseamos recurrir a los comentarios de varias líneas, la notcación sería l
 ```
 -----------------------------------------------------------
 
-2. VARIABLES
+2.VARIABLES
 ============
 
 Concepto de Variables
@@ -226,7 +226,7 @@ produce el mismo resultado que:
 ```
 -----------------------------------------------------------
 
-3. TIPOS DE DATOS
+3.TIPOS DE DATOS
 =================
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
