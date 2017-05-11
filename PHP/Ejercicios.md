@@ -1,3 +1,170 @@
+1. Estructura y Características
+===============================
+PHP y HTML
+----------
+PHP es un lenguaje cuya función básica es la de **producir HTML**, que no deja de ser el lenguaje en el que realiza las páginas web. Sin embargo, como PHP es un lenguaje de programación, gracias a él tenemos la capacidad de analizar las diferentes situaciones (entrada del usuario, datos contenidos en una base de datos) y decidir producir código HTML condicional sobre los resultados del procesado.
+El código PHP que incluimos en nuestra página debe estar **entre etiqueta de apertura y de cierre** adecuado, que son los siguientes:
+```php
+<?php // etiqueta de apertura
+?> // etiqueta de cierre
+```
+Todo lo que está contenido entre estas etiquetas **debe coincidir con las reglas de sintaxis de PHP**, y es el código que será ejecutado por el intérprete y no se envía directamente al navegador. Para generar una salida de información al navegador se puede utilizar la función echo.
+Veamos un ejemplo sencillo, que consiste en código HTML y PHP (recuerda que código PHP está entre `<?php` y `?>` ):
+```php 
+<html>
+	<head>
+		<title>
+		 	<?php echo "Pagina de prueba PHP"; ?>
+		</title>
+	</head>
+	<body>
+		<?php echo "Que tengas un buen día!"; ?>
+	</body>
+</html>
+```
+Este código sencillo **producirá un archivo HTML** cuyo contenido será simplemente:
+```php
+<html>
+	<head>
+		<title> Pagina de prueba PHP </title>
+	</head>
+	<body> Que tengas un buen día!</body>
+</html>
+```
+
+**Ejercicio 1.** Primera página en PHP - Confecciona un programa que muestre una serie de mensajes en diferentes líneas en la página empleando el comando `echo`
+Este es el código que resuelve el ejercicio:
+```php
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<meta charset="utf-8" />
+ 		<title>Ejercicio</title>
+ 	</head>
+ 	<body>
+ 		<?php
+ 			echo "Mi nombre es Juan.<br>";
+ 			echo "Bienvenido a mi página web.";
+		?>
+ 	</body>
+</html>
+```
+
+LOS CARACTERES DDE ESCAPE
+-------------------------
+Los datos se envía al navegador que sigue al comando echo se pueden encerrar entre paréntesis. y la cadena puede usar comillas simples (`''` ) o dobles (`""` ). Hay que tener en cuenta también que el comando `<br />` de HTML no generará un salto de línea en el código PHP (aunque si en el navegador, de la forma clásica). Aquí podemos utilizar el carácter de escape `/n`. Veamos un ejemplo práctico:
+```php
+<?php
+	echo "primera linea\n";
+	echo "segunda linea<br />";
+	echo "tercera linea";
+?>
+```
+Se verá de la siguiente forma en el código HTML:
+```php
+primera linea
+segunda linea<br>tercera linea
+```
+Mientras que en el navegador se verá así:
+```php
+primera linea segunda linea
+tercera linea
+```
+Hay que tener en cuenta también que al final de cada declaración PHP ponemos un punto y coma (;): Se espera que que el punto y coma cierre cada afirmación de forma obligatoria en casi todas las ocasiones. No hacerlo provocará un error.
+Hemos visto que los bloques de código en PHP se marcan con las etiquetas `<?php ... ?>`.
+También es posible hacerloo con la etiqueta `<script language = "php"> ... </script>` o incluso simplificando la primera que hemos visto: `<? ... ?>`, siempre y cuando en el servidor no se hayan desactivado las etiquetas cortas. El archivo php.ini de nuestro servidor guarda esta configuración. Debido a esta causa, es una buena práctica usar siempre la primera de las estructuras que te hemos mencionado
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+
+		<?php
+
+			echo "Primera Línea<br />\n\t\t";
+			echo "Segunda Línea<br />\n\t\t";
+			echo "Tercera Línea<br />\n\t\t";
+
+		?>
+
+	</body>
+</html>
+```
+Comentarios en PHP
+------------------
+En PHP, como en otros lenguajes de programación, es posible **insertar comentarios** en el código. Los comentarios desempeñan un papel importante en esta fase de mantenimiento del código, ya que pueden facilitar en gran medida la comprensión de los pasajes aparentemente oscuros. Aunque hay varias formas de hacerlos, la notación más frecuente para los comentarios de una sola línea son aquellos que van precedidos por dos barras:
+```php
+<?php
+ 	// Esto es un comentario
+?>
+```
+Si deseamos recurrir a los comentarios de varias líneas, la notcación sería la siguiente, similar a Java y C:
+```php
+<? php
+ 	/ *
+ 	Esto es un comentario
+ 	multilínea
+ 	usando la misma sintaxis
+ 	utilizada en Java y C
+ 	* /
+?>
+```
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+
+		<?php
+
+			// esto es un comentario
+
+			echo "Primera Línea<br />\n\t\t";
+			echo "Segunda Línea<br />\n\t\t";
+			echo "Tercera Línea<br />\n\t\t";
+
+			/*  esto un comentario
+				multilínea
+				Hola
+			*/
+		?>
+
+	</body>
+</html>
+```
+=======================
+2. VARIABLES
+============
+Concepto de Variables
+---------------------
+Las variables son componentes fundamentales de cualquier lenguaje de programación, ya que nos permite tratar los datos de nuestro programa sin conocer a priori cuál será su valor. Podemos imaginar una variable como una especie de **contenedor en el que se almacena el valor que nos interesa**, y que puede cambiar cuando sea necesario.
+En PHP podemos elegir el nombre de las variables utilizando **letras, números y el carácter de subrayado o el guión bajo ( _ )**. El primer carácter del nombre debe, sin embargo, ser una letra o un guión bajo (no un número).
+También debemos recordar que el nombre de las variables **es sensible al uso de mayúsculas y minúsculas**, y por lo tanto, si se escribe dos veces el nombre de una variable usando letras mayúsculas y minúsculas de una manera diferente, para PHP serán dos variables distintas.
+En PHP, los nombres de variables **están precedidos por un signo de dólar ($)**. PHP tiene una característica que hace que sea mucho más flexible que otros lenguajes de programación, y es que no se requiere que las variables se declaran antes de su uso. Por tanto, podemos darnos el lujo de hacer referencia a una variable directamente cuando la necesitamos:
+```php
+<?php
+	$a = 5;
+?>
+```
+En esta línea de código hemos definidos la variable a, asignándole el valor 5. En la parte final de la declaración vemos el punto y coma, que, como vimos anteriormente, debe cerrar todas las instrucciones PHP. La utilidad de una variable se vuelve crucial en un momento en que puede ser utilizado en expresiones matemáticas o lógicas. Veamos un ejemplo sencillo:
+```php
+<?php
+	$a = 9;
+	$b = 4;
+	$c = $a * $b;
+	echo "El resultado de la operación es: ";
+	echo $c;
+?>
+```
+En este fragmento de código, se utilizaron tres variables: *a*, a la que hemos dado el valor *9*, *b*, *a* la que hemos asignado el valor *4*, y *c*, que debe tener el valor del producto de *a* y *b*. Al terminar el código imprimimos el resultado. Evidentemente, después de la ejecución del código, *c* tendrá un valor de *36*.
+Si hacemos referencia a **una variable que no existe**, por ejemplo, `$z`, obtendremos un mensaje de error
+
 **Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
 ```php
 $frist = "Variable's content 1"; // String
@@ -6,6 +173,55 @@ echo "FRIST VARIABLE: ".$frist."<br/>";
 echo "SECOND VARIABLE: ".$second."<hr/>";
 ?>
 ```
+
+Variables Dinámicas
+-------------------
+A veces es conveniente tener nombres de **variables dinámicas**. Dicho de otro modo, son nombres de variables que se pueden establecer y usar de forma variable. Una variable normal se establece con una sentencia como:
+```php
+<?php
+	$a = "hola";
+?>
+```
+Una variable dinámica toma el valor de una variable y lo trata como el nombre de una variable. En el ejemplo anterior, hola, se puede usar como el nombre de una variable utilizando dos signos de dolar. p.ej
+```php
+<?php
+	$$a = "mundo";
+?>
+```
+En este momento se han definido y almacenado dos variables en el árbol de símbolos de PHP: `$a`, que contiene `"hola"`, y  `$hola`, que contiene `"mundo"`. De esta forma, esta sentencia:
+```php
+<?php
+	echo "$a ${$a}";
+?>
+```
+produce el mismo resultado que:
+```php
+<?php
+	echo "$a $hola";
+?>
+```
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$a = 5;
+			$b = 3;
+			$c = $a + $b;
+
+			echo "El resultado de la suma es ";
+			echo $c;
+		?>
+	</body>
+</html>
+```
+==========================================
+3. TIPOS DE DATOS
+=================
 
 **Ejercicio 2.** Escribe un programa que imprima por pantalla los cuadrados (el número multiplicado por sí mismo) de los 30 primeros números naturales.
 ```php
