@@ -1,0 +1,100 @@
+PHP - Introducción
+=========================
+INDICE
+------
+2. [VARIABLES](#2variables)
+	1. [Concepto de Variables](#21concepto-de-variables)
+	2. [Variables Dinámicas](#22variables-dinámicas)
+	
+----------------------------------
+
+2.VARIABLES
+============
+
+2.1.Concepto de Variables
+---------------------
+Las variables son componentes fundamentales de cualquier lenguaje de programación, ya que nos permite tratar los datos de nuestro programa sin conocer a priori cuál será su valor. Podemos imaginar una variable como una especie de **contenedor en el que se almacena el valor que nos interesa**, y que puede cambiar cuando sea necesario.
+En PHP podemos elegir el nombre de las variables utilizando **letras, números y el carácter de subrayado o el guión bajo ( _ )**. El primer carácter del nombre debe, sin embargo, ser una letra o un guión bajo (no un número).
+También debemos recordar que el nombre de las variables **es sensible al uso de mayúsculas y minúsculas**, y por lo tanto, si se escribe dos veces el nombre de una variable usando letras mayúsculas y minúsculas de una manera diferente, para PHP serán dos variables distintas.
+En PHP, los nombres de variables **están precedidos por un signo de dólar ($)**. PHP tiene una característica que hace que sea mucho más flexible que otros lenguajes de programación, y es que no se requiere que las variables se declaran antes de su uso. Por tanto, podemos darnos el lujo de hacer referencia a una variable directamente cuando la necesitamos:
+```php
+<?php
+	$a = 5;
+?>
+```
+En esta línea de código hemos definidos la variable a, asignándole el valor 5. En la parte final de la declaración vemos el punto y coma, que, como vimos anteriormente, debe cerrar todas las instrucciones PHP. La utilidad de una variable se vuelve crucial en un momento en que puede ser utilizado en expresiones matemáticas o lógicas. Veamos un ejemplo sencillo:
+```php
+<?php
+	$a = 9;
+	$b = 4;
+	$c = $a * $b;
+	echo "El resultado de la operación es: ";
+	echo $c;
+?>
+```
+En este fragmento de código, se utilizaron tres variables: *a*, a la que hemos dado el valor *9*, *b*, *a* la que hemos asignado el valor *4*, y *c*, que debe tener el valor del producto de *a* y *b*. Al terminar el código imprimimos el resultado. Evidentemente, después de la ejecución del código, *c* tendrá un valor de *36*.
+Si hacemos referencia a **una variable que no existe**, por ejemplo, `$z`, obtendremos un mensaje de error
+
+**Ejercicio 1.** Crea dos variables cuyo nombre sea “uno” y “dos” he imprímelas por pantalla. Pon un comentario con el tipo de dato que contienen.
+```php
+$frist = "Variable's content 1"; // String
+$second = 245; // Integer
+echo "FRIST VARIABLE: ".$frist."<br/>";
+echo "SECOND VARIABLE: ".$second."<hr/>";
+?>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
+
+2.2.Variables Dinámicas
+-----------------------
+A veces es conveniente tener nombres de **variables dinámicas**. Dicho de otro modo, son nombres de variables que se pueden establecer y usar de forma variable. Una variable normal se establece con una sentencia como:
+```php
+<?php
+	$a = "hola";
+?>
+```
+Una variable dinámica toma el valor de una variable y lo trata como el nombre de una variable. En el ejemplo anterior, hola, se puede usar como el nombre de una variable utilizando dos signos de dolar. p.ej
+```php
+<?php
+	$$a = "mundo";
+?>
+```
+En este momento se han definido y almacenado dos variables en el árbol de símbolos de PHP: `$a`, que contiene `"hola"`, y  `$hola`, que contiene `"mundo"`. De esta forma, esta sentencia:
+```php
+<?php
+	echo "$a ${$a}";
+?>
+```
+produce el mismo resultado que:
+```php
+<?php
+	echo "$a $hola";
+?>
+```
+
+**Ejemplo**
+```php
+<html lang="es">
+	<head>
+		<title>Ejercicio</title>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<?php
+			$a = 5;
+			$b = 3;
+			$c = $a + $b;
+
+			echo "El resultado de la suma es ";
+			echo $c;
+		?>
+	</body>
+</html>
+```
+
+**[Regresar al índice](#indice)**
+
+----------------------------------
