@@ -21,7 +21,7 @@ INDICE
 	2. [Operadores de asignación](#42operadores-de-asignación)
 	3. [Operadores para concatenar cadenas](#43operadores-para-concatenar-cadenas)
 	4. [Operadores aritméticos](#44operadores-aritméticos)
-	5. [#45incremento-y-decremento](Incremento y decremento)
+	5. [Incremento y decremento](#45incremento-y-decremento)
 	
 ----------------------------------
 
