@@ -2,7 +2,7 @@ PHP - Introducción
 =========================
 INDICE
 ------
-1. [ESTRUCTURA Y CARACTERÍSTICAS](#1estructura-y-características)
+1. [ESTRUCTURA Y CARACTERÍSTICAS](#1estructura-y-caracterÍsticas)
 	1. [PHP y HTML](#11php-y-html)
 	2. [Los Caractéres de Escape](#12los-caractéres-de-escape)
 	3. [Comentarios en PHP](#13comentarios-en-php)
