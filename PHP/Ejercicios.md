@@ -98,30 +98,7 @@ for( $i = 1; $i < $number; $i++ ){
 }
 ?>
 ```
-**Ejercicio 8.2.** Elabora una función que devuelva un array separado por comas (*,*), menos el último elemento separado por *y*.
-```php
-<?php
-$numbers=[1, 3, 4, 7, 8, 9];	
-function return_list_elements ($array){
-	if(!isset($array) || !is_array($array)){
-		echo "Error return_list_elements: no se ha introducido un array.</br>";
-	}
-	$array_elements_number=count($array);
-	echo "El array contiene ".$array_elements_number." elementos, que son: ";
-	foreach ($array as $i=>$numbers){
-		if($i ==($array_elements_number-2)){
-			$next=" y ";
-		}elseif($i ==($array_elements_number-1)){
-			$next=".";
-		}else{
-			$next=", ";
-		}
-		echo $numbers.$next;
-	}
-}
-return_list_elements($number);
-?>
-```
+
 **Ejercicio 8.3.** Elabora una función que devuelva un array usando las funciones creadas en el ejercicio 8.1. y 8.2..
 ```php
 <?php
@@ -279,89 +256,6 @@ if(strstr($browser, "Firefox") == true){
 }
 ```
 
-**Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea.
-```php
-<?php
-$data="Hola";
-function data_type($data){
-	echo "El tipo de dato es: ";
-$data_type=gettype($data);
-switch ($data_type){
-	case integer:
-		echo "NÚMERO ENTERO";
-		break;
-	case string:
-		echo "CADENA";
-		break;
-        case boolean:
-		echo "BOOLEANO";
-		break;
-	case double:
-		echo "NÚMERO FLOTANTE";
-		break;
-	}
-};
-$is_number=is_numeric($data);
-if($is_number){
-	echo "El dato introducido es un número, "; 
-}else{
-	echo "El dato introducido NO es un número, "; 
-};
-data_type ($data);
-?>
-```
-**Ejercicio 18.** Crea un array con el contenido de la siguiente tabla:
-
-| Frutas   | Deportes   | Idiomas   |
-|----------|------------|-----------|
-| Manzana  |Futbol      |Español    |
-| Naranja  |Tenis       |Inglés     |
-| Sandia   |Baloncesto  |Francés    |
-| Fesa     |Beisbol     |Italiano   |
-
-Recórrelo y muestra la tabla en HTML con el contenido del array.
-```php
-<?php
-$table= array(
-    "Fruits"=>array("Apple","Orange","Watermelon","Strawberry"),
-    "Sports"=>array("Futbol","Tennis","Basket","Beisbol"),
-    "Languages"=>array("Spanish","English","French","Italian")
-);
-function file_column_max($array_multi){
-    $i=0;
-    foreach ($array_multi as $key => $category){
-        $file_colum_max[$i]=count($array_multi);   
-        $i++;
-    }
-    return $file_colum_max;
-}
-function column_name($array_multi){
-    $i=0;
-    foreach ($array_multi as $key => $category){
-        $column_name[$i]=$key;
-        $i++;
-    }
-    return $column_name;
-}
-$max_column=max(file_column_max($table));
-echo "<table><tr>";
-$column_name=column_name($table);
-//Imprime los títulos
-foreach($column_name as $key=>$content){
-    echo "<th>{$content}</th>";
-}
-echo "</tr>";
-for ($i=0;$i<=$max_column-1;$i++){
-    echo "<tr>";
-    foreach($column_name as $key=>$content){
-        echo "<th>".$table[$content][$i]."</th>";
-    }
-    echo "</tr>";
-}
-echo "</table>";
-?>
-```
-
 **Ejercicio 19.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
 
@@ -447,51 +341,7 @@ echo validateURL($url);
 ?>
 ```
 
-**Ejercicio 23.1.** Crea una función a la que le pases un número y te saque su tabla de multiplicar.
-```php
-<?php
-function tabla($numero){
-	$tabla = "";
-	for($i = 1; $i <= 10; $i++){
-		$cuenta = $i*$numero;
-		$tabla .= "{$i} x {$numero} = {$cuenta} <br/>";
-	}
-	
-	return $tabla;
-}
 
-echo "<h1>Tablas de multiplicar</h1>";
-
-for($i = 1; $i <= 10; $i++){
-	echo "<h3>Tabla del {$i}</h3>";
-	echo tabla($i);
-}
-?>
-```
-**Ejercicio 23.2.** Modifica el ejercicio anterior para pasarle un parámetro opcional que nos permita imprimir directamente la tabla en HTML.
-```php
-<?php
-function tabla($numero, $html=null){
-	$tabla = "";
-	if($html!=null){
-		$tabla.="<h3>Tabla del {$numero}</h3>";
-	}
-	for($i = 1; $i <= 10; $i++){
-		$cuenta = $i*$numero;
-
-		$tabla .= "{$i} x {$numero} = {$cuenta} <br/>";
-	}
-	if($html!=null){
-		echo $tabla;
-	}	
-	return $tabla;
-}
-echo "<h1>Tablas de multiplicar</h1>";
-for($i = 1; $i <= 10; $i++){
-	tabla($i,true);
-}
-?>
-```
 
 **Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
 ```php
