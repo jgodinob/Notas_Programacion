@@ -79,15 +79,7 @@ echo '</div>';
 ```
 
 
-**Ejercicio 7.** Crear un array llamado meses y que almacene el nombre de los doce meses del año. Recorrerlo con FOREACH para mostrar por pantalla los doce nombres.
-```php
-<?php
-$months = array( "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" );
-foreach ($months as $month) {
-	echo $month."<br/>";
-}
-?>
-```
+
 
 **Ejercicio 8.1.** Devuelve los divisores de un número introducido mediante la url.
 ```php
@@ -182,16 +174,7 @@ echo "The factorial of ".$number." is ".$factorial;
 ?>
 ```
 
-**Ejercicio 9.** Mostrar todos los números pares que hay entre el 1 y el 100.
-```php
-<?php
-for($i = 1; $i <= 100; $i++){
-	if($i%2 == 0){
-		echo $i." is even<br/>";
-	}
-}
-?>
-```
+
 **Ejercicio 10.** Mostrar los números múltiplos de un número pasado por la URL que hay del 1 al 100.
 ```php
 <html>
@@ -280,34 +263,7 @@ for ($i = 1; $i <= 1000; $i++){
 ?>
 ```
 
-**Ejercicio 12.** Hacer un programa que tenga un array de 5 números enteros y hacer lo siguiente con él:
-1. Recorrerlo y mostrarlo.
-2. Ordenarlo y mostrarlo.
-3. Mostrará su longitud.
-4. Buscar en el vector.
-```php
-<meta charset="utf-8" />
-<?php
-$numeros = array(30,20,40,50,10,5);
-echo "<h2>Recorrer y mostrar:</h2>";
-foreach ($numeros as $numero) {
-	echo $numero."<br/>";
-}
-echo "<h2>Ordenar y mostrar</h2>";
-//ordenar
-sort($numeros);
-foreach ($numeros as $numero) {
-	echo $numero."<br/>";
-}
-echo "<h2>Longitud del array o número de elementos: ".sizeof($numeros)."</h2>";
-echo "<h2>Buscar en el array:</h2>";
-if(!array_search(11, $numeros)){
-	echo "<p>El número no existe en el array</p>";
-}else{
-	echo "<p>El número SI EXISTE en el array</p>";
-}
-?>
-```
+
 
 **Ejercicio 13.** Recibe una cadena de texto y conviertela en los distintos formatos de salida (UpperCase, LowerCase, CamelCase, TitleCase)
 ```php
@@ -333,35 +289,7 @@ if(strstr($browser, "Firefox") == true){
 	echo "<p>NO USAS FIREFOX</p>";
 }
 ```
-**Ejercicio 14.** Escribe un programa que añada valores a un array mientras que su longitud sea menor a 100 y después que se muestre la información del array por pantalla.
-```php
-<?php
-$array=[1,3,"hola",4];
-echo "El array incluye inicialmente: ".var_dump($array)."</br>";
-$length=count($array);
-echo $length;
-for ($length;$length<=(100-1);$length++){
-	if($length%2==0){
-   		array_push($array,"valor número {$length}");
-	}else{
-   		$array[$length]="valor número {$length}";
-	}
-}
-var_dump($array);
-?>
-```
-**Ejercicio 16.** Escribe un programa que compruebe si una variable esta vacía y si está vacía, rellenarla con texto en minúsculas y mostrarlo convertido a mayúsculas en negrita.
-```php
-<?php
-$string="";
-if ( empty($string)){
-	$string=strtoupper("Texto de relleno");
-	echo "<strong>{$string}</strong>";
-}else{
-	echo "Esta rellena";
-}
-?>
-```
+
 **Ejercicio 17.** Crea un script PHP que tenga tres variables, una tipo array, otra tipo string y otra boleana y que imprima un mensaje según el tipo de variable que sea.
 ```php
 <?php
