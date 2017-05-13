@@ -265,18 +265,7 @@ for ($i = 1; $i <= 1000; $i++){
 
 
 
-**Ejercicio 13.** Recibe una cadena de texto y conviertela en los distintos formatos de salida (UpperCase, LowerCase, CamelCase, TitleCase)
-```php
-<?php
-$string= '¿cómo están ustedes?';
-echo mb_strtolower($string)."</br>"; //¿cómo están ustedes?
-echo mb_strtoupper($string)."</br>"; //¿CÓMO ESTÁN USTEDES?
-echo strtolower($string)."</br>";    //¿cómo están ustedes?
-echo strtoupper($string)."</br>";    //¿CóMO ESTáN USTEDES?
-echo ucfirst($string)."</br>";       //¿cómo están ustedes?
-echo ucwords($string)."</br>";       //¿cómo Están Ustedes?
-?>
-```
+
 **Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
 ```php
 <?php
