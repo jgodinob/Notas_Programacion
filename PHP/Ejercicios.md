@@ -305,8 +305,8 @@ El archivo `install.php` crearía una tabla llamada `users` con los elementos de
 |------------------|
 ```php
 <?php require_once 'includes/connect.php'; 
-$sql ="CREATE TABLE IF NOT EXISTS users(
-	usuario_id int(255) auto_increment not null,
+$sql ="CREATE TABLE IF NOT EXISTS users  (
+	user_id int(255) auto_increment not null,
 	name varchar(50),
 	surname varchar(255),
 	bio text,
@@ -335,9 +335,20 @@ $username="root";
 $password="";
 $dbname="cursophp";
 
-$db = new mysqli( $servername , $username , $password , $dbname );
-//para codificar caracteres latinos usamos la siguiente línea
-msqli_query($db, "SET NAMES 'utf8'");
+//conectamos con el servidor
+$connect_server = new mysqli( $servername , $username , $password );
+//comprobamos si existe la base de datos $dbname, en caso de no existir la creamos y conectamos
+$create_DB_sql ="CREATE DATABASE IF NOT EXISTS ".$dbname;
+$create_dbname=mysqli_query($connect_server, $create_DB_sql);
+// var_dump($create_dbname); devuelve true si estaba creada la base de datos
+//condicional comprueba si exste la base de datos
+if($create_dbname){
+	echo "Existe la Base de Datos";
+}else{
+	$db = new mysqli( $servername , $username , $password , $dbname );
+	mysqli_query($db, "SET NAMES 'utf8'");
+	echo "Base de Datos Creada";
+}
 ?>
 ```
 
