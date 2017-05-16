@@ -157,29 +157,26 @@ echo "Sesión número: ".$_SESSION["numero"];
 |**includes/header.php**   |
 |--------------------------|
 ```php
-<?php
 <!DOCTYPE HTML>
 <html>
 <head lang="es">
 	<meta charset="utf-8" />
 	<title>Web con PHP</title>
-	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap.min.css"/>
-	<link type="text/css" rel="stylesheet" href="../assets/components/bootstrap/dist/css/bootstrap-theme.min.css"/>
-	<script type="text/javascript" src="../assets/components/bootstrap/dist/js/bootstrap.min.js"/>
-	<script type="text/javascript" src="../assets/components/jquery/jquery.min.js"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 </head>
 <body>
 	<div class="container">
 	<h1>Web con php</h1>
 	<hr>
 	<?php $variable="Contenido";?>
-?>
 ```
 
 |**includes/footer.php**   |
 |--------------------------|
 ```php
-<?php
 	<hr/>
 	<footer>
 		&copy; Víctor Robles <?php echo date("Y"); ?> <?php echo $variable; ?>
@@ -187,7 +184,6 @@ echo "Sesión número: ".$_SESSION["numero"];
 </div>
 </body>
 </html>
-?>
 ```
 
 |**crear.php**  |
@@ -202,8 +198,8 @@ echo "Sesión número: ".$_SESSION["numero"];
 	<label for="firstname">Apellidos:
 		<input type="text" name="surname" class="form-control"><br/>
 	</label>
-	<label for="bio">Biografia
-		<textarea name="bio" class="form-control">
+	<label for="bio">Biografia:
+		<textarea name="bio" class="form-control"></textarea><br/>
 	</label>
 	<label for="email">Email:	
 		<input type="text" name="email" class="form-control"><br/>
@@ -212,7 +208,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 		<input type="file" name="image" class="form-control"><br/>
 	</label>
 	<label for="password">Password
-		<input type="password" name="password" class="form-control">
+		<input type="password" name="password" class="form-control"><br/>
 	</label>
 	<label for="select">select
 		<select name="role" class="form-control">
@@ -227,12 +223,17 @@ echo "Sesión número: ".$_SESSION["numero"];
 ```
 **Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
 
+|**includes/header.php**   | **includes/footer.php**  | **crear.php**  |
+|--------------------------|--------------------------|----------------|
+Archivos Ejercicio anterior.
+
 | **recibir.php**  |
 |------------------|
-```js
+```php
 <?php 
 //Recibiendo el campo submit sabemos que el formulario se envió
 if(isset($_POST["submit"])){
+	//usamos var_dump para ver los datos introducidos metodo POST
 	var_dump($_POST);
 	//vemos si llegan o no vacios cada entrada del formulario
 	if(!empty($_POST["name"])){ 	
@@ -259,32 +260,41 @@ if(isset($_POST["submit"])){
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
 
+|**includes/header.php**   | **includes/footer.php**  | **crear.php**  |
+|--------------------------|--------------------------|----------------|
+Archivos Ejercicio anterior.
+
 | **recibir.php**  |
 |------------------|
-```js
+```php
 <?php
-if(!empty($_POST["name"]) && strlen($_POST["name"])<=20 && !is_numeric($_POST["name"] && !preg_math("/[0-9]/",_POST["name"])){
-	echo $_POST["name"]."<br/>";
-}
-if(!empty($_POST["surname"]) && !is_numeric($_POST["surname"] && !preg_math("/[0-9]/",_POST["surname"])){
-	echo $_POST["surname"]."<br/>";
-}
-if(!empty($_POST["bio"])){ 	
-	echo $_POST["bio"]."<br/>"; 	
-}
-if(!empty($_POST["email"]) && filter_var($email, FILTER_VALIDATE_EMAIL)){
-	echo $_POST["email"]."<br/>"; 	
-}
-if(!empty($_POST["password"]) && && strlen($_POST["password"])<=6){ 
-//ciframos la contraseña mediante sha1
-	echo sha1($_POST["password"])."<br/>";
-}
-if(!empty($_POST["role"])){ 
-	echo $_POST["role"]."<br/>";
-}
-var_dump($_FILES["image"]);
-if(isser($_FILES["image"]) && !empty($_FILES["image"])){
-	echo "La imagen nos ha llegado";
+//Recibiendo el campo submit sabemos que el formulario se envió
+if(isset($_POST["submit"])){
+	//usamos var_dump para ver los datos introducidos metodo POST
+	var_dump($_POST);
+	if(!empty($_POST["name"]) && strlen($_POST["name"])<=20 && !is_numeric($_POST["name"]) && !preg_match("/[0-9]/",$_POST["name"])){
+		echo $_POST["name"]."<br/>";
+	}
+	if(!empty($_POST["surname"]) && !is_numeric($_POST["surname"]) && !preg_match("/[0-9]/",$_POST["surname"])){
+		echo $_POST["surname"]."<br/>";
+	}
+	if(!empty($_POST["bio"])){ 	
+		echo $_POST["bio"]."<br/>"; 	
+	}
+	if(!empty($_POST["email"]) && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+		echo $_POST["email"]."<br/>"; 	
+	}
+	if(!empty($_POST["password"]) && strlen($_POST["password"])<=6){ 
+	//ciframos la contraseña mediante sha1
+		echo sha1($_POST["password"])."<br/>";
+	}
+	if(!empty($_POST["role"])){ 
+		echo $_POST["role"]."<br/>";
+	}
+	var_dump($_FILES["image"]);
+	if(isset($_FILES["image"]) && !empty($_FILES["image"])){
+		echo "La imagen nos ha llegado";
+	}
 }
 ?>
 ```
