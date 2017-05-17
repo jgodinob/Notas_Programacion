@@ -470,9 +470,9 @@ if($insert_user2){
 }
 ?>
 ```
-*Nota 1:Puede dar fallo a la hora de incluir el nuevo registro, para ello buscaríamos los datos insertados mediante `var_dump` de la siguiente manera: `$insert_user=mysqli_query($db,$sql);` seguido de `var_dump=($insert_user);`. O imprimiendo `mysqli_error($db)` el cual mediante `echo mysqli_error($db)` mostrará información sobre los errores de sintaxis.*
+**Nota 1:** Puede dar fallo a la hora de incluir el nuevo registro, para ello buscaríamos los datos insertados mediante `var_dump` de la siguiente manera: `$insert_user=mysqli_query($db,$sql);` seguido de `var_dump=($insert_user);`. O imprimiendo `mysqli_error($db)` el cual mediante `echo mysqli_error($db)` mostrará información sobre los errores de sintaxis.*
 
-*Nota 2: Usando `DELETE FROM users WHERE user_id=5;`eliminará el registro con id número 5. En cambio si no indicamos condición eliminará todos los registros. Usando `SELECT * FROM users;` veremos que el registro 5 ya no está disponible.
+**Nota 2:** Usando `DELETE FROM users WHERE user_id=5;`eliminará el registro con id número 5. En cambio si no indicamos condición eliminará todos los registros. Usando `SELECT * FROM users;` veremos que el registro 5 ya no está disponible.
 Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de la tabla.
 
 **Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
@@ -487,12 +487,18 @@ while ($user=mysqli_fetch_assoc($users)){
 };?>
 ```
 
-| **index.php**  |
-|----------------|
+|Myqli |**includes/header.php**   | **includes/footer.php**  | **includes/connect.php**  | **install.php**  |
+|------|--------------------------|--------------------------|---------------------------|------------------|
+Archivos Ejercicio anterior.
+
+|Myqli | **index.php**  |
+|------|----------------|
 ```php
 <?php
 include 'includes/header.php';
-$users=mysqli_query($db, "SELECT*FROM users");
+include 'includes/connect.php';
+$users=mysqli_query($db, "SELECT * FROM users");
+//	var_dump($users);	//
 ?>
 <table class="table">
 	<tr>
@@ -501,13 +507,15 @@ $users=mysqli_query($db, "SELECT*FROM users");
 		<th>Email</th>
 		<th>Ver/editar</th>
 	</tr>
-	<?php while ($user=mysqli_fetch_assoc($users)){ ?>
+	<?php while ($row=mysqli_fetch_assoc($users)){ 
+//	var_dump($row);		//
+	?>
 	<tr>
-		<td> <?php $user["name"]; ?> </td>
-		<td> <?php $user["surname"]; ?> </td>
-		<td> <?php $user["email"]; ?> </td>
+		<td> <?php echo $row["name"]; ?> </td>
+		<td> <?php echo $row["surname"]; ?> </td>
+		<td> <?php echo $row["email"]; ?> </td>
 		<td>
-			<a href="Ver.php" class="btn btn-success">Ver</a>
+			<a href="ver.php?user_id={$row["user_id"]}" class="btn btn-success">Ver</a>
 		</td>
 	</tr>
 	<?php	}; ?>
@@ -517,12 +525,18 @@ include 'includes/footer.php';
 ```
 **Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
 
-| **index.php**  |
-|----------------|
+|Myqli |**includes/header.php**   | **includes/footer.php**  | **includes/connect.php**  | **install.php**  |
+|------|--------------------------|--------------------------|---------------------------|------------------|
+Archivos Ejercicio anterior.
+
+|Myqli | **index.php**  |
+|------|----------------|
 ```php
 <?php
 include 'includes/header.php';
-$users=mysqli_query($db, "SELECT*FROM users");
+include 'includes/connect.php';
+$users=mysqli_query($db, "SELECT * FROM users");
+//	var_dump($users);	//
 ?>
 <table class="table">
 	<tr>
@@ -531,13 +545,15 @@ $users=mysqli_query($db, "SELECT*FROM users");
 		<th>Email</th>
 		<th>Ver/editar</th>
 	</tr>
-	<?php while ($user=mysqli_fetch_assoc($users)){ ?>
+	<?php while ($row=mysqli_fetch_assoc($users)){ 
+//	var_dump($row);		//
+	?>
 	<tr>
-		<td> <?php $user["name"]; ?> </td>
-		<td> <?php $user["surname"]; ?> </td>
-		<td> <?php $user["email"]; ?> </td>
+		<td> <?php echo $row["name"]; ?> </td>
+		<td> <?php echo $row["surname"]; ?> </td>
+		<td> <?php echo $row["email"]; ?> </td>
 		<td>
-			<a href="Ver.php?id=<?php $user["user_id"]?>" class="btn btn-success">Ver</a>
+			<a href="ver.php?user_id=<?php echo $row["user_id"]; ?>" class="btn btn-success">Ver</a>
 		</td>
 	</tr>
 	<?php	}; ?>
@@ -545,20 +561,24 @@ $users=mysqli_query($db, "SELECT*FROM users");
 include 'includes/footer.php';
 ?>
 ```
-
-| **ver.php**  |
-|----------------|
+|Myqli | **ver.php**  |
+|------|--------------|
 ```php
-<?php require_once 'includes/header.php'; ?>
 <?php 
-if(isset($_GET["id"] || !empty("_GET["id"]) || is_numeric($_GET["id"])){
+require_once 'includes/header.php'; 
+include 'includes/connect.php';
+?>
+<?php 
+/*
+if(isset($_GET["user_id"] || !empty($_GET["user_id"]) || is_numeric($_GET["user_id"])){
 	header("Location:index.php");
 }
+*/
 
-//echo $_GET["id"];
-$id=$_GET["id"];
+//echo $_GET["user_id"];
+$id=$_GET["user_id"];
 $user_query=mysqli_query ($db,"SELECT * FROM users WHERE user_id={$id}");
-//var_dump ($users);
+//var_dump ($user_query);
 //var_dump (mysqli_fethc_assoc($user)); //muestra los datos del usuario sin necesidad de recorrer toda la tabla.
 $user=mysqli_fetch_assoc($user_query);
 if(!isset($user["user_id"])|| empty ($user["user_id"])){
@@ -566,16 +586,18 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 }
 ?>
 
-<h3>Usuario:<strong><?php echo $user["name"]." ".$user["surname"];</strong></h3>
+<h3>Usuario:<strong><?php echo $user["name"]." ".$user["surname"];?></strong></h3>
 <p><strong>Datos:</strong></p>
-<p> Email: <?php echo $user["emial"];?>	</p>
+<p> Email: <?php echo $user["email"];?>	</p>
 <p> Biografía: <?php echo $user["bio"];?> </p>
 <a href="index.php" class="btn btn-success">Volver al listado</a>
 </p> 
 
-<?php require_once 'includes/footer.php'; ?>
+<?php 
+require_once 'includes/footer.php'; ?>
 ?>
 ```
+
 **Ejercicio 33.** Crea una página de edición del usuario.
 *Nota: Deberemos recoger los datos que llegan al formulario y hacer `insert` en la base de datos.*
 * El archivo `validate_form.php`comprobará y advertirá cuando los datos introducidos dentro del formulario son incorrectos. Mediante la función `showError` la cual recibirá el nombre del parámetro introducido en el formulario mostraremos el erro adaptado.
