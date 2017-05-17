@@ -300,9 +300,36 @@ if(isset($_POST["submit"])){
 ```
 **Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
 El archivo `install.php` crearía una tabla llamada `users` con los elementos descritos si esta no existiera previamente.
+*Nota:* Para conectar con la base de datos creamos el sigueinte archivo en sus dos distintas versiones, `mysqli` y `PDO`.
 
-| **install.php**  |
-|------------------|
+|MySQLi | **includes/connect.php**  |
+|-------|---------------------------|
+```php
+<?php
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="cursophp";
+
+//conectamos con el servidor
+$connect_server = new mysqli( $servername , $username , $password );
+//comprobamos si existe la base de datos $dbname, en caso de no existir la creamos y conectamos
+$create_DB_sql ="CREATE DATABASE IF NOT EXISTS ".$dbname;
+$create_dbname=mysqli_query($connect_server, $create_DB_sql);
+// var_dump($create_dbname); devuelve true si estaba creada la base de datos
+//condicional comprueba si exste la base de datos
+if($create_dbname){
+	echo "Existe la Base de Datos";
+}else{
+	echo "Base de Datos Creada";
+}
+$db = new mysqli( $servername , $username , $password , $dbname );
+mysqli_query($db, "SET NAMES 'utf8'");
+?>
+```
+
+|MySQLi | **install.php**  |
+|-------|------------------|
 ```php
 <?php 
 require_once 'includes/connect.php'; 
@@ -323,38 +350,10 @@ if($create_usuarios_table){
 }
 ?>
 ```
-Para conectar con la base de datos creamos el sigueinte archivo en sus dos distintas versiones, `mysqli` y `PDO`.
-
-| **includes/connect.php**  |
-|---------------------------|
-```php
-<?php
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="cursophp";
-
-//conectamos con el servidor
-$connect_server = new mysqli( $servername , $username , $password );
-//comprobamos si existe la base de datos $dbname, en caso de no existir la creamos y conectamos
-$create_DB_sql ="CREATE DATABASE IF NOT EXISTS ".$dbname;
-$create_dbname=mysqli_query($connect_server, $create_DB_sql);
-// var_dump($create_dbname); devuelve true si estaba creada la base de datos
-//condicional comprueba si exste la base de datos
-if($create_dbname){
-	echo "Existe la Base de Datos";
-}else{
-	$db = new mysqli( $servername , $username , $password , $dbname );
-	mysqli_query($db, "SET NAMES 'utf8'");
-	echo "Base de Datos Creada";
-}
-?>
-```
 
 **Nota:** Para conectar con la base de datos PDO usaríamos: 
-
-| **includes/connect.php**  |
-|---------------------------|
+|PDO | **includes/connect.php**  |
+|----|---------------------------|
 ```php
 <?php
 $servername="localhost";
@@ -362,7 +361,7 @@ $username="root";
 $password="";
 $dbname="cursophp";
 try {
-    $db = new PDO("mysql:host=$servername;$dbname", $username, $password);
+    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully"; 
@@ -373,14 +372,38 @@ catch(PDOException $e)
     }
 ?>
 ```
-*Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
+
+|PDO | **install.php**  |
+|----|------------------|
+```php
+<?php 
+require_once 'includes/connect.php'; 
+$sql ='CREATE TABLE IF NOT EXISTS users  (
+	user_id int(255) auto_increment not null,
+	name varchar(50),
+	surname varchar(255),
+	bio text,
+	email varchar(255),
+	password varchar(255),
+	role varchar(20),
+	image varchar(255),
+	CONSTRAINT pk_users PRIMARY KEY(user_id)
+)';
+$create_user_table= $db->prepare($sql);
+$create_user_table->execute();
+if($create_user_table){
+	echo "La tabla users se ha creado correctamente!!";
+}
+?>
+```
+*Nota:Para mantener la conexión en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
-
-| **install.php**  |
-|------------------|
+|MySQLi | **install.php**  |
+|-------|------------------|
 ```php
-<?php require_once 'includes/connect.php'; 
+<?php 
+require_once 'includes/connect.php'; 
 $sql ="CREATE TABLE IF NOT EXISTS users(
 	usuario_id int(255) auto_increment not null,
 	name varchar(50),
@@ -393,7 +416,10 @@ $sql ="CREATE TABLE IF NOT EXISTS users(
 	CONSTRAINT pk_users PRIMARY KEY(user_id)
 );";
 
-$create_usuarios_table=mysqli_query($db, $sql);
+$create_users_table=mysqli_query($db, $sql);
+if($create_users_table){
+	echo "La tabla users se ha creado correctamente!!";
+}
 
 $sql="INSERT INTO users VALUES(NULL,'Victor','Robles','Web Developer 1', 'victor@victor.com', '".sha1("password")."', '1', NULL)";
 $insert_user1=mysqli_query($db,$sql);
@@ -401,15 +427,46 @@ $insert_user1=mysqli_query($db,$sql);
 $sql="INSERT INTO users VALUES(NULL,'Antonio','Robles','Web Developer 2', 'antonio@victor.com', '".sha1("password")."', '1', NULL)";
 $insert_user2=mysqli_query($db,$sql);
 
-$sql="INSERT INTO users VALUES(NULL,'Manuel','Robles','Web Developer 3', 'Manuel@victor.com', '".sha1("password")."', '1', NULL)";
-$insert_user3=mysqli_query($db,$sql);
+?>
+```
+**Nota:** Para conectar con la base de datos PDO usaríamos: 
+|PDO | **install.php**  |
+|----|------------------|
+```php
+<?php 
+require_once 'includes/connect.php'; 
+$sql ='CREATE TABLE IF NOT EXISTS users  (
+	user_id int(255) auto_increment not null,
+	name varchar(50),
+	surname varchar(255),
+	bio text,
+	email varchar(255),
+	password varchar(255),
+	role varchar(20),
+	image varchar(255),
+	CONSTRAINT pk_users PRIMARY KEY(user_id)
+)';
 
-$sql="INSERT INTO users VALUES(NULL,'David','Robles','Web Developer 4', 'David@victor.com', '".sha1("password")."', '1', NULL)";
-$insert_user4=mysqli_query($db,$sql);
 
-if($create_usuarios_table){
+$create_user_table= $db->prepare($sql);
+$create_user_table->execute();
+if($create_user_table){
 	echo "La tabla users se ha creado correctamente!!";
 }
+
+$sql="INSERT INTO users VALUES(NULL,'Victor','Robles','Web Developer 1', 'victor@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user1=$db->prepare($sql);
+$insert_user1->execute();
+if($insert_user1){
+	echo "Usuario introducido";
+}
+$sql="INSERT INTO users VALUES(NULL,'Antonio','Robles','Web Developer 2', 'antonio@victor.com', '".sha1("password")."', '1', NULL)";
+$insert_user2=$db->prepare($sql);
+$insert_user2->execute();
+if($insert_user2){
+	echo "Usuario introducido";
+}
+
 ?>
 ```
 *Nota 1:Puede dar fallo a la hora de incluir el nuevo registro, para ello buscaríamos los datos insertados mediante `var_dump` de la siguiente manera: `$insert_user=mysqli_query($db,$sql);` seguido de `var_dump=($insert_user);`. O imprimiendo `mysqli_error($db)` el cual mediante `echo mysqli_error($db)` mostrará información sobre los errores de sintaxis.*
