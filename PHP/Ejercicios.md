@@ -304,7 +304,8 @@ El archivo `install.php` crearía una tabla llamada `users` con los elementos de
 | **install.php**  |
 |------------------|
 ```php
-<?php require_once 'includes/connect.php'; 
+<?php 
+require_once 'includes/connect.php'; 
 $sql ="CREATE TABLE IF NOT EXISTS users  (
 	user_id int(255) auto_increment not null,
 	name varchar(50),
@@ -316,9 +317,7 @@ $sql ="CREATE TABLE IF NOT EXISTS users  (
 	image varchar(255),
 	CONSTRAINT pk_users PRIMARY KEY(user_id)
 );";
-
 $create_usuarios_table=mysqli_query($db, $sql);
-
 if($create_usuarios_table){
 	echo "La tabla users se ha creado correctamente!!";
 }
@@ -357,8 +356,13 @@ if($create_dbname){
 | **includes/connect.php**  |
 |---------------------------|
 ```php
+<?php
+$servername="localhost";
+$username="root";
+$password="";
+$dbname="cursophp";
 try {
-    $db = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    $db = new PDO("mysql:host=$servername;$dbname", $username, $password);
     // set the PDO error mode to exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully"; 
@@ -367,6 +371,7 @@ catch(PDOException $e)
     {
     echo "Connection failed: " . $e->getMessage();
     }
+?>
 ```
 *Nota:Para mantener la coneccion en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
