@@ -352,6 +352,7 @@ if($create_usuarios_table){
 ```
 
 **Nota:** Para conectar con la base de datos PDO usaríamos: 
+
 |PDO | **includes/connect.php**  |
 |----|---------------------------|
 ```php
@@ -399,6 +400,7 @@ if($create_user_table){
 *Nota:Para mantener la conexión en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
 **Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
+
 |MySQLi | **install.php**  |
 |-------|------------------|
 ```php
@@ -430,6 +432,7 @@ $insert_user2=mysqli_query($db,$sql);
 ?>
 ```
 **Nota:** Para conectar con la base de datos PDO usaríamos: 
+
 |PDO | **install.php**  |
 |----|------------------|
 ```php
@@ -446,7 +449,6 @@ $sql ='CREATE TABLE IF NOT EXISTS users  (
 	image varchar(255),
 	CONSTRAINT pk_users PRIMARY KEY(user_id)
 )';
-
 
 $create_user_table= $db->prepare($sql);
 $create_user_table->execute();
@@ -466,7 +468,6 @@ $insert_user2->execute();
 if($insert_user2){
 	echo "Usuario introducido";
 }
-
 ?>
 ```
 *Nota 1:Puede dar fallo a la hora de incluir el nuevo registro, para ello buscaríamos los datos insertados mediante `var_dump` de la siguiente manera: `$insert_user=mysqli_query($db,$sql);` seguido de `var_dump=($insert_user);`. O imprimiendo `mysqli_error($db)` el cual mediante `echo mysqli_error($db)` mostrará información sobre los errores de sintaxis.*
@@ -475,25 +476,6 @@ if($insert_user2){
 Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de la tabla.
 
 **Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
-
-| **index.php**  |
-|----------------|
-```php
-<?php
-include 'includes/header.php';
-$users=mysqli_query($db, "SELECT*FROM users");
-?>
-<table class="table">
-	<tr>
-		<th>Nombre</th>
-		<th>Apellidos</th>
-		<th>Email</th>
-		<th>Ver/editar</th>
-	</tr>
-<?php
-include 'includes/footer.php';
-?>
-```
 
 *Nota incluyendo el siguiente código podríamos ver el contenido de cada uno de los registros.*
 
