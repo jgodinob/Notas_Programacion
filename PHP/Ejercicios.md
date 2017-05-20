@@ -25,12 +25,7 @@ INDICE
 	
 ----
 
-
-
-
-
-
-**Ejercicio 13.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
+**Ejercicio 1.** Escribe un programa que muestre la dirección IP del usuario que visita nuestra web y si usa Firefox darle la enhorabuena.
 ```php
 <?php
 $ip = $_SERVER["REMOTE_ADDR"];
@@ -43,15 +38,15 @@ if(strstr($browser, "Firefox") == true){
 }
 ```
 
-**Ejercicio 19.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
+**Ejercicio 2.** El cálculo del factorial se realiza en un bucle que va disminuyendo el valor de una variable y multiplicando todos los valores entre sí, como ya hemos visto anteriormente.
 Aprovechando este patrón puede crear una función que realice la factorial del número que le pasemos por parámetro, ahorrando así líneas de código.
 
-**Ejercicio 20.** Utiliza una función de PHP para mostrar la fecha actual por pantalla.
+**Ejercicio 3.** Utiliza una función de PHP para mostrar la fecha actual por pantalla.
 ```php
 echo "<p>Fecha actual: </p>";
 echo date("d-m-Y");
 ```
-**Ejercicio 21.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
+**Ejercicio 4.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
 
 |**index.php**   |
 |----------------|
@@ -92,7 +87,7 @@ include 'includes/footer.php';
 ```
 
 
-**Ejercicio 22.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
+**Ejercicio 5.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
 ```php
 <?php
 function validateEmail($email){
@@ -110,7 +105,7 @@ echo validateEmail($email);
 ?>
 ```
 
-**Ejercicio 22.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
+**Ejercicio 5.2.** Utiliza la función filter_var para comprobar si una url que nos llega por la URL es una url valida.
 ```php
 <?php
 function validateURL($url){
@@ -130,7 +125,7 @@ echo validateURL($url);
 
 
 
-**Ejercicio 25.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
+**Ejercicio 6.** Crea una sesión que vaya aumentando su valor en uno o disminuyendo en uno en función de si el parámetro GET “counter” está a uno a cero.
 ```php
 <?php
 session_start();
@@ -146,7 +141,7 @@ if(isset($_GET("counter") && $_GET["counter"]==1){
 echo "Sesión número: ".$_SESSION["numero"];
 ?>
 ```
-**Ejercicio 26.** Crea un formulario HTML con los siguientes campos:
+**Ejercicio 7.** Crea un formulario HTML con los siguientes campos:
 - Nombre
 - Apellidos
 - Biografía
@@ -221,7 +216,7 @@ echo "Sesión número: ".$_SESSION["numero"];
 </form>
 <?php require_once 'includes/footer.php'; ?>
 ```
-**Ejercicio 27.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
+**Ejercicio 8.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
 
 |**includes/header.php**   | **includes/footer.php**  | **crear.php**  |
 |--------------------------|--------------------------|----------------|
@@ -252,7 +247,7 @@ if(isset($_POST["submit"])){
 }
 ?>
 ```
-**Ejercicio 28.** Valida el formulario con las siguientes reglas:
+**Ejercicio 9.** Valida el formulario con las siguientes reglas:
 - Nombre: Solo puede estar formado por letras y tener una longitud máxima de 20 caracteres.
 - Apellidos: Solo puede estar formado por letras.
 - Biografía: No puede estar vacío.
@@ -298,7 +293,7 @@ if(isset($_POST["submit"])){
 }
 ?>
 ```
-**Ejercicio 29.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
+**Ejercicio 10.** Conéctate a una base de datos MySQL y crea la siguiente tabla usuarios con los mismos campos que el formulario anterior.
 El archivo `install.php` crearía una tabla llamada `users` con los elementos descritos si esta no existiera previamente.
 *Nota:* Para conectar con la base de datos creamos el sigueinte archivo en sus dos distintas versiones, `mysqli` y `PDO`.
 
@@ -399,7 +394,7 @@ if($create_user_table){
 ```
 *Nota:Para mantener la conexión en todos los archivos sería necesario incluir connect.php en dentro del header, usando* `<?php require_once 'includes/connect.php'; ?>`
 
-**Ejercicio 30.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
+**Ejercicio 11.** Crea un script PHP que inserte 4 registros en la tabla que creaste en el ejercicio anterior.
 
 |MySQLi | **install.php**  |
 |-------|------------------|
@@ -475,7 +470,7 @@ if($insert_user2){
 **Nota 2:** Usando `DELETE FROM users WHERE user_id=5;`eliminará el registro con id número 5. En cambio si no indicamos condición eliminará todos los registros. Usando `SELECT * FROM users;` veremos que el registro 5 ya no está disponible.
 Posteriormente si hacemos un `DELETE FROM users;`eliminará todo el contenido de la tabla.
 
-**Ejercicio 31.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
+**Ejercicio 12.** Haz un listado de los registros de la tabla de la base de datos mostrando solo el nombre y los apellidos del usuario.
 
 *Nota incluyendo el siguiente código podríamos ver el contenido de cada uno de los registros.*
 
@@ -523,7 +518,7 @@ $users=mysqli_query($db, "SELECT * FROM users");
 include 'includes/footer.php';
 ?>
 ```
-**Ejercicio 32.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
+**Ejercicio 13.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
 
 Archivos Ejercicio anterior.
 |Myqli |**includes/header.php**   | **includes/footer.php**  | **includes/connect.php**  | **install.php**  |
@@ -598,7 +593,7 @@ require_once 'includes/footer.php'; ?>
 ?>
 ```
 
-**Ejercicio 33.** Crea una página de edición del usuario.
+**Ejercicio 14.** Crea una página de edición del usuario.
 *Nota: Deberemos recoger los datos que llegan al formulario y hacer `insert` en la base de datos.*
 * El archivo `validate_form.php`comprobará y advertirá cuando los datos introducidos dentro del formulario son incorrectos. Mediante la función `showError` la cual recibirá el nombre del parámetro introducido en el formulario mostraremos el erro adaptado.
 * Para mejorar la aplicación mediante la función `setValueField` mantendremos el valor introducido en el `input`.
@@ -764,7 +759,7 @@ En el header creamos un botón que nos lleve directamente hacia `crear.php`.
 	<?php $variable="Contenido";?>
 ?>
 ```
-**Ejercicio 34.** Haz que cuando creamos o editamos un usuario se puedan subir imágenes y guardarlas en el directorio uploads del servidor.
+**Ejercicio 15.** Haz que cuando creamos o editamos un usuario se puedan subir imágenes y guardarlas en el directorio uploads del servidor.
 
 | **index.php**  |
 |----------------|
@@ -882,9 +877,9 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 <?php require_once 'includes/footer.php'; ?>
 ?>
 ```
-**Ejercicio 35.** Crea un login de usuarios.
+**Ejercicio 16.** Crea un login de usuarios.
 
-**Ejercicio 36.** Crea una paginación para el listado de usuarios.
+**Ejercicio 17.** Crea una paginación para el listado de usuarios.
 
 BASES DE DATOS: MySQLi y PHP
 ============================
@@ -922,8 +917,8 @@ FROM pedidos INNER JOIN clientes
 WHERE pedidos.idcliente = clientes.idcliente
 ```
 
-**Ejercicio 37.** Crea una función PHP que realice una búsqueda en la BBDD.
+**Ejercicio 18.** Crea una función PHP que realice una búsqueda en la BBDD.
 [webreunidos.es](https://www.webreunidos.es/blog/crear-buscador-php-web-sencillo/)
 
-**Ejercicio 38.** Crear una función que imprima en pdf.
+**Ejercicio 19.** Crear una función que imprima en pdf.
 [FPDF.ORG](http://www.fpdf.org/)
