@@ -1,0 +1,11 @@
+<?php
+class HelpersViews{
+     
+    public function url($controller=DEFECT_CONTROLLER,$action=DEFECT_ACTION){
+        $urlString="index.php?controller=".$controller."&action=".$action;
+        return $urlString;
+    }
+     
+    //Helpers para las vistas
+}
+?>
