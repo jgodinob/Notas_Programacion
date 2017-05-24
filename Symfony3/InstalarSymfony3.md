@@ -103,7 +103,7 @@ Include conf/extra/httpd-vhosts.conf
 
 **Paso 3.** Añadir al fichero hosts de nuestro sistema, en el caso de Windows ```C:\Windows\System32\drivers\etc\hosts``` (si estas en Windows 8 o 10 ejecuta el programa de edición de código como Administrador para poder guardar los cambios), y añadir las IP y las url.
 ```
-127.0.0.1       localhost
+127.0.0.1    localhost
 127.0.0.1    zend2.com.devel
 127.0.0.1    symfony3.com.devel
 Lo que le estamos indicando es que cuando carguemos cualquiera de esos dominios nos llame a la IP que le indicamos en este caso 127.0.0.1 en lugar de la IP original del dominio si es que la tiene.
