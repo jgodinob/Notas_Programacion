@@ -22,7 +22,7 @@ Cygwin es una colección de herramientas desarrollada por Cygnus Solutions para 
   * *SSH -> Net Default -> opnssh: The Open SSH server and client programs*. 
   * *NANO -> Editors Default -> nano: Enhanced clone of Pico editor*.
   * *WGET -> Web Default -> wget: Utility to retrieve files from the WWW via HTTP and FTP*.
-Para comprobar el correcto funcionamiento ejecutamos **Cygwin64**, y dentro de la consola escribimos ```git -v```, ```git --version```, ```ssh -v```, ```nano -v```,...
+Para comprobar el correcto funcionamiento ejecutamos **Cygwin64**, y dentro de la consola escribimos `git -v`, `git --version`, `ssh -v`, `nano -v`,...
 
 1.3.Instalar NetBeans
 ---------------------
@@ -34,7 +34,7 @@ NetBeans es un entorno de desarrollo integrado libre, hecho principalmente para 
 * Accederemos a la carpeta del servidor local escribiendo: ```cd c:/wamp64/www```.
 * Una vez dentro de la carpeta dónde queremos iniciar el proyecto (se encontrará dentro del servidor web **Wamp**) ejecutamos: ```composer create-project symfony/framework-standard-edition symfony/ "3.0.0"```. 
 
-*Nota<sup>1</sup>: La primera ubicación indica el directorio desde dónde se recogen los archivos de symfony, es decir dónde se instaló inicialmente. En cambio la segunda ubicación definirá dentro del directorio de ejecución la carpeta dónde se ubicará el proyecto. La parte dónde se escribe ```"3.0.0"``` especificará la versión de symfony que desea instalarse.*
+*Nota<sup>1</sup>: La primera ubicación indica el directorio desde dónde se recogen los archivos de symfony, es decir dónde se instaló inicialmente. En cambio la segunda ubicación definirá dentro del directorio de ejecución la carpeta dónde se ubicará el proyecto. La parte dónde se escribe `"3.0.0"` especificará la versión de symfony que desea instalarse.*
 
 * Después mostrará un asistente de configuración dónde se indicará:
 ```
@@ -46,11 +46,11 @@ database_password (null):
 ...
 ```
 
-*Nota<sup>2</sup>: si entramos en la siguiente url ```http://localhost/symfony/web/config.php``` se comprobará la configuración de la instalación. Si por alguna razón hubiera problemas es en esta dirección dónde se mostrará dicho error.
+*Nota<sup>2</sup>: si entramos en la siguiente url `http://localhost/symfony/web/config.php` se comprobará la configuración de la instalación. Si por alguna razón hubiera problemas es en esta dirección dónde se mostrará dicho error.
 
-*Nota<sup>3</sup>* **Modificar php.ini**: *Dentro del archivo: ```C:\wamp64\bin\apache\apache2.4.23\bin\php.ini``` colocar debajo de ```intl.error_level = E_WARNING``` la línea ```intl.error_level = 0```. Y colocar debajo de la directiva ```xdebug.show_local_vars=0``` esta otra ```xdebug.max_nesting_level=250```*.
+*Nota<sup>3</sup>* **Modificar php.ini**: *Dentro del archivo: `C:\wamp64\bin\apache\apache2.4.23\bin\php.ini` colocar debajo de `intl.error_level = E_WARNING` la línea `intl.error_level = 0`. Y colocar debajo de la directiva `xdebug.show_local_vars=0` esta otra `xdebug.max_nesting_level=250`*.
 
-Una vez hechos los cambios anteriores, podemos acceder a la siguiente dirección: ```http://localhost/symfony/web/```
+Una vez hechos los cambios anteriores, podemos acceder a la siguiente dirección: `http://localhost/symfony/web/`
 
 1.5.Crear hosts virtuales en Apache
 -----------------------------------
@@ -62,10 +62,10 @@ Cuando creamos un virtualhost lo que estamos haciendo es simular en nuestro serv
 
 Vamos a ver como se crean los virtualhost en WampServer, aunque esto es muy similar en cualquier versión de Apache.
 
-**Paso 1.** Entrar al fichero ```C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf``` y añadir o descomentar el include del fichero de los hosts virutales:
+**Paso 1.** Entrar al fichero `C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf` y añadir o descomentar el include del fichero de los hosts virutales:
 
 Include conf/extra/httpd-vhosts.conf
-**Paso 2.** Entrar al fichero ```C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf``` y añadir los virtualhosts, en mi caso voy a crear 3 nuevos virtualhosts, uno para localhost, otro para un proyecto de Zend Framework 2 y otro para un proyecto de Symfony 3.
+**Paso 2.** Entrar al fichero `C:\wamp64\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf` y añadir los virtualhosts, en mi caso voy a crear 3 nuevos virtualhosts, uno para localhost, otro para un proyecto de Zend Framework 2 y otro para un proyecto de Symfony 3.
 ```php
 # LOCALHOST
 <VirtualHost *:80>
@@ -101,7 +101,7 @@ Include conf/extra/httpd-vhosts.conf
 </VirtualHost>
 ```
 
-**Paso 3.** Añadir al fichero hosts de nuestro sistema, en el caso de Windows ```C:\Windows\System32\drivers\etc\hosts``` (si estas en Windows 8 o 10 ejecuta el programa de edición de código como Administrador para poder guardar los cambios), y añadir las IP y las url.
+**Paso 3.** Añadir al fichero hosts de nuestro sistema, en el caso de Windows `C:\Windows\System32\drivers\etc\hosts` (si estas en Windows 8 o 10 ejecuta el programa de edición de código como Administrador para poder guardar los cambios), y añadir las IP y las url.
 ```
 127.0.0.1    localhost
 127.0.0.1    zend2.com.devel
@@ -109,3 +109,79 @@ Include conf/extra/httpd-vhosts.conf
 Lo que le estamos indicando es que cuando carguemos cualquiera de esos dominios nos llame a la IP que le indicamos en este caso 127.0.0.1 en lugar de la IP original del dominio si es que la tiene.
 ```
 Ahora si entramos a [http://symfony3.com.devel](http://symfony3.com.devel) nos abrirá la web que tenemos en nuestro directorio www.
+
+2.BÁSICOS
+=========
+
+2.1.Primer Hola Mundo
+---------------------
+
+Para ello accedemos a `C:\wamp64\www\symfony\src\AppBundle\Controller\DefaultController.php`, dónde dentro de la clase `class DefaultController{ ... } ` creamos un nuevo método público llamado `public function helloWorldAction{ ... }` en el cuál se imprimirá el código.
+```php
+<?php
+namespace AppBundle\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/index.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        ));
+    }
+//NUEVA FUNCIÓN PARA HOLA MUNDO
+    /**
+     * @Route("/hello-world", name="helloWorld")
+     */
+    public function helloWorldAction(){
+     echo "<h1>Hola Mundo!! </h1>";
+     die();
+    }
+}
+```
+*Nota<sup>1</sup>: Se terminará la función con `php die();` para evitar tener que facilitar una vista la función.*
+*Nota<sup>2</sup>: Para acceder a ver la página creada entraremos en `http://localhost/symfony/web/app_dev.php/hello-world` en modo **developer** *.
+*Nota<sup>3</sup>: Para cambiar a modo **production** es necesario dentro de C:\wamp64\www\symfony\web`\app.php` y colocar el código `$kernel = new AppKernel('prod', false);` como **true**, de la siguiente manera `$kernel = new AppKernel('prod', true);`*.
+
+2.2.Rutas Básicas, Controladores y Vistas
+-----------------------------------------
+* Creamos `PruebasController.php` dentro de la ruta `C:\wamp64\www\symfony\src\AppBundle\Controller\` y copiamos el contenido de `C:\wamp64\www\symfony\src\AppBundle\Controller\DefaultController.php`.
+| C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
+|-----------------------------------------------------------------------|
+```php
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los enrutamientos
+
+class PruebasController extends Controller
+{
+    /**
+     * @Route("/pruebas/index", name="pruebasIndex")
+     */
+    public function indexAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        //Por defecto carga la vista 'default/index.html.twig' al no indicarle ningun Bundle donde ir
+        return $this->render('AppBundle:Pruebas:index.html.twig', array(
+            'texto' => "Te lo envío desde la acción del controlador"
+        ));
+    }
+}
+```
+* Posteriormente se creará la ruta `Resources\views\pruebas` dentro de `C:\wamp64\www\symfony\src\AppBundle\`, tal que así `C:\wamp64\www\symfony\src\AppBundle\Resources\views\pruebas\`. Es aquí dónde se ubicará la vista `index.html.twig` con el siguiente código:
+| C:\wamp64\www\symfony\src\AppBundle\Resources\views\pruebas\index.html.twig  |
+|------------------------------------------------------------------------------|
+```php
+{{texto}}
+```
+PAra ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](http://localhost/symfony/web/pruebas/index).
