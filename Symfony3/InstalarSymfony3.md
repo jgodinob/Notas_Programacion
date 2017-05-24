@@ -152,8 +152,10 @@ class DefaultController extends Controller
 2.2.Rutas Básicas, Controladores y Vistas
 -----------------------------------------
 * Creamos `PruebasController.php` dentro de la ruta `C:\wamp64\www\symfony\src\AppBundle\Controller\` y copiamos el contenido de `C:\wamp64\www\symfony\src\AppBundle\Controller\DefaultController.php`.
+
 | C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
 |-----------------------------------------------------------------------|
+
 ```php
 <?php
 
@@ -165,23 +167,39 @@ use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los en
 
 class PruebasController extends Controller
 {
+//indicamos la ruta de la página de la sigueinte manera:
     /**
      * @Route("/pruebas/index", name="pruebasIndex")
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        //Por defecto carga la vista 'default/index.html.twig' al no indicarle ningun Bundle donde ir
+        //Ahora le indicamos que la vista se encuentra dentro de AppBundles\Pruebas\index.html.twig
         return $this->render('AppBundle:Pruebas:index.html.twig', array(
+        //Este será el array que imprimirá
             'texto' => "Te lo envío desde la acción del controlador"
         ));
     }
 }
 ```
 * Posteriormente se creará la ruta `Resources\views\pruebas` dentro de `C:\wamp64\www\symfony\src\AppBundle\`, tal que así `C:\wamp64\www\symfony\src\AppBundle\Resources\views\pruebas\`. Es aquí dónde se ubicará la vista `index.html.twig` con el siguiente código:
+
 | C:\wamp64\www\symfony\src\AppBundle\Resources\views\pruebas\index.html.twig  |
 |------------------------------------------------------------------------------|
+
 ```php
 {{texto}}
 ```
-PAra ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](http://localhost/symfony/web/pruebas/index).
+Para ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](http://localhost/symfony/web/pruebas/index).
+
+2.2.1.Rutas Básicas (otra forma)
+--------------------------------
+
+Otra forma de indicar las rutas es abstrayéndolas y ubicándolas en un archivo dentro de `C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml`.
+```yml
+pruebas_index:
+ path:/pruebas/index
+ //indicamos el controlador
+ defaults:{_controller: AppBundle:Pruebas:index}
+```
+*Nota: Para que funcionen correctamente hay que añadir un enlace dentro de `C:\wamp64\www\symfony\app\config\routing.yml`. Para ello se introducirá la ruta dónde se cargarán todas las rutas existentes en ese *Bundle*
