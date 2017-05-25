@@ -149,8 +149,8 @@ class DefaultController extends Controller
 *Nota<sup>2</sup>: Para acceder a ver la página creada entraremos en `http://localhost/symfony/web/app_dev.php/hello-world` en modo **developer** *.
 *Nota<sup>3</sup>: Para cambiar a modo **production** es necesario dentro de C:\wamp64\www\symfony\web`\app.php` y colocar el código `$kernel = new AppKernel('prod', false);` como **true**, de la siguiente manera `$kernel = new AppKernel('prod', true);`*.
 
-2.2.Rutas Básicas, Controladores y Vistas
------------------------------------------
+2.2.Rutas Básicas, Controladores y Vistas (mediante comentarios)
+----------------------------------------------------------------
 * Creamos `PruebasController.php` dentro de la ruta `C:\wamp64\www\symfony\src\AppBundle\Controller\` y copiamos el contenido de `C:\wamp64\www\symfony\src\AppBundle\Controller\DefaultController.php`.
 
 | C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
@@ -192,9 +192,9 @@ class PruebasController extends Controller
 ```
 Para ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](http://localhost/symfony/web/pruebas/index).
 
-2.2.1.Rutas Básicas (otra forma)
+2.2.1.Rutas Básicas (sistema routing.yml)
 --------------------------------
-**MUY IMPORTANTE: ** Los **yml** son sensibles a tabulaciones y espacios. Es necesario introducir 4 espacios delante de cada regla para quedar alineados correctamente. Así evitaremos este error:
+**MUY IMPORTANTE:** Los **yml** son sensibles a tabulaciones y espacios. Es necesario introducir 4 espacios delante de cada regla para quedar alineados correctamente. Así evitaremos este error:
 
 https://udemy-images.s3.amazonaws.com/redactor/2016-10-11_13-00-17-9535eb9b2af77f9e715385c427b81e63/sddssddsdsds.jpg
 
@@ -205,24 +205,112 @@ Otra forma de indicar las rutas es abstrayéndolas y ubicándolas en un archivo 
 
 ```yml
 pruebas_index:
+    # path -> nos indicará la ruta
     path:    /pruebas/index
-    //indicamos el controlador
+    # AppBundle -> hace referencia al bundle que está utilizando la ruta
+    # Pruebas -> se refiere al controlador dentro del bundle que va a usar la ruta PruebasController.php 
+    # index -> se refiere al método action dentro del controlador que está dentro del bundle que va a usar la ruta, public function indexAction(Request $request){ ... }
     defaults: { _controller: AppBundle:Pruebas:index }
 ```
 
 Es importante saber que dentro de `AppBundel:Pruebas:index`, 
-* **AppBunde** hace referencia al bundle que está utilizando la ruta.
+* **AppBundle** hace referencia al bundle que está utilizando la ruta.
 * **Pruebas** se refiere al controlador dentro del bundle que va a usar la ruta.
 * **index** se refiere al método action dentro del controlador que está dentro del bundle que va a usar la ruta, `public function indexAction(Request $request){ ... }`
 *Nota: Para que funcionen correctamente hay que añadir un enlace dentro de `C:\wamp64\www\symfony\app\config\routing.yml`. Para ello se introducirá la ruta dónde se cargarán todas las rutas existentes en ese *Bundle*.*
 
-| C:\wamp64\www\symfony\app\configrouting.yml  |
-|----------------------------------------------|
+| C:\wamp64\www\symfony\app\config\routing.yml  |
+|-----------------------------------------------|
 
 ```yml
 rutas_bundle:
+    # mediante resources indicaremos la dirección del archivo routing que gestio el enrutado de dicho bundle
     resource: "@AppBundle/Resources/config/routing.yml"
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+```
+**AMPLIACIÓN**
+--------------
+Dentro de la dirección `C:\wamp64\www\symfony\src\AppBundle\Resources\config\` se encuentra el archivo `routing.yml` en el cual indicaremo todas las direcciones de dicho **Bundle**. Pero para que dichas rutas las reconozca el proyecto hay que incluir dicha dirección dentro de `C:\wamp64\www\symfony\app\config\routing.yml`, tal y como se hizo en el ejemplo anterior.
+
+Para pasar parámetros por la url:
+
+| C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml  |
+|-------------------------------------------------------------------|
+
+```yml
+pruebas_index:
+    path:    /pruebas/{lang}/{name}/{surname}/{age}
+    # indicamos el controlador utilizado "Pruebas" dentro del Bundle "AppBundle" y la acción "indexAction"
+    # indicando valores por defecto o valores opcionales de las variables
+    defaults: { _controller: AppBundle:Pruebas:index, lang: es, surname:robles, age:""}
+    # indicar el método a utilizar GET o POST
+    methods: [GET]
+    requirements:
+        # definimos tres valores posibles
+        lang: es|en|fr
+        # requerimos name con valores alfanumericos
+        name: \w+
+        # requerimos surname con una expresion regular
+        surname: "[a-zA-Z]*"
+        # requerimos que age sean solo números que se puedan repetir
+        age: \d+
+```
+
+| C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
+|-----------------------------------------------------------------------|
+
+```php
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los enrutamientos
+
+class PruebasController extends Controller
+{
+
+    public function indexAction(Request $request, $name, $surname, $age)
+    {
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:Pruebas:index.html.twig', array(
+            'texto' => $name." - ".$surname." - ".$age
+        ));
+    }
+}
+```
+Así solo aceptaría urls como [http://localhost/symfony/web/pruebas/fr/index/pruebas/22](http://localhost/symfony/web/pruebas/fr/index/pruebas/22).
+
+2.3.Redirecciones
+-----------------
+
+| C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
+|-----------------------------------------------------------------------|
+
+```php
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los enrutamientos
+
+class PruebasController extends Controller
+{
+
+    public function indexAction(Request $request, $name, $surname, $age)
+    {
+        // return $this->redirect($this->generateUrl("helloWorld"));
+        // return $this->redirect($this->generateUrl("homepage"));
+        return $this->redirect($this->generateUrl("pruebas/en/victor/3?hola=true"));
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:Pruebas:index.html.twig', array(
+            'texto' => $name." - ".$surname." - ".$age
+        ));
+    }
+}
 ```
