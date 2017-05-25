@@ -194,12 +194,35 @@ Para ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](
 
 2.2.1.Rutas Básicas (otra forma)
 --------------------------------
+**MUY IMPORTANTE: ** Los **yml** son sensibles a tabulaciones y espacios. Es necesario introducir 4 espacios delante de cada regla para quedar alineados correctamente. Así evitaremos este error:
+
+https://udemy-images.s3.amazonaws.com/redactor/2016-10-11_13-00-17-9535eb9b2af77f9e715385c427b81e63/sddssddsdsds.jpg
 
 Otra forma de indicar las rutas es abstrayéndolas y ubicándolas en un archivo dentro de `C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml`.
+
+| C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml  |
+|-------------------------------------------------------------------|
+
 ```yml
 pruebas_index:
- path:/pruebas/index
- //indicamos el controlador
- defaults:{_controller: AppBundle:Pruebas:index}
+    path:    /pruebas/index
+    //indicamos el controlador
+    defaults: { _controller: AppBundle:Pruebas:index }
 ```
-*Nota: Para que funcionen correctamente hay que añadir un enlace dentro de `C:\wamp64\www\symfony\app\config\routing.yml`. Para ello se introducirá la ruta dónde se cargarán todas las rutas existentes en ese *Bundle*
+
+Es importante saber que dentro de `AppBundel:Pruebas:index`, 
+* **AppBunde** hace referencia al bundle que está utilizando la ruta.
+* **Pruebas** se refiere al controlador dentro del bundle que va a usar la ruta.
+* **index** se refiere al método action dentro del controlador que está dentro del bundle que va a usar la ruta, `public function indexAction(Request $request){ ... }`
+*Nota: Para que funcionen correctamente hay que añadir un enlace dentro de `C:\wamp64\www\symfony\app\config\routing.yml`. Para ello se introducirá la ruta dónde se cargarán todas las rutas existentes en ese *Bundle*.*
+
+| C:\wamp64\www\symfony\app\configrouting.yml  |
+|----------------------------------------------|
+
+```yml
+rutas_bundle:
+    resource: "@AppBundle/Resources/config/routing.yml"
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+```
