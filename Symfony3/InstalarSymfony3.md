@@ -300,6 +300,7 @@ Así solo aceptaría urls como [http://localhost/symfony/web/pruebas/fr/index/pr
 * Mediante el código `return $this->redirect($this->generateUrl("helloWorld"));` indicamos al método que redirija hacia la url `helloWorld`.
 * Mediante el código  `return $this->redirect($this->generateUrl("homepage"));` indicamos al método que redirija hacia la url `homepage`.
 * Mediante el código  `return $this->redirect($this->generateUrl("pruebas/en/victor/3?hola=true"));` indicamos al método que redirija hacia la url `en/victor/3?hola=true` lanzando mediante el método get la variable `hola` con un valor `true`.
+
 | C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
 |-----------------------------------------------------------------------|
 
@@ -351,3 +352,91 @@ pruebas_index:
 ```
 
 En el código anterior si colocásemos la url [http://localhost/symfony/web/pruebas/es/victor/22](http://localhost/symfony/web/pruebas/es/victor/22) nos redireccionaría directamente hacia [http://localhost/symfony/web/hello-world?hola=true](http://localhost/symfony/web/hello-world?hola=true), tal y como nos hubiera indicado el enrutador de **AppBundle** (`C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml`) y su **Controller** (`C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php`).
+
+2.4.Recoger Variables GET y POST
+--------------------------------
+
+Mediante el objeto **request** podemos recoger variables **GET** y **POST**. Para poder observar el efecto haremos un `var_dump($request->query->("hola")` seguido de `die();` dentro de **PruebasController**, tal que así:
+
+| C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
+|-----------------------------------------------------------------------|
+
+```php
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los enrutamientos
+
+class PruebasController extends Controller
+{
+
+    public function indexAction(Request $request, $name, $surname, $age)
+    {
+        // return $this->redirect($this->generateUrl("helloWorld"));
+        // return $this->redirect($this->generateUrl("homepage"));
+        // return $this->redirect($this->container->get("router")->getContext()->getBaseUrl()."/hello-world?hola=true");
+        // return $this->redirect($request->getBaseUrl()."/hello-world?hola=true");
+        var_dump($request->query->get("hola"));
+        die();
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:Pruebas:index.html.twig', array(
+            'texto' => $name." - ".$surname." - ".$age
+        ));
+    }
+}
+```
+Observaremos que al utilizar la url [http://localhost/symfony/web/pruebas/es/index/victor/22?hola=contenido](http://localhost/symfony/web/pruebas/es/index/victor/22?hola=contenido) en la cual pasamos las variables por url (definidas en el *routing y controlador del AppBundle*) y  una variable `hola` cuyo valor es igual a `contenido` mediante el método **GET** se nos mostrará:
+```php
+C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php:18:string 'contenido' (length=9)
+```
+
+Para usar el método **POST** utilizaremos el cliente *REST* [**Postman**](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop). 
+Habra que modificar `C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php` para añadir un `var_dump($request->get("hola-post"));` que mediante el método descrito permita enviar la variable `hola-post`, de la siguiente manera:
+
+| C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
+|-----------------------------------------------------------------------|
+
+```php
+<?php
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;   //Componente que gestiona los enrutamientos
+
+class PruebasController extends Controller
+{
+
+    public function indexAction(Request $request, $name, $surname, $age)
+    {
+        // return $this->redirect($this->generateUrl("helloWorld"));
+        // return $this->redirect($this->generateUrl("homepage"));
+        // return $this->redirect($this->container->get("router")->getContext()->getBaseUrl()."/hello-world?hola=true");
+        // return $this->redirect($request->getBaseUrl()."/hello-world?hola=true");
+        var_dump($request->query->get("hola"));
+        var_dump($request->get("hola-post"));
+        die();
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:Pruebas:index.html.twig', array(
+            'texto' => $name." - ".$surname." - ".$age
+        ));
+    }
+}
+```
+Así dentro de la aplicación enviaremos una variable post (Key = hola-post, Value = contenido de post) dentro de dicha url anteriormente descrita ([http://localhost/symfony/web/pruebas/es/index/victor/22?hola=contenido](http://localhost/symfony/web/pruebas/es/index/victor/22?hola=contenido)) en el **body** mediante **preview** recibiremos:
+```php
+C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php:18:string 'contenido' (length=9)
+C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php:19:string 'contenido de post' (length=17)
+```
+
+**Nota**: Se recomienda el uso del segundo método para el envío de variables, es decir usar `$request->get("hola-post"`.
+
+
+2.5.Crear nuevos Bundles
+------------------------
+
+Los Bundles son módulos que dividen la aplicación en partes lógicas. La mejor manera para crearlos es usando la consola [CYGWIN](#12Instalar-CYGWIN)
