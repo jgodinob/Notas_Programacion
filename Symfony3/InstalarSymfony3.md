@@ -193,7 +193,7 @@ class PruebasController extends Controller
 Para ver el resutado accederemos a [http://localhost/symfony/web/pruebas/index](http://localhost/symfony/web/pruebas/index).
 
 2.2.1.Rutas Básicas (sistema routing.yml)
---------------------------------
+-----------------------------------------
 **MUY IMPORTANTE:** Los **yml** son sensibles a tabulaciones y espacios. Es necesario introducir 4 espacios delante de cada regla para quedar alineados correctamente. Así evitaremos este error:
 
 https://udemy-images.s3.amazonaws.com/redactor/2016-10-11_13-00-17-9535eb9b2af77f9e715385c427b81e63/sddssddsdsds.jpg
@@ -230,11 +230,22 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 ```
-**AMPLIACIÓN**
---------------
-Dentro de la dirección `C:\wamp64\www\symfony\src\AppBundle\Resources\config\` se encuentra el archivo `routing.yml` en el cual indicaremo todas las direcciones de dicho **Bundle**. Pero para que dichas rutas las reconozca el proyecto hay que incluir dicha dirección dentro de `C:\wamp64\www\symfony\app\config\routing.yml`, tal y como se hizo en el ejemplo anterior.
+2.2.2. Paso de Variables (GET y POST ) y restricciones con expresiones regulares
+--------------------------------------------------------------------------------
 
-Para pasar parámetros por la url:
+Dentro de la dirección `C:\wamp64\www\symfony\src\AppBundle\Resources\config\` se encuentra el archivo `routing.yml` en el cual indicaremos todas las direcciones de dicho **Bundle**. Pero para que dichas rutas las reconozca el proyecto hay que incluir dicha dirección dentro de `C:\wamp64\www\symfony\app\config\routing.yml`, tal y como se hizo en el ejemplo anterior.
+
+**Ampliación RESTRICCIONES**
+----------------------------
+Podemos ver algunos ejemplos de restricciones usados dentro del archivo `C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml `. Las mismas son:
+* definimos tres valores posibles : `lang: es|en|fr`
+* requerimos name con valores alfanumericos : `name: \w+`
+* requerimos surname con una expresion regular : `surname: "[a-zA-Z]*"`
+* requerimos que age sean solo números que se puedan repetir : `age: \d+`
+
+**Ampliación VARIABLES**
+------------------------
+Es posible indicar valores por defecto o valores opcionales de las variables, tal que así `defaults: { _controller: AppBundle:Pruebas:index, lang: es, surname:robles, age:""}` dentro del archivo `C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml`. Además de previamente haber indicado la necesidad de esos mismos valores dentro del método `public function indexAction{ ... }` en la clase `PruebaController` del archivo `C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php`, tal que así ` public function indexAction (Request $request, $name, $surname, $age){ ... }` (Ver código siguiente).
 
 | C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml  |
 |-------------------------------------------------------------------|
