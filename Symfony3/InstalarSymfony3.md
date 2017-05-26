@@ -297,7 +297,9 @@ Así solo aceptaría urls como [http://localhost/symfony/web/pruebas/fr/index/pr
 
 2.3.Redirecciones
 -----------------
-
+* Mediante el código `return $this->redirect($this->generateUrl("helloWorld"));` indicamos al método que redirija hacia la url `helloWorld`.
+* Mediante el código  `return $this->redirect($this->generateUrl("homepage"));` indicamos al método que redirija hacia la url `homepage`.
+* Mediante el código  `return $this->redirect($this->generateUrl("pruebas/en/victor/3?hola=true"));` indicamos al método que redirija hacia la url `en/victor/3?hola=true` lanzando mediante el método get la variable `hola` con un valor `true`.
 | C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php  |
 |-----------------------------------------------------------------------|
 
@@ -325,3 +327,27 @@ class PruebasController extends Controller
     }
 }
 ```
+
+| C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml  |
+|-------------------------------------------------------------------|
+
+```yml
+pruebas_index:
+    path:    /pruebas/{lang}/{name}/{surname}/{age}
+    # indicamos el controlador utilizado "Pruebas" dentro del Bundle "AppBundle" y la acción "indexAction"
+    # indicando valores por defecto o valores opcionales de las variables
+    defaults: { _controller: AppBundle:Pruebas:index, lang: es, surname:robles, age:""}
+    # indicar el método a utilizar GET o POST
+    methods: [GET]
+    requirements:
+        # definimos tres valores posibles
+        lang: es|en|fr
+        # requerimos name con valores alfanumericos
+        name: \w+
+        # requerimos surname con una expresion regular
+        surname: "[a-zA-Z]*"
+        # requerimos que age sean solo números que se puedan repetir
+        age: \d+
+```
+
+En el código anterior si colocásemos la url [http://localhost/symfony/web/pruebas/es/victor/22](http://localhost/symfony/web/pruebas/es/victor/22) nos redireccionaría directamente hacia [http://localhost/symfony/web/hello-world?hola=true](http://localhost/symfony/web/hello-world?hola=true), tal y como nos hubiera indicado el enrutador de **AppBundle** (`C:\wamp64\www\symfony\src\AppBundle\Resources\config\routing.yml`) y su **Controller** (`C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php`).
