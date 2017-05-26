@@ -439,4 +439,6 @@ C:\wamp64\www\symfony\src\AppBundle\Controller\PruebasController.php:19:string '
 2.5.Crear nuevos Bundles
 ------------------------
 
-Los Bundles son módulos que dividen la aplicación en partes lógicas. La mejor manera para crearlos es usando la consola [CYGWIN](#12Instalar-CYGWIN)
+Los Bundles son módulos que dividen la aplicación en partes lógicas. La mejor manera para crearlos es usando la consola [CYGWIN](#12instalar-cygwin).
+* accederemos a la carpeta del proyecto en este caso `C:\wamp64\www\symfony\`, mediante `cd C:\wamp64\www\symfony\`
+* crearemos el **Bundle** mediante `php bin/console generate:bundle --namespace=MiBundle --format=yml`
