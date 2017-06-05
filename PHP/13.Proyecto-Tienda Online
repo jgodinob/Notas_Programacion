@@ -1,0 +1,29 @@
+13.Proyecto Tienda Online
+=========================
+
+13.1.Cambiar Título página
+--------------------------
+Colocaremos en el *index.php* (*contacto.php*, *empresa.php*,...) antes del include del *header.php* la variable que dará nombre a dicha parte de la siguiente manera:
+| index.php |
+|-----------|
+```php
+<?php 
+$tituloPagina = "Inicio Marketpro";
+$pagina = "inicio";
+
+include('inc/header.php');
+?>
+```
+| inc/header.php |
+|----------------|
+```php
+<?php require_once("conf.php"); ?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><?php echo $tituloPagina; ?></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+```
