@@ -46,6 +46,36 @@ Aprovechando este patrón puede crear una función que realice la factorial del 
 echo "<p>Fecha actual: </p>";
 echo date("d-m-Y");
 ```
+
+**Ejercicio 3.1.** Sacar información función introducida.
+```php
+<?php
+$hoy=date("d.m.y");
+function datosHoy($date){
+	// día del mes 
+	$days2 = date ( "d", strtotime ($date) );
+	// día del mes sin cero a la izquierda
+	$days1 = date ( "j", strtotime ($date) );
+	// día de la semana de la fecha 
+	$dayWeekDate = date ( "l", strtotime ($date) );
+	// número de días que tiene el mes dado
+	$numberDaysMonth = date ( "t", strtotime ($date) );
+	// días que faltan para finalizar el mes
+	$remainsDays = $numberDaysMonth - $days1;
+	// número mes del año
+	$monthN = date ( "m", strtotime ($date) );
+	// tres primeras letras del mes
+	$monthL = date ( "F", strtotime ($date) );
+	// año número dos dígitos
+	$year2 = date ( "y", strtotime ($date) );
+	// año número 4 dígitos
+	$year4 = date ( "Y", strtotime ($date) );
+	
+	// Día de la semana del primer día del mes
+	$firstDayMonth=date("l",mktime(0, 0, 0, $monthN, 1, $year4));
+}
+datosHoy($hoy);
+```
 **Ejercicio 4.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
 
 |**index.php**   |
