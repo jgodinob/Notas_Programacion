@@ -248,9 +248,10 @@ echo "Sesión número: ".$_SESSION["numero"];
 ```
 **Ejercicio 8.** Recoge los datos de las variables POST y muéstralos por pantalla en el caso de que existan y no estén vacíos.
 
+Archivos Ejercicio anterior.
+
 |**includes/header.php**   | **includes/footer.php**  | **crear.php**  |
 |--------------------------|--------------------------|----------------|
-Archivos Ejercicio anterior.
 
 | **recibir.php**  |
 |------------------|
@@ -285,9 +286,10 @@ if(isset($_POST["submit"])){
 - Contraseña: Debe tener una longitud mayor que 6 caracteres.
 - Imagen: Puede estar vacía.
 
+Archivos Ejercicio anterior.
+
 |**includes/header.php**   | **includes/footer.php**  | **crear.php**  |
 |--------------------------|--------------------------|----------------|
-Archivos Ejercicio anterior.
 
 | **recibir.php**  |
 |------------------|
@@ -380,6 +382,7 @@ if($create_usuarios_table){
 
 |PDO | **includes/connect.php**  |
 |----|---------------------------|
+
 ```php
 <?php
 $servername="localhost";
@@ -401,6 +404,7 @@ catch(PDOException $e)
 
 |PDO | **install.php**  |
 |----|------------------|
+
 ```php
 <?php 
 require_once 'includes/connect.php'; 
@@ -428,6 +432,7 @@ if($create_user_table){
 
 |MySQLi | **install.php**  |
 |-------|------------------|
+
 ```php
 <?php 
 require_once 'includes/connect.php'; 
@@ -460,6 +465,7 @@ $insert_user2=mysqli_query($db,$sql);
 
 |PDO | **install.php**  |
 |----|------------------|
+
 ```php
 <?php 
 require_once 'includes/connect.php'; 
@@ -511,13 +517,14 @@ while ($user=mysqli_fetch_assoc($users)){
 	var_dump($user);
 };?>
 ```
+Archivos Ejercicio anterior.
 
 |Myqli |**includes/header.php**   | **includes/footer.php**  | **includes/connect.php**  | **install.php**  |
 |------|--------------------------|--------------------------|---------------------------|------------------|
-Archivos Ejercicio anterior.
 
 |Myqli | **index.php**  |
 |------|----------------|
+
 ```php
 <?php
 include 'includes/header.php';
@@ -551,12 +558,13 @@ include 'includes/footer.php';
 **Ejercicio 13.** Crea una página dinámica para mostrar el detalle completo del registro pasándole por GET el ID.
 
 Archivos Ejercicio anterior.
+
 |Myqli |**includes/header.php**   | **includes/footer.php**  | **includes/connect.php**  | **install.php**  |
 |------|--------------------------|--------------------------|---------------------------|------------------|
 
-
 |Myqli | **index.php**  |
 |------|----------------|
+
 ```php
 <?php
 include 'includes/header.php';
@@ -587,8 +595,10 @@ $users=mysqli_query($db, "SELECT * FROM users");
 include 'includes/footer.php';
 ?>
 ```
+
 |Myqli | **ver.php**  |
 |------|--------------|
+
 ```php
 <?php 
 require_once 'includes/header.php'; 
@@ -715,10 +725,12 @@ if(isset($_POST["submit"])){
 //var_dump($errors);	
 ?>
 ```
+
 Requerimos mediante `require_once 'includes/validate_form.php';` el archivo que validará los datos introducidos en el formulario mediante la función `showError`.
 
 |**crear.php**  |
 |---------------|
+
 ```php
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/validate_form.php'; ?>
@@ -768,6 +780,7 @@ En el header creamos un botón que nos lleve directamente hacia `crear.php`.
 
 |**includes/header.php**   |
 |--------------------------|
+
 ```php
 <?php
 <!DOCTYPE HTML>
@@ -793,6 +806,7 @@ En el header creamos un botón que nos lleve directamente hacia `crear.php`.
 
 | **index.php**  |
 |----------------|
+
 ```php
 <?php
 include 'includes/header.php';
@@ -823,6 +837,7 @@ include 'includes/footer.php';
 
 |**editar.php**  |
 |----------------|
+
 ```php
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/validate_form.php'; ?>
@@ -871,7 +886,8 @@ include 'includes/footer.php';
 ```
 
 | **includes/ver_bd.php**  |
-|----------------|
+|--------------------------|
+
 ```php
 <?php require_once 'includes/header.php'; ?>
 <?php 
@@ -895,6 +911,7 @@ if(!isset($user["user_id"])|| empty ($user["user_id"])){
 
 | **ver.php**  |
 |--------------|
+
 ```php
 <?php require_once 'includes/ver_bd.php'; ?>
 <h3>Usuario:<strong><?php echo $user["name"]." ".$user["surname"];</strong></h3>
