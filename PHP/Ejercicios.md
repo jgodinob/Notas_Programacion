@@ -76,6 +76,94 @@ function datosHoy($date){
 }
 datosHoy($hoy);
 ```
+**Ejercicio 3.2.** Sacar información función introducida.
+```php
+<?php
+<?php
+$datos=
+	[
+		0=>
+			[
+				'id'			=>	13,
+				'date'			=>	'30-08-2012',
+				'nombre'		=>	'pepe',
+				'horaentrada'	=>	'8:50',
+				'horasalida'	=>	'14:35'
+			],
+		1=>
+			[
+				'id'			=>	84,
+				'date'			=>	'22-12-2012',
+				'nombre'		=>	'pepe',
+				'horaentrada'	=>	'8:50',
+				'horasalida'	=>	'14:35'
+			],
+		2=>
+			[
+				'id'			=>	75,
+				'date'			=>	'25-01-2013',
+				'nombre' 		=>	'pepe',
+				'horaentrada'	=>	'8:50',
+				'horasalida'	=>	'14:35'
+			],
+		3=>
+			[
+				'id'			=>	75,
+				'date'			=>	'25-01-2013',
+				'nombre' 		=>	'pepe',
+				'horaentrada'	=>	'8:50',
+				'horasalida'	=>	'14:35'
+			]
+	];
+var_dump($datos);
+echo "<br>";
+foreach ($datos as $clave=>$value) {
+	echo "La fecha de la fila ".$clave." es: ".$datos[$clave]['date']."<br>";
+	
+};
+
+function orderOldestFirst( $a, $b ) {
+    return strtotime($a['date']) - strtotime($b['date']);
+};
+
+function orderOldestLast( $a, $b ) {
+    return strtotime($b['date']) - strtotime($a['date']);
+};
+ 
+function showArray($datos) {
+	foreach($datos as $dato) 
+		echo "{$dato['date']} -> {$dato['nombre']}<br/>";
+};
+ 
+echo "FECHAS ANTIGUAS PRIMERAS<br>"; 
+usort($datos, 'orderOldestFirst');
+showArray($datos);
+
+echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
+usort($datos, 'orderOldestLast');
+showArray($datos);
+
+echo "<br>";
+var_dump($datos);
+
+function datesArray ($datos){
+	$length=count($datos)-1;
+	for( $clave=0 ; $clave<=$length ; $clave++ ){
+		echo $datos[$clave]['date']."<br>";
+		$datesArray[$clave]['date']=$datos[$clave]['date'];
+		$datesArray[$clave]['month']=date('F', strtotime($datos[$clave]['date']));
+		$datesArray[$clave]['weekday']=date('l', strtotime($datos[$clave]['date']));	
+	};
+	
+	return $datesArray;
+};
+$result=datesArray ($datos);
+var_dump($result);
+	/*
+$result = datesArray($datos);
+$result=array_unique($result);
+*/
+```
 **Ejercicio 4.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
 
 |**index.php**   |
@@ -115,7 +203,6 @@ include 'includes/footer.php';
 </html>
 ?>
 ```
-
 
 **Ejercicio 5.1.** Utiliza la función filter_var para comprobar si el email que nos llega por la URL es un email valido.
 ```php
