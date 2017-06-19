@@ -79,13 +79,12 @@ datosHoy($hoy);
 **Ejercicio 3.2.** Sacar información función introducida.
 ```php
 <?php
-<?php
 $datos=
 	[
 		0=>
 			[
 				'id'			=>	13,
-				'date'			=>	'30-08-2012',
+				'date'			=>	'19-06-2017',
 				'nombre'		=>	'pepe',
 				'horaentrada'	=>	'8:50',
 				'horasalida'	=>	'14:35'
@@ -115,46 +114,72 @@ $datos=
 				'horasalida'	=>	'14:35'
 			]
 	];
-var_dump($datos);
-echo "<br>";
+/*
 foreach ($datos as $clave=>$value) {
 	echo "La fecha de la fila ".$clave." es: ".$datos[$clave]['date']."<br>";
-	
 };
-
+*/
 function orderOldestFirst( $a, $b ) {
     return strtotime($a['date']) - strtotime($b['date']);
 };
-
 function orderOldestLast( $a, $b ) {
     return strtotime($b['date']) - strtotime($a['date']);
 };
- 
 function showArray($datos) {
 	foreach($datos as $dato) 
 		echo "{$dato['date']} -> {$dato['nombre']}<br/>";
 };
- 
+/*
 echo "FECHAS ANTIGUAS PRIMERAS<br>"; 
 usort($datos, 'orderOldestFirst');
 showArray($datos);
-
 echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
 usort($datos, 'orderOldestLast');
 showArray($datos);
-
-echo "<br>";
-var_dump($datos);
-
+*/
 function datesArray ($datos){
 	$length=count($datos)-1;
 	for( $clave=0 ; $clave<=$length ; $clave++ ){
-		echo $datos[$clave]['date']."<br>";
-		$datesArray[$clave]['date']=$datos[$clave]['date'];
-		$datesArray[$clave]['month']=date('F', strtotime($datos[$clave]['date']));
-		$datesArray[$clave]['weekday']=date('l', strtotime($datos[$clave]['date']));	
+		// fecha
+		$date=$datos[$clave]['date'];
+			$datesArray[$clave]['date']=$date;
+		// año de la fecha
+		$year=date('Y', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['year']=$year;
+		// mes en número de la fecha
+		$monthN=date('m', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['monthN']=$monthN;
+		// mes en letra de la fecha
+		$monthL=date('F', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['monthL']=$monthL;
+		// total de días del mes de la fecha
+		$totalDayOfMonth=date('t', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['totalDayOfMonth']=$totalDayOfMonth;
+		// número de semanas que tiene el mes (fracciones)
+		$weeksNumbersMonthF=$totalDayOfMonth/7;
+			$datesArray[$clave]['weeksNumbersMonthF']=$weeksNumbersMonthF;		
+		// número de semanas que tiene el mes (entera)
+		$weeksNumbersMonthT=round($weeksNumbersMonthF);
+			$datesArray[$clave]['weeksNumbersMonthT']=$weeksNumbersMonthT;
+		// días sueltos semanas mes
+		$weeksNumbersMonthR=($weeksNumbersMonthF - $weeksNumbersMonthT)*7;
+			$datesArray[$clave]['weeksNumbersMonthR']=$weeksNumbersMonthR;
+		// día del mes de la fecha
+		$dayOfMonth=date('d', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['dayOfMonth']=$dayOfMonth;
+		// primer día del mes en semana letra de la fecha
+		$fristDayOfWeekMonthL=date("l", mktime(0,0,0,$monthN,1,$year));
+			$datesArray[$clave]['fristDayOfWeekMonthL']=$fristDayOfWeekMonthL;
+		// primer día del mes en semana numero de la fecha
+		$fristDayOfWeekMonthN=date("w", mktime(0,0,0,$monthN,1,$year));
+			$datesArray[$clave]['fristDayOfWeekMonthN']=$fristDayOfWeekMonthN;
+		// días que quedan del mes de la fecha
+		$daysRemainMonth=$totalDayOfMonth - $dayOfMonth;
+			$datesArray[$clave]['daysRemain']=$daysRemainMonth ;
+		// día de la semana en letra de la fecha
+		$dayOfWeekL=date('l', strtotime($datos[$clave]['date']));
+			$datesArray[$clave]['dayOfWeekL']=$dayOfWeekL;	
 	};
-	
 	return $datesArray;
 };
 $result=datesArray ($datos);
