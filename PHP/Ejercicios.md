@@ -79,135 +79,69 @@ datosHoy($hoy);
 **Ejercicio 3.2.** Sacar información función introducida.
 ```php
 <?php
-$datos=
-	[
-		0=>
-			[
-				'id'			=>	13,
-				'date'			=>	'19-06-2017',
-				'nombre'		=>	'pepe',
-				'horaentrada'	=>	'8:50',
-				'horasalida'	=>	'14:35'
-			],
-		1=>
-			[
-				'id'			=>	84,
-				'date'			=>	'22-12-2012',
-				'nombre'		=>	'pepe',
-				'horaentrada'	=>	'8:50',
-				'horasalida'	=>	'14:35'
-			],
-		2=>
-			[
-				'id'			=>	75,
-				'date'			=>	'25-01-2013',
-				'nombre' 		=>	'pepe',
-				'horaentrada'	=>	'8:50',
-				'horasalida'	=>	'14:35'
-			],
-		3=>
-			[
-				'id'			=>	75,
-				'date'			=>	'25-01-2013',
-				'nombre' 		=>	'pepe',
-				'horaentrada'	=>	'8:50',
-				'horasalida'	=>	'14:35'
-			]
-	];
-/*
-foreach ($datos as $clave=>$value) {
-	echo "La fecha de la fila ".$clave." es: ".$datos[$clave]['date']."<br>";
-};
-*/
-function orderOldestFirst( $a, $b ) {
-    return strtotime($a['date']) - strtotime($b['date']);
-};
-function orderOldestLast( $a, $b ) {
-    return strtotime($b['date']) - strtotime($a['date']);
-};
-function showArray($datos) {
-	foreach($datos as $dato) 
-		echo "{$dato['date']} -> {$dato['nombre']}<br/>";
-};
-/*
-echo "FECHAS ANTIGUAS PRIMERAS<br>"; 
-usort($datos, 'orderOldestFirst');
-showArray($datos);
-echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
-usort($datos, 'orderOldestLast');
-showArray($datos);
-*/
-function dateAdapted($date, $type){
+function dateAdaptedType($date, $type){
 	switch($type){
-		case "year":
+		case 'year':
 			// año de la fecha
-			$dateAdapted=date('Y', strtotime($date));
+			$dateAdapted = date('Y', strtotime($date));
 		break;
-		case "monthN":
+		case 'monthN':
 			// mes en número de la fecha
-			$dateAdapted=date('m', strtotime($date));
+			$dateAdapted = date('m', strtotime($date));
 		break;
-		case "monthL":
+		case 'monthL':
 			// mes en número de la fecha
-			$dateAdapted=date('F', strtotime($date));
+			$dateAdapted = date('F', strtotime($date));
+		break;
+		case 'totalDayOfMonth':
+			// total de días del mes de la fecha
+			$dateAdapted = date('t', strtotime($date));
+		break;
+		case 'weeksNumbersMonthF':
+			// número de semanas que tiene el mes (fracciones)
+			$totalDayOfMonth = date('t', strtotime($date));		
+			$dateAdapted = $totalDayOfMonth/7;
+		break;
+		case 'weeksNumbersMonthT':
+			// número de semanas que tiene el mes (entera)
+			$totalDayOfMonth = date('t', strtotime($date));		
+			$weeksNumbersMonthF = $totalDayOfMonth/7;
+			$dateAdapted = round($weeksNumbersMonthF);
+		break;
+		case 'weeksNumbersMonthR':
+			// días sueltos semanas mes
+			$totalDayOfMonth = date('t', strtotime($date));		
+			$weeksNumbersMonthF = $totalDayOfMonth/7;
+			$weeksNumbersMonthT = round($weeksNumbersMonthF);
+			$dateAdapted = ($weeksNumbersMonthF - $weeksNumbersMonthT) * 7;
+		break;
+		case 'dayOfMonth':		
+			// día del mes de la fecha
+			$dateAdapted = date('d', strtotime($date));
+		break;
+		case 'fristDayOfWeekMonthL':
+			// primer día del mes en semana numero de la fecha
+			$year = date('Y', strtotime($date));
+			$monthN = date('m', strtotime($date));
+			$dateAdapted = date("l", mktime(0,0,0,$monthN,1,$year));
+		break;
+		case 'fristDayOfWeekMonthN':
+			// primer día del mes en semana numero de la fecha
+			$year = date('Y', strtotime($date));
+			$monthN = date('m', strtotime($date));
+			$dateAdapted = date("w", mktime(0,0,0,$monthN,1,$year));
+		break;
+		case 'daysRemain';
+			// días que quedan del mes de la fecha		
+			$totalDayOfMonth = date('t', strtotime($date));
+			$dayOfMonth = date('d', strtotime($date));
+			$dateAdapted = $totalDayOfMonth - $dayOfMonth;
 		break;
 	}
 	return $dateAdapted;
 }
-$year=dateAdapted('25-01-2013','year');
+$year=dateAdaptedType('25-01-2013','fristDayOfWeekMonthN');
 echo $year."<br>";
-
-function datesArray ($datos){
-	$length=count($datos)-1;
-	for( $clave=0 ; $clave<=$length ; $clave++ ){
-		// fecha
-		$date=$datos[$clave]['date'];
-			$datesArray[$clave]['date']=$date;
-		// año de la fecha
-		$year=date('Y', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['year']=$year;
-		// mes en número de la fecha
-		$monthN=date('m', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['monthN']=$monthN;
-		// mes en letra de la fecha
-		$monthL=date('F', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['monthL']=$monthL;
-		// total de días del mes de la fecha
-		$totalDayOfMonth=date('t', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['totalDayOfMonth']=$totalDayOfMonth;
-		// número de semanas que tiene el mes (fracciones)
-		$weeksNumbersMonthF=$totalDayOfMonth/7;
-			$datesArray[$clave]['weeksNumbersMonthF']=$weeksNumbersMonthF;		
-		// número de semanas que tiene el mes (entera)
-		$weeksNumbersMonthT=round($weeksNumbersMonthF);
-			$datesArray[$clave]['weeksNumbersMonthT']=$weeksNumbersMonthT;
-		// días sueltos semanas mes
-		$weeksNumbersMonthR=($weeksNumbersMonthF - $weeksNumbersMonthT)*7;
-			$datesArray[$clave]['weeksNumbersMonthR']=$weeksNumbersMonthR;
-		// día del mes de la fecha
-		$dayOfMonth=date('d', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['dayOfMonth']=$dayOfMonth;
-		// primer día del mes en semana letra de la fecha
-		$fristDayOfWeekMonthL=date("l", mktime(0,0,0,$monthN,1,$year));
-			$datesArray[$clave]['fristDayOfWeekMonthL']=$fristDayOfWeekMonthL;
-		// primer día del mes en semana numero de la fecha
-		$fristDayOfWeekMonthN=date("w", mktime(0,0,0,$monthN,1,$year));
-			$datesArray[$clave]['fristDayOfWeekMonthN']=$fristDayOfWeekMonthN;
-		// días que quedan del mes de la fecha
-		$daysRemainMonth=$totalDayOfMonth - $dayOfMonth;
-			$datesArray[$clave]['daysRemain']=$daysRemainMonth ;
-		// día de la semana en letra de la fecha
-		$dayOfWeekL=date('l', strtotime($datos[$clave]['date']));
-			$datesArray[$clave]['dayOfWeekL']=$dayOfWeekL;	
-	};
-	return $datesArray;
-};
-$result=datesArray ($datos);
-var_dump($result);
-	/*
-$result = datesArray($datos);
-$result=array_unique($result);
-*/
 ```
 **Ejercicio 4.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
 
