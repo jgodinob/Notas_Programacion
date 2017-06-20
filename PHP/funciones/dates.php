@@ -142,6 +142,36 @@ $hora2 = date("H:i:s" , strtotime("10:45"));
 $hour3 = date("i:s" , strtotime("00"));
 echo diffHours($hora1,$hora2,$hour3);
 
+/********************************************/
+/* FUNCION TIEMPO (HORAS:MINUTOS) A MINUTOS */
+$time="24:30";
+function timeToMinutes($time){
+	$time=date('H:i', strtotime($time));
+	$hours=date('H', strtotime($time));
+	$minutes=date('i', strtotime($time));
+	$time=["hours"=>$hours, "minutes"=>$minutes];
+	$timeToMinutes=($hours*60)+$minutes;
+	return $timeToMinutes;
+}
+// echo timeToMinutes($time)."<br>";
+
+/*************************/
+/* FUNCION SUMAR MINUTOS */
+function addMinutes($time1,$time2){
+	$addMinutes=$time1+$time2;
+	return $addMinutes;
+}
+// echo addMinutes($time,$time)."<br>";
+
+/********************************************/
+/* FUNCION MINUTOS A TIEMPO (HORAS:MINUTOS) */
+function minutesToTime($minutes){
+	$hours=round($minutes/60);
+	$minutes=($minutes/60-round($minutes/60))*60;
+	$time=$hours.":".(($minutes<10)?"0".$minutes:$minutes);
+	return $time;
+}
+// echo minutesToTime(1020)."<br>";
 
 /*********************************************/
 /* FUNCIÓN CALCULA SUMA DE HORAS TOTALES DEL MES */
