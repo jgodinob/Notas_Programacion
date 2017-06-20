@@ -87,6 +87,8 @@ function datesArray ($datos){
 
 var_dump(datesArray ($datos));
 
+/* FUNCIÓN GENERA UN ARRAY CON DATOS DE FECHAS */
+
 function orderOldestFirst( $a, $b ) {
 	return strtotime($a['date']) - strtotime($b['date']);
 };
