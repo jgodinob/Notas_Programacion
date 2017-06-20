@@ -1,6 +1,15 @@
 <?php
 
-/********************************************/
+/******************************************************
+
+* FUNCIÓN MUESTRA INFORMACIÓN DE UNA FECHA 
+* FUNCIÓN GENERA UN ARRAY CON DATOS DE FECHAS 
+* FUNCIÓN ORDENA ARRAY MULTIDIMENSIONAL POR FECHAS 
+* FUNCIÓN CALCULA LA DIFERENCIA ENTRE 2 HORAS 
+* FUNCIÓN CALCULA LA DIFERENCIA ENTRE 3 HORAS 
+
+******************************************************/
+
 /* FUNCIÓN MUESTRA INFORMACIÓN DE UNA FECHA */
 function dateAdaptedType($date, $type){
 	switch($type){
