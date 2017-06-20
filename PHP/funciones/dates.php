@@ -122,3 +122,25 @@ function datesArray ($datos){
 };
 
 var_dump(datesArray ($datos));
+
+function orderOldestFirst( $a, $b ) {
+	return strtotime($a['date']) - strtotime($b['date']);
+};
+
+function orderOldestLast( $a, $b ) {
+	return strtotime($b['date']) - strtotime($a['date']);
+};
+
+function showArray($datos) {
+	foreach($datos as $dato) {
+		echo '{$dato['date']} -> {$dato['nombre']}<br/>';
+	}
+};
+ 
+echo "FECHAS ANTIGUAS PRIMERAS<br>"; 
+usort($datos, 'orderOldestFirst');
+showArray($datos);
+
+echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
+usort($datos, 'orderOldestLast');
+showArray($datos);
