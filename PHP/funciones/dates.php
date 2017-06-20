@@ -87,16 +87,14 @@ function datesArray ($datos){
 
 var_dump(datesArray ($datos));
 
-/* FUNCIÓN GENERA UN ARRAY CON DATOS DE FECHAS */
+/* FUNCIÓN ORDENA ARRAY MULTIDIMENSIONAL POR FECHAS */
 
 function orderOldestFirst( $a, $b ) {
 	return strtotime($a['date']) - strtotime($b['date']);
 };
-
 function orderOldestLast( $a, $b ) {
 	return strtotime($b['date']) - strtotime($a['date']);
 };
-
 function showArray($datos) {
 	foreach($datos as $dato) {
 		echo '{$dato['date']} -> {$dato['nombre']}<br/>';
