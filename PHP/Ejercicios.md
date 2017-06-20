@@ -137,6 +137,26 @@ echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
 usort($datos, 'orderOldestLast');
 showArray($datos);
 */
+function dateAdapted($date, $type){
+	switch($type){
+		case "year":
+			// año de la fecha
+			$dateAdapted=date('Y', strtotime($date));
+		break;
+		case "monthN":
+			// mes en número de la fecha
+			$dateAdapted=date('m', strtotime($date));
+		break;
+		case "monthL":
+			// mes en número de la fecha
+			$dateAdapted=date('F', strtotime($date));
+		break;
+	}
+	return $dateAdapted;
+}
+$year=dateAdapted('25-01-2013','year');
+echo $year."<br>";
+
 function datesArray ($datos){
 	$length=count($datos)-1;
 	for( $clave=0 ; $clave<=$length ; $clave++ ){
