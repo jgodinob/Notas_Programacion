@@ -141,3 +141,29 @@ $hora1 = date("H:i:s" , strtotime("8:30"));
 $hora2 = date("H:i:s" , strtotime("10:45"));
 $hour3 = date("i:s" , strtotime("00"));
 echo diffHours($hora1,$hora2,$hour3);
+
+
+/*********************************************/
+/* FUNCIÓN CALCULA SUMA DE HORAS TOTALES DEL MES */
+$date="12-13-2016";
+$arrayHours=["8:30","8:30","8:30","8:30","6:00","00:00","00:00"];
+function totalHourMonth($date,$arrayHours){
+	$year = date('Y', strtotime($date));
+	$monthN = date('m', strtotime($date));
+	$dayOfMonth = date('d', strtotime($date));
+	$firstDayOfMonth=1;
+	$totalDayOfMonth=date('t', strtotime($date));
+	$dateAdapted = date("w", mktime(0,0,0,$monthN,$firstDayOfMonth,$year));
+	$totalHourMonth=date("H:i",strtotime("00:00"));
+	for($day=1;$day<=$totalDayOfMonth;$day++){
+		$dateRun=date("N", mktime(0,0,0,$monthN,$day,$year));
+		if($dateRun<=5){
+			$totalHourMonth=$totalHourMonth+$arrayHours[$dateRun-1];
+			echo $dateRun;
+			echo "dia ".$day." se dan ".$arrayHours[$dateRun-1]."horas y suman".$totalHourMonth."<br>";
+		}
+		
+	}
+	echo "<br>".$totalHourMonth;
+};
+totalHourMonth($date,$arrayHours);
