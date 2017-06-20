@@ -71,7 +71,7 @@ function dateAdaptedType($date, $type){
 		break;
 		case 'dayOfWeekL';
 			// día de la semana en letra de la fecha
-			$dateAdapted = date('l', strtotime($datos[$clave]['date']));
+			$dateAdapted = date('l', strtotime($date));
 		}
 	return $dateAdapted;
 }
