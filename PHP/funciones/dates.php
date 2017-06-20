@@ -108,12 +108,27 @@ showArray($datos);
 
 
 /*********************************************/
-/* FUNCIÓN CALCULA LA DIFERENCIA ENTRE HORAS */
-function diffHours($hourStart,$hourEnd){
+/* FUNCIÓN CALCULA LA DIFERENCIA ENTRE 2 HORAS */
+function diffHours($hourStart,$hourEnd,$hourThird){
+	
 	$hourResult=date("H:i:s" , strtotime("00:00:00") + strtotime($hourEnd)- strtotime($hourStart));
 	return $hourResult;
 }
 // Datos Ejemplo
 $hora1 = date("H:i:s" , strtotime("8:30"));	
 $hora2 = date("H:i:s" , strtotime("10:45"));
+$hour3 = 
 echo diffHours($hora1,$hora2);
+
+/*********************************************/
+/* FUNCIÓN CALCULA LA DIFERENCIA ENTRE 3 HORAS */
+function diffHours($hourStart,$hourEnd,$hourThird){
+	$hourResult2=date("H:i:s", strtotime("00:00:00")+strtotime($hourEnd)-strtotime($hourStart));
+	$hourResult3=date("H:i:s", strtotime("00:00:00")+strtotime($hourResult2)-strtotime($hourThird));
+	return $hourResult3;
+}
+// Datos Ejemplo
+$hora1 = date("H:i:s" , strtotime("8:30"));	
+$hora2 = date("H:i:s" , strtotime("10:45"));
+$hour3 = date("H:i:s" , strtotime("00:10"));
+echo diffHours($hora1,$hora2,$hour3);
