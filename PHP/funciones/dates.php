@@ -1,7 +1,7 @@
 <?php
 
+/********************************************/
 /* FUNCIÓN MUESTRA INFORMACIÓN DE UNA FECHA */
-
 function dateAdaptedType($date, $type){
 	switch($type){
 		case 'year':
@@ -66,13 +66,12 @@ function dateAdaptedType($date, $type){
 		}
 	return $dateAdapted;
 }
-
+// Ejemplo de Uso
 $year=dateAdaptedType('25-01-2013','year');
-
 echo $year."<br>";
 
+/***********************************************/
 /* FUNCIÓN GENERA UN ARRAY CON DATOS DE FECHAS */
-
 function datesArray ($datos){
 	$length=count($datos)-1;
 	for( $clave=0 ; $clave<=$length ; $clave++ ){
@@ -84,11 +83,11 @@ function datesArray ($datos){
 	};
 	return $datesArray;
 };
-
+// Ejemplo de uso
 var_dump(datesArray ($datos));
 
+/****************************************************/
 /* FUNCIÓN ORDENA ARRAY MULTIDIMENSIONAL POR FECHAS */
-
 function orderOldestFirst( $a, $b ) {
 	return strtotime($a['date']) - strtotime($b['date']);
 };
@@ -100,11 +99,21 @@ function showArray($datos) {
 		echo '{$dato['date']} -> {$dato['nombre']}<br/>';
 	}
 };
- 
-echo "FECHAS ANTIGUAS PRIMERAS<br>"; 
+// Ejemplo Fechas Antiguas primeras
 usort($datos, 'orderOldestFirst');
 showArray($datos);
-
-echo "FECHAS ANTIGUAS ÚLTIMAS<br>";
+// Ejemplo Fechas Antiguas Últimas
 usort($datos, 'orderOldestLast');
 showArray($datos);
+
+
+/*********************************************/
+/* FUNCIÓN CALCULA LA DIFERENCIA ENTRE HORAS */
+function diffHours($hourStart,$hourEnd){
+	$hourResult=date("H:i:s" , strtotime("00:00:00") + strtotime($hourEnd)- strtotime($hourStart));
+	return $hourResult;
+}
+// Datos Ejemplo
+$hora1 = date("H:i:s" , strtotime("8:30"));	
+$hora2 = date("H:i:s" , strtotime("10:45"));
+echo diffHours($hora1,$hora2);
