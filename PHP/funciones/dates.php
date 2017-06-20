@@ -130,5 +130,5 @@ function diffHours($hourStart,$hourEnd,$hourThird){
 // Datos Ejemplo
 $hora1 = date("H:i:s" , strtotime("8:30"));	
 $hora2 = date("H:i:s" , strtotime("10:45"));
-$hour3 = date("H:i:s" , strtotime("00:10"));
+$hour3 = date("i:s" , strtotime("00"));
 echo diffHours($hora1,$hora2,$hour3);
