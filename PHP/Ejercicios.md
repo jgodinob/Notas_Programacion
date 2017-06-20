@@ -79,6 +79,42 @@ datosHoy($hoy);
 **Ejercicio 3.2.** Sacar información función introducida.
 ```php
 <?php
+$datos=
+ 	[
+ 		0=>
+ 		[
+ 				'id'			=>	13,
+ 				'date'			=>	'19-06-2017',
+ 				'nombre'		=>	'pepe',
+ 				'horaentrada'	=>	'8:50',
+ 				'horasalida'	=>	'14:35'
+ 			],
+ 		1=>
+ 			[
+ 				'id'			=>	84,
+ 				'date'			=>	'22-12-2012',
+ 				'nombre'		=>	'pepe',
+ 				'horaentrada'	=>	'8:50',
+ 				'horasalida'	=>	'14:35'
+ 			],
+ 		2=>
+ 			[
+ 				'id'			=>	75,
+ 				'date'			=>	'25-01-2013',
+ 				'nombre' 		=>	'pepe',
+ 				'horaentrada'	=>	'8:50',
+ 				'horasalida'	=>	'14:35'
+ 			],
+ 		3=>
+ 			[
+ 				'id'			=>	75,
+ 				'date'			=>	'25-01-2013',
+ 				'nombre' 		=>	'pepe',
+ 				'horaentrada'	=>	'8:50',
+ 				'horasalida'	=>	'14:35'
+ 			]
+ 	];
+
 function dateAdaptedType($date, $type){
 	switch($type){
 		case 'year':
@@ -137,11 +173,30 @@ function dateAdaptedType($date, $type){
 			$dayOfMonth = date('d', strtotime($date));
 			$dateAdapted = $totalDayOfMonth - $dayOfMonth;
 		break;
-	}
+		case 'dayOfWeekL';
+			// día de la semana en letra de la fecha
+			$dateAdapted = date('l', strtotime($datos[$clave]['date']));
+		}
 	return $dateAdapted;
 }
-$year=dateAdaptedType('25-01-2013','fristDayOfWeekMonthN');
+
+$year=dateAdaptedType('25-01-2013','year');
+
 echo $year."<br>";
+
+function datesArray ($datos){
+	$length=count($datos)-1;
+	for( $clave=0 ; $clave<=$length ; $clave++ ){
+		// fecha
+		$date = $datos[$clave]['date'];
+			$datesArray[$clave]['date'] = $date;
+		// año de la fecha
+		$datesArray[$clave]['year'] = dateAdaptedType($date, 'year');
+	};
+	return $datesArray;
+};
+
+var_dump(datesArray ($datos));
 ```
 **Ejercicio 4.** Utiliza los includes de PHP para tener una estructura html básica y separar el código por el header, body y footer.
 
