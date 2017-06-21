@@ -142,7 +142,10 @@ $hora2 = date("H:i:s" , strtotime("10:45"));
 $hour3 = date("i:s" , strtotime("00"));
 echo diffHours($hora1,$hora2,$hour3);
 
-/********************************************/
+// Datos Ejemplo
+$date="12-13-2016";
+$arrayHours=["8:30","8:30","8:30","8:30","6:00","00:00","00:00"];
+
 /* FUNCION TIEMPO (HORAS:MINUTOS) A MINUTOS */
 $time="24:30";
 function timeToMinutes($time){
@@ -153,7 +156,7 @@ function timeToMinutes($time){
 	$timeToMinutes=($hours*60)+$minutes;
 	return $timeToMinutes;
 }
-// echo timeToMinutes($time)."<br>";
+ echo timeToMinutes($time)."<br>";
 
 /*************************/
 /* FUNCION SUMAR MINUTOS */
@@ -167,16 +170,14 @@ function addMinutes($time1,$time2){
 /* FUNCION MINUTOS A TIEMPO (HORAS:MINUTOS) */
 function minutesToTime($minutes){
 	$hours=round($minutes/60);
-	$minutes=($minutes/60-round($minutes/60))*60;
+	$minutes=((round($minutes/60))-($minutes/60))*60;
 	$time=$hours.":".(($minutes<10)?"0".$minutes:$minutes);
 	return $time;
 }
-// echo minutesToTime(1020)."<br>";
+// echo minutesToTime(11130)."<br>";
 
-/*********************************************/
-/* FUNCIÓN CALCULA SUMA DE HORAS TOTALES DEL MES */
-$date="12-13-2016";
-$arrayHours=["8:30","8:30","8:30","8:30","6:00","00:00","00:00"];
+/********************************************************************/
+/* FUNCION CALCULA EL TOTAL DE TIEMPO QUE SE PODRIA TRABAJAR UN MES */
 function totalHourMonth($date,$arrayHours){
 	$year = date('Y', strtotime($date));
 	$monthN = date('m', strtotime($date));
@@ -185,15 +186,15 @@ function totalHourMonth($date,$arrayHours){
 	$totalDayOfMonth=date('t', strtotime($date));
 	$dateAdapted = date("w", mktime(0,0,0,$monthN,$firstDayOfMonth,$year));
 	$totalHourMonth=date("H:i",strtotime("00:00"));
+	$totalHourMonthInMinutes=0;
 	for($day=1;$day<=$totalDayOfMonth;$day++){
+		// Día de la semana en número
 		$dateRun=date("N", mktime(0,0,0,$monthN,$day,$year));
-		if($dateRun<=5){
-			$totalHourMonth=$totalHourMonth+$arrayHours[$dateRun-1];
-			echo $dateRun;
-			echo "dia ".$day." se dan ".$arrayHours[$dateRun-1]."horas y suman".$totalHourMonth."<br>";
-		}
-		
+		$hourWorkWeekDay=$arrayHours[$dateRun-1];
+		$hourWorkWeekDayInMinutes=timeToMinutes($hourWorkWeekDay);
+		$totalHourMonthInMinutes=$totalHourMonthInMinutes+$hourWorkWeekDayInMinutes;
 	}
-	echo "<br>".$totalHourMonth;
+	$totalHourMonthInMinutes=minutesToTime($totalHourMonthInMinutes);
+	return $totalHourMonthInMinutes;
 };
-totalHourMonth($date,$arrayHours);
+// echo totalHourMonth($date,$arrayHours);
