@@ -1,0 +1,13 @@
+<script language="javascript" src="js/jquery.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+   $("#category").change(function () {
+           $("#category option:selected").each(function () {
+            id_category = $(this).val();
+            $.post("subcategories.php", { id_category: id_category }, function(data){
+                $("#subcategory").html(data);
+            });            
+        });
+   })
+});
+</script>
