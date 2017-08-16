@@ -13,6 +13,8 @@ Para poder utilizarlo hay que copiar en dentro de `<head>` antes de todos los en
     important alert message.
 </div>
 ```
+![alert-success](/img/alert-success.JPG "alert-success")
+
 <div style="background-color: #dff0d8; border-color: #d0e9c6; color: #3c763d; padding: .75rem 1.25rem; margin-bottom: 1rem;border: 1px solid transparent;border-radius: .25rem;" role="alert">
     <strong style="font-weight: bolder;">Heads up!</strong> This alert needs your attention,
     but it's not super important.
