@@ -6,8 +6,8 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 **127.0.0.1 marketproweb.project**
 
 **Configuración para WAMP64**
-* **Opción A**
-	* Buscamos el archivo **httpd-vhosts.conf** dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*. Encontraremos el archivo inicialmente así:
+**Opción A**
+* Buscamos el archivo **httpd-vhosts.conf** dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*. Encontraremos el archivo inicialmente así:
 
 ```html
 # Virtual Hosts
@@ -24,7 +24,8 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
   	</Directory>
  </VirtualHost>
 ```
-	* A continuación añadimos el siguiente texto:
+	
+* A continuación añadimos el siguiente texto:
 
 ```html
 <VirtualHost *:80>
@@ -38,7 +39,7 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 </VirtualHost>
 ```
 
-	* El ejemplo usando [WAMP64](http://www.wampserver.com/en/#wampserver-64-bits-php-5-6-25-php-7) sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro* 
+* El ejemplo usando [WAMP64](http://www.wampserver.com/en/#wampserver-64-bits-php-5-6-25-php-7) sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro* 
 
 ```html
 <VirtualHost *:80>
@@ -51,7 +52,7 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 	</Directory>
 </VirtualHost>
 ```
-* **Opción B**
-	* Creamos dentro de *c:/wamp64/www/* una carpeta con el nombre del dominio virtual.
-	* Dentro de localhost selecionamos la opción de **Add a Virtual Host**.
-	* Indicamos el nombre del dominio en **Name of the Virtual Host**, la ubicación del dominio en **Complete absolute path of the VirtualHost folder Examples: C:/wamp/www/** y pulsamos en **Start the creation**.
+**Opción B**
+* Creamos dentro de *c:/wamp64/www/* una carpeta con el nombre del dominio virtual.
+* Dentro de localhost selecionamos la opción de **Add a Virtual Host**.
+* Indicamos el nombre del dominio en **Name of the Virtual Host**, la ubicación del dominio en **Complete absolute path of the VirtualHost folder Examples: C:/wamp/www/** y pulsamos en **Start the creation**.
