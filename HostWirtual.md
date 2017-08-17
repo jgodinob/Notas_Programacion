@@ -1,4 +1,5 @@
 ** VIRTUAL HOST **
+
 Buscamos el archivo **hosts** dentro de una dirección del sistema parecida a *c:/Windows/System32/drivers/etc*
 añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 
