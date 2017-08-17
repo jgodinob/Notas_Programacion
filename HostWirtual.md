@@ -5,7 +5,7 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 	**127.0.0.1 marketproweb.com**
 	
 Buscamos el archivo **httpd-vhosts.conf**	dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*
-añadimpos el siguiente texto:
+añadimos el siguiente texto:
 
 ```html
 <VirtualHost>
