@@ -7,8 +7,7 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 
 **Configuración para WAMP64**
 * **Opción A**
-Buscamos el archivo **httpd-vhosts.conf** dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*
-encontraremos el archivo inicialmente así:
+	* Buscamos el archivo **httpd-vhosts.conf** dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*. Encontraremos el archivo inicialmente así:
 
 ```html
 # Virtual Hosts
@@ -25,7 +24,7 @@ encontraremos el archivo inicialmente así:
   	</Directory>
  </VirtualHost>
 ```
-A continuación añadimos el siguiente texto:
+	* A continuación añadimos el siguiente texto:
 
 ```html
 <VirtualHost *:80>
@@ -39,7 +38,7 @@ A continuación añadimos el siguiente texto:
 </VirtualHost>
 ```
 
-El ejemplo usando [WAMP64](http://www.wampserver.com/en/#wampserver-64-bits-php-5-6-25-php-7) sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro* 
+	* El ejemplo usando [WAMP64](http://www.wampserver.com/en/#wampserver-64-bits-php-5-6-25-php-7) sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro* 
 
 ```html
 <VirtualHost *:80>
