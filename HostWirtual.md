@@ -3,7 +3,7 @@
 Buscamos el archivo **hosts** dentro de una dirección del sistema parecida a *c:/Windows/System32/drivers/etc*
 añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 
-	**127.0.0.1 marketproweb.project**
+**127.0.0.1 marketproweb.project**
 	
 Buscamos el archivo **httpd-vhosts.conf**	dentro de Apache en una dirección tal que así *C:\wamp64\bin\apache\apache2.4.23\conf\extra*
 añadimos el siguiente texto:
