@@ -14,7 +14,7 @@ añadimpos el siguiente texto:
 	</Directory>
 </VirtualHost>
 ```
-El ejemplo para WAMP64 sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro*:
+El ejemplo para [WAMP64](http://www.wampserver.com/en/#wampserver-64-bits-php-5-6-25-php-7) sería para un dominio virtual [marketproweb.project](http://marketproweb.project) alojado en *C:\wamp64\www\marketpro*:
 ```html
 <VirtualHost *:80>
 	DocumentRoot "C:\wamp64\www\marketpro"
