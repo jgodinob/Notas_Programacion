@@ -3,7 +3,10 @@
 Buscamos el archivo **hosts** dentro de una dirección del sistema parecida a *c:/Windows/System32/drivers/etc*
 añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 
-**127.0.0.1 marketproweb.project**
+**127.0.0.1	MarketPro.project**
+**::1		MarketPro.project**
+**127.0.0.1	erp.prodigia**
+**::1		erp.prodigia**
 
 **Configuración para WAMP64**
 **Opción A**
@@ -46,6 +49,17 @@ añadimos la línea *127.0.0.1 dominio.com* el ejemplo sería:
 	ServerName MarketPro.project
 	DocumentRoot "c:/wamp64/www/marketpro.project"
 	<Directory  "c:/wamp64/www/marketpro.project/">
+		Options +Indexes +Includes +FollowSymLinks +MultiViews
+		AllowOverride All
+		Require local
+	</Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+	ServerName erp.prodigia
+	DocumentRoot "C:\wamp64\www\erp.prodigia"
+	<Directory  "C:\wamp64\www\erp.prodigia/">
 		Options +Indexes +Includes +FollowSymLinks +MultiViews
 		AllowOverride All
 		Require local
