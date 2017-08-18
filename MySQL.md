@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS òfertas`(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 INSERT INTO `ofertas` (`sku`, `nombre`, ìnfroDescripcion`, `descripcion`, `img`, `precio`, `precioOferta`, `moneda`) 
-VALUES (001, 'SPA para 2' 'Vive un momento inolvidable en la Sierra Norte', 'No te puedes perder','','','','','');
+VALUES (001, 'SPA para 2' 'Vive un momento inolvidable en la Sierra Norte', 'No te puedes perder...', '/img/spa.jpg', 389.00, 49.00, 'Euros');
 ```
