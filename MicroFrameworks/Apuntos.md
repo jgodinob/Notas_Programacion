@@ -1,0 +1,1 @@
+Se recomienda el uso del gestor de dependencias [Composer](https://getcomposer.org/download/) para poder instalar las diferencias librerias que se usaran, para ello en windows usaremos el [instalador de Composer](https://getcomposer.org/Composer-Setup.exe)
