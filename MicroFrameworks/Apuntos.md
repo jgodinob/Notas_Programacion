@@ -58,3 +58,25 @@ Una vez seleccionado los paquetes que queremos cargar veremos de nuevas el texto
     }
 }
 ```
+
+Además se habrá creado un archivo llamado `composer.lock`que facilitará información sobre los paquetes instalados.
+
+1.2.Instalando Autoload.php
+--------------------------
+
+Se recomienda tener delante la documentación referente a dicho módulo, para ello hacemos click en [autoload documentation](https://getcomposer.org/doc/01-basic-usage.md), para verla accedemos a la documentación de [Composer](https://getcomposer.org/), y pulsamos en [Composer/basic usage](https://getcomposer.org/doc/01-basic-usage.md), ahí buscamos **Autoload.php**. Así, según la misma insertamos dentro de `index.php` el código 
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+$log = new Monolog\Logger('name');
+$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
+$log->addWarning('Foo');
+```
+
+Se generará un archivo `app.log` con información sobre el módulo **monolog** relativa a cada sesión llevada a cabo, tal que así:
+
+```php
+[2017-08-28 16:03:16] name.WARNING: Foo [] []
+[2017-08-28 16:03:55] name.WARNING: Foo [] []
+```
+
