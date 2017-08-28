@@ -80,3 +80,61 @@ Se generará un archivo `app.log` con información sobre el módulo **monolog** 
 [2017-08-28 16:03:55] name.WARNING: Foo [] []
 ```
 
+1.3.MicroFramwork SLIM
+----------------------
+Para tener tod la información y documentación de este MicroFramework podemos acceder a [Slimframework](https://www.slimframework.com/) dentro de la opción [User Guide](https://www.slimframework.com/docs/). Este puede ser instalado desde la consola mediante [Composer](https://getcomposer.org/), mediante la línea de comando `composer require`, para después en el buscador de módulos buscar usando la palabra **slim** y seleccionar `Silm/slim`.
+
+Para desarrollar la aplicación convertiremos el archivo `index.php` en el enrutador, y generaremos un controlador frontal a través de la configuración existente en `.htaccess`de la aplicación de la siguiente manera:
+
+| .htaccess |
+|-----------|
+
+```php
+RewriteEngine On
+RewriteCond &(REQUEST_FILENAME) !-d
+RewriteCond &(REQUEST_FILENAME) !-f
+RewriteRule ^ index.php (QSA,L)
+```
+
+| index.php |
+|-----------|
+
+```php
+<?php
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+
+require 'vendor/autoload.php';
+
+$app = new \Slim\App;
+$app->get('/hello/{name}', function (Request $request, Response $response) {
+    $name = $request->getAttribute('name');
+    $response->getBody()->write("Hello, $name");
+
+    return $response;
+});
+$app->run();
+```
+
+Esto mostraria en el navegador al introducir la url `https:/slimproject/hello/David` el texto **Hello, David**.
+
+En cambio si modificamos `index.php` de la siguiente manera:
+
+| index.php |
+|-----------|
+
+```php
+<?php
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+
+require 'vendor/autoload.php';
+
+$app = new \Slim\App;
+$app->get('/', function (Request $request, Response $response) {
+    $response->getBody()->write("Hello World!!");
+    return $response;
+});
+$app->run();
+```
+Se mostraria en el navegador al introducir la url `https:/slimproject/` el texto **Hello World!!**.
