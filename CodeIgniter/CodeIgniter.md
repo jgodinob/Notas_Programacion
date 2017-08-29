@@ -1,4 +1,8 @@
 La base creada como ejemplo es la siguiente:
+
+| codeigniter.sql |
+|-----------------|
+
 ```mysql
 -- Base de datos: `codeigniter`
 -- --------------------------------------------------------
@@ -29,6 +33,10 @@ ALTER TABLE `articulos`
 ------------------------------------------
 
 Dentro del archivo `application\config\config.php` podemos añadir una clave de encriptación en la línea 
+
+| application\config\config.php |
+|-------------------------------|
+
 ```php
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +65,10 @@ $config['encryption_key'] = 'asd747pro22xml134ff';
 $config['index_page'] = '';
 ```
 En el archivo `application\config\autoload.php` modificaremos las dos líneas siguientes como en este ejemplo:
+
+| application\config\autoload.php |
+|---------------------------------|
+
 ```php
 /*
 | -------------------------------------------------------------------
@@ -87,6 +99,10 @@ $autoload['libraries'] = array('database','session');
 $autoload['helper'] = array('url');
 ```
 Al querer diseñar una aplicación que conectará con la base de datos es necesario configurar el acceso a la misma, por ello modificaremos el archivo `application\config\database.php`
+
+| application\config\database.php |
+|---------------------------------|
+
 ```php
 /*
 | -------------------------------------------------------------------
