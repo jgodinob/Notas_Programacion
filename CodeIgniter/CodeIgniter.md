@@ -1,3 +1,33 @@
+La base creada como ejemplo es la siguiente:
+```mysql
+-- Base de datos: `codeigniter`
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `articulos`
+CREATE TABLE `articulos` (
+  `IDarticulo` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `articulo` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IDusuario` int(11) NOT NULL,
+  `activo` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Volcado de datos para la tabla `articulos`
+INSERT INTO `articulos` (`IDarticulo`, `titulo`, `articulo`, `fecha`, `IDusuario`, `activo`) VALUES
+(1, 'Mi primer articulo', 'Este es mi primer articulo', '2017-08-29 08:16:25', 0, 1),
+(2, 'Segundo', 'Este es mi segundo articulo', '2017-08-29 08:16:25', 0, 1),
+(3, 'Mi tercer articulo', 'tercer articulo desactivado', '2017-08-29 08:16:59', 0, 0);
+-- Índices para tablas volcadas
+-- Indices de la tabla `articulos`
+ALTER TABLE `articulos`
+  ADD PRIMARY KEY (`IDarticulo`);
+-- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT de la tabla `articulos`
+ALTER TABLE `articulos`
+  MODIFY `IDarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+
+------------------------------------------
+
 Dentro del archivo `application\config\config.php` podemos añadir una clave de encriptación en la línea 
 ```php
 /*
@@ -175,5 +205,6 @@ class Articulos extends CI_Controller{
 }
 ```
 
-
+Al introducir la **url** `http://codeigniter/index.php/articulos` obtendremos una muestra de los datos de la base de datos creada. 
+`Array ( [articulos] => Array ( [0] => stdClass Object ( [IDarticulo] => 1 [titulo] => Mi primer articulo [articulo] => Este es mi primer articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) [1] => stdClass Object ( [IDarticulo] => 2 [titulo] => Segundo [articulo] => Este es mi segundo articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) ) )`
 
