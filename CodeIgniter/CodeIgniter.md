@@ -262,30 +262,99 @@ Al introducir la **url** `http://codeigniter/index.php/articulos` obtendremos un
 <!doctype html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<title>Curso PHP</title>
-	<meta name="description" content ="Articulos del blog">
+  <meta charset="utf-8">
+  <title>Curso PHP mi CMS</title>
+  <meta name="description" content="Articulos del Blog">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  	* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: none repeat scroll 0 0 #DDDDDD;
+    color: #0F3D48;
+    font-family: verdana,arial,sans-serif;
+    font-size: 16px;
+    padding: 0 10px;
+}
+h1 {
+    color: #512800;
+    font-size: 37px;
+    margin-left: 2%;
+    font-weight: normal;
+}
+h3 {
+    float: left;
+    font-weight: normal;
+}
+a {
+    color: #512800;
+    text-decoration: none;
+}
+#wrapper {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.35);
+    margin: 2em auto;
+    max-width: 840px;
+    padding-bottom: 10px;
+}
+#wrapper header {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#wrapper #contenedor article {
+    background: none repeat scroll 0 0 #F7F7F4;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 0 2% 20px;
+    padding: 10px;
+    position: relative;
+}
+.articulo {
+    border-top: 2px solid #F4AB84;
+    clear: both;
+    font-size: 12px;
+    padding: 10px;
+}
+.fecha {
+    color: #B7B7B7;
+    font-family: arial;
+    float: right;
+    font-size: 12px;
+    margin: 8px 5px 0;
+}
+
+.ver-mas a {
+    color: #E96151;
+}
+ 
+
+  </style>
 </head>
 <body>
-	<div id="wrapper">
-		<header>
-			<h1>Blog PHP y MVC</h1>
-		</header>
-		<section id="contenedor">
-			<?php if(!isset($articulos)){ ?>
-				<p>El blog esta vacio <p>
-			<?php } else {
-				foreach ($articulos as $row){ ?>
-					<article>
-					<h3><a href="<?=base_url()?>articulos/articulo/<?$row['IDarticulo']?>"><?=$row['titulo']?></a></h3>
+  <div id="wrapper">
+  	<header>
+  		<h1>Blog PHP y MVC</h1>
+  	</header>
+  	<section id="contenedor">
+  		<?php if(!isset($articulos)){ ?>
+	  		<p>El blog esta vacio</p>
+	  	<?php } else { 
+	  		foreach ($articulos as $row){ ?>
+	  			<article>		  	
+					<h3><a href="<?=base_url()?>articulos/articulo/<?=$row['IDarticulo']?>"><?=$row['titulo']?></a></h3>
 					<span class="fecha"><?=$row['fecha']?></span>
 					<p class="articulo"><?=substr(strip_tags($row['articulo']),0,200).".."?><p>
-					<p class="ver-mas"><a href="<?base_url()?>articulos/articulo/<?=$row['IDarticulo']?>">ver más</a></p>
+					<p class="ver-mas"><a href="<?=base_url()?>articulos/articulo/<?=$row['IDarticulo']?>">ver más</a></p>
 				</article>
 			<?php }
-			}; ?>
-		</section>
-	</div>
+		}; ?>
+	</section>
+  </div>	
 </body>
 </html>
 ```
