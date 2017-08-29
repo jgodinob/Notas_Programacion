@@ -24,7 +24,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `articulos`
 ALTER TABLE `articulos`
   MODIFY `IDarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+```
 
 ------------------------------------------
 
@@ -42,6 +42,19 @@ Dentro del archivo `application\config\config.php` podemos añadir una clave de 
 |
 */
 $config['encryption_key'] = 'asd747pro22xml134ff';
+/*
+|--------------------------------------------------------------------------
+| Index File
+|--------------------------------------------------------------------------
+|
+| Typically this will be your index.php file, unless you've renamed it to
+| something else. If you are using mod_rewrite to remove the page set this
+| variable so that it is blank.
+|
+*/
+/* MODIFICADO */
+// $config['index_page'] = 'index.php';
+$config['index_page'] = '';
 ```
 En el archivo `application\config\autoload.php` modificaremos las dos líneas siguientes como en este ejemplo:
 ```php
@@ -182,10 +195,27 @@ Crearemos un modelo que conectará a la base de datos dónde realizará la consu
 //la clase puede nombrarse con la primera inicial en mayúscula aunque el archivo no lo haga (pero con el mismo nombre)
 class Articulo extends CI_Model {
 	function get_articulos(){
-		$this->db->select()->from('articulos')->where('activo',1);
+		/* Para ver todos los articulos independientemente de su estado (Activo/inactivo) */
+		// $this->db->select()->from('articulos');
+		
+		/* Para ver todos los articulos activos */
+		// $this->db->select()->from('articulos')->where('activo',1);
+		
+		/* Para consultas más largas se recomienda la siguiente estructura */
+		$this->db->from('articulos');
+		$this->db->where('activo',1);
+		$this->db->order_by('fecha','desc');
+
+		/* Relacionar dos tablas */
+		$this->db->join('usuarios','usuarios.IDusuarios=articulos.IDusuarios', 'left');
+
 		$query=$this->db->get();
-		return $query->result();
+		// devuelve un objeto
+		// return $query->result();
+		// devuelve un array
+		return $query->result_array();
 	}
+	
 }
 ```
 
@@ -199,8 +229,9 @@ class Articulos extends CI_Controller{
 	function index(){
 		$this->load->model('articulo');
 		$contenido['articulos']=$this->articulo->get_articulos();
-
-		print_r($contenido);
+		// Para mostrar el contenido del objeto o array
+		// print_r($contenido);
+		$this->load->view('portada', $contenido);
 	}
 }
 ```
@@ -208,3 +239,37 @@ class Articulos extends CI_Controller{
 Al introducir la **url** `http://codeigniter/index.php/articulos` obtendremos una muestra de los datos de la base de datos creada. 
 `Array ( [articulos] => Array ( [0] => stdClass Object ( [IDarticulo] => 1 [titulo] => Mi primer articulo [articulo] => Este es mi primer articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) [1] => stdClass Object ( [IDarticulo] => 2 [titulo] => Segundo [articulo] => Este es mi segundo articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) ) )`
 
+| application\views\portada.php |
+|--------------------------------------|
+
+```php
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Curso PHP</title>
+	<meta name="description" content ="Articulos del blog">
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<h1>Blog PHP y MVC</h1>
+		</header>
+		<section id="contenedor">
+			<?php if(!isset($articulos)){ ?>
+				<p>El blog esta vacio <p>
+			<?php } else {
+				foreach ($articulos as $row){ ?>
+					<article>
+					<h3><a href="<?=base_url()?>articulos/articulo/<?$row['IDarticulo']?>"><?=$row['titulo']?></a></h3>
+					<span class="fecha"><?=$row['fecha']?></span>
+					<p class="articulo"><?=substr(strip_tags($row['articulo']),0,200).".."?><p>
+					<p class="ver-mas"><a href="<?base_url()?>articulos/articulo/<?=$row['IDarticulo']?>">ver más</a></p>
+				</article>
+			<?php }
+			}; ?>
+		</section>
+	</div>
+</body>
+</html>
+```
