@@ -279,7 +279,7 @@ Al introducir la **url** `http://codeigniter/index.php/articulos` obtendremos un
 `Array ( [articulos] => Array ( [0] => stdClass Object ( [IDarticulo] => 1 [titulo] => Mi primer articulo [articulo] => Este es mi primer articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) [1] => stdClass Object ( [IDarticulo] => 2 [titulo] => Segundo [articulo] => Este es mi segundo articulo [fecha] => 2017-08-29 10:16:25 [IDusuario] => 0 [activo] => 1 ) ) )`
 
 | application\views\portada.php |
-|--------------------------------------|
+|-------------------------------|
 
 ```php
 <!doctype html>
@@ -291,72 +291,7 @@ Al introducir la **url** `http://codeigniter/index.php/articulos` obtendremos un
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <style type="text/css">
-  	* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    background: none repeat scroll 0 0 #DDDDDD;
-    color: #0F3D48;
-    font-family: verdana,arial,sans-serif;
-    font-size: 16px;
-    padding: 0 10px;
-}
-h1 {
-    color: #512800;
-    font-size: 37px;
-    margin-left: 2%;
-    font-weight: normal;
-}
-h3 {
-    float: left;
-    font-weight: normal;
-}
-a {
-    color: #512800;
-    text-decoration: none;
-}
-#wrapper {
-    background: none repeat scroll 0 0 #fff;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.35);
-    margin: 2em auto;
-    max-width: 840px;
-    padding-bottom: 10px;
-}
-#wrapper header {
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-#wrapper #contenedor article {
-    background: none repeat scroll 0 0 #F7F7F4;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 0 2% 20px;
-    padding: 10px;
-    position: relative;
-}
-.articulo {
-    border-top: 2px solid #F4AB84;
-    clear: both;
-    font-size: 12px;
-    padding: 10px;
-}
-.fecha {
-    color: #B7B7B7;
-    font-family: arial;
-    float: right;
-    font-size: 12px;
-    margin: 8px 5px 0;
-}
-
-.ver-mas a {
-    color: #E96151;
-}
- 
-
-  </style>
+  <style type="text/css">  </style>
 </head>
 <body>
   <div id="wrapper">
@@ -380,4 +315,256 @@ a {
   </div>	
 </body>
 </html>
+```
+---------------------------------------------------------------
+1.2.CRUD de productos
+---------------------
+
+| application\model\articulo.php |
+|--------------------------------|
+
+```php
+<?php
+//la clase puede nombrarse con la primera inicial en mayúscula aunque el archivo no lo haga (pero con el mismo nombre)
+class Articulo extends CI_Model {
+	function get_articulos(){
+		/* Para ver todos los articulos independientemente de su estado (Activo/inactivo) */
+		// $this->db->select()->from('articulos');
+		
+		/* Para ver todos los articulos que cumplen una única condición (activos) */
+		$this->db->select()->from('articulos')->where('activo',1);
+		
+		/* Para consultas más largas se recomienda la siguiente estructura */
+		// $this->db->from('articulos');
+		// $this->db->where('activo',1);
+		// $this->db->order_by('fecha','desc');
+
+		/* Relacionar dos tablas */
+		// $this->db->join('usuarios','usuarios.IDusuario=articulos.IDusuario', 'left');
+
+		$query=$this->db->get();
+		// devuelve un objeto
+		// return $query->result();
+		// devuelve un array
+		return $query->result_array();
+	}
+	// cargamos un artículo específico
+	function get_articulo($IDarticulo){
+		/* Para ver todos los articulos que cumplen más de una condición */	
+		$this->db->select()->from('articulos')->where(array('activo'=>1,'IDarticulo'=>$IDarticulo));
+		$query=$this->db->get();
+		return $query->row_array();
+	}
+
+	// creamos artículos
+	function insert_articulo($contenido){
+		$this->db->insert('articulos',$contenido);
+		return $this->db->insert_id();
+	}
+	// actualizar artículo
+	function update_articulo($IDarticulo,$contenido){
+		// primero hay que indicar donde actualizaremos
+		$this->db->where('IDarticulo',$IDarticulo);
+		// posteriormente los datos a actualizar
+		$this->db->update('articulos',$contenido);
+	}
+
+
+	// eliminar artículo
+	function eliminar_articulo($IDarticulo){
+		// para eliminar primero seleccionamos la condicion a cumplir en la eliminación y luego ejecutamos delete de la tabla con la condición
+		// OJO muy importante indicar antes la condición, corremos el riesgo de eliminar toda la tabla
+		$this->db->where('IDarticulo', $IDarticulo);
+		$this->db->delete('articulos');
+	}
+}
+```
+
+| application\controller\articulos.php |
+|--------------------------------------|
+
+```php
+<?php
+//en htaccess definimos el controlador a usar y su función mediante la url en este caso un ejemplo sería:
+// dominio.es/articulos/nuevo/Articulo/1
+//la clase puede nombrarse con la primera inicial en mayúscula aunque el archivo no lo haga (pero con el mismo nombre)
+class Articulos extends CI_Controller{
+
+	function __construct(){
+		parent::__construct();
+		$this->load->model('articulo');
+	}
+	// función para listar artículos
+	function index(){
+		// La siguiente línea se puede obviar e introducir en el constructor para no estar llamándola continuamente.
+		// $this->load->model('articulo');
+		$contenido['articulos']=$this->articulo->get_articulos();
+		// Para mostrar el contenido del objeto o array
+		// print_r($contenido);		
+		$this->load->view('portada',$contenido);
+	}
+
+	// función para artículos específicos
+	function articulo($IDarticulo){
+		$contenido['articulo']=$this->articulo->get_articulo($IDarticulo);
+		// Para mostrar el contenido del objeto o array
+		// print_r($contenido);		
+		$this->load->view('articulo_simple',$contenido);
+	}
+	// creamos un artículo nuevo (uso este nombre de función ya que en la url la llamamos así)
+	function nuevoarticulo(){
+		// Comprobamos si se envió el formulario comprobando si existe $_POST
+		if($_POST){
+			$contenido=array(
+				'titulo'=>$_POST['titulo'],
+				'articulo'=>$_POST['articulo'],
+				'activo'=>1
+				);
+		// una vez recogidos los datos los pasamos al modelo "articulo" a la función "insert_articulo"
+		$this->articulo->insert_articulo($contenido);
+		// a continuación volvemos a la url indicada en este caso dominio.es/articulos/
+		redirect(base_url().'articulos/');
+		}else{
+		// si no existe $_POST cargamos una vista
+			$this->load->view('nuevo_articulo');
+		}
+	}
+	// editar articulo
+	function editarticulo($IDarticulo){
+		$contenido['lleno']=0;
+		// Comprobamos si se envió el formulario comprobando si existe $_POST
+		if($_POST){
+			$contenido_articulo=array(
+				'titulo'=>$_POST['titulo'],
+				'articulo'=>$_POST['articulo'],
+				'activo'=>1 );
+			$this->articulo->update_articulo($IDarticulo,$contenido_articulo);
+			$contenido['lleno']=1;
+		}
+		$contenido['articulo']=$this->articulo->get_articulo($IDarticulo);
+		// cargamos una vista
+		$this->load->view('editar_articulo',$contenido);
+	}
+	// eliminar articulo
+	function eliminarticulo($IDarticulo){
+		$this->articulo->eliminar_articulo($IDarticulo);
+		redirect(base_url().'articulos');
+	}
+
+}
+```
+
+| application\view\editar_articulo.php |
+|--------------------------------------|
+
+```php
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Scrip TINY MCE -->
+  <!--
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  -->
+  <script src="<?=base_url()?>js/tinymce/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+  <!-- Scrip TINY MCE -->
+  <meta charset="utf-8">
+  <title>Curso PHP mi CMS</title>
+  <meta name="description" content="Articulos del Blog">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Editar Articulo</h1>
+    </header>
+    <section id="contenedor">
+      <? if($lleno==1){ ?>
+<div class="mensaje">&#8226; Artículo actualizado correctamente</div>
+    <? } ?>
+    <div class="form">
+      <form class="form" action="<?=base_url()?>articulos/editarticulo/<?=$articulo['IDarticulo']?>" method="post">
+        <p>Título: <input name="titulo" type="text" value="<?=$articulo['titulo']?>"/></p>
+        <p>Artículo: <br /><textarea name="articulo"><?=$articulo['articulo']?></textarea></p>
+        <p><input type="submit" value="Editar" /></p>
+      </form>
+  </div>
+  </section>
+  </div>  
+</body>
+</html>
+```
+
+| application\view\nuevo_articulo.php |
+|--------------------------------------|
+
+```php
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Scrip TINY MCE -->
+  <!--
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  -->
+  <script src="<?=base_url()?>js/tinymce/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+  <!-- Scrip TINY MCE -->
+  <meta charset="utf-8">
+  <title>Curso PHP mi CMS</title>
+  <meta name="description" content="Articulos del Blog">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Insertar Articulo</h1>
+    </header>
+    <section id="contenedor">
+      <div class="form">
+        <form class="form" action="<?=base_url()?>articulos/nuevoarticulo" method="post">
+          <p>Título: <input name="titulo" type="text"/></p>
+          <p>Artículo: <br /><textarea name="articulo">Aqui su texto</textarea></p>
+          <p><input type="submit" value="Añadir" /></p>
+        </form>
+      </div>
+    </section>
+  </div>  
+</body>
+</html>
+```
+---------------------------------------------------------------
+1.3.TINY MCE4
+---------------------
+
+El plugin [tinymce](https://www.tinymce.com/) que permiter otorgar estilos a los `<textarea></textarea>`. Para ello hay que incluir un script tal y como se indica en la [documentación del plugin](https://www.tinymce.com/download/), tal que así:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+</head>
+<body>
+  <textarea>Next, get a TinyMCE Cloud API key!</textarea>
+</body>
+</html>
+```
+o los archivos dentro del proyecto dentro o fuera de la carpeta web. En caso de que fuera en una carpeta externa del proyecto habrá que indicarla dentro del `.htaccess` (en este caso la carpeta **js**.
+
+| .htaccess |
+|-----------|
+
+```php
+# arranca el motor de reescritura de urls
+RewriteEngine on
+# para añadir carpetas externas a la web, es decir en un nivel inferior las indicamos en la siguiente línea
+RewriteCond $1 !^(index\.php|images|js|robots\.txt)
+# para obviar index.php en las url usamos la siguiente línea
+RewriteRule ^(.*)$ index.php/$1 [L]
 ```
