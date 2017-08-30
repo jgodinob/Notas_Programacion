@@ -499,7 +499,7 @@ class Articulos extends CI_Controller{
 ```
 
 | application\view\nuevo_articulo.php |
-|--------------------------------------|
+|-------------------------------------|
 
 ```php
 <!doctype html>
@@ -538,6 +538,7 @@ class Articulos extends CI_Controller{
 </body>
 </html>
 ```
+
 ---------------------------------------------------------------
 1.3.TINY MCE4
 ---------------------
@@ -573,3 +574,153 @@ RewriteCond $1 !^(index\.php|images|js|robots\.txt)
 # para obviar index.php en las url usamos la siguiente línea
 RewriteRule ^(.*)$ index.php/$1 [L]
 ```
+
+---------------------------------------------------------------
+1.4.Paginación
+---------------------
+Así para aplicar esta librería modificamos el código así:
+
+| application\controller\articulos.php |
+|--------------------------------------|
+
+```php
+class Articulos extends CI_Controller{
+	// Contenido obviado
+	// función para listar artículos
+	function index($inicio=0){
+		// La siguiente línea se puede obviar e introducir en el constructor para no estar llamándola continuamente.
+		// $this->load->model('articulo');
+		$contenido['articulos']=$this->articulo->get_articulos(3, $inicio);
+
+		/* INICIO PAGINACIÓN */
+		// cargamos la librería 'pagination' para paginar los datos mostrados
+		$this->load->library('pagination');
+		// primero indicamos la url
+		$config['base_url']=base_url().'articulos/index/';
+		// después indicamos el número de artículos existentes
+		$config['total_rows']=$this->articulo->get_articulos_contador();
+		// cuantos artículos se mostraran por página
+		$config['per_page']=3;
+		// inciamos la paginación
+		$this->pagination->initialize($config);
+		// añadimos los vínculos de navegacion en la paginación
+		$contenido['pagination']=$this->pagination->create_links();
+		/* FIN PAGINACIÓN */
+		
+		// Para mostrar el contenido del objeto o array
+		// print_r($contenido);		
+		$this->load->view('portada',$contenido);
+	}
+// Contenido obviado
+```
+
+| application\models\articulo.php |
+|---------------------------------|
+
+```php
+//la clase puede nombrarse con la primera inicial en mayúscula aunque el archivo no lo haga (pero con el mismo nombre)
+class Articulo extends CI_Model {
+	function get_articulos($numero=4, $inicio=0){
+		/* Para ver todos los articulos independientemente de su estado (Activo/inactivo) */
+		// $this->db->select()->from('articulos');
+		
+		/* Para ver todos los articulos que cumplen una única condición (activos) */
+		$this->db->select()->from('articulos')->where('activo',1)->limit($numero, $inicio);
+		
+		/* Para consultas más largas se recomienda la siguiente estructura */
+		// $this->db->from('articulos');
+		// $this->db->where('activo',1);
+		// $this->db->order_by('fecha','desc');
+
+		/* Relacionar dos tablas */
+		// $this->db->join('usuarios','usuarios.IDusuario=articulos.IDusuario', 'left');
+
+		$query=$this->db->get();
+		// devuelve un objeto
+		// return $query->result();
+		// devuelve un array
+		return $query->result_array();
+	}
+	// Contenido obviado
+```
+
+| application\views\portada.php |
+|-------------------------------|
+
+```php
+<!-- Contenido obviado -->
+<body>
+  <div id="wrapper">
+  	<header>
+  		<h1>Blog PHP y MVC</h1>
+      <a class="nuevo" href="<?=base_url()?>articulos/nuevoarticulo/">Añadir</a>
+  	     
+
+    </header>
+  	<section id="contenedor">
+      
+  		<?php if(!isset($articulos)){ ?>
+	  		<p>El blog esta vacio</p>
+	  	<?php } else { 
+	  		foreach ($articulos as $row){ ?>
+	  			<article>		  	
+					<h3><a href="<?=base_url()?>articulos/articulo/<?=$row['IDarticulo']?>"><?=$row['titulo']?></a></h3>
+          <a class="editar" href="<?=base_url()?>articulos/eliminarticulo/<?=$row['IDarticulo']?>">/ X</a>
+          <a class="editar" href="<?=base_url()?>articulos/editarticulo/<?=$row['IDarticulo']?>">Editar</a>
+
+          <span class="fecha"><?=$row['fecha']?></span>
+           
+					<p class="articulo"><?=substr(strip_tags($row['articulo']),0,200).".."?><p>
+					<p class="ver-mas"><a href="<?=base_url()?>articulos/articulo/<?=$row['IDarticulo']?>">ver más</a></p>
+
+				</article>
+			<?php }
+		}; ?>
+	</section>
+<!-- INICIO PAGINACIÓN -->
+  <?=$pagination?>
+<!-- FIN PAGINACIÓN -->
+  </div>	
+</body>
+<!-- Contenido obviado -->
+```
+	
+La librería de **paginación** se encuentra dentro de la carpeta `system\libraries\Pagination.php`. Esta posee su configuración dentro de este mismo archivo, lo que nos permite por ejemplo cambiar los link que darán paso al contenido **siguiente** y **posterior**, así:
+
+| system\libraries\Pagination.php (original) |
+|--------------------------------------------|
+
+```php
+	/**
+	 * Next link
+	 *
+	 * @var	string
+	 */
+	protected $next_link = '&gt;';
+
+	/**
+	 * Previous link
+	 *
+	 * @var	string
+	 */
+	protected $prev_link = '&lt;';
+```
+| system\libraries\Pagination.php (modificado) |
+|----------------------------------------------|
+
+```php
+	/**
+	 * Next link
+	 *
+	 * @var	string
+	 */
+	protected $next_link = 'Siguiente';
+
+	/**
+	 * Previous link
+	 *
+	 * @var	string
+	 */
+	protected $prev_link = 'Anterior';
+```
+
