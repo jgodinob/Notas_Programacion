@@ -547,8 +547,13 @@ El plugin [tinymce](https://www.tinymce.com/) que permiter otorgar estilos a los
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Scrip TINY MCE -->
+  <!--
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  -->
+  <script src="<?=base_url()?>js/tinymce/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
+  <!-- Scrip TINY MCE -->
 </head>
 <body>
   <textarea>Next, get a TinyMCE Cloud API key!</textarea>
