@@ -687,24 +687,6 @@ class Articulo extends CI_Model {
 	
 La librería de **paginación** se encuentra dentro de la carpeta `system\libraries\Pagination.php`. Esta posee su configuración dentro de este mismo archivo, lo que nos permite por ejemplo cambiar los link que darán paso al contenido **siguiente** y **posterior**, así:
 
-| system\libraries\Pagination.php (original) |
-|--------------------------------------------|
-
-```php
-	/**
-	 * Next link
-	 *
-	 * @var	string
-	 */
-	protected $next_link = '&gt;';
-
-	/**
-	 * Previous link
-	 *
-	 * @var	string
-	 */
-	protected $prev_link = '&lt;';
-```
 | system\libraries\Pagination.php (modificado) |
 |----------------------------------------------|
 
@@ -714,6 +696,7 @@ La librería de **paginación** se encuentra dentro de la carpeta `system\librar
 	 *
 	 * @var	string
 	 */
+	// protected $next_link = '&gt;';
 	protected $next_link = 'Siguiente';
 
 	/**
@@ -721,6 +704,7 @@ La librería de **paginación** se encuentra dentro de la carpeta `system\librar
 	 *
 	 * @var	string
 	 */
+	// protected $prev_link = '&lt;';
 	protected $prev_link = 'Anterior';
 ```
 
